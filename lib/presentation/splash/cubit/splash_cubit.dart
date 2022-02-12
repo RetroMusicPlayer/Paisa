@@ -67,4 +67,5 @@ const Map<String, Locale> locales = {
   "Austria Euro": Locale('de'),
   "Bangladesh Taka": Locale('bn'),
   "Indonesian Rupiah": Locale('id'),
+  "Philippine Peso": Locale('ph'),
 };
