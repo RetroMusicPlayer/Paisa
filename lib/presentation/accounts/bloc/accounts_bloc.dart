@@ -56,7 +56,7 @@ class AccountsBloc extends Bloc<AccountsEvent, AccountsState> {
     await accountUseCase.addAccount(
       bankName: bankName,
       holderName: accountHolderName,
-      number: accountHolderName,
+      number: accountNumber,
       icon: icon,
       validThru: event.validThru,
       cardType: cardType,
