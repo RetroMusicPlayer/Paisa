@@ -16,12 +16,12 @@ class ScheduleNotificationWidget extends StatefulWidget {
 class ScheduleNotificationWidgetState
     extends State<ScheduleNotificationWidget> {
   final SettingsController settingsController = locator.get();
-  late bool showNotificatons = false;
+  late bool showNotifications = false;
 
   @override
   void initState() {
     super.initState();
-    showNotificatons = settingsController.showNotificatons;
+    showNotifications = settingsController.showNotifications;
   }
 
   @override
@@ -31,9 +31,9 @@ class ScheduleNotificationWidgetState
       subtitle: AppLocalizations.of(context)!.reminderDescriptionLabel,
       trailing: Switch(
         activeColor: Theme.of(context).colorScheme.primary,
-        value: showNotificatons,
+        value: showNotifications,
         onChanged: (value) {
-          showNotificatons = value;
+          showNotifications = value;
           setState(() {});
           settingsController.updateNotification(value);
         },

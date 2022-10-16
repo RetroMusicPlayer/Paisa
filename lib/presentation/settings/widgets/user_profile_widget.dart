@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../app/routes.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import '../../../common/enum/box_types.dart';
@@ -51,6 +53,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   title: Text(
                     AppLocalizations.of(context)!.profileLabel,
                     style: Theme.of(context).textTheme.headline6,
+                  ),
+                  trailing: IconButton(
+                    onPressed: () => GoRouter.of(context).goNamed(settingsPath),
+                    icon: const Icon(Icons.settings_rounded),
                   ),
                 ),
                 Row(

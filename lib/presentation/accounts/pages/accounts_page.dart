@@ -6,9 +6,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../app/routes.dart';
-import '../../../common/enum/box_types.dart';
+import '../../../common/constants/extensions.dart';
 import '../../../common/widgets/empty_widget.dart';
-import '../../../common/widgets/material_you_app_bar_widget.dart';
 import '../../../data/accounts/model/account.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/accounts_bloc.dart';
@@ -35,13 +34,11 @@ class AccountsPageState extends State<AccountsPage> {
         key: const Key('accounts'),
         mobile: Scaffold(
           key: const Key('accounts_mobile'),
-          appBar: materialYouAppBar(
-            context,
+          appBar: context.materialYouAppBar(
             AppLocalizations.of(context)!.accountsLabel,
           ),
           body: ValueListenableBuilder<Box<Account>>(
-            valueListenable:
-                Hive.box<Account>(BoxType.accounts.stringValue).listenable(),
+            valueListenable: locator.get<Box<Account>>().listenable(),
             builder: (_, value, __) {
               final List<Account> accounts = value.values.toList();
               if (accounts.isEmpty) {
@@ -84,13 +81,11 @@ class AccountsPageState extends State<AccountsPage> {
           ),
         ),
         tablet: Scaffold(
-          appBar: materialYouAppBar(
-            context,
+          appBar: context.materialYouAppBar(
             AppLocalizations.of(context)!.accountsLabel,
           ),
           body: ValueListenableBuilder<Box<Account>>(
-            valueListenable:
-                Hive.box<Account>(BoxType.accounts.stringValue).listenable(),
+            valueListenable: locator.get<Box<Account>>().listenable(),
             builder: (context, value, _) {
               final accounts = value.values.toList();
               if (accounts.isEmpty) {

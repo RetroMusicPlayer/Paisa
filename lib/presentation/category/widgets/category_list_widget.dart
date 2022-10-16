@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import '../../../common/enum/box_types.dart';
 import '../../../common/widgets/empty_widget.dart';
 import '../../../data/category/model/category.dart';
+import '../../../di/service_locator.dart';
 import '../bloc/category_bloc.dart';
 import 'category_item_widget.dart';
 
@@ -21,8 +21,7 @@ class CategoryListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<Category>>(
-      valueListenable:
-          Hive.box<Category>(BoxType.category.stringValue).listenable(),
+      valueListenable: locator.get<Box<Category>>().listenable(),
       builder: (BuildContext context, value, Widget? child) {
         final categories = value.values.toList();
         if (categories.isEmpty) {

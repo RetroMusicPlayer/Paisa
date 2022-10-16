@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../app/routes.dart';
-import '../../../common/widgets/material_you_app_bar_widget.dart';
+import '../../../common/constants/extensions.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/category_bloc.dart';
 import '../widgets/category_list_widget.dart';
@@ -22,8 +22,7 @@ class CategoryListPageState extends State<CategoryListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: materialYouAppBar(
-        context,
+      appBar: context.materialYouAppBar(
         AppLocalizations.of(context)!.categoriesLabel,
       ),
       body: ScreenTypeLayout(

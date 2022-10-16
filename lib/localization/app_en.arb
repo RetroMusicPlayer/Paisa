@@ -511,5 +511,49 @@
     "appRateDescLabel": "Love this app? Let us know in the Google Play Store how we can make it even better",
     "@appRateDescLabel": {
         "description": "Rate label"
+    },
+    "raiseABugOrRequestLabel": "Raise a bug or request",
+    "@raiseABugOrRequestLabel": {
+        "description": "Raise a bug or request label"
+    },
+    "raiseABugOrRequestDescLabel": "Found a bug or need a feature to implement ask away",
+    "@raiseABugOrRequestDescLabel": {
+        "description": "Found a bug or need a feature to implement ask away label"
+    },
+    "transferNameLabel": "Transfer name",
+    "@transferNameLabel": {
+        "description": "Transfer name label"
+    },
+    "debtsLabel": "Debts",
+    "@debtsLabel": {
+        "description": "Debts label"
+    },
+    "debtLabel": "Debt",
+    "@debtLabel": {
+        "description": "Debts label"
+    },
+    "creditLabel": "Credit",
+    "@creditLabel": {
+        "description": "Credit label"
+    },
+    "enterCategoryLabel": "Enter category",
+    "@enterCategoryLabel": {
+        "description": "Enter category label"
+    },
+    "addDebtLabel": "Add debt",
+    "@addDebtLabel": {
+        "description": "Add debt label"
+    },
+    "addCreditLabel": "Add credit",
+    "@addCreditLabel": {
+        "description": "Add credit label"
+    },
+    "enterDescriptionLabel": "Enter description",
+    "@enterDescriptionLabel": {
+        "description": "Enter description label"
+    },
+    "validDescriptionLabel": "Enter valid description",
+    "@validDescriptionLabel": {
+        "description": "Enter valid description label"
     }
 }

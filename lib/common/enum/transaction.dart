@@ -10,8 +10,8 @@ enum TransactionType {
   expense,
   @HiveField(0)
   income,
-  @HiveField(2)
-  transfer
+  /*  @HiveField(2)
+  transfer */
 }
 
 extension TransactionTypeMapping on TransactionType {
@@ -21,8 +21,19 @@ extension TransactionTypeMapping on TransactionType {
         return AppLocalizations.of(context)!.incomeLabel;
       case TransactionType.expense:
         return AppLocalizations.of(context)!.expenseLabel;
-      case TransactionType.transfer:
-        return AppLocalizations.of(context)!.transferLabel;
+      /* case TransactionType.transfer:
+        return AppLocalizations.of(context)!.transferLabel; */
+    }
+  }
+
+  String hintName(BuildContext context) {
+    switch (this) {
+      case TransactionType.income:
+        return AppLocalizations.of(context)!.incomeNameLabel;
+      case TransactionType.expense:
+        return AppLocalizations.of(context)!.expenseNameLabel;
+      /*  case TransactionType.transfer:
+        return AppLocalizations.of(context)!.transferNameLabel; */
     }
   }
 
@@ -32,8 +43,8 @@ extension TransactionTypeMapping on TransactionType {
         return 'expense';
       case TransactionType.income:
         return 'income';
-      case TransactionType.transfer:
-        return 'transfer';
+      /*  case TransactionType.transfer:
+        return 'transfer'; */
     }
   }
 }
@@ -45,8 +56,8 @@ extension TransactionMap on String {
         return TransactionType.expense;
       case 'income':
         return TransactionType.income;
-      case 'transfer':
-        return TransactionType.transfer;
+      /* case 'transfer':
+        return TransactionType.transfer; */
     }
     return TransactionType.expense;
   }

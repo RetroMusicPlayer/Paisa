@@ -1,4 +1,4 @@
-enum BoxType { expense, accounts, category, settings }
+enum BoxType { expense, accounts, category, settings, debts, transactions }
 
 extension BoxTypeMapping on BoxType {
   String get stringValue {
@@ -11,6 +11,10 @@ extension BoxTypeMapping on BoxType {
         return 'expense';
       case BoxType.settings:
         return 'settings';
+      case BoxType.debts:
+        return 'debts';
+      case BoxType.transactions:
+        return 'transactions';
     }
   }
 }

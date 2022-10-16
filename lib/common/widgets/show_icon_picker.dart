@@ -19,7 +19,7 @@ Future<void> showIconPicker({
       content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.5,
-        child: _IconPickereWidget(
+        child: _IconPickerWidget(
           iconKeys: iconKeys,
           selectedIcon: selectedIcon,
           onSelectedIcon: (icon) {
@@ -38,8 +38,8 @@ Future<void> showIconPicker({
   );
 }
 
-class _IconPickereWidget extends StatefulWidget {
-  const _IconPickereWidget({
+class _IconPickerWidget extends StatefulWidget {
+  const _IconPickerWidget({
     Key? key,
     required this.iconKeys,
     required this.selectedIcon,
@@ -50,10 +50,10 @@ class _IconPickereWidget extends StatefulWidget {
   final IconData selectedIcon;
   final Function(IconData icon) onSelectedIcon;
   @override
-  State<_IconPickereWidget> createState() => __IconPickereWidgetState();
+  State<_IconPickerWidget> createState() => _IconPickerWidgetState();
 }
 
-class __IconPickereWidgetState extends State<_IconPickereWidget> {
+class _IconPickerWidgetState extends State<_IconPickerWidget> {
   final controller = TextEditingController();
   late List<String> iconKeys = widget.iconKeys;
   late IconData? selectedIcon = widget.selectedIcon;

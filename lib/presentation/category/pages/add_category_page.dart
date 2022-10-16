@@ -5,7 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import '../../../common/widgets/material_you_app_bar_widget.dart';
+import '../../../common/constants/extensions.dart';
+import '../../../common/widgets/paisa_text_field.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/category_bloc.dart';
 import '../widgets/select_icon_widget.dart';
@@ -53,8 +54,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
         bloc: categoryBloc,
         listener: (context, state) {
           if (state is CategoryAddedState) {
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               isAddCategory
                   ? AppLocalizations.of(context)!.successAddCategoryLabel
                   : AppLocalizations.of(context)!.updatedCategoryLabel,
@@ -63,8 +63,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
             );
             context.pop();
           } else if (state is CategoryErrorState) {
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               state.errorString,
               backgroundColor: Theme.of(context).colorScheme.errorContainer,
               color: Theme.of(context).colorScheme.onErrorContainer,
@@ -109,8 +108,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
               ),
             ),
             tablet: Scaffold(
-              appBar: materialYouAppBar(
-                context,
+              appBar: context.materialYouAppBar(
                 isAddCategory
                     ? AppLocalizations.of(context)!.addCategoryLabel
                     : AppLocalizations.of(context)!.updateCategoryLabel,
@@ -184,8 +182,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
   bool get isAddCategory => widget.categoryId == null;
 
   AppBar appBar() {
-    return materialYouAppBar(
-      context,
+    return context.materialYouAppBar(
       isAddCategory
           ? AppLocalizations.of(context)!.addCategoryLabel
           : AppLocalizations.of(context)!.updateCategoryLabel,
@@ -242,19 +239,20 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
 }
 
 class CategoryNameWidget extends StatelessWidget {
-  const CategoryNameWidget({super.key, required this.controller});
+  const CategoryNameWidget({
+    super.key,
+    required this.controller,
+  });
   final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return PaisaTextFormField(
       controller: controller,
-      keyboardType: TextInputType.name,
       maxLength: 10,
-      decoration: InputDecoration(
-        label: Text(AppLocalizations.of(context)!.categoryLabel),
-        hintText: 'Enter category',
-      ),
+      hintText: AppLocalizations.of(context)!.enterCategoryLabel,
+      label: AppLocalizations.of(context)!.categoryLabel,
+      keyboardType: TextInputType.name,
       onChanged: (value) =>
           BlocProvider.of<CategoryBloc>(context).categoryTitle = value,
       validator: (value) {
@@ -269,21 +267,20 @@ class CategoryNameWidget extends StatelessWidget {
 }
 
 class CategoryDescriptionWidget extends StatelessWidget {
-  const CategoryDescriptionWidget({super.key, required this.controller});
+  const CategoryDescriptionWidget({
+    super.key,
+    required this.controller,
+  });
   final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return PaisaTextFormField(
       maxLength: 15,
       controller: controller,
+      hintText: AppLocalizations.of(context)!.enterDescriptionLabel,
       keyboardType: TextInputType.name,
-      onChanged: (value) =>
-          BlocProvider.of<CategoryBloc>(context).categoryDesc = value,
-      decoration: InputDecoration(
-        label: Text(AppLocalizations.of(context)!.descriptionLabel),
-        hintText: 'Enter description',
-      ),
+      label: AppLocalizations.of(context)!.descriptionLabel,
     );
   }
 }

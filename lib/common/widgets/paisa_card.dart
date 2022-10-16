@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class MaterialYouCard extends StatelessWidget {
-  const MaterialYouCard({
-    Key? key,
+class PaisaCard extends StatelessWidget {
+  const PaisaCard({
+    super.key,
     required this.child,
-    this.color,
     this.elevation,
-  }) : super(key: key);
+    this.color,
+  });
 
   final Widget child;
-  final Color? color;
   final double? elevation;
+  final Color? color;
+
   @override
   Widget build(BuildContext context) {
     return Card(

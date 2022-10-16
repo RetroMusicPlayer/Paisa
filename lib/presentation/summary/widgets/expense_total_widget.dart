@@ -3,9 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import '../../../common/constants/extensions.dart';
-import '../../../common/enum/box_types.dart';
-import '../../../common/widgets/material_you_card_widget.dart';
+import '../../../common/widgets/paisa_card.dart';
 import '../../../data/expense/model/expense.dart';
+import '../../../di/service_locator.dart';
 import 'expense_total_for_month_widget.dart';
 import 'total_balance_widget.dart';
 
@@ -15,8 +15,7 @@ class ExpenseTotalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<Expense>>(
-      valueListenable:
-          Hive.box<Expense>(BoxType.expense.stringValue).listenable(),
+      valueListenable: locator.get<Box<Expense>>().listenable(),
       builder: (_, value, child) {
         final expenses = value.values.toList();
         final totalIncome = expenses.totalIncome - expenses.totalExpense;
@@ -24,7 +23,7 @@ class ExpenseTotalWidget extends StatelessWidget {
         final thisMonthIncome = expenses.thisMonthIncome;
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: MaterialYouCard(
+          child: PaisaCard(
             color: Theme.of(context).colorScheme.primaryContainer,
             child: Padding(
               padding: const EdgeInsets.all(22.0),

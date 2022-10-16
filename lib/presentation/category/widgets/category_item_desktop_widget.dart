@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/routes.dart';
-import '../../../common/widgets/material_you_card_widget.dart';
+import '../../../common/widgets/paisa_card.dart';
 import '../../../data/category/model/category.dart';
 
 class CategoryItemTabletWidget extends StatelessWidget {
@@ -17,7 +17,7 @@ class CategoryItemTabletWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialYouCard(
+    return PaisaCard(
       child: InkWell(
         onTap: () => context.goNamed(
           editCategoryPath,

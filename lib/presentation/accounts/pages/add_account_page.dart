@@ -4,7 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import '../../../common/widgets/material_you_app_bar_widget.dart';
+import '../../../common/constants/extensions.dart';
+import '../../../common/widgets/paisa_text_field.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/accounts_bloc.dart';
 import '../widgets/account_card.dart';
@@ -62,8 +63,7 @@ class AddAccountPageState extends State<AddAccountPage> {
         bloc: accountsBloc,
         listener: (context, state) {
           if (state is AddAccountState) {
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               isAccountAddOrUpdate
                   ? AppLocalizations.of(context)!.addedCardLabel
                   : AppLocalizations.of(context)!.updatedCardLabel,
@@ -73,16 +73,14 @@ class AddAccountPageState extends State<AddAccountPage> {
             context.pop();
           }
           if (state is AccountDeletedState) {
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               AppLocalizations.of(context)!.deletedCardLabel,
               backgroundColor: Theme.of(context).colorScheme.error,
               color: Theme.of(context).colorScheme.onError,
             );
             context.pop();
           } else if (state is AccountErrorState) {
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               state.errorString,
               backgroundColor: Theme.of(context).colorScheme.errorContainer,
               color: Theme.of(context).colorScheme.onErrorContainer,
@@ -106,8 +104,7 @@ class AddAccountPageState extends State<AddAccountPage> {
         builder: (context, state) {
           return ScreenTypeLayout(
             mobile: Scaffold(
-              appBar: materialYouAppBar(
-                context,
+              appBar: context.materialYouAppBar(
                 isAccountAddOrUpdate
                     ? AppLocalizations.of(context)!.addCardLabel
                     : AppLocalizations.of(context)!.updateCardLabel,
@@ -200,8 +197,7 @@ class AddAccountPageState extends State<AddAccountPage> {
               ),
             ),
             tablet: Scaffold(
-              appBar: materialYouAppBar(
-                context,
+              appBar: context.materialYouAppBar(
                 AppLocalizations.of(context)!.addCardLabel,
                 actions: [
                   IconButton(
@@ -383,16 +379,10 @@ class AccountCardHolderNameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return PaisaTextFormField(
       controller: controller,
+      hintText: AppLocalizations.of(context)!.cardHolderLabel,
       keyboardType: TextInputType.name,
-      decoration: InputDecoration(
-        hintText: AppLocalizations.of(context)!.cardHolderLabel,
-        filled: true,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-      ),
       onChanged: (value) =>
           BlocProvider.of<AccountsBloc>(context).accountHolderName = value,
     );
@@ -406,16 +396,10 @@ class AccountNameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return PaisaTextFormField(
       controller: controller,
+      hintText: AppLocalizations.of(context)!.accountNameLabel,
       keyboardType: TextInputType.name,
-      decoration: InputDecoration(
-        hintText: AppLocalizations.of(context)!.accountNameLabel,
-        filled: true,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-      ),
       onChanged: (value) =>
           BlocProvider.of<AccountsBloc>(context).accountName = value,
     );
@@ -429,19 +413,11 @@ class AccountNumberWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
+    return PaisaTextFormField(
       maxLength: 4,
+      controller: controller,
+      hintText: AppLocalizations.of(context)!.lastFourDigitLabel,
       keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        hintText: AppLocalizations.of(context)!.lastFourDigitLabel,
-        filled: true,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-      ),
-      onChanged: (value) =>
-          BlocProvider.of<AccountsBloc>(context).accountNumber = value,
     );
   }
 }

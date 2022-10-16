@@ -53,7 +53,7 @@ extension TotalAmountOnExpenses on Iterable<Expense> {
   double get total => map((e) => e.currency)
       .fold<double>(0, (previousValue, element) => previousValue + element);
 
-  String get totalWithCurrenySymbol => formattedCurrency(total);
+  String get totalWithCurrencySymbol => formattedCurrency(total);
 
   double get thisMonthExpense =>
       where((element) => element.type == TransactionType.expense)
@@ -66,4 +66,44 @@ extension TotalAmountOnExpenses on Iterable<Expense> {
           .where((element) => element.time.month == DateTime.now().month)
           .map((e) => e.currency)
           .fold<double>(0, (previousValue, element) => previousValue + element);
+}
+
+extension BuildContextMapping on BuildContext {
+  AppBar materialYouAppBar(
+    String title, {
+    List<Widget>? actions,
+    Widget? leadingWidget,
+  }) {
+    return AppBar(
+      leading: leadingWidget,
+      title: Text(title),
+      titleTextStyle: Theme.of(this)
+          .textTheme
+          .headline6
+          ?.copyWith(fontWeight: FontWeight.bold),
+      backgroundColor: Colors.transparent,
+      actions: actions ?? [],
+    );
+  }
+
+  showMaterialSnackBar(
+    String content, {
+    Color? backgroundColor,
+    Color? color,
+  }) {
+    ScaffoldMessenger.of(this).showSnackBar(
+      SnackBar(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        content: Text(
+          content,
+          style: TextStyle(
+            color: color ?? Theme.of(this).colorScheme.onSurface,
+          ),
+        ),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: backgroundColor ?? Theme.of(this).colorScheme.surface,
+        elevation: 20,
+      ),
+    );
+  }
 }

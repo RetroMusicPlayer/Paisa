@@ -5,7 +5,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../app/app_builder.dart';
 import '../../../app/routes.dart';
-import '../../../common/widgets/material_you_app_bar_widget.dart';
+import '../../../common/constants/constants.dart';
+import '../../../common/constants/extensions.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/settings_controller.dart';
 import '../widgets/choose_theme_mode_widget.dart';
@@ -29,8 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: materialYouAppBar(
-        context,
+      appBar: context.materialYouAppBar(
         AppLocalizations.of(context)!.settingsLabel,
       ),
       body: ListView(
@@ -88,25 +88,24 @@ class _SettingsPageState extends State<SettingsPage> {
               SettingsOption(
                 title: AppLocalizations.of(context)!.appRateLabel,
                 subtitle: AppLocalizations.of(context)!.appRateDescLabel,
-                onTap: () => launchUrlString(
-                    'https://play.google.com/store/apps/details?id=dev.hemanths.paisa'),
+                onTap: () => launchUrlString(playStoreUrl),
               ),
               const Divider(),
               SettingsOption(
                 title: AppLocalizations.of(context)!.githubLabel,
                 subtitle: AppLocalizations.of(context)!.githubTextLabel,
-                onTap: () => launchUrlString('https://github.com/h4h13/paisa'),
+                onTap: () => launchUrlString(gitHubUrl),
               ),
               const Divider(),
               SettingsOption(
                 title: AppLocalizations.of(context)!.telegramLabel,
                 subtitle: AppLocalizations.of(context)!.telegramGroupLabel,
-                onTap: () => launchUrlString('https://t.me/app_paisa'),
+                onTap: () => launchUrlString(telegramGroupUrl),
               ),
               const Divider(),
               SettingsOption(
                 title: AppLocalizations.of(context)!.privacyPolicyLabel,
-                onTap: () => launchUrlString('https://hemanths.dev/privacy'),
+                onTap: () => launchUrlString(termsAndConditionsUrl),
               ),
               const Divider(),
               const VersionWidget(),

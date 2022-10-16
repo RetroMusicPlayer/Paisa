@@ -8,7 +8,7 @@ class SettingsController with ChangeNotifier {
   SettingsController({required this.settingsService});
 
   final SettingsService settingsService;
-  late bool showNotificatons = false;
+  late bool showNotifications = false;
   late bool useBiometrics = false;
   late Color _currentColor = Colors.orange;
   late ThemeMode _themeMode;
@@ -20,13 +20,13 @@ class SettingsController with ChangeNotifier {
 
   Future<void> loadSettings() async {
     _themeMode = await settingsService.themeMode();
-    showNotificatons = await settingsService.notification();
+    showNotifications = await settingsService.notification();
     _currentColor = await settingsService.themeColor();
     notifyListeners();
   }
 
   Future<void> updateNotification(bool isOn) async {
-    showNotificatons = isOn;
+    showNotifications = isOn;
     notifyListeners();
     if (isOn) {
       locator.get<NotificationService>().secludeNotification();

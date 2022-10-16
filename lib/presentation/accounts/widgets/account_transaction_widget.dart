@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../common/constants/currency.dart';
+import '../../../common/widgets/paisa_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../../common/constants/currency.dart';
 import '../../../common/constants/extensions.dart';
-import '../../../common/enum/box_types.dart';
-import '../../../common/widgets/material_you_card_widget.dart';
 import '../../../data/accounts/data_sources/account_local_data_source.dart';
 import '../../../data/accounts/model/account.dart';
 import '../../../data/expense/model/expense.dart';
@@ -25,8 +24,7 @@ class AccountTransactionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<Expense>>(
-      valueListenable:
-          Hive.box<Expense>(BoxType.expense.stringValue).listenable(),
+      valueListenable: locator.get<Box<Expense>>().listenable(),
       builder: (context, value, child) {
         final expenses = value.allAccount(account.superId!);
         expenses.sort((a, b) => b.time.compareTo(a.time));
@@ -55,7 +53,7 @@ class AccountTransactionWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: MaterialYouCard(
+                      child: PaisaCard(
                         color: Theme.of(context).colorScheme.secondaryContainer,
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
@@ -87,7 +85,7 @@ class AccountTransactionWidget extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: MaterialYouCard(
+                      child: PaisaCard(
                         color: Theme.of(context).colorScheme.secondaryContainer,
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
@@ -133,7 +131,7 @@ class AccountTransactionWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: MaterialYouCard(
+                child: PaisaCard(
                   child: ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -165,7 +163,7 @@ class AccountTransactionWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: MaterialYouCard(
+                child: PaisaCard(
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: expenses.length,

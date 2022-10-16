@@ -5,7 +5,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../app/routes.dart';
-import '../../../common/enum/box_types.dart';
 import '../../../data/category/model/category.dart';
 import '../../../di/service_locator.dart';
 import '../../category/bloc/category_bloc.dart';
@@ -29,8 +28,7 @@ class SelectCategoryIconState extends State<SelectCategoryIcon> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<Category>>(
-      valueListenable:
-          Hive.box<Category>(BoxType.category.stringValue).listenable(),
+      valueListenable: locator.get<Box<Category>>().listenable(),
       builder: (context, value, child) {
         final categories = value.values.toList();
         if (categories.isEmpty) {

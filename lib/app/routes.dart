@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paisa/presentation/budget_overview/pages/expense_list_page.dart';
-import 'package:flutter_paisa/presentation/settings/pages/export_and_import_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -8,18 +6,28 @@ import '../common/enum/box_types.dart';
 import '../data/settings/settings_service.dart';
 import '../main.dart';
 import '../presentation/accounts/pages/add_account_page.dart';
+import '../presentation/budget_overview/pages/expense_list_page.dart';
 import '../presentation/category/pages/add_category_page.dart';
+import '../presentation/debits/pages/add_debt_page.dart';
 import '../presentation/expense/pages/expense_page.dart';
 import '../presentation/home/pages/home_page.dart';
 import '../presentation/login/pages/user_image_page.dart';
 import '../presentation/login/pages/user_name_page.dart';
+import '../presentation/settings/pages/export_and_import_page.dart';
+import '../presentation/settings/pages/setting_page.dart';
 import '../presentation/splash/pages/splash_screen_page.dart';
 
+const loginPath = '/login';
+const loginName = 'login';
+
 const splashPath = '/splash';
+const splashName = 'splash';
+
 const userNamePath = '/user-name';
 const userImagePath = '/user-image';
 const landingPath = '/landing';
-const loginPath = '/login';
+const landingName = 'landing';
+
 const addExpensePath = 'add-expense';
 const editExpensePath = 'edit-expense';
 const addCategoryPath = 'add-category';
@@ -28,6 +36,10 @@ const addAccountPath = 'add-account';
 const editAccountPath = 'edit-account';
 const expensesByCategory = 'expenses';
 const exportAndImport = 'export-import';
+const settingsPath = 'settings';
+const settingsName = 'settings';
+const debitAddOrEditPath = 'edit-debit';
+const addDebitName = 'debit-add';
 
 final settings = Hive.box(BoxType.settings.stringValue);
 
@@ -60,13 +72,13 @@ final GoRouter goRouter = GoRouter(
   debugLogDiagnostics: true,
   routes: [
     GoRoute(
-      name: 'login',
+      name: loginName,
       path: loginPath,
       builder: (context, state) =>
           const Center(child: CircularProgressIndicator()),
     ),
     GoRoute(
-      name: 'splash',
+      name: splashName,
       path: splashPath,
       builder: (context, state) {
         if (state.extra is Map) {
@@ -80,15 +92,13 @@ final GoRouter goRouter = GoRouter(
       },
     ),
     GoRoute(
-      name: 'landing',
+      name: landingName,
       path: landingPath,
       builder: (context, state) => const LandingPage(),
       routes: [
         GoRoute(
           path: addExpensePath,
-          builder: (context, state) {
-            return const ExpensePage();
-          },
+          builder: (context, state) => const ExpensePage(),
         ),
         GoRoute(
           name: editExpensePath,
@@ -131,6 +141,23 @@ final GoRouter goRouter = GoRouter(
           name: exportAndImport,
           path: 'export-import',
           builder: (context, state) => ExportAndImportPage(),
+        ),
+        GoRoute(
+          name: settingsName,
+          path: settingsPath,
+          builder: (context, state) => const SettingsPage(),
+        ),
+        GoRoute(
+          name: addDebitName,
+          path: addDebitName,
+          builder: (context, state) => const DebtAddOrEditPage(),
+        ),
+        GoRoute(
+          name: debitAddOrEditPath,
+          path: 'debt/:did',
+          builder: (context, state) => DebtAddOrEditPage(
+            debtId: state.params['did'],
+          ),
         ),
       ],
     ),

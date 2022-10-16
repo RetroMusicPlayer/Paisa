@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../../../common/widgets/material_you_card_widget.dart';
+import '../../../common/widgets/paisa_card.dart';
 
 class LocaleGridView extends StatelessWidget {
   const LocaleGridView({
@@ -31,7 +31,7 @@ class LocaleGridView extends StatelessWidget {
           locale: locales[index].value.toString(),
         );
 
-        return MaterialYouCard(
+        return PaisaCard(
           child: InkWell(
             onTap: () => onPressed(locales[index].value),
             child: Column(

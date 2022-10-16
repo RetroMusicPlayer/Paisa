@@ -9,7 +9,6 @@ import '../../../common/constants/util.dart';
 import '../../../common/enum/box_types.dart';
 import '../../../common/enum/filter_budget.dart';
 import '../../../common/widgets/empty_widget.dart';
-import '../../../common/widgets/material_you_app_bar_widget.dart';
 import '../../../data/category/data_sources/category_local_data_source.dart';
 import '../../../data/expense/model/expense.dart';
 import '../../../di/service_locator.dart';
@@ -58,8 +57,7 @@ class _BudgetOverViewPageState extends State<BudgetOverViewPage> {
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
       mobile: Scaffold(
-        appBar: materialYouAppBar(
-          context,
+        appBar: context.materialYouAppBar(
           AppLocalizations.of(context)!.budgetOverViewLabel,
         ),
         floatingActionButton: FloatingActionButton.large(
@@ -120,8 +118,7 @@ class _BudgetOverViewPageState extends State<BudgetOverViewPage> {
         ),
       ),
       tablet: Scaffold(
-        appBar: materialYouAppBar(
-          context,
+        appBar: context.materialYouAppBar(
           AppLocalizations.of(context)!.budgetOverViewLabel,
           actions: [
             FilterBudgetWidget(
@@ -140,8 +137,7 @@ class _BudgetOverViewPageState extends State<BudgetOverViewPage> {
           child: const Icon(Icons.date_range),
         ),
         body: ValueListenableBuilder<Box<Expense>>(
-          valueListenable:
-              Hive.box<Expense>(BoxType.expense.stringValue).listenable(),
+          valueListenable: locator.get<Box<Expense>>().listenable(),
           builder: (context, value, _) {
             List<Expense> expenses = value.budgetOverView;
             if (dateTimeRange != null) {

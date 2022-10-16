@@ -21,7 +21,7 @@ class _VersionWidgetState extends State<VersionWidget> {
     fetchDeviceInfo();
   }
 
-  fetchDeviceInfo() async {
+  Future<void> fetchDeviceInfo() async {
     packageInfo = await PackageInfo.fromPlatform();
     setState(() {});
   }

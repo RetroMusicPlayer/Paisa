@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../common/enum/box_types.dart';
 import '../../../data/expense/model/expense.dart';
+import '../../../di/service_locator.dart';
 import '../../summary/widgets/expense_list_widget.dart';
 
 class SearchListWidget extends StatelessWidget {
@@ -17,8 +17,7 @@ class SearchListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<Expense>>(
-      valueListenable:
-          Hive.box<Expense>(BoxType.expense.stringValue).listenable(),
+      valueListenable: locator.get<Box<Expense>>().listenable(),
       builder: (context, value, child) {
         if (query.isEmpty) {
           return Center(

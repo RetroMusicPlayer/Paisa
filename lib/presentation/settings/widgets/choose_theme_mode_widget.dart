@@ -42,7 +42,7 @@ class ChooseThemeModeWidgetState extends State<ChooseThemeModeWidget> {
           selectedThemeMode = selected;
           settingsController.updateThemeMode(selectedThemeMode);
         },
-        curentTheme: selectedThemeMode,
+        currentTheme: selectedThemeMode,
       ),
     );
   }
@@ -61,9 +61,9 @@ class ThemeModeWidget extends StatefulWidget {
   const ThemeModeWidget({
     Key? key,
     required this.onSelected,
-    required this.curentTheme,
+    required this.currentTheme,
   }) : super(key: key);
-  final ThemeMode curentTheme;
+  final ThemeMode currentTheme;
 
   final Function(ThemeMode) onSelected;
   @override
@@ -71,7 +71,7 @@ class ThemeModeWidget extends StatefulWidget {
 }
 
 class ThemeModeWidgetState extends State<ThemeModeWidget> {
-  late ThemeMode curentIndex = widget.curentTheme;
+  late ThemeMode currentIndex = widget.currentTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +91,10 @@ class ThemeModeWidgetState extends State<ThemeModeWidget> {
                 (e) => RadioListTile(
                   value: e,
                   activeColor: Theme.of(context).colorScheme.onPrimaryContainer,
-                  groupValue: curentIndex,
+                  groupValue: currentIndex,
                   onChanged: (ThemeMode? value) {
-                    curentIndex = value!;
-                    widget.onSelected(curentIndex);
+                    currentIndex = value!;
+                    widget.onSelected(currentIndex);
                     setState(() {});
                   },
                   title: Text(

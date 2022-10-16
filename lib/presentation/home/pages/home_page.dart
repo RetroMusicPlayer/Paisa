@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../accounts/pages/accounts_page.dart';
 import '../../budget_overview/pages/budget_overview_page.dart';
 import '../../category/pages/category_list_page.dart';
-import '../../settings/pages/setting_page.dart';
+import '../../debits/pages/debts_page.dart';
 import '../../summary/pages/summary_page.dart';
 import '../widgets/welcome_widget.dart';
 
@@ -79,9 +80,9 @@ class _LandingPageState extends State<LandingPage>
                   selectedIcon: const Icon(Icons.account_balance_wallet),
                 ),
                 NavigationDestination(
-                  label: AppLocalizations.of(context)!.settingsLabel,
-                  icon: const Icon(Icons.settings_outlined),
-                  selectedIcon: const Icon(Icons.settings),
+                  label: AppLocalizations.of(context)!.debtsLabel,
+                  icon: const Icon(MdiIcons.accountCashOutline),
+                  selectedIcon: const Icon(MdiIcons.accountCash),
                 ),
               ],
             ),
@@ -134,9 +135,9 @@ class _LandingPageState extends State<LandingPage>
                   padding: const EdgeInsets.all(16),
                 ),
                 NavigationRailDestination(
-                  icon: const Icon(Icons.settings_outlined),
-                  selectedIcon: const Icon(Icons.settings),
-                  label: Text(AppLocalizations.of(context)!.settingsLabel),
+                  icon: const Icon(MdiIcons.accountCashOutline),
+                  selectedIcon: const Icon(MdiIcons.accountCash),
+                  label: Text(AppLocalizations.of(context)!.debtsLabel),
                   padding: const EdgeInsets.all(16),
                 ),
               ],
@@ -175,7 +176,7 @@ class _ContentWidgetState extends State<ContentWidget> {
         AccountsPage(key: Key('accounts_page')),
         CategoryListPage(key: Key('category_page')),
         BudgetOverViewPage(key: Key('budget_page')),
-        SettingsPage(key: Key('settings_page')),
+        DebtsPage(key: Key('settings_page')),
       ][widget.index],
     );
   }

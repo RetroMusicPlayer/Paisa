@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_paisa/presentation/goal/widget/color_palette.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../app/routes.dart';
-import '../../../common/widgets/material_you_app_bar_widget.dart';
+import '../../../common/constants/extensions.dart';
+import '../../goal/widget/color_palette.dart';
 import '../../home/widgets/welcome_widget.dart';
 import '../../search/pages/search_page.dart';
 import '../../settings/widgets/user_profile_widget.dart';
@@ -76,8 +76,7 @@ class _SummaryPageState extends State<SummaryPage> {
         floatingActionButton: floatingActionButton(),
       ),
       tablet: Scaffold(
-        appBar: materialYouAppBar(
-          context,
+        appBar: context.materialYouAppBar(
           '',
           actions: [
             IconButton(
@@ -117,8 +116,7 @@ class _SummaryPageState extends State<SummaryPage> {
         floatingActionButton: floatingActionButton(),
       ),
       desktop: Scaffold(
-        appBar: materialYouAppBar(
-          context,
+        appBar: context.materialYouAppBar(
           '',
           actions: [
             IconButton(

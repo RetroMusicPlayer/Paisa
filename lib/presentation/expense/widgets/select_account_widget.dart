@@ -6,7 +6,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../app/routes.dart';
-import '../../../common/enum/box_types.dart';
 import '../../../common/enum/card_type.dart';
 import '../../../data/accounts/model/account.dart';
 import '../../../di/service_locator.dart';
@@ -40,8 +39,7 @@ class _SelectedAccountState extends State<SelectedAccount> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<Account>>(
-        valueListenable:
-            Hive.box<Account>(BoxType.accounts.stringValue).listenable(),
+        valueListenable: locator.get<Box<Account>>().listenable(),
         builder: (context, value, child) {
           final accounts = value.values.toList();
           if (accounts.isEmpty) {

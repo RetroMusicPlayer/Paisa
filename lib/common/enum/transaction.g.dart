@@ -17,8 +17,6 @@ class TransactionTypeAdapter extends TypeAdapter<TransactionType> {
         return TransactionType.expense;
       case 0:
         return TransactionType.income;
-      case 2:
-        return TransactionType.transfer;
       default:
         return TransactionType.expense;
     }
@@ -32,9 +30,6 @@ class TransactionTypeAdapter extends TypeAdapter<TransactionType> {
         break;
       case TransactionType.income:
         writer.writeByte(0);
-        break;
-      case TransactionType.transfer:
-        writer.writeByte(2);
         break;
     }
   }

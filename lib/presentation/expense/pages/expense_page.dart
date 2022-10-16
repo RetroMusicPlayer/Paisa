@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../common/widgets/paisa_text_field.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../common/enum/transaction.dart';
-import '../../../common/widgets/material_you_app_bar_widget.dart';
+import '../../../common/constants/extensions.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/expense_bloc.dart';
 import '../widgets/select_account_widget.dart';
@@ -50,8 +51,7 @@ class _ExpensePageState extends State<ExpensePage> {
         bloc: expenseBloc,
         listener: (context, state) {
           if (state is ExpenseDeletedState) {
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               expenseBloc.selectedType == TransactionType.expense
                   ? AppLocalizations.of(context)!.expenseDeletedSuccessfulLabel
                   : AppLocalizations.of(context)!.incomeDeletedSuccessfulLabel,
@@ -68,16 +68,14 @@ class _ExpensePageState extends State<ExpensePage> {
                     ? AppLocalizations.of(context)!.incomeAddedSuccessfulLabel
                     : AppLocalizations.of(context)!.incomeUpdateSuccessfulLabel;
 
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               content,
               backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               color: Theme.of(context).colorScheme.onPrimaryContainer,
             );
             context.pop();
           } else if (state is ExpenseErrorState) {
-            showMaterialSnackBar(
-              context,
+            context.showMaterialSnackBar(
               state.errorString,
               backgroundColor: Theme.of(context).colorScheme.errorContainer,
               color: Theme.of(context).colorScheme.onErrorContainer,
@@ -98,8 +96,7 @@ class _ExpensePageState extends State<ExpensePage> {
         builder: (context, state) {
           return ScreenTypeLayout(
             mobile: Scaffold(
-              appBar: materialYouAppBar(
-                context,
+              appBar: context.materialYouAppBar(
                 isAddExpense
                     ? AppLocalizations.of(context)!.addExpenseLabel
                     : AppLocalizations.of(context)!.updateExpenseLabel,
@@ -335,22 +332,15 @@ class ExpenseDatePickerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          child: TextFormField(
+          child: PaisaTextFormField(
             enabled: false,
-            autocorrect: true,
             controller: controller,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              hintText: AppLocalizations.of(context)!.dateLabel,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              filled: true,
-            ),
+            hintText: 'Select date',
           ),
         ),
         IconButton(
@@ -389,14 +379,11 @@ class ExpenseNameWidget extends StatelessWidget {
       buildWhen: (oldState, newState) => newState is ChangeExpenseState,
       builder: (context, state) {
         if (state is ChangeExpenseState) {
-          return TextFormField(
+          return PaisaTextFormField(
+            maxLines: 1,
             controller: controller,
+            hintText: state.transactionType.hintName(context),
             keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              hintText: state.transactionType == TransactionType.expense
-                  ? AppLocalizations.of(context)!.expenseNameLabel
-                  : AppLocalizations.of(context)!.incomeNameLabel,
-            ),
             validator: (value) {
               if (value!.length >= 3) {
                 return null;
@@ -425,22 +412,16 @@ class ExpenseAmountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return PaisaTextFormField(
       controller: controller,
+      hintText: AppLocalizations.of(context)!.amountLabel,
       keyboardType: TextInputType.number,
+      maxLength: 13,
       maxLines: 1,
-      decoration: InputDecoration(
-        hintText: AppLocalizations.of(context)!.amountLabel,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        filled: true,
-      ),
       onChanged: (value) {
         double? amount = double.tryParse(value);
         BlocProvider.of<ExpenseBloc>(context).expenseAmount = amount;
       },
-      maxLength: 13,
       validator: (value) {
         if (value!.length > 1) {
           return null;

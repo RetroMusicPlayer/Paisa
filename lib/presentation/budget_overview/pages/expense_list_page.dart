@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paisa/common/widgets/material_you_app_bar_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../common/enum/box_types.dart';
+import '../../../common/constants/extensions.dart';
 import '../../../data/accounts/data_sources/account_local_data_source.dart';
 import '../../../data/expense/model/expense.dart';
 import '../../../di/service_locator.dart';
@@ -21,13 +20,11 @@ class ExpenseListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final int? cid = int.tryParse(categoryId ?? '');
     return Scaffold(
-      appBar: materialYouAppBar(
-        context,
+      appBar: context.materialYouAppBar(
         AppLocalizations.of(context)!.expenseByCategoryLabel,
       ),
       body: ValueListenableBuilder<Box<Expense>>(
-        valueListenable:
-            Hive.box<Expense>(BoxType.expense.stringValue).listenable(),
+        valueListenable: locator.get<Box<Expense>>().listenable(),
         builder: (context, value, _) {
           final expenses = value.values
               .where((element) => element.categoryId == cid)

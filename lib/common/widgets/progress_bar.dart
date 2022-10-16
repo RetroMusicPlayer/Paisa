@@ -23,12 +23,12 @@ class ProgressBar extends StatelessWidget {
               width: x,
               height: 7,
               decoration: BoxDecoration(
-                color: Color(0xffd3d3d3),
+                color: const Color(0xffd3d3d3),
                 borderRadius: BorderRadius.circular(35),
               ),
             ),
             AnimatedContainer(
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               width: percent,
               height: 7,
               decoration: BoxDecoration(

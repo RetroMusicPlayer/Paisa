@@ -5,9 +5,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../common/constants/extensions.dart';
 import '../../../common/constants/time.dart';
 import '../../../common/constants/util.dart';
-import '../../../common/enum/box_types.dart';
 import '../../../common/enum/filter_budget.dart';
 import '../../../data/expense/model/expense.dart';
+import '../../../di/service_locator.dart';
 import '../../budget_overview/widgets/filter_budget_widget.dart';
 import 'expense_month_card.dart';
 
@@ -23,8 +23,7 @@ class _ExpenseHistoryState extends State<ExpenseHistory> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<Expense>>(
-      valueListenable:
-          Hive.box<Expense>(BoxType.expense.stringValue).listenable(),
+      valueListenable: locator.get<Box<Expense>>().listenable(),
       builder: (_, value, child) {
         final expenses = value.values.toList();
         if (expenses.isEmpty) {

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/routes.dart';
 import '../../../common/constants/currency.dart';
-import '../../../common/widgets/material_you_card_widget.dart';
+import '../../../common/widgets/paisa_card.dart';
 import '../../../data/category/model/category.dart';
 import '../../../data/expense/model/expense.dart';
 
@@ -19,7 +19,7 @@ class BudgetItemTableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialYouCard(
+    return PaisaCard(
       child: InkWell(
         onTap: () => context.goNamed(addCategoryPath, extra: category),
         child: Column(
