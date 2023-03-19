@@ -1533,5 +1533,18 @@ List<Map<String, dynamic>> data() {
       "space_between_amount_and_symbol": false,
       "symbol_on_left": true,
     },
+    {
+      "code": "ILS",
+      "name": "Israeli Shekel",
+      "symbol": "₪",
+      "flag": "ILS",
+      "decimal_digits": 2,
+      "number": 376,
+      "name_plural": "Israeli Shekels",
+      "thousands_separator": ",",
+      "decimal_separator": ".",
+      "space_between_amount_and_symbol": false,
+      "symbol_on_left": false,
+    },
   ];
 }
