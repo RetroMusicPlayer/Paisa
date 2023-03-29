@@ -14,7 +14,7 @@ List<CurrencyModel> getLocales() => [
       CurrencyModel("Malaysia Ringgit", const Locale('ms')),
       CurrencyModel("Ukrainian Hryvnia", const Locale('uk')),
       CurrencyModel("Polish Złoty", const Locale('pl')),
-      CurrencyModel("Austria Euro", const Locale('de')),
+      CurrencyModel("European Euro", const Locale('de')),
       CurrencyModel("Bangladesh Taka", const Locale('bn')),
       CurrencyModel("Turkish lira", const Locale('tr')),
       CurrencyModel("Mexican Peso", const Locale('es-mx')),
