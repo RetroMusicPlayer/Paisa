@@ -1,0 +1,723 @@
+{
+    "appTitle": "পয়সা",
+    "@appTitle": {
+        "description": "The app name"
+    },
+    "homeLabel": "হোম",
+    "@homeLabel": {
+        "description": "Home label"
+    },
+    "dueDateLabel": "শেষের তারিখ",
+    "@dueDateLabel": {
+        "description": "End date label"
+    },
+    "startDateLabel": "শুরুর তারিখ",
+    "@startDateLabel": {
+        "description": "Start date label"
+    },
+    "categoryLabel": "ক্যাটেগরি",
+    "@categoryLabel": {
+        "description": "Category label"
+    },
+    "enterDebtLabel": "ঋণের পরিমাণ লিখুন",
+    "@enterDebtLabel": {
+        "description": "Enter debt amount label"
+    },
+    "enterCreditLabel": "ক্রেডিট এর পরিমাণ লিখুন",
+    "@enterCreditLabel": {
+        "description": "Enter credit amount label"
+    },
+    "addCategoryLabel": "ক্যাটগরি যুক্ত করুন",
+    "@addCategoryLabel": {
+        "description": "Add Category label"
+    },
+    "addExpenseLabel": "খরচ যুক্ত করুন",
+    "@addExpenseLabel": {
+        "description": "Add Expense label"
+    },
+    "updateExpenseLabel": "খরচ হালনাগাদ করুন",
+    "@updateExpenseLabel": {
+        "description": "Update Expense label"
+    },
+    "updateCardLabel": "কার্ড হালনাগাদ করুন",
+    "@updateCardLabel": {
+        "description": "Update card label"
+    },
+    "addAccountLabel": "অ্যাকাউন্ট যুক্ত করুন",
+    "@addAccountLabel": {
+        "description": "Add Account label"
+    },
+    "categoriesLabel": "ক্যাটেগরিস",
+    "@categoriesLabel": {
+        "description": "Categories label"
+    },
+    "accountsLabel": "অ্যাকাউন্টস",
+    "@accountsLabel": {
+        "description": "Accounts label"
+    },
+    "budgetLabel": "বাজেট",
+    "@budgetLabel": {
+        "description": "Budget label"
+    },
+    "welcomeMessage": "স্বাগতম!",
+    "@welcomeMessage": {
+        "description": "Budget label"
+    },
+    "settingsLabel": "সেটিংস",
+    "@settingsLabel": {
+        "description": "Settings label"
+    },
+    "localAppLabel": "অ্যাপ লক করুন",
+    "@localAppLabel": {
+        "description": "Lock app label"
+    },
+    "totalLabel": "মোট",
+    "@totalLabel": {
+        "description": "Total label"
+    },
+    "expenseLabel": "খরচ",
+    "@expenseLabel": {
+        "description": "Expense label"
+    },
+    "expensesLabel": "খরচসমুহ",
+    "@expensesLabel": {
+        "description": "Expenses label"
+    },
+    "depositLabel": "আমানত",
+    "@depositLabel": {
+        "description": "Deposit label"
+    },
+    "dailyLabel": "দৈনিক",
+    "@dailyLabel": {
+        "description": "Daily label"
+    },
+    "weeklyLabel": "সাপ্তাহিক",
+    "@weeklyLabel": {
+        "description": "Weekly label"
+    },
+    "monthlyLabel": "মাসিক",
+    "@monthlyLabel": {
+        "description": "Monthly label"
+    },
+    "yearlyLabel": "বাৎসরিক",
+    "@yearlyLabel": {
+        "description": "Yearly label"
+    },
+    "allLabel": "সবগুলো",
+    "@allLabel": {
+        "description": "All label"
+    },
+    "transactionHistoryLabel": "লেনদেনের ইতিহাস",
+    "@transactionHistoryLabel": {
+        "description": "Transaction history label"
+    },
+    "selectCategoryIconLabel": "ক্যাটেগরি আইকন বাছাই করুন",
+    "@selectCategoryIconLabel": {
+        "description": "Select category icon label"
+    },
+    "descriptionLabel": "বিবরন",
+    "@descriptionLabel": {
+        "description": "Description label"
+    },
+    "cashLabel": "ক্যাশ",
+    "@cashLabel": {
+        "description": "Cash label"
+    },
+    "debitCardLabel": "ডেবিট কার্ড",
+    "@debitCardLabel": {
+        "description": "Debit Card label"
+    },
+    "creditCardLabel": "ক্রেডিট কার্ড",
+    "@creditCardLabel": {
+        "description": "Credit Card label"
+    },
+    "cardHolderLabel": "কার্ডবহনকারীর নাম",
+    "@cardHolderLabel": {
+        "description": "Cardholder name label"
+    },
+    "accountNameLabel": "অ্যাকাউন্ট এর নাম",
+    "@accountNameLabel": {
+        "description": "Account label"
+    },
+    "lastFourDigitLabel": "Last four digit number",
+    "@lastFourDigitLabel": {
+        "description": "Last four digit number label"
+    },
+    "addCardLabel": "কার্ড যুক্ত করুন",
+    "@addCardLabel": {
+        "description": "Add card label"
+    },
+    "addedCardLabel": "অ্যাকাউন্ট যুক্ত করা হয়েছে",
+    "@addedCardLabel": {
+        "description": "Account added label"
+    },
+    "updatedCardLabel": "অ্যাকাউন্ট হালনাগাদ করা হয়েছে",
+    "@updatedCardLabel": {
+        "description": "Account updated label"
+    },
+    "deletedCardLabel": "অ্যাকাউন্ট মুছে ফেলা হয়েছে",
+    "@deletedCardLabel": {
+        "description": "Account deleted label"
+    },
+    "successAddCategoryLabel": "ক্যাটেগরি যুক্ত করা হয়েছে",
+    "@successAddCategoryLabel": {
+        "description": "Category added successful label"
+    },
+    "validNameLabel": "বৈধ নাম লিখুন",
+    "@validNameLabel": {
+        "description": "Enter valid name label"
+    },
+    "profileLabel": "প্রোফাইল",
+    "@profileLabel": {
+        "description": "Profile label"
+    },
+    "themeLabel": "থিম",
+    "@themeLabel": {
+        "description": "Theme label"
+    },
+    "reminderLabel": "রিমাইন্ডার",
+    "@reminderLabel": {
+        "description": "Reminder label"
+    },
+    "reminderDescriptionLabel": "প্রতিদিনের খরচ যোগ করার নোটিফিকেশান অন করুন",
+    "@reminderDescriptionLabel": {
+        "description": "Show schedule notifications to add expense label"
+    },
+    "chooseThemeLabel": "থিম বাছাই করুন",
+    "@chooseThemeLabel": {
+        "description": "Choose theme label"
+    },
+    "updateLabel": "হালনাগাদ করুন",
+    "@updateLabel": {
+        "description": "Update label"
+    },
+    "userNameLabel": "ইউজার এর নাম",
+    "@userNameLabel": {
+        "description": "User name label"
+    },
+    "selectedCountryLabel": "মুদ্রা বাছাই করুন",
+    "@selectedCountryLabel": {
+        "description": "Select currency label"
+    },
+    "errorAuthLabel": "যাচাইকরণ এ সমস্যা হয়েছে",
+    "@errorAuthLabel": {
+        "description": "Error authentication label"
+    },
+    "errorNoCardsLabel": "কোন কার্ড নেই",
+    "@errorNoCardsLabel": {
+        "description": "No cards label"
+    },
+    "errorNoCardsDescriptionLabel": "খরচ যোগ করুন এবং তা এখানে প্রদর্শিত হবে",
+    "@errorNoCardsDescriptionLabel": {
+        "description": "No cards description label"
+    },
+    "errorNoCatagoriesLabel": "কোন ক্যাটেগরি নেই",
+    "@errorNoCatagoriesLabel": {
+        "description": "No categories label"
+    },
+    "errorNoCategoriesDescriptionLabel": "ক্যাটেগরি যোগ করুন এবং তা এখানে প্রদর্শিত হবে",
+    "@errorNoCategoriesDescriptionLabel": {
+        "description": "No category description label"
+    },
+    "errorNoBudgetLabel": "বাজেট ওভারভিউ খালি",
+    "@errorNoBudgetLabel": {
+        "description": "Empty in budget overview label"
+    },
+    "errorNoBudgetDescriptionLabel": "খরচ যোগ করুন এবং বাজেট ওভারভিউ এখানে দেখানো হবে",
+    "@errorNoBudgetDescriptionLabel": {
+        "description": "No budget overview description label"
+    },
+    "cardholderLabel": "কার্ড হোল্ডার",
+    "@cardholderLabel": {
+        "description": "CardHolder label"
+    },
+    "expenseAddedSuccessfulLabel": "খরচ যুক্ত করা হয়েছে",
+    "@expenseAddedSuccessfulLabel": {
+        "description": "Expense added label"
+    },
+    "expenseUpdateSuccessfulLabel": "খরচ হালনাগাদ করা হয়েছে",
+    "@expenseUpdateSuccessfulLabel": {
+        "description": "Expense updated label"
+    },
+    "expenseDeletedSuccessfulLabel": "খরচ মুছে ফেলা হয়েছে",
+    "@expenseDeletedSuccessfulLabel": {
+        "description": "Expense deleted label"
+    },
+    "expenseNameLabel": "খরচ এর নাম",
+    "@expenseNameLabel": {
+        "description": "Expense name label"
+    },
+    "amountLabel": "পরিমাণ",
+    "@amountLabel": {
+        "description": "Amount label"
+    },
+    "initialAmountLabel": "প্রাথমিক পরিমাণ",
+    "@initialAmountLabel": {
+        "description": "Initial amount label"
+    },
+    "validAmountLabel": "বৈধ পরিমাণ লিখুন",
+    "@validAmountLabel": {
+        "description": "Enter valid amount label"
+    },
+    "dateLabel": "তারিখ",
+    "@dateLabel": {
+        "description": "date label"
+    },
+    "validDateLabel": "তারিখ বাছাই করুন",
+    "@validDateLabel": {
+        "description": "Select date label"
+    },
+    "addLabel": "যুক্ত করুন",
+    "@addLabel": {
+        "description": "add label"
+    },
+    "selectAccountLabel": "অ্যাকাউন্ট বাছাই করুন",
+    "@selectAccountLabel": {
+        "description": "Select account label"
+    },
+    "selectCategoryLabel": "ক্যাটাগরি বাছাই করুন",
+    "@selectCategoryLabel": {
+        "description": "Select category label"
+    },
+    "socialLinksLabel": "সোশ্যাল মিডিয়া লিঙ্কসমুহ",
+    "@socialLinksLabel": {
+        "description": "Social links label"
+    },
+    "telegramLabel": "টেলিগ্রাম",
+    "@telegramLabel": {
+        "description": "Telegram label"
+    },
+    "telegramGroupLabel": "একটি গ্রুপ যেখানে আপনি নতুন ফিচার এর রিকুয়েস্ট করতে পারবেন এবং অ্যাপ এর সমস্যা জানাতে পারবেন",
+    "@telegramGroupLabel": {
+        "description": "A group to follow and post bugs and feature requests label"
+    },
+    "budgetOverViewLabel": "বাজেট ওভারভিউ",
+    "@budgetOverViewLabel": {
+        "description": "Budget overview label"
+    },
+    "noResultFoundLabel": "কোন ফল পাওয়া যায় নি",
+    "@noResultFoundLabel": {
+        "description": "No result found label"
+    },
+    "noCategoryLabel": "কোন কাট্যাগরি বাছাই করা হয় নি",
+    "@noCategoryLabel": {
+        "description": "No category label"
+    },
+    "noAccountAvailableLabel": "কোন অ্যাকাউন্ট বাছাই করা হয় নি",
+    "@noAccountAvailableLabel": {
+        "description": "No account label"
+    },
+    "privacyPolicyLabel": "গোপনীয়তা নীতি",
+    "@privacyPolicyLabel": {
+        "description": "Privacy & Policy label"
+    },
+    "githubLabel": "গিটহাব",
+    "@githubLabel": {
+        "description": "Github label"
+    },
+    "versionLabel": "সংস্করণ",
+    "@versionLabel": {
+        "description": "Version label"
+    },
+    "versionNumber": "v{version}",
+    "@versionNumber": {
+        "description": "Version number label",
+        "placeholders": {
+            "version": {
+                "type": "String"
+            }
+        }
+    },
+    "deleteAccountLabel": "অ্যাকাউন্ট মুছে ফেলার ফলে এই অ্যাকাউন্টের সাথে যুক্ত সমস্ত খরচ মুছে যাবে ",
+    "@deleteAccountLabel": {
+        "description": "Delete account label"
+    },
+    "deleteCategoryLabel": "ক্যাটাগরি মুছে ফেলার ফলে এই ক্যাটাগরির সাথে যুক্ত সমস্ত খরচ মুছে যাবে ",
+    "@deleteCategoryLabel": {
+        "description": "Delete category label"
+    },
+    "deleteExpenseLabel": "খরচ স্থায়ীভাবে অ্যাকাউন্ট থেকে মুছে ফেলা হবে",
+    "@deleteExpenseLabel": {
+        "description": "Version number label"
+    },
+    "dialogDeleteTitleLabel": "স্থায়ীভাবে মুছে ফেলবেন?",
+    "@dialogDeleteTitleLabel": {
+        "description": "Permanently delete label"
+    },
+    "updatedCategoryLabel": "ক্যাটাগরি হালনাগাদ করা হয়েছে",
+    "@updatedCategoryLabel": {
+        "description": "Category updated label"
+    },
+    "doneLabel": "সম্পন্ন",
+    "@doneLabel": {
+        "description": "Done label"
+    },
+    "cancelLabel": "বাতিল",
+    "@cancelLabel": {
+        "description": "Cancel label"
+    },
+    "customLabel": "কাস্টম",
+    "@customLabel": {
+        "description": "Custom label"
+    },
+    "accentColorLabel": "অ্যাকসেন্ট রং",
+    "@accentColorLabel": {
+        "description": "Accent color label"
+    },
+    "dynamicColorLabel": "ডায়নামিক",
+    "@dynamicColorLabel": {
+        "description": "Dynamic label"
+    },
+    "pickColorLabel": "রং বাছাই করুন",
+    "@pickColorLabel": {
+        "description": "Pick color label"
+    },
+    "pickColorDescLabel": "ক্যাটাগরির রং সেট করুন",
+    "@pickColorDescLabel": {
+        "description": "Pick color label"
+    },
+    "colorsLabel": "রংসমুহ",
+    "@colorsLabel": {
+        "description": "Colors label"
+    },
+    "othersLabel": "অন্যান্য",
+    "@othersLabel": {
+        "description": "Others label"
+    },
+    "githubTextLabel": "গিটহাব এ প্রোজেক্টটি ফোর্ক করুন",
+    "@githubTextLabel": {
+        "description": "GitHub text label"
+    },
+    "madeWithLoveInIndiaLabel": "Made with ♥ in India",
+    "@madeWithLoveInIndiaLabel": {
+        "description": "Made with ♥ in India label"
+    },
+    "updateCategoryLabel": "Update Category",
+    "@updateCategoryLabel": {
+        "description": "Made with ♥ in India label"
+    },
+    "accountInfoLabel": "তথ্য",
+    "@accountInfoLabel": {
+        "description": "information label"
+    },
+    "accountInfoDescLabel": "আপনি যে অ্যাকাউন্টের বিবরণ দিয়েছেন তা আমাদের সহ কারো সাথে শেয়ার করা হয়নি। এটি শুধুমাত্র অ্যাকাউন্টের বিবরণের ভিজ্যুয়াল উপস্থাপনার জন্য ব্যবহার করা হয়, আপনি মিথ্যা তথ্যও লিখতে পারেন",
+    "@accountInfoDescLabel": {
+        "description": "information label"
+    },
+    "nextLabel": "পরবর্তী",
+    "@nextLabel": {
+        "description": "Next label"
+    },
+    "imageLabel": "ছবি",
+    "@imageLabel": {
+        "description": "Image label"
+    },
+    "welcomeLabel": "স্বাগতম, ",
+    "@welcomeLabel": {
+        "description": "Welcome label"
+    },
+    "welcomeDescLabel": "আপনাকে কি নামে ডাকব?",
+    "@welcomeDescLabel": {
+        "description": "Welcome desc label"
+    },
+    "nameLabel": "নাম",
+    "@nameLabel": {
+        "description": "Name label"
+    },
+    "enterNameLabel": "আপনার নাম লিখুন",
+    "@enterNameLabel": {
+        "description": "Enter name label"
+    },
+    "imageDescLabel": "চলুন আপনার ছবি যুক্ত করা যাক",
+    "@imageDescLabel": {
+        "description": "Image desc label"
+    },
+    "backLabel": "পূর্ববর্তী",
+    "@backLabel": {
+        "description": "Back label"
+    },
+    "setBudgetLabel": "Set budget for category",
+    "@setBudgetLabel": {
+        "description": "Set budget label"
+    },
+    "incomeLabel": "ইনকাম",
+    "@incomeLabel": {
+        "description": "income label"
+    },
+    "outcomeLabel": "ফলাফল",
+    "@outcomeLabel": {
+        "description": "outcome label"
+    },
+    "thisMonthLabel": "এই মাসের",
+    "@thisMonthLabel": {
+        "description": "This month label"
+    },
+    "totalBalanceLabel": "মোট ব্যাল্যান্স",
+    "@totalBalanceLabel": {
+        "description": "Total balance label"
+    },
+    "summaryLabel": "সারমর্ম",
+    "@summaryLabel": {
+        "description": "Summary label"
+    },
+    "acceptLabel": "অ্যাকসেপ্ট করুন",
+    "@acceptLabel": {
+        "description": "Accept label"
+    },
+    "okLabel": "ওকে",
+    "@okLabel": {
+        "description": "Ok label"
+    },
+    "searchMessageLabel": "অনুসন্ধান শুরু করুন!",
+    "@searchMessageLabel": {
+        "description": "search message label"
+    },
+    "emptySearchMessageLabel": "কিছুই পাওয়া যায়নি!",
+    "@emptySearchMessageLabel": {
+        "description": "empty search message label"
+    },
+    "emptyExpensesMessage": "খরচ যোগ করুন, এখানে দেখানো হবে",
+    "@emptyExpensesMessage": {
+        "description": "empty search message label"
+    },
+    "balanceLabel": "ব্যালেন্স",
+    "@balanceLabel": {
+        "description": "Balance label"
+    },
+    "selectIconLabel": "আইকন বাছাই করুন",
+    "@selectIconLabel": {
+        "description": "Balance label"
+    },
+    "selectIconDescLabel": "আইকন বাছাই করতে ট্যাপ করুন",
+    "@selectIconDescLabel": {
+        "description": "Balance label"
+    },
+    "incomeNameLabel": "ইনকাম এর নাম",
+    "@incomeNameLabel": {
+        "description": "income name label"
+    },
+    "currencySignLabel": "মুদ্রার চিহ্ন",
+    "@currencySignLabel": {
+        "description": "Currency sign label"
+    },
+    "incomeAddedSuccessfulLabel": "ইনকাম যুক্ত করা হয়েছে",
+    "@incomeAddedSuccessfulLabel": {
+        "description": "Expense added label"
+    },
+    "incomeUpdateSuccessfulLabel": "ইনকাম হালনাগাদ করা হয়েছে",
+    "@incomeUpdateSuccessfulLabel": {
+        "description": "Expense updated label"
+    },
+    "incomeDeletedSuccessfulLabel": "ইনকাম মুছে ফেলা হয়েছে",
+    "@incomeDeletedSuccessfulLabel": {
+        "description": "Income deleted label"
+    },
+    "expenseByCategoryLabel": "ক্যাটেগরি অনুযায়ী খরচ",
+    "@expenseByCategoryLabel": {
+        "description": "Expense by category label"
+    },
+    "backupAndRestoreLabel": "ব্যাকআপ এবং পুনরুদ্ধার করুন",
+    "@backupAndRestoreLabel": {
+        "description": "Backup and Restore label"
+    },
+    "backupAndRestoreDescLabel": "আপনার খরচ, অ্যাকাউন্ট & ক্যাটেগরি ব্যাকআপ এবং পুনরুদ্ধার করুন",
+    "@backupAndRestoreDescLabel": {
+        "description": "Backup and restore your data label"
+    },
+    "createLabel": "তৈরি করুন",
+    "@createLabel": {
+        "description": "create label"
+    },
+    "restoreLabel": "পুনরুদ্ধার করুন",
+    "@restoreLabel": {
+        "description": "Restore label"
+    },
+    "creatingBackupLabel": "ব্যাকআপ তৈরি করুন",
+    "@creatingBackupLabel": {
+        "description": "Creating backup label"
+    },
+    "restoringBackupLabel": "ব্যাকআপ পুনরুদ্ধার করা হচ্ছে",
+    "@restoringBackupLabel": {
+        "description": "Creating backup label"
+    },
+    "saveAsCSVLabel": "CSV ফরম্যাট এ সেভ করুন",
+    "@saveAsCSVLabel": {
+        "description": "Save as CSV label"
+    },
+    "saveAsCSVDescLabel": "CSV ফাইল ফরম্যাটে ডেটা এক্সপোর্ট করুন",
+    "@saveAsCSVDescLabel": {
+        "description": "Save as CSV label"
+    },
+    "transferLabel": "ট্র্যান্সফার করুন",
+    "@transferLabel": {
+        "description": "Transfer label"
+    },
+    "appRateLabel": "অ্যাপটিকে রেটিং দিন",
+    "@appRateLabel": {
+        "description": "Rate label"
+    },
+    "appRateDescLabel": "এই অ্যাপটি ভাললেগেছে? Google Play Store-এ আমাদের জানান কিভাবে আমরা এটিকে আরও ভালো করে তুলতে পারি",
+    "@appRateDescLabel": {
+        "description": "Rate label"
+    },
+    "raiseABugOrRequestLabel": "অ্যাপ এর ত্রুটি জানান",
+    "@raiseABugOrRequestLabel": {
+        "description": "Raise a bug or request label"
+    },
+    "raiseABugOrRequestDescLabel": "অ্যাপ এ ত্রুটি পেয়েছে কিংবা নতুন কোনও ফিচার চান তাহলে জিজ্ঞাসা করুন",
+    "@raiseABugOrRequestDescLabel": {
+        "description": "Found a bug or need a feature to implement ask away label"
+    },
+    "transferNameLabel": "ট্র্যান্সফার এর নাম",
+    "@transferNameLabel": {
+        "description": "Transfer name label"
+    },
+    "debtsLabel": "ঋণসমুহ",
+    "@debtsLabel": {
+        "description": "Debts label"
+    },
+    "debtLabel": "ঋণ",
+    "@debtLabel": {
+        "description": "Debts label"
+    },
+    "creditLabel": "ক্রেডিট",
+    "@creditLabel": {
+        "description": "Credit label"
+    },
+    "enterCategoryLabel": "ক্যাটেগরি লিখুন",
+    "@enterCategoryLabel": {
+        "description": "Enter category label"
+    },
+    "addDebtLabel": "ঋণ যুক্ত করুন",
+    "@addDebtLabel": {
+        "description": "Add debt label"
+    },
+    "addCreditLabel": "ক্রেডিট যুক্ত করুন",
+    "@addCreditLabel": {
+        "description": "Add credit label"
+    },
+    "enterBudgetLabel": "বাজেট লিখুন",
+    "@enterBudgetLabel": {
+        "description": "Enter budget label"
+    },
+    "enterDescriptionLabel": "বিবরন লিখুন",
+    "@enterDescriptionLabel": {
+        "description": "Enter description label"
+    },
+    "validDescriptionLabel": "বৈধ বিবরন লিখুন",
+    "@validDescriptionLabel": {
+        "description": "Enter valid description label"
+    },
+    "payDebtLabel": "ঋণ পরিশধ করুন",
+    "@payDebtLabel": {
+        "description": "Pay debt label"
+    },
+    "payCreditLabel": "ক্রেডিট পে করুন",
+    "@payCreditLabel": {
+        "description": "Pay credit label"
+    },
+    "enterAmountLabel": "পরিমাণ লিখুন",
+    "@enterAmountLabel": {
+        "description": "Enter amount label"
+    },
+    "emptyDebtsLabel": "কোন ঋণ নেই",
+    "@emptyDebtsLabel": {
+        "description": "Empty in debts label"
+    },
+    "emptyDebtsDescLabel": "আপনার কোনো ঋণ নেই, সেগুলি যোগ করুন, এখানে দেখাবে ",
+    "@emptyDebtsDescLabel": {
+        "description": "Looks like you have no debts label"
+    },
+    "emptyCreditLabel": "কোন ক্রেডিট নেই",
+    "@emptyCreditLabel": {
+        "description": "Empty in credits label"
+    },
+    "emptyCreditDescLabel": "আপনার কোনো ক্রেডিট নেই, সেগুলি যোগ করুন, এখানে দেখাবে ",
+    "@emptyCreditDescLabel": {
+        "description": "Looks like you have no credits label"
+    },
+    "enterInitialAmountLabel": "প্রাথমিক পরিমাণ লিখুন",
+    "@enterInitialAmountLabel": {
+        "description": "Enter initial amount label"
+    },
+    "enterNumberOptionalLabel": "শেষ 4 সংখ্যা লিখুন (ঐচ্ছিক)",
+    "@enterNumberOptionalLabel": {
+        "description": "Optional number"
+    },
+    "enterAccountNameLabel": "অ্যাকাউন্ট এর নাম লিখুন",
+    "@enterAccountNameLabel": {
+        "description": "Enter account name label"
+    },
+    "enterCardHolderNameLabel": "কার্ড হোল্ডার এর নাম লিখুন",
+    "@enterCardHolderNameLabel": {
+        "description": "Enter account name label"
+    },
+    "searchLabel": "অনুসন্ধান করুন",
+    "@searchLabel": {
+        "description": "Search label"
+    },
+    "addNewLabel": "নতুন যুক্ত করুন",
+    "@addNewLabel": {
+        "description": "Add new label"
+    },
+    "deleteLabel": "মুছে ফেলুন",
+    "@deleteLabel": {
+        "description": "Delete label"
+    },
+    "appBarSearchLabel": "খরচ, অ্যাকাউন্ট, ক্যাটেগরি অনুসন্ধান করুন",
+    "@appBarSearchLabel": {
+        "description": "Delete label"
+    },
+    "noTransactionLabel": "কোন ট্রান্সাকসন নেই",
+    "@noTransactionLabel": {
+        "description": "Empty in transaction"
+    },
+    "enterSymbolLabel": "প্রতীক লিখুন",
+    "@enterSymbolLabel": {
+        "description": "Enter symbol"
+    },
+    "leftSymbolLabel": "বাম দিকের প্রতীক",
+    "@leftSymbolLabel": {
+        "description": "Symbol on left label"
+    },
+    "rightSymbolLabel": "ডান দিকের প্রতীক",
+    "@rightSymbolLabel": {
+        "description": "Symbol on right label"
+    },
+    "customSymbolLabel": "কাস্টম প্রতীক",
+    "@customSymbolLabel": {
+        "description": "Custom symbol label"
+    },
+    "selectCurrencyLabel": "মুদ্রা বাছাই করুন",
+    "@selectCurrencyLabel": {
+        "description": "Select currency label"
+    },
+    "overviewLabel": "ওভারভিউ",
+    "@overviewLabel": {
+        "description": "Overview label"
+    },
+    "intoTitleLabel": "আপনার সঞ্চয় নিয়ন্ত্রণে সাহায্য করার সহজ উপায়",
+    "@intoTitleLabel": {
+        "description": "Intro title label"
+    },
+    "intoSummary1Label": "এই অ্যাপ এর মাধ্যমে টাকা ম্যানেজ করুন",
+    "@intoSummary1Label": {
+        "description": "Intro summary 1 label"
+    },
+    "intoSummary2Label": "খরচ ট্র্যাক করে ভালভাবে বাজেট ব্যাবস্থাপনা করুন",
+    "@intoSummary2Label": {
+        "description": "Intro summary 2 label"
+    },
+    "intoSummary3Label": "যেকোনো জায়গায়, যেকোনো সময়ে আপনার টাকা ম্যানেজ করুন",
+    "@intoSummary3Label": {
+        "description": "Intro summary 3 label"
+    },
+    "intoCTALabel": "শুরু করুন",
+    "@intoCTALabel": {
+        "description": "Get started label"
+    },
+    "deleteDebtOrCreditLabel": "ঋণ বা ক্রেডিট মুছে ফেললে, সে সম্পর্কিত সমস্ত রেকর্ড মুছে যায় ",
+    "@deleteDebtOrCreditLabel": {
+        "description": "Delete debt or credit label"
+    }
+}
