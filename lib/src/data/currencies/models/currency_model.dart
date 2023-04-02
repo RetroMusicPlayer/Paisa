@@ -57,4 +57,5 @@ List<CurrencyModel> getLocales() => [
       CurrencyModel("Albanian Lek", const Locale('sq')),
       CurrencyModel("Czech Koruna", const Locale('cs')),
       CurrencyModel("Tanzanian Shilling", const Locale('sw')),
+      CurrencyModel("Chilean Peso", const Locale('es_CL')),
     ];
