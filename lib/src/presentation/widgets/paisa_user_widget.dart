@@ -24,7 +24,7 @@ class PaisaUserWidget extends StatelessWidget {
           Workmanager().registerPeriodicTask(
             'task_name_1',
             periodicTaskName,
-            frequency: Duration(minutes: 15),
+            frequency: const Duration(minutes: 15),
           );
         },
         onLongPress: () {

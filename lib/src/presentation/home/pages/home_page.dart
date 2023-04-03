@@ -69,7 +69,7 @@ class _LandingPageState extends State<LandingPage> {
       bloc: homeBloc,
       builder: (context, state) {
         if (state is CurrentIndexState) {
-          return FloatingActionButton.large(
+          return FloatingActionButton(
             onPressed: () => _handleClick(state.currentPage),
             child: state.currentPage != PageType.budgetOverview
                 ? const Icon(Icons.add)
