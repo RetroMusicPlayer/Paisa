@@ -36,6 +36,7 @@ class _OverviewPageV2State extends State<OverviewPageV2> {
         return Scaffold(
           body: ListView(
             shrinkWrap: true,
+            padding: const EdgeInsets.only(bottom: 124),
             children: [
               BlocBuilder(
                 bloc: budgetCubit,
@@ -99,15 +100,18 @@ class CategoryListWidget extends StatelessWidget {
     required this.categoryGrouped,
     required this.summaryController,
     required this.totalExpense,
+    this.isScroll = false,
   });
 
   final List<MapEntry<Category, List<Expense>>> categoryGrouped;
   final double totalExpense;
   final SummaryController summaryController;
+  final bool isScroll;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: isScroll ? null : const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: categoryGrouped.length,
       itemBuilder: (context, index) {

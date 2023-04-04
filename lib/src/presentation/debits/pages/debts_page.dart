@@ -117,7 +117,7 @@ class DebtsListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.only(top: 8, bottom: 124),
       shrinkWrap: true,
       itemCount: debts.length,
       itemBuilder: (context, index) => DebtItemWidget(
