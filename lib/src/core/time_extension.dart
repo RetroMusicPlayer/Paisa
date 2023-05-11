@@ -29,7 +29,7 @@ extension DateUtils on DateTime {
         yesterday.year == year;
   }
 
-  int get daysDifference => daysElapsedSince(this, DateTime.now());
+  int get daysDifference => daysElapsedSince(DateTime.now(), this);
 
   int get ordinalDate {
     const offsets = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
