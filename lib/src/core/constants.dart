@@ -13,6 +13,7 @@ const String userIntroKey = 'user_intro_key';
 const String userImageKey = 'user_image_key';
 const String userAuthKey = 'user_auth_key';
 const String smallSizeFabKey = 'user_small_size_fab_key';
+const String hideCardGlowKey = 'user_hide_card_glow_key';
 const String userLanguageKey = 'user_language_key';
 const String userCustomCurrencyKey = 'user_custom_currency_key';
 const String userCustomCurrencyLeftOrRightKey =

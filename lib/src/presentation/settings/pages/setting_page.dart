@@ -13,6 +13,7 @@ import '../../../data/settings/authenticate.dart';
 import '../../widgets/choose_theme_mode_widget.dart';
 import '../widgets/biometrics_auth_widget.dart';
 import '../widgets/currency_change_widget.dart';
+import '../widgets/hide_card_glow_widget.dart';
 import '../widgets/setting_option.dart';
 import '../widgets/settings_color_picker_widget.dart';
 import '../widgets/settings_group_card.dart';
@@ -83,7 +84,9 @@ class SettingsPage extends StatelessWidget {
                 },
               ),
               const Divider(),
-              const SmallSizeFabWidget()
+              const SmallSizeFabWidget(),
+              const Divider(),
+              const HideCardGlowWidget(),
             ],
           ),
           SettingsGroup(

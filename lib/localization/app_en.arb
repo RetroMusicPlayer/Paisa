@@ -998,5 +998,17 @@
         "description": "Message shown when the date is not select on debt payout ",
         "type": "text",
         "placeholders": {}
+    },
+    "hideCardGlow": "Hide Card Glow",
+    "@hideCardGlow": {
+        "description": "Title text shown on the settings page for hide card glow option",
+        "type": "text",
+        "placeholders": {}
+    },
+    "hideCardGlowMessage": "Hide glow from behind the acounts card",
+    "@hideCardGlowMessage": {
+        "description": "Subtitle text shown on the settings page for hide card glow option",
+        "type": "text",
+        "placeholders": {}
     }
 }
