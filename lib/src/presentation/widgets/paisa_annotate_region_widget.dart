@@ -19,7 +19,7 @@ class PaisaAnnotatedRegionWidget extends StatelessWidget {
             Theme.of(context).brightness == Brightness.dark
                 ? Brightness.light
                 : Brightness.dark,
-        systemNavigationBarContrastEnforced: true,
+        systemNavigationBarContrastEnforced: false,
       ),
       child: child,
     );
