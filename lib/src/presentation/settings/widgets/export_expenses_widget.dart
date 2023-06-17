@@ -66,7 +66,7 @@ class ExportExpensesWidgetState extends State<ExportExpensesWidget> {
     final path = "${directory.path}/paisa-expense-manager.csv";
     final file = File(path);
     await file.writeAsString(csvData);
-    Share.shareFiles([path], subject: subject);
+    Share.shareXFiles([XFile(path, mimeType: "text/csv")], subject: subject);
   }
 }
 
