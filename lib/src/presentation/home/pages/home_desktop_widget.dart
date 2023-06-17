@@ -169,8 +169,8 @@ class HomeDesktopWidget extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           PaisaFilterTransactionWidget(),
                           PaisaSearchBar(),
                           SizedBox(width: 24),

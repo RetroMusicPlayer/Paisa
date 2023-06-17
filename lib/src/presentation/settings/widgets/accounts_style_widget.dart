@@ -19,8 +19,8 @@ class _AccountsStyleWidgetState extends State<AccountsStyleWidget> {
   @override
   Widget build(BuildContext context) {
     return SwitchListTile(
-      title: Text('Accounts style'),
-      subtitle: Text(
+      title: const Text('Accounts style'),
+      subtitle: const Text(
           'Select your preferred account display style: vertical or horizontal'),
       onChanged: (bool value) async {
         setState(() {
