@@ -6,7 +6,7 @@ import '../../../core/common.dart';
 import '../../accounts/pages/accounts_page.dart';
 import '../../budget/pages/budget_page.dart';
 import '../../category/pages/category_list_page.dart';
-import '../../debits/pages/debts_page.dart';
+import '../../debts/pages/debts_page.dart';
 import '../../overview/pages/overview_page.dart';
 import '../../summary/pages/summary_page.dart';
 import '../bloc/home_bloc.dart';

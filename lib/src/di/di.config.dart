@@ -134,7 +134,7 @@ import 'package:paisa/src/presentation/category/bloc/category_bloc.dart'
     as _i82;
 import 'package:paisa/src/presentation/currency_selector/cubit/country_cubit.dart'
     as _i49;
-import 'package:paisa/src/presentation/debits/cubit/debts_bloc.dart' as _i50;
+import 'package:paisa/src/presentation/debts/cubit/debts_bloc.dart' as _i50;
 import 'package:paisa/src/presentation/expense/bloc/expense_bloc.dart' as _i80;
 import 'package:paisa/src/presentation/home/bloc/home_bloc.dart' as _i26;
 import 'package:paisa/src/presentation/overview/cubit/budget_cubit.dart'

@@ -15,7 +15,7 @@ import '../presentation/category/pages/add/add_category_page.dart';
 import '../presentation/category/pages/category_list_page.dart';
 import '../presentation/category/pages/selector/category_selector_page.dart';
 import '../presentation/currency_selector/pages/currency_selector_page.dart';
-import '../presentation/debits/pages/add/add_debt_page.dart';
+import '../presentation/debts/pages/add/add_debt_page.dart';
 import '../presentation/expense/pages/expense_page.dart';
 import '../presentation/home/pages/home_page.dart';
 import '../presentation/login/intro/into_page.dart';
