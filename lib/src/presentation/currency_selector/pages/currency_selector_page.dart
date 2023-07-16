@@ -167,7 +167,7 @@ class _CountriesWidgetState extends State<CountriesWidget> {
       padding: const EdgeInsets.only(bottom: 82, left: 8, right: 8),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 256,
-        childAspectRatio: 16 / 12,
+        childAspectRatio: 15 / 12,
       ),
       shrinkWrap: true,
       itemCount: widget.countries.length,
