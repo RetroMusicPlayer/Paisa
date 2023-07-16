@@ -179,6 +179,7 @@ class AccountItemWidget extends StatelessWidget {
           color: Color(model.color ?? Colors.brown.shade200.value),
         ),
         title: Text(model.bankName),
+        subtitle: Text(model.name),
         trailing: Icon(MdiIcons.delete),
       ),
       tablet: PaisaCard(
