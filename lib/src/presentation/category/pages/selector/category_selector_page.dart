@@ -28,6 +28,14 @@ class _CategorySelectorPageState extends State<CategorySelectorPage> {
   final List<CategoryModel> defaultModels = defaultCategoriesData;
   final settings = getIt.get<Box<dynamic>>(instanceName: BoxType.settings.name);
 
+  @override
+  void initState() {
+    super.initState();
+    getIt.get<Box<CategoryModel>>().values.filterDefault.forEach((element) {
+      defaultModels.remove(element);
+    });
+  }
+
   Future<void> saveAndNavigate() async {
     await settings.put(userCategorySelectorKey, false);
     if (mounted) {
