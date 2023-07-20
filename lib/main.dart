@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/adapters.dart';
-
-import 'src/app.dart';
-import 'src/core/common.dart';
-import 'src/core/enum/box_types.dart';
-import 'src/di/di.dart';
-import 'src/domain/recurring/repository/recurring_repository.dart';
+import 'package:paisa/core/common.dart';
+import 'package:paisa/core/enum/box_types.dart';
+import 'package:paisa/features/recurring/domain/repository/recurring_repository.dart';
+import 'package:paisa/app.dart';
+import 'package:paisa/di/di.dart';
 
 final getIt = GetIt.instance;
 
