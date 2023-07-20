@@ -22,6 +22,7 @@ import 'package:paisa/features/recurring/presentation/page/recurring_page.dart';
 import 'package:paisa/features/search/presentation/pages/search_page.dart';
 import 'package:paisa/features/settings/presentation/pages/export_and_import_page.dart';
 import 'package:paisa/features/settings/presentation/pages/setting_page.dart';
+import 'package:paisa/features/test/pages/test_page.dart';
 import 'package:paisa/features/transaction/presentation/pages/transaction_page.dart';
 import 'package:paisa/main.dart';
 import 'package:paisa/core/in_app.dart';
@@ -282,6 +283,11 @@ final GoRouter goRouter = GoRouter(
               },
             ),
           ],
+        ),
+        GoRoute(
+          name: testName,
+          path: testPath,
+          builder: (context, state) => const TestPage(),
         ),
       ],
     ),

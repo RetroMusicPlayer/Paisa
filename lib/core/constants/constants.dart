@@ -108,3 +108,6 @@ const iconPickerPath = 'icon-picker';
 
 const userOnboardingName = 'onboarding';
 const userOnboardingPath = '/onboarding';
+
+const testName = 'test';
+const testPath = 'test';

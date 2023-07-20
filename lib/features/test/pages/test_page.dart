@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:paisa/src/presentation/test/bloc/test_bloc.dart';
+import 'package:paisa/features/test/bloc/test_bloc.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
@@ -19,9 +17,7 @@ class TestPage extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  final random = Random();
-                  final number = random.nextInt(100) + 1;
-                  context.read<TestBloc>().add(AddTestEvent(1));
+                  context.read<TestBloc>().add(const AddTestEvent(1));
                 },
                 child: const Text('data'),
               ),
