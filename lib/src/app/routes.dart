@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:injectable/injectable.dart';
 import 'package:paisa/src/app/in_app.dart';
+import 'package:paisa/src/presentation/test/pages/test_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../main.dart';
@@ -112,6 +114,9 @@ const iconPickerPath = 'icon-picker';
 
 const userOnboardingName = 'onboarding';
 const userOnboardingPath = '/onboarding';
+
+const testPath = 'test';
+const testName = 'test';
 
 final settings = Hive.box(BoxType.settings.name);
 
@@ -332,6 +337,11 @@ final GoRouter goRouter = GoRouter(
               builder: (context, state) => const ExportAndImportPage(),
             ),
           ],
+        ),
+        GoRoute(
+          name: testName,
+          path: testPath,
+          builder: (context, state) => const TestPage(),
         ),
       ],
     ),

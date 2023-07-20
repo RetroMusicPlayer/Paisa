@@ -69,6 +69,22 @@ class HomeMobilePage extends StatelessWidget {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ListTile(
+                    onTap: () {
+                      context.pushNamed(testName);
+                      Navigator.pop(context);
+                    },
+                    leading: const Icon(Icons.settings),
+                    title: Text(
+                      context.loc.settings,
+                      style: GoogleFonts.outfit(
+                        textStyle: context.bodyLarge,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             );
           },

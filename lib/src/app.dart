@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:paisa/src/presentation/test/bloc/test_bloc.dart';
 import 'package:provider/provider.dart';
 
 import '../main.dart';
@@ -48,6 +49,9 @@ class _PaisaAppState extends State<PaisaApp> {
         Provider(
           create: (context) => getIt.get<SummaryController>(),
         ),
+        BlocProvider(
+          create: (context) => TestBloc(),
+        )
       ],
       child: ValueListenableBuilder<Box>(
         valueListenable: widget.settingsListenable,
