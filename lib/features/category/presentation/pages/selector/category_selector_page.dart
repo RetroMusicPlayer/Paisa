@@ -32,7 +32,9 @@ class _CategorySelectorPageState extends State<CategorySelectorPage> {
   void initState() {
     super.initState();
     getIt.get<Box<CategoryModel>>().values.filterDefault.forEach((element) {
-      defaultModels.remove(element);
+      defaultModels.removeWhere((element2) {
+        return element2.name == element.name;
+      });
     });
   }
 
@@ -84,7 +86,9 @@ class _CategorySelectorPageState extends State<CategorySelectorPage> {
                           model: model,
                           onPress: () async {
                             await model.delete();
-                            defaultModels.add(model);
+                            setState(() {
+                              defaultModels.add(model);
+                            });
                           },
                         );
                       },
