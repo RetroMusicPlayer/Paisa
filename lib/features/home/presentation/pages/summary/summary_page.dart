@@ -18,7 +18,7 @@ class SummaryPage extends StatelessWidget {
     return ValueListenableBuilder<Box<TransactionModel>>(
       valueListenable: getIt.get<Box<TransactionModel>>().listenable(),
       builder: (_, value, child) {
-        final expenses = value.values.toEntities();
+        final expenses = value.values.toEntities().reversed.toList();
         return ScreenTypeLayout(
           mobile: SummaryMobileWidget(expenses: expenses),
           tablet: SummaryTabletWidget(expenses: expenses),
