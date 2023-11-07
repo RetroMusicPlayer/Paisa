@@ -90,7 +90,7 @@ class CSVExport extends Export {
       '$index',
       expense.name ?? '',
       '${expense.currency}',
-      '${expense.type}',
+      expense.type,
       expense.time?.toIso8601String() ?? '',
       expense.description ?? '',
       category?.name ?? '',
