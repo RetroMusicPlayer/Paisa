@@ -3,13 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paisa/core/common.dart';
-import 'package:paisa/core/enum/card_type.dart';
 import 'package:paisa/core/error/bloc_errors.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
 import 'package:paisa/features/account/presentation/bloc/accounts_bloc.dart';
 import 'package:paisa/features/account/presentation/widgets/card_type_drop_down.dart';
 import 'package:paisa/features/country_picker/domain/entities/country.dart';
-import 'package:paisa/main.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 final GlobalKey<FormState> _form = GlobalKey<FormState>();
@@ -27,18 +25,16 @@ class AddAccountPage extends StatefulWidget {
 }
 
 class AddAccountPageState extends State<AddAccountPage> {
-  final accountHolderController = TextEditingController();
-  final accountInitialAmountController = TextEditingController();
-  final accountNameController = TextEditingController();
-  final accountNumberController = TextEditingController();
-  final AccountBloc accountsBloc = getIt.get();
+  final TextEditingController accountHolderController = TextEditingController();
+  final TextEditingController accountInitialAmountController =
+      TextEditingController();
+  final TextEditingController accountNameController = TextEditingController();
   late final bool isAccountAddOrUpdate = widget.accountId == null;
 
   @override
   void dispose() {
     accountHolderController.dispose();
     accountInitialAmountController.dispose();
-    accountNumberController.dispose();
     accountNameController.dispose();
     super.dispose();
   }
@@ -48,7 +44,7 @@ class AddAccountPageState extends State<AddAccountPage> {
     super.initState();
     int? id = int.tryParse(widget.accountId ?? '');
     if (id != null) {
-      accountsBloc.add(FetchAccountFromIdEvent(id));
+      BlocProvider.of<AccountBloc>(context).add(FetchAccountFromIdEvent(id));
     }
   }
 
@@ -109,85 +105,161 @@ class AddAccountPageState extends State<AddAccountPage> {
   Widget build(BuildContext context) {
     return PaisaAnnotatedRegionWidget(
       color: context.background,
-      child: BlocProvider(
-        create: (context) => accountsBloc,
-        child: BlocConsumer<AccountBloc, AccountState>(
-          listener: (context, state) {
-            if (state is AccountAddedState) {
-              context.showMaterialSnackBar(
+      child: BlocConsumer<AccountBloc, AccountState>(
+        listener: (context, state) {
+          if (state is AccountAddedState) {
+            context.showMaterialSnackBar(
+              isAccountAddOrUpdate
+                  ? context.loc.addedAccount
+                  : context.loc.updateAccount,
+              backgroundColor: context.primaryContainer,
+              color: context.onPrimaryContainer,
+            );
+            context.pop();
+          }
+          if (state is AccountDeletedState) {
+            context.showMaterialSnackBar(
+              context.loc.deleteAccount,
+              backgroundColor: context.error,
+              color: context.onError,
+            );
+            context.pop();
+          } else if (state is AccountErrorState) {
+            context.showMaterialSnackBar(
+              state.accountErrors.errorString(context),
+              backgroundColor: context.errorContainer,
+              color: context.onErrorContainer,
+            );
+          } else if (state is AccountSuccessState) {
+            accountNameController.text = state.account.bankName ?? '';
+            accountNameController.selection = TextSelection.collapsed(
+                offset: state.account.bankName?.length ?? 0);
+
+            accountHolderController.text = state.account.name ?? '';
+            accountHolderController.selection = TextSelection.collapsed(
+                offset: state.account.name?.length ?? 0);
+
+            accountInitialAmountController.text =
+                state.account.amount.toString();
+            accountInitialAmountController.selection = TextSelection.collapsed(
+                offset: state.account.amount.toString().length);
+          }
+        },
+        builder: (context, state) {
+          return ScreenTypeLayout.builder(
+            mobile: (p0) => Scaffold(
+              appBar: context.materialYouAppBar(
                 isAccountAddOrUpdate
-                    ? context.loc.addedAccount
+                    ? context.loc.addAccount
                     : context.loc.updateAccount,
-                backgroundColor: context.primaryContainer,
-                color: context.onPrimaryContainer,
-              );
-              context.pop();
-            }
-            if (state is AccountDeletedState) {
-              context.showMaterialSnackBar(
-                context.loc.deleteAccount,
-                backgroundColor: context.error,
-                color: context.onError,
-              );
-              context.pop();
-            } else if (state is AccountErrorState) {
-              context.showMaterialSnackBar(
-                state.accountErrors.errorString(context),
-                backgroundColor: context.errorContainer,
-                color: context.onErrorContainer,
-              );
-            } else if (state is AccountSuccessState) {
-              accountNameController.text = state.account.bankName ?? '';
-              accountNameController.selection = TextSelection.collapsed(
-                  offset: state.account.bankName?.length ?? 0);
-
-              accountNumberController.text = state.account.number ?? '';
-              accountNumberController.selection = TextSelection.collapsed(
-                  offset: state.account.number?.length ?? 0);
-
-              accountHolderController.text = state.account.name ?? '';
-              accountHolderController.selection = TextSelection.collapsed(
-                  offset: state.account.name?.length ?? 0);
-
-              accountInitialAmountController.text =
-                  state.account.amount.toString();
-              accountInitialAmountController.selection =
-                  TextSelection.collapsed(
-                      offset: state.account.amount.toString().length);
-            }
-          },
-          builder: (context, state) {
-            return ScreenTypeLayout.builder(
-              mobile: (p0) => Scaffold(
-                appBar: context.materialYouAppBar(
-                  isAccountAddOrUpdate
-                      ? context.loc.addAccount
-                      : context.loc.updateAccount,
-                  actions: [
-                    DeleteAccountWidget(accountId: widget.accountId),
-                    IconButton(
-                      onPressed: _showInfo,
-                      icon: const Icon(Icons.info_rounded),
+                actions: [
+                  DeleteAccountWidget(accountId: widget.accountId),
+                  IconButton(
+                    onPressed: _showInfo,
+                    icon: const Icon(Icons.info_rounded),
+                  ),
+                ],
+              ),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      child: CardTypeButtons(),
+                    ),
+                    Form(
+                      key: _form,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SizedBox(height: 16),
+                            AccountCardHolderNameWidget(
+                              controller: accountHolderController,
+                            ),
+                            const SizedBox(height: 16),
+                            AccountNameWidget(
+                              controller: accountNameController,
+                            ),
+                            const SizedBox(height: 16),
+                            AccountInitialAmountWidget(
+                              controller: accountInitialAmountController,
+                            ),
+                            const SizedBox(height: 16),
+                            const AccountDefaultSwitchWidget(),
+                            const AccountExcludedSwitchWidget(),
+                            const AccountColorPickerWidget(),
+                            const AccountCountrySelectorWidget()
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                body: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        child: CardTypeButtons(),
-                      ),
-                      Form(
+              ),
+              bottomNavigationBar: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: PaisaBigButton(
+                    onPressed: () {
+                      final isValid = _form.currentState!.validate();
+                      if (!isValid) {
+                        return;
+                      }
+                      BlocProvider.of<AccountBloc>(context)
+                          .add(AddOrUpdateAccountEvent(isAccountAddOrUpdate));
+                    },
+                    title: isAccountAddOrUpdate
+                        ? context.loc.add
+                        : context.loc.update,
+                  ),
+                ),
+              ),
+            ),
+            tablet: (p0) => Scaffold(
+              appBar: context.materialYouAppBar(
+                isAccountAddOrUpdate
+                    ? context.loc.addAccount
+                    : context.loc.updateAccount,
+                actions: [
+                  IconButton(
+                    onPressed: _showInfo,
+                    icon: const Icon(Icons.info_rounded),
+                  ),
+                  DeleteAccountWidget(accountId: widget.accountId),
+                  PaisaButton(
+                    onPressed: () {
+                      final isValid = _form.currentState!.validate();
+                      if (!isValid) {
+                        return;
+                      }
+                      BlocProvider.of<AccountBloc>(context)
+                          .add(AddOrUpdateAccountEvent(isAccountAddOrUpdate));
+                    },
+                    title: isAccountAddOrUpdate
+                        ? context.loc.add
+                        : context.loc.update,
+                  ),
+                  const SizedBox(width: 16),
+                ],
+              ),
+              body: SingleChildScrollView(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Form(
                         key: _form,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
+                              const CardTypeButtons(),
                               const SizedBox(height: 16),
                               AccountCardHolderNameWidget(
                                 controller: accountHolderController,
@@ -201,131 +273,20 @@ class AddAccountPageState extends State<AddAccountPage> {
                                 controller: accountInitialAmountController,
                               ),
                               const SizedBox(height: 16),
-                              Builder(
-                                builder: (context) {
-                                  if (state is UpdateCardTypeState &&
-                                      state.cardType == CardType.bank) {
-                                    return AccountNumberWidget(
-                                      controller: accountNumberController,
-                                    );
-                                  } else {
-                                    return const SizedBox.shrink();
-                                  }
-                                },
-                              ),
-                              const SizedBox(height: 16),
                               const AccountDefaultSwitchWidget(),
                               const AccountExcludedSwitchWidget(),
-                              const AccountColorPickerWidget(),
-                              const AccountCountrySelectorWidget()
+                              const AccountColorPickerWidget()
                             ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                bottomNavigationBar: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: PaisaBigButton(
-                      onPressed: () {
-                        final isValid = _form.currentState!.validate();
-                        if (!isValid) {
-                          return;
-                        }
-                        BlocProvider.of<AccountBloc>(context)
-                            .add(AddOrUpdateAccountEvent(isAccountAddOrUpdate));
-                      },
-                      title: isAccountAddOrUpdate
-                          ? context.loc.add
-                          : context.loc.update,
                     ),
-                  ),
-                ),
-              ),
-              tablet: (p0) => Scaffold(
-                appBar: context.materialYouAppBar(
-                  isAccountAddOrUpdate
-                      ? context.loc.addAccount
-                      : context.loc.updateAccount,
-                  actions: [
-                    IconButton(
-                      onPressed: _showInfo,
-                      icon: const Icon(Icons.info_rounded),
-                    ),
-                    DeleteAccountWidget(accountId: widget.accountId),
-                    PaisaButton(
-                      onPressed: () {
-                        final isValid = _form.currentState!.validate();
-                        if (!isValid) {
-                          return;
-                        }
-                        BlocProvider.of<AccountBloc>(context)
-                            .add(AddOrUpdateAccountEvent(isAccountAddOrUpdate));
-                      },
-                      title: isAccountAddOrUpdate
-                          ? context.loc.add
-                          : context.loc.update,
-                    ),
-                    const SizedBox(width: 16),
                   ],
                 ),
-                body: SingleChildScrollView(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Form(
-                          key: _form,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                const CardTypeButtons(),
-                                const SizedBox(height: 16),
-                                AccountCardHolderNameWidget(
-                                  controller: accountHolderController,
-                                ),
-                                const SizedBox(height: 16),
-                                AccountNameWidget(
-                                  controller: accountNameController,
-                                ),
-                                const SizedBox(height: 16),
-                                AccountInitialAmountWidget(
-                                  controller: accountInitialAmountController,
-                                ),
-                                const SizedBox(height: 16),
-                                Builder(
-                                  builder: (context) {
-                                    if (state is UpdateCardTypeState &&
-                                        state.cardType == CardType.bank) {
-                                      return AccountNumberWidget(
-                                        controller: accountNumberController,
-                                      );
-                                    } else {
-                                      return const SizedBox.shrink();
-                                    }
-                                  },
-                                ),
-                                const SizedBox(height: 16),
-                                const AccountDefaultSwitchWidget(),
-                                const AccountExcludedSwitchWidget(),
-                                const AccountColorPickerWidget()
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -358,7 +319,7 @@ class AccountColorPickerWidget extends StatelessWidget {
             color: context.primary,
           ),
           title: Text(context.loc.pickColor),
-          subtitle: Text(context.loc.pickColorDesc),
+          subtitle: Text(context.loc.pickColorAccountDesc),
           trailing: Container(
             margin: const EdgeInsets.only(right: 12),
             width: 28,
@@ -490,30 +451,6 @@ class AccountNameWidget extends StatelessWidget {
   }
 }
 
-class AccountNumberWidget extends StatelessWidget {
-  const AccountNumberWidget({
-    super.key,
-    required this.controller,
-  });
-
-  final TextEditingController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return PaisaTextFormField(
-      maxLength: 4,
-      controller: controller,
-      inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly,
-      ],
-      hintText: context.loc.enterNumberOptional,
-      keyboardType: TextInputType.number,
-      onChanged: (value) =>
-          BlocProvider.of<AccountBloc>(context).accountNumber = value,
-    );
-  }
-}
-
 class AccountInitialAmountWidget extends StatelessWidget {
   const AccountInitialAmountWidget({
     super.key,
@@ -547,29 +484,21 @@ class AccountInitialAmountWidget extends StatelessWidget {
   }
 }
 
-class AccountDefaultSwitchWidget extends StatefulWidget {
-  const AccountDefaultSwitchWidget({
-    super.key,
-  });
-
-  @override
-  State<AccountDefaultSwitchWidget> createState() =>
-      _AccountDefaultSwitchWidgetState();
-}
-
-class _AccountDefaultSwitchWidgetState
-    extends State<AccountDefaultSwitchWidget> {
-  late bool isAccountDefault =
-      BlocProvider.of<AccountBloc>(context, listen: false).isAccountDefault;
+class AccountDefaultSwitchWidget extends StatelessWidget {
+  const AccountDefaultSwitchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AccountBloc, AccountState>(
-      buildWhen: (previous, current) => current is AccountSuccessState,
+      buildWhen: (previous, current) =>
+          current is AccountSuccessState ||
+          current is UpdateAccountExcludeState,
       builder: (context, state) {
+        bool isEnabled = false;
         if (state is AccountSuccessState) {
-          isAccountDefault =
-              isAccountDefault || (state.account.isAccountDefault ?? false);
+          isEnabled = state.account.isAccountDefault ?? false;
+        } else if (state is UpdateAccountExcludeState) {
+          isEnabled = state.isAccountDefault;
         }
         return SwitchListTile(
           shape: RoundedRectangleBorder(
@@ -577,13 +506,14 @@ class _AccountDefaultSwitchWidgetState
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 8),
           title: Text(context.loc.defaultAccount),
-          value: isAccountDefault,
+          value: isEnabled,
           onChanged: (value) {
-            BlocProvider.of<AccountBloc>(context, listen: false)
-                .isAccountDefault = value;
-            setState(() {
-              isAccountDefault = value;
-            });
+            BlocProvider.of<AccountBloc>(context)
+                .add(AccountsEvent.updateDefaultAndExculde(
+              isAccountDefault: value,
+              isAccountExcluded:
+                  BlocProvider.of<AccountBloc>(context).isAccountExcluded,
+            ));
           },
         );
       },
@@ -591,27 +521,38 @@ class _AccountDefaultSwitchWidgetState
   }
 }
 
-class AccountExcludedSwitchWidget extends StatefulWidget {
+class AccountExcludedSwitchWidget extends StatelessWidget {
   const AccountExcludedSwitchWidget({super.key});
 
   @override
-  State<AccountExcludedSwitchWidget> createState() =>
-      _AccountExcludedSwitchWidgetState();
-}
-
-class _AccountExcludedSwitchWidgetState
-    extends State<AccountExcludedSwitchWidget> {
-  @override
   Widget build(BuildContext context) {
-    return SwitchListTile(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-      title: Text(context.loc.excludeAccount),
-      value: BlocProvider.of<AccountBloc>(context).isAccountExcluded,
-      onChanged: (value) {
-        setState(() {
-          BlocProvider.of<AccountBloc>(context).isAccountExcluded = value;
-        });
+    return BlocBuilder<AccountBloc, AccountState>(
+      buildWhen: (previous, current) =>
+          current is AccountSuccessState ||
+          current is UpdateAccountExcludeState,
+      builder: (context, state) {
+        bool isEnabled = false;
+        if (state is AccountSuccessState) {
+          isEnabled = state.account.isAccountExcluded ?? false;
+        } else if (state is UpdateAccountExcludeState) {
+          isEnabled = state.isAccountExcluded;
+        }
+        return SwitchListTile(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+          title: Text(context.loc.excludeAccount),
+          value: isEnabled,
+          onChanged: (value) {
+            BlocProvider.of<AccountBloc>(context)
+                .add(AccountsEvent.updateDefaultAndExculde(
+              isAccountDefault:
+                  BlocProvider.of<AccountBloc>(context).isAccountDefault,
+              isAccountExcluded: value,
+            ));
+          },
+        );
       },
     );
   }
@@ -653,6 +594,9 @@ class _AccountCountrySelectorWidgetState
           symbol = '${country.name} - ${country.code}';
         }
         return ListTile(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
           contentPadding: EdgeInsets.zero,
           onTap: () async {
             final Country? result = await showModalBottomSheet<Country>(

@@ -178,9 +178,11 @@ class ColorPickerDialogWidget extends StatelessWidget {
                     vertical: 12,
                   ),
                 ),
-                onPressed: () => Provider.of<Box<dynamic>>(context)
-                    .put(appColorKey, selectedColor)
-                    .then((value) => Navigator.pop(context)),
+                onPressed: () {
+                  Provider.of<Box<dynamic>>(context, listen: false)
+                      .put(appColorKey, selectedColor)
+                      .then((value) => Navigator.pop(context));
+                },
                 child: Text(context.loc.done),
               ),
             ),

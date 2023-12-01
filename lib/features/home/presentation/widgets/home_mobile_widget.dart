@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paisa/config/routes_name.dart';
 
 import 'package:paisa/core/common.dart';
 import 'package:paisa/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:paisa/features/home/presentation/pages/home/home_page.dart';
 import 'package:paisa/features/home/presentation/widgets/content_widget.dart';
-import 'package:paisa/features/home/presentation/widgets/home_search_button.dart';
 import 'package:paisa/features/profile/presentation/pages/paisa_user_widget.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
 
@@ -25,15 +26,34 @@ class HomeMobileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeBloc homeBloc = BlocProvider.of<HomeBloc>(context);
+    const double toolbarHeight = kToolbarHeight + 8;
     return Scaffold(
       key: _scaffoldStateKey,
-      appBar: AppBar(
-        title: const PaisaTitle(),
-        actions: const [
-          PaisaSearchButton(),
-          PaisaUserWidget(),
-          SizedBox(width: 8),
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(toolbarHeight),
+        child: SafeArea(
+          top: true,
+          child: Container(
+            margin: const EdgeInsets.only(top: 8, bottom: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(32),
+              clipBehavior: Clip.antiAlias,
+              child: AppBar(
+                backgroundColor: context.secondaryContainer.withOpacity(0.5),
+                scrolledUnderElevation: 0,
+                title: Text(
+                  context.loc.search,
+                  style: context.titleMedium,
+                ),
+                actions: const [
+                  PaisaUserWidget(),
+                  SizedBox(width: 8),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
       drawer: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
@@ -44,7 +64,11 @@ class HomeMobileWidget extends StatelessWidget {
               homeBloc.add(CurrentIndexEvent(index));
             },
             children: [
-              const PaisaIconTitle(),
+              const Padding(
+                padding: EdgeInsets.all(24.0),
+                child: PaisaIconTitle(),
+              ),
+              const Divider(),
               ...destinations
                   .map((e) => NavigationDrawerDestination(
                         icon: e.icon,
@@ -57,7 +81,7 @@ class HomeMobileWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: ListTile(
                   onTap: () {
-                    context.pushNamed(settingsName);
+                    context.pushNamed(RoutesName.settings.name);
                     Navigator.pop(context);
                   },
                   leading: const Icon(Icons.settings),

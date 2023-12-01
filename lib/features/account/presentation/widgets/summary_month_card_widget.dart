@@ -45,7 +45,7 @@ class SummaryMonthCardWidget extends StatelessWidget {
                       children: [
                         Text(
                           title,
-                          style: context.labelMedium?.copyWith(
+                          style: context.bodySmall?.copyWith(
                             color: context.onSurfaceVariant.withOpacity(0.75),
                           ),
                         ),

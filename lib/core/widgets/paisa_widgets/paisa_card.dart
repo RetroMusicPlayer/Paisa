@@ -21,7 +21,7 @@ class PaisaCard extends StatelessWidget {
     return Card(
       shape: shape ??
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(16),
           ),
       color: color ?? context.surfaceVariant,
       clipBehavior: Clip.antiAlias,
@@ -47,7 +47,7 @@ class PaisaOutlineCard extends StatelessWidget {
     return Card(
       shape: shape ??
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(16),
             side: BorderSide(
               width: 1,
               color: context.outline,
@@ -79,7 +79,7 @@ class PaisaFilledCard extends StatelessWidget {
     return Card(
       shape: shape ??
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(16),
           ),
       clipBehavior: Clip.antiAlias,
       elevation: 0,

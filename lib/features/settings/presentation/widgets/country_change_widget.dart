@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:paisa/config/routes_name.dart';
 
 import 'package:paisa/core/common.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class CountryChangeWidget extends StatelessWidget {
       ),
       onTap: () {
         context.pushNamed(
-          userOnboardingName,
+          RoutesName.userOnboarding.name,
           queryParameters: {'force_country_selector': 'true'},
         );
       },

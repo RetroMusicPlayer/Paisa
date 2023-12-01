@@ -10,15 +10,15 @@ class PaisaIconTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Icon(
-            Icons.wallet,
-            color: context.primary,
-            size: 32,
-          ),
+        Icon(
+          Icons.wallet,
+          color: context.primary,
+          size: 32,
         ),
+        const SizedBox(width: 16),
         Text(
           context.loc.appTitle,
           style: context.titleLarge?.copyWith(

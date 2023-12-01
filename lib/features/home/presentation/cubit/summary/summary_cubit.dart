@@ -16,7 +16,7 @@ class SummaryCubit extends Cubit<SummaryState> {
     this._eventBus,
     this._getTransactionsUseCase,
     this._getAccountsUseCase,
-  ) : super(const SummaryInitial()) {
+  ) : super(const _SummaryInitial()) {
     _eventBus.on<RefreshSummaryEvent>().listen((event) {
       fetchAccounts();
     });
@@ -24,32 +24,39 @@ class SummaryCubit extends Cubit<SummaryState> {
   final GetTransactionsUseCase _getTransactionsUseCase;
   final GetAccountsUseCase _getAccountsUseCase;
   final EventBus _eventBus;
+  final List<AccountEntity> accounts = [];
 
-  void _fetchTransactions(AccountEntity accountEntity) {
-    final transactions = _getTransactionsUseCase(
-      ParamsDefaultAccountId(accountEntity.superId ?? -1),
-    );
-    emit(SummaryState.update(transactions, accountEntity));
-  }
-
-  void fetchAccounts() {
-    final List<AccountEntity> accounts = _getAccountsUseCase(NoParams());
+  void fetchAccounts({AccountEntity? accountEntity}) {
+    if (accountEntity == null) {
+      accounts.clear();
+      accounts.addAll(_getAccountsUseCase(NoParams()));
+    }
     if (accounts.isNotEmpty) {
-      final AccountEntity account = accounts.firstWhere(
-        (element) => element.isAccountDefault ?? false,
-        orElse: () => accounts.first,
+      accountEntity = accountEntity ??
+          accounts.firstWhere(
+            (element) => element.isAccountDefault ?? false,
+            orElse: () => accounts.first,
+          );
+      final List<TransactionEntity> transactions = _getTransactionsUseCase(
+        ParamsDefaultAccountId(accountEntity.superId ?? -1),
       );
-      _fetchTransactions(account);
+      emit(SummaryState.update(
+        transactions: transactions,
+        accountEntity: accountEntity,
+        accounts: accounts,
+      ));
     }
   }
 }
 
 @freezed
 abstract class SummaryState with _$SummaryState {
-  const factory SummaryState.initial() = SummaryInitial;
-  const factory SummaryState.update(
-          List<TransactionEntity> transactions, AccountEntity accountEntity) =
-      TransactionsSuccessState;
+  const factory SummaryState.initial() = _SummaryInitial;
+  const factory SummaryState.update({
+    required AccountEntity accountEntity,
+    required List<TransactionEntity> transactions,
+    required List<AccountEntity> accounts,
+  }) = TransactionsSuccessState;
 }
 
 class RefreshSummaryEvent extends AppEvent {

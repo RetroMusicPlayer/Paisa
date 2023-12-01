@@ -29,8 +29,10 @@ class AccountState with _$AccountState {
 
   const factory AccountState.idle() = AccountsInitial;
 
-  const factory AccountState.updateAccountExcluded(bool isAccountExcluded) =
-      UpdateAccountExcludeState;
+  const factory AccountState.updateAccountExcluded({
+    @Default(false) bool isAccountExcluded,
+    @Default(false) bool isAccountDefault,
+  }) = UpdateAccountExcludeState;
 
   const factory AccountState.updateCardType(CardType cardType) =
       UpdateCardTypeState;

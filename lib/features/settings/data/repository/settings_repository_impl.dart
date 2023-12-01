@@ -49,7 +49,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
         return right(path);
       }
     } catch (err) {
-      print(err);
       return left(ErrorFileExportFailure());
     }
   }

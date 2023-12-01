@@ -21,19 +21,18 @@ class AccountModelAdapter extends TypeAdapter<_$_AccountModel> {
       isAccountExcluded: fields[1] == null ? false : fields[1] as bool?,
       currencySymbol: fields[2] as CountryModel?,
       bankName: fields[3] as String?,
-      number: fields[5] as String?,
       cardType: fields[6] == null ? CardType.bank : fields[6] as CardType?,
       superId: fields[7] as int?,
       amount: fields[8] == null ? 0 : fields[8] as double?,
       color: fields[9] == null ? 4294951175 : fields[9] as int?,
-      isAccountDefault: fields[10] == null ? false : fields[10] as bool?,
+      isAccountDefault: fields[4] == null ? false : fields[4] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_AccountModel obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -42,8 +41,6 @@ class AccountModelAdapter extends TypeAdapter<_$_AccountModel> {
       ..write(obj.currencySymbol)
       ..writeByte(3)
       ..write(obj.bankName)
-      ..writeByte(5)
-      ..write(obj.number)
       ..writeByte(6)
       ..write(obj.cardType)
       ..writeByte(7)
@@ -52,7 +49,7 @@ class AccountModelAdapter extends TypeAdapter<_$_AccountModel> {
       ..write(obj.amount)
       ..writeByte(9)
       ..write(obj.color)
-      ..writeByte(10)
+      ..writeByte(4)
       ..write(obj.isAccountDefault);
   }
 
@@ -80,12 +77,11 @@ _$_AccountModel _$$_AccountModelFromJson(Map<String, dynamic> json) =>
           : CountryModel.fromJson(
               json['currencySymbol'] as Map<String, dynamic>),
       bankName: json['bankName'] as String?,
-      number: json['number'] as String?,
       cardType: $enumDecodeNullable(_$CardTypeEnumMap, json['cardType']),
       superId: json['superId'] as int?,
       amount: (json['amount'] as num?)?.toDouble(),
       color: json['color'] as int?,
-      isAccountDefault: json['isAccountDefault'] as bool?,
+      isAccountDefault: json['isAccountDefault'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_AccountModelToJson(_$_AccountModel instance) =>
@@ -94,7 +90,6 @@ Map<String, dynamic> _$$_AccountModelToJson(_$_AccountModel instance) =>
       'isAccountExcluded': instance.isAccountExcluded,
       'currencySymbol': instance.currencySymbol,
       'bankName': instance.bankName,
-      'number': instance.number,
       'cardType': _$CardTypeEnumMap[instance.cardType],
       'superId': instance.superId,
       'amount': instance.amount,

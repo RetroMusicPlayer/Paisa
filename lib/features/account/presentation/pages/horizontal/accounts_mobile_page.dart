@@ -10,15 +10,17 @@ class AccountsHorizontalMobilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
-      key: const Key('accounts_list_view'),
-      padding: const EdgeInsets.only(bottom: 124),
-      children: [
-        AccountPageViewWidget(accounts: accounts),
-        const AccountTransactionWidget()
-      ],
+    return Scaffold(
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        key: const Key('accounts_list_view'),
+        padding: const EdgeInsets.only(bottom: 124),
+        children: [
+          AccountPageViewWidget(accounts: accounts),
+          const AccountTransactionWidget()
+        ],
+      ),
     );
   }
 }

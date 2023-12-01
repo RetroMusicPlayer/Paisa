@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/enum/debt_type.dart';
 import 'package:paisa/features/debit/data/models/debit_model.dart';
@@ -144,7 +145,7 @@ class DebtItemWidget extends StatelessWidget {
           child: PaisaFilledCard(
             child: InkWell(
               onTap: () => context.pushNamed(
-                debtAddOrEditName,
+                RoutesName.addDebtCredit.name,
                 pathParameters: {'did': debt.superId.toString()},
               ),
               child: Column(

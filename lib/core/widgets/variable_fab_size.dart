@@ -31,13 +31,21 @@ class VariableFABSize extends StatelessWidget {
           final isSmallSize = value.get(smallSizeFabKey, defaultValue: false);
           if (isSmallSize) {
             return FloatingActionButton(
+              backgroundColor: context.secondaryContainer,
               onPressed: onPressed,
-              child: Icon(icon),
+              child: Icon(
+                icon,
+                color: context.onSecondaryContainer,
+              ),
             );
           } else {
             return FloatingActionButton.large(
+              backgroundColor: context.secondaryContainer,
               onPressed: onPressed,
-              child: Icon(icon),
+              child: Icon(
+                icon,
+                color: context.onSecondaryContainer,
+              ),
             );
           }
         },

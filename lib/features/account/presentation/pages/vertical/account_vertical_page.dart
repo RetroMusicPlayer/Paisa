@@ -15,50 +15,52 @@ class AccountMobileVerticalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Box<TransactionModel>>(
-      valueListenable: getIt.get<Box<TransactionModel>>().listenable(),
-      builder: (context, value, child) {
-        return ScreenTypeLayout.builder(
-          mobile: (p0) => ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(bottom: 124),
-            itemCount: accounts.length,
-            itemBuilder: (context, index) {
-              final List<TransactionEntity> expenses = value
-                  .expensesFromAccountId(accounts[index].superId!)
-                  .map((e) => e.toEntity())
-                  .toList();
-              return AspectRatio(
-                aspectRatio: 16 / 9,
-                child: AccountCardV2(
-                  account: accounts[index],
-                  expenses: expenses,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: ValueListenableBuilder<Box<TransactionModel>>(
+          valueListenable: getIt.get<Box<TransactionModel>>().listenable(),
+          builder: (context, value, child) {
+            return ScreenTypeLayout.builder(
+              mobile: (p0) => ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(bottom: 124),
+                itemCount: accounts.length,
+                itemBuilder: (context, index) {
+                  final List<TransactionEntity> expenses = value
+                      .expensesFromAccountId(accounts[index].superId!)
+                      .map((e) => e.toEntity())
+                      .toList();
+                  return AccountCardV2(
+                    account: accounts[index],
+                    expenses: expenses,
+                  );
+                },
+              ),
+              tablet: (p0) => GridView.builder(
+                padding: const EdgeInsets.only(bottom: 124),
+                shrinkWrap: true,
+                itemCount: accounts.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.4, // Adjust the aspect ratio as needed
                 ),
-              );
-            },
-          ),
-          tablet: (p0) => GridView.builder(
-            padding: const EdgeInsets.only(bottom: 124),
-            shrinkWrap: true,
-            itemCount: accounts.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.4, // Adjust the aspect ratio as needed
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              final List<TransactionEntity> expenses = value
-                  .expensesFromAccountId(accounts[index].superId!)
-                  .map((e) => e.toEntity())
-                  .toList();
-              return AccountCardV2(
-                account: accounts[index],
-                expenses: expenses,
-              );
-            },
-          ),
-        );
-      },
+                itemBuilder: (BuildContext context, int index) {
+                  final List<TransactionEntity> expenses = value
+                      .expensesFromAccountId(accounts[index].superId!)
+                      .map((e) => e.toEntity())
+                      .toList();
+                  return AccountCardV2(
+                    account: accounts[index],
+                    expenses: expenses,
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

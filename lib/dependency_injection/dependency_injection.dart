@@ -4,11 +4,11 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:paisa/config/routes.dart';
-import 'package:paisa/core/common.dart';
+import 'package:paisa/config/routes_name.dart';
+import 'package:paisa/dependency_injection/module/hive_module.dart';
 import 'package:quick_actions/quick_actions.dart';
 
-import 'di.config.dart';
-import 'module/hive_module.dart';
+import 'dependency_injection.config.dart';
 
 @InjectableInit(
   asExtension: false,
@@ -41,7 +41,7 @@ Future<void> initAppShortcuts() async {
   const QuickActions quickActions = QuickActions();
   await quickActions.initialize((String shortcutType) {
     goRouter.goNamed(
-      addTransactionsName,
+      RoutesName.addTransaction.name,
       queryParameters: {
         'type': shortcutType == 'ic_expense'
             ? '1'

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/features/settings/domain/use_case/setting_use_case.dart';
 import 'package:paisa/main.dart';
@@ -15,7 +16,7 @@ class CurrencyChangeWidget extends StatelessWidget {
     return ListTile(
       onTap: () {
         context.pushNamed(
-          userOnboardingPath,
+          RoutesName.userOnboarding.name,
           queryParameters: {
             'force_currency_selector': 'true',
           },

@@ -18,7 +18,6 @@ class SummaryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     BlocProvider.of<SummaryCubit>(context).fetchAccounts();
     return BlocBuilder<SummaryCubit, SummaryState>(
-      buildWhen: (previous, current) => current is TransactionsSuccessState,
       builder: (context, state) {
         if (state is TransactionsSuccessState) {
           return Provider<AccountEntity>.value(

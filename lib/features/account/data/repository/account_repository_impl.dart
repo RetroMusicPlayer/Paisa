@@ -19,22 +19,20 @@ class AccountRepositoryImpl extends AccountRepository {
     required String bankName,
     required String holderName,
     required CardType cardType,
-    String? number,
     double? amount,
     int? color,
     bool? isAccountExcluded,
-    Country? currencySymbol,
     bool? isAccountDefault,
+    Country? currencySymbol,
   }) {
     return dataSource.add(AccountModel(
       name: holderName,
       bankName: bankName,
-      number: number,
       cardType: cardType,
       amount: amount,
       color: color,
       isAccountExcluded: isAccountExcluded,
-      isAccountDefault: isAccountDefault,
+      isAccountDefault: isAccountDefault ?? false,
       currencySymbol: currencySymbol?.toEntity(),
     ));
   }
@@ -65,24 +63,22 @@ class AccountRepositoryImpl extends AccountRepository {
     required String? bankName,
     required String? holderName,
     required CardType cardType,
-    String? number,
     double? amount,
     int? color,
-    bool? isAccountExcluded,
-    bool? isAccountDefault,
+    bool? isAccountExcluded = false,
+    bool? isAccountDefault = false,
     Country? currencySymbol,
   }) {
     return dataSource.update(
       AccountModel(
         name: holderName,
         bankName: bankName,
-        number: number,
         cardType: cardType,
         amount: amount,
         color: color,
         currencySymbol: currencySymbol?.toEntity(),
         isAccountExcluded: isAccountExcluded,
-        isAccountDefault: isAccountDefault,
+        isAccountDefault: isAccountDefault ?? false,
         superId: key,
       ),
     );

@@ -10,11 +10,11 @@ class FilterOverviewWidget extends StatelessWidget {
     super.key,
     required this.valueNotifier,
     required this.builder,
-    required this.expenses,
+    required this.transactions,
   });
 
-  final Widget Function(List<TransactionEntity> expenses) builder;
-  final Iterable<TransactionModel> expenses;
+  final Widget Function(List<TransactionEntity> transactions) builder;
+  final Iterable<TransactionModel> transactions;
   final ValueNotifier<TransactionType> valueNotifier;
 
   @override
@@ -22,7 +22,7 @@ class FilterOverviewWidget extends StatelessWidget {
     return ValueListenableBuilder<TransactionType>(
       valueListenable: valueNotifier,
       builder: (context, value, child) {
-        return builder.call(expenses.budgetOverView(value));
+        return builder.call(transactions.budgetOverView(value));
       },
     );
   }

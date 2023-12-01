@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:paisa/core/common.dart';
@@ -27,8 +26,7 @@ class TransactionAmountWidget extends StatelessWidget {
         counterText: '',
         onChanged: (value) {
           double? amount = double.tryParse(value);
-          BlocProvider.of<TransactionBloc>(context).transactionAmountString =
-              value;
+          BlocProvider.of<TransactionBloc>(context).transactionAmount = amount;
         },
         validator: (value) {
           if (value!.isNotEmpty) {

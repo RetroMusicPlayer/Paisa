@@ -76,3 +76,5 @@ android/app/google-services.json
 .fvm/flutter_sdk
 .fvm/
 .flutter-plugins-dependencies
+*.g.dart
+*.freezed.dart

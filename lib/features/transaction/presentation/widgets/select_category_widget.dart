@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/features/category/data/model/category_model.dart';
 import 'package:paisa/features/category/domain/entities/category.dart';
@@ -24,7 +25,7 @@ class SelectCategoryIcon extends StatelessWidget {
 
         if (categories.isEmpty) {
           return ListTile(
-            onTap: () => context.pushNamed(addCategoryPath),
+            onTap: () => context.pushNamed(RoutesName.addCategory.name),
             title: Text(context.loc.addCategoryEmptyTitle),
             subtitle: Text(context.loc.addCategoryEmptySubTitle),
             trailing: const Icon(Icons.keyboard_arrow_right),
@@ -106,7 +107,8 @@ class SelectedItem extends StatelessWidget {
                 if (index == 0) {
                   return CategoryChip(
                     selected: false,
-                    onSelected: (p0) => context.pushNamed(addCategoryPath),
+                    onSelected: (p0) =>
+                        context.pushNamed(RoutesName.addCategory.name),
                     icon: MdiIcons.plus.codePoint,
                     title: context.loc.addNew,
                     iconColor: context.primary,
@@ -122,8 +124,8 @@ class SelectedItem extends StatelessWidget {
                         .add(TransactionEvent.changeCategory(category)),
                     icon: category.icon ?? 0,
                     title: category.name ?? '',
-                    titleColor: Color(category.color ?? context.primary.value),
-                    iconColor: Color(category.color ?? context.primary.value),
+                    iconColor: context.primary,
+                    titleColor: context.primary,
                   );
                 }
               },

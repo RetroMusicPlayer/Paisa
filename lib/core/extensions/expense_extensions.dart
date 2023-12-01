@@ -22,6 +22,8 @@ extension ExpenseModelBoxMapping on Box<TransactionModel> {
       .where((element) => element.time!.isAfterBeforeTime(range))
       .toList();
 
+  double get fullTotal => totalIncome - totalExpense;
+
   Iterable<TransactionModel> get expenseList =>
       values.where((element) => element.type == TransactionType.expense);
 

@@ -32,8 +32,8 @@ class UserImageWidget extends StatelessWidget {
               if (image.isEmpty) {
                 return ClipOval(
                   child: Container(
-                    width: 42,
-                    height: 42,
+                    width: 32,
+                    height: 32,
                     color: context.secondaryContainer,
                     child: Icon(
                       Icons.account_circle_outlined,
@@ -42,11 +42,9 @@ class UserImageWidget extends StatelessWidget {
                   ),
                 );
               } else {
-                return Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: CircleAvatar(
-                    foregroundImage: FileImage(File(image)),
-                  ),
+                return CircleAvatar(
+                  maxRadius: 16,
+                  foregroundImage: FileImage(File(image)),
                 );
               }
             },

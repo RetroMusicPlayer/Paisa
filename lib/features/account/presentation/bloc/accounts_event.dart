@@ -4,7 +4,10 @@ part of 'accounts_bloc.dart';
 class AccountsEvent with _$AccountsEvent {
   const factory AccountsEvent.addOrUpdate(bool addOrUpdate) =
       AddOrUpdateAccountEvent;
-
+  const factory AccountsEvent.updateDefaultAndExculde({
+    @Default(false) bool isAccountExcluded,
+    @Default(false) bool isAccountDefault,
+  }) = _UpdateDefaultAndExculde;
   const factory AccountsEvent.deleteAccount(int accountId) = DeleteAccountEvent;
 
   const factory AccountsEvent.fetchAccountAndExpensesFromID(int accountId) =

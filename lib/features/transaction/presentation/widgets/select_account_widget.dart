@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/common_enum.dart';
 import 'package:paisa/features/account/data/model/account_model.dart';
@@ -23,7 +24,7 @@ class SelectedAccount extends StatelessWidget {
         final accounts = value.values.toEntities();
         if (accounts.isEmpty) {
           return ListTile(
-            onTap: () => context.pushNamed(addAccountPath),
+            onTap: () => context.pushNamed(RoutesName.addAccount.name),
             title: Text(context.loc.addAccountEmptyTitle),
             subtitle: Text(context.loc.addAccountEmptySubTitle),
             trailing: const Icon(Icons.keyboard_arrow_right),
@@ -102,7 +103,8 @@ class AccountSelectedItem extends StatelessWidget {
                   selected: false,
                   title: context.loc.addNew,
                   icon: MdiIcons.plus.codePoint,
-                  onPressed: () => context.pushNamed(addAccountPath),
+                  onPressed: () =>
+                      context.pushNamed(RoutesName.addAccount.name),
                 );
               } else {
                 final AccountEntity account = accounts[index - 1];

@@ -23,10 +23,7 @@ class ExpenseTotalForMonthWidget extends StatelessWidget {
         Text(
           context.loc.total,
           style: context.titleMedium?.copyWith(
-            color: Theme.of(context)
-                .colorScheme
-                .onPrimaryContainer
-                .withOpacity(0.85),
+            color: context.onPrimaryContainer.withOpacity(0.85),
           ),
         ),
         const SizedBox(height: 8),
@@ -39,17 +36,15 @@ class ExpenseTotalForMonthWidget extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       text: '▼',
-                      style: context.bodySmall?.copyWith(
+                      style: context.labelLarge?.copyWith(
                         color:
                             Theme.of(context).extension<CustomColors>()!.green,
                       ),
                       children: [
                         TextSpan(
                           text: context.loc.income,
-                          style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
+                          style: context.labelLarge?.copyWith(
+                            color: context.onPrimaryContainer.withOpacity(0.75),
                           ),
                         )
                       ],
@@ -61,7 +56,7 @@ class ExpenseTotalForMonthWidget extends StatelessWidget {
                       selectedCountry: context.read<AccountEntity>().country,
                     )}',
                     style: context.titleLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      color: context.onPrimaryContainer,
                     ),
                   ),
                 ],
@@ -74,16 +69,14 @@ class ExpenseTotalForMonthWidget extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       text: '▲',
-                      style: context.bodySmall?.copyWith(
+                      style: context.labelLarge?.copyWith(
                         color: Theme.of(context).extension<CustomColors>()!.red,
                       ),
                       children: [
                         TextSpan(
                           text: context.loc.expense,
-                          style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
+                          style: context.labelLarge?.copyWith(
+                            color: context.onPrimaryContainer.withOpacity(0.75),
                           ),
                         )
                       ],
@@ -95,7 +88,7 @@ class ExpenseTotalForMonthWidget extends StatelessWidget {
                       selectedCountry: context.read<AccountEntity>().country,
                     )}',
                     style: context.titleLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      color: context.onPrimaryContainer,
                     ),
                   ),
                 ],

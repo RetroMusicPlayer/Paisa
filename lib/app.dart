@@ -62,8 +62,8 @@ class _PaisaAppState extends State<PaisaApp> {
             themeModeKey,
             calendarFormatKey,
             userCountryKey,
-            appLanguageKey,
             appFontChangerKey,
+            appLanguageKey,
           ],
         ),
         builder: (context, value, _) {
@@ -88,6 +88,7 @@ class _PaisaAppState extends State<PaisaApp> {
             fontPreference,
             ThemeData.dark().textTheme,
           );
+
           final TextTheme lightTextTheme = GoogleFonts.getTextTheme(
             fontPreference,
             ThemeData.light().textTheme,

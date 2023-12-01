@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paisa/config/routes_name.dart';
 
 import 'package:paisa/core/common.dart';
 
@@ -14,12 +15,12 @@ class HomeSearchBar extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(34),
-        color: context.surfaceVariant,
+        color: context.surface,
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(34),
         onTap: () {
-          GoRouter.of(context).pushNamed(searchName);
+          context.pushNamed(RoutesName.search.name);
         },
         child: Padding(
           padding: const EdgeInsets.all(12.0),

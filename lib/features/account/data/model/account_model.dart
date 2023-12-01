@@ -14,12 +14,11 @@ class AccountModel extends HiveObject with _$AccountModel {
     @HiveField(1, defaultValue: false) bool? isAccountExcluded,
     @HiveField(2) CountryModel? currencySymbol,
     @HiveField(3) String? bankName,
-    @HiveField(5) String? number,
     @HiveField(6, defaultValue: CardType.bank) CardType? cardType,
     @HiveField(7) int? superId,
     @HiveField(8, defaultValue: 0) double? amount,
     @HiveField(9, defaultValue: 0xFFFFC107) int? color,
-    @HiveField(10, defaultValue: false) bool? isAccountDefault,
+    @Default(false) @HiveField(4, defaultValue: false) bool isAccountDefault,
   }) = _AccountModel;
 
   AccountModel._();

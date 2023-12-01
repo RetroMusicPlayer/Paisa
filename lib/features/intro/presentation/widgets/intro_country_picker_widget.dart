@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:paisa/config/routes.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/features/country_picker/data/models/country_model.dart';
 
@@ -52,7 +53,7 @@ class _IntroCountryPickerWidgetState extends State<IntroCountryPickerWidget> {
         child: BlocListener<CountryPickerCubit, CountryPickerState>(
           listener: (context, state) {
             if (state is NavigateToLading) {
-              context.goNamed(landingName);
+              context.goNamed(RoutesName.landing.name);
             }
           },
           child: Scaffold(
@@ -64,7 +65,8 @@ class _IntroCountryPickerWidgetState extends State<IntroCountryPickerWidget> {
                     icon: Icons.language_rounded,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding:
+                        const EdgeInsets.only(left: 16, right: 16, bottom: 8),
                     child: PaisaTextFormField(
                       hintText: context.loc.search,
                       controller: TextEditingController(),

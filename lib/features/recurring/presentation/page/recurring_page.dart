@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/features/recurring/data/model/recurring.dart';
 import 'package:paisa/main.dart';
@@ -26,7 +27,7 @@ class RecurringPage extends StatelessWidget {
                 icon: MdiIcons.cashSync,
                 actionTitle: context.loc.recurringAction,
                 onActionPressed: () {
-                  GoRouter.of(context).pushNamed(recurringName);
+                  context.pushNamed(RoutesName.addRecurring.name);
                 },
               );
             }

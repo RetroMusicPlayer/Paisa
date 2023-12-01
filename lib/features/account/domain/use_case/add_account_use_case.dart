@@ -16,7 +16,6 @@ class AddAccountUseCase implements UseCase<Future<int>, AddAccountParams> {
     return accountRepository.add(
       bankName: params.bankName,
       holderName: params.holderName,
-      number: params.number,
       cardType: params.cardType,
       amount: params.amount,
       color: params.color,

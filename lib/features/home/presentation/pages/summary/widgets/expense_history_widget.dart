@@ -35,11 +35,13 @@ class ExpenseHistoryWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: maps.entries.length,
-        itemBuilder: (_, mapIndex) => ExpenseMonthCardWidget(
-          title: maps.keys.elementAt(mapIndex),
-          total: maps.values.elementAt(mapIndex).filterTotal,
-          expenses: maps.values.elementAt(mapIndex),
-        ),
+        itemBuilder: (_, mapIndex) {
+          return ExpenseMonthCardWidget(
+            title: maps.keys.elementAt(mapIndex),
+            total: maps.values.elementAt(mapIndex).filterTotal,
+            expenses: maps.values.elementAt(mapIndex),
+          );
+        },
       );
     }
   }

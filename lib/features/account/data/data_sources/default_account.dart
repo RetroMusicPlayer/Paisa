@@ -7,7 +7,6 @@ List<AccountModel> defaultAccountsData() {
     AccountModel(
       name: 'User name',
       bankName: 'Cash',
-      number: '',
       cardType: CardType.cash,
       amount: 0.0,
       color: Colors.primaries[0].value,
@@ -15,7 +14,6 @@ List<AccountModel> defaultAccountsData() {
     AccountModel(
       name: 'User name',
       bankName: 'Bank',
-      number: '',
       cardType: CardType.bank,
       amount: 0.0,
       color: Colors.primaries[1].value,
@@ -23,7 +21,6 @@ List<AccountModel> defaultAccountsData() {
     AccountModel(
       name: 'User name',
       bankName: 'Wallet',
-      number: '',
       cardType: CardType.wallet,
       amount: 0.0,
       color: Colors.primaries[2].value,

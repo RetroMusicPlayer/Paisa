@@ -309,7 +309,7 @@ class IntroMobileWidget extends StatelessWidget {
                 children: [
                   Text(
                     context.loc.appTitle,
-                    style: context.displaySmall?.copyWith(
+                    style: context.displayMedium?.copyWith(
                       color: context.primary,
                     ),
                   ),

@@ -475,6 +475,11 @@
         "description": "Subtitle text shown on the category color picker button",
         "type": "text"
     },
+    "pickColorAccountDesc": "Set color to your account",
+    "@pickColorAccountDesc": {
+        "description": "Subtitle text shown on the account color picker button",
+        "type": "text"
+    },
     "colors": "Colors",
     "@colors": {
         "description": "Section title on settings page for theme",

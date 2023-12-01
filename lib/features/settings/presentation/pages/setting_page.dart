@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:paisa/config/routes.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/common_enum.dart';
 import 'package:paisa/core/enum/calendar_formats.dart';
@@ -15,7 +16,6 @@ import 'package:paisa/features/settings/presentation/widgets/app_font_changer.da
 import 'package:paisa/features/settings/presentation/widgets/app_language_changer.dart';
 import 'package:paisa/features/settings/presentation/widgets/biometrics_auth_widget.dart';
 import 'package:paisa/features/settings/presentation/widgets/country_change_widget.dart';
-import 'package:paisa/features/settings/presentation/widgets/expense_fix_widget.dart';
 import 'package:paisa/features/settings/presentation/widgets/setting_option.dart';
 import 'package:paisa/features/settings/presentation/widgets/settings_color_picker_widget.dart';
 import 'package:paisa/features/settings/presentation/widgets/settings_group_card.dart';
@@ -119,14 +119,12 @@ class SettingsPage extends StatelessWidget {
                 const Divider(),
                 const AppFontChanger(),
                 const Divider(),
-                const FixExpenseWidget(),
-                const Divider(),
                 SettingsOption(
                   icon: MdiIcons.backupRestore,
                   title: context.loc.backupAndRestoreTitle,
                   subtitle: context.loc.backupAndRestoreSubTitle,
                   onTap: () {
-                    context.goNamed(exportAndImportName);
+                    context.goNamed(RoutesName.exportAndImport.name);
                   },
                 ),
               ],

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/constants/constants.dart';
 import 'package:paisa/core/enum/box_types.dart';
 import 'package:paisa/core/extensions/build_context_extension.dart';
@@ -71,6 +72,7 @@ class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
                           onPress: () async {
                             await model.delete();
                             defaultModels.add(model);
+                            setState(() {});
                           },
                         );
                       },
@@ -93,6 +95,7 @@ class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
                         onPress: () async {
                           await model.delete();
                           defaultModels.add(model);
+                          setState(() {});
                         },
                       );
                     },
@@ -147,7 +150,7 @@ class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
                   FilterChip(
                     selected: false,
                     onSelected: (value) {
-                      context.pushNamed(addCategoryName);
+                      context.pushNamed(RoutesName.addCategory.name);
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(28),

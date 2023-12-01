@@ -3,7 +3,7 @@ description: A expense manager app for Android, iOS, Web & Windows.
 
 publish_to: "none"
 
-version: 5.0.1+501
+version: 5.0.6+506
 
 environment:
   sdk: ">=3.0.2 <4.0.0"
@@ -31,7 +31,7 @@ dependencies:
   get_it: ^7.2.0
   glassmorphism: ^3.0.0
   go_router: ^10.1.2
-  google_fonts: ^6.0.0
+  google_fonts: ^6.1.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   image_picker: ^1.0.0
@@ -75,6 +75,12 @@ dependency_overrides:
 
 flutter_app_name:
   name: "Paisa"
+
+flutter_launcher_icons:
+  image_path: "assets/images/icon.png"
+  macos:
+    generate: true
+    image_path: "assets/images/icon.png"
 
 flutter_native_splash:
   color: "#ffffff"

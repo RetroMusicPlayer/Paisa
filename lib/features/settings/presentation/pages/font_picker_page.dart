@@ -19,7 +19,6 @@ class FontPickerPage extends StatefulWidget {
 
 class _FontPickerPageState extends State<FontPickerPage> {
   final List<String> fonts = GoogleFonts.asMap().keys.toList();
-  final ScrollController scrollController = ScrollController();
   late String selectedFont = widget.currentFont;
   final TextEditingController textEditingController = TextEditingController();
   final ValueNotifier<String> valueNotifier = ValueNotifier('');

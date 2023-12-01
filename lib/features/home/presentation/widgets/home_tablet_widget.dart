@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:paisa/features/home/presentation/pages/home/home_page.dart';
@@ -29,7 +30,7 @@ class HomeTabletWidget extends StatelessWidget {
         BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             return NavigationRail(
-              groupAlignment: 1,
+              groupAlignment: 0,
               leading: floatingActionButton,
               elevation: 1,
               selectedLabelTextStyle: context.bodyLarge?.copyWith(
@@ -47,7 +48,7 @@ class HomeTabletWidget extends StatelessWidget {
               selectedIndex: homeBloc.selectedIndex,
               onDestinationSelected: (index) {
                 if (index == 7) {
-                  context.pushNamed(settingsName);
+                  context.pushNamed(RoutesName.settings.name);
                 } else {
                   homeBloc.add(CurrentIndexEvent(index));
                 }

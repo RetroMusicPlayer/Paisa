@@ -16,85 +16,80 @@ class DebtsPage extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(kToolbarHeight),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0,
-                right: 8.0,
-                bottom: 8.0,
-              ),
-              child: Material(
-                borderRadius: BorderRadius.circular(32),
-                color: context.surfaceVariant,
-                child: TabBar(
-                  dividerColor: Colors.transparent,
-                  splashBorderRadius: BorderRadius.circular(32),
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32),
-                    color: context.primary,
-                  ),
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  labelColor: context.onPrimary,
-                  unselectedLabelColor: context.onSurfaceVariant,
-                  labelStyle: Theme.of(context)
-                      .textTheme
-                      .bodyLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                  unselectedLabelStyle: Theme.of(context)
-                      .textTheme
-                      .bodyLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                  tabs: [
-                    Tab(text: context.loc.debt),
-                    Tab(text: context.loc.credit),
-                  ],
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
+            child: Material(
+              borderRadius: BorderRadius.circular(32),
+              color: context.surfaceVariant,
+              child: TabBar(
+                dividerColor: Colors.transparent,
+                splashBorderRadius: BorderRadius.circular(32),
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32),
+                  color: context.primary,
                 ),
+                indicatorSize: TabBarIndicatorSize.tab,
+                labelColor: context.onPrimary,
+                unselectedLabelColor: context.onSurfaceVariant,
+                labelStyle: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+                unselectedLabelStyle: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+                tabs: [
+                  Tab(text: context.loc.debt),
+                  Tab(text: context.loc.credit),
+                ],
               ),
             ),
           ),
-        ),
-        body: ValueListenableBuilder<Box<DebitModel>>(
-          valueListenable: getIt.get<Box<DebitModel>>().listenable(),
-          builder: (context, value, child) {
-            final debts = value.values
-                .where((element) => element.debtType == DebitType.debit)
-                .toList();
+          Expanded(
+            child: ValueListenableBuilder<Box<DebitModel>>(
+              valueListenable: getIt.get<Box<DebitModel>>().listenable(),
+              builder: (context, value, child) {
+                final debts = value.values
+                    .where((element) => element.debtType == DebitType.debit)
+                    .toList();
 
-            final credits = value.values
-                .where((element) => element.debtType == DebitType.credit)
-                .toList();
+                final credits = value.values
+                    .where((element) => element.debtType == DebitType.credit)
+                    .toList();
 
-            return TabBarView(
-              children: [
-                Builder(
-                  builder: (context) {
-                    return debts.isNotEmpty
-                        ? DebtsListWidget(debts: debts)
-                        : EmptyWidget(
-                            title: context.loc.emptyDebts,
-                            icon: MdiIcons.cashMinus,
-                            description: context.loc.emptyDebtsDesc,
-                          );
-                  },
-                ),
-                Builder(
-                  builder: (context) {
-                    return credits.isNotEmpty
-                        ? DebtsListWidget(debts: credits)
-                        : EmptyWidget(
-                            title: context.loc.emptyCredit,
-                            icon: MdiIcons.cashMinus,
-                            description: context.loc.emptyCreditDesc,
-                          );
-                  },
-                )
-              ],
-            );
-          },
-        ),
+                return TabBarView(
+                  children: [
+                    Builder(
+                      builder: (context) {
+                        return debts.isNotEmpty
+                            ? DebtsListWidget(debts: debts)
+                            : EmptyWidget(
+                                title: context.loc.emptyDebts,
+                                icon: MdiIcons.cashMinus,
+                                description: context.loc.emptyDebtsDesc,
+                              );
+                      },
+                    ),
+                    Builder(
+                      builder: (context) {
+                        return credits.isNotEmpty
+                            ? DebtsListWidget(debts: credits)
+                            : EmptyWidget(
+                                title: context.loc.emptyCredit,
+                                icon: MdiIcons.cashMinus,
+                                description: context.loc.emptyCreditDesc,
+                              );
+                      },
+                    )
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

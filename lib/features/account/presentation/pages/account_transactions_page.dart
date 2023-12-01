@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
 import 'package:paisa/features/account/presentation/bloc/accounts_bloc.dart';
@@ -35,8 +36,8 @@ class AccountTransactionsPage extends StatelessWidget {
             IconButton(
               tooltip: context.loc.edit,
               onPressed: () {
-                GoRouter.of(context).pushNamed(
-                  editAccountWithIdName,
+                context.pushNamed(
+                  RoutesName.accountTransactionsEditAccount.name,
                   pathParameters: {'aid': accountId},
                 );
               },
@@ -146,9 +147,15 @@ class AccountTransactionsPage extends StatelessWidget {
               children: [
                 PaisaIconButton(
                   onPressed: () {
-                    GoRouter.of(context).pushNamed(
-                      addTransactionsName,
-                      queryParameters: {'aid': accountId, 'type': '0'},
+                    context.pushNamed(
+                      RoutesName.accountAddTransaction.name,
+                      queryParameters: {
+                        'type': '0',
+                        'aid': accountId,
+                      },
+                      pathParameters: {
+                        'aid': accountId,
+                      },
                     );
                   },
                   title: context.loc.income,
@@ -159,9 +166,15 @@ class AccountTransactionsPage extends StatelessWidget {
                 ),
                 PaisaIconButton(
                   onPressed: () {
-                    GoRouter.of(context).pushNamed(
-                      addTransactionsName,
-                      queryParameters: {'aid': accountId, 'type': '1'},
+                    context.pushNamed(
+                      RoutesName.accountAddTransaction.name,
+                      pathParameters: {
+                        'aid': accountId,
+                      },
+                      queryParameters: {
+                        'type': '1',
+                        'aid': accountId,
+                      },
                     );
                   },
                   title: context.loc.expense,

@@ -21,6 +21,7 @@ linter:
   # or a specific dart file by using the `// ignore: name_of_lint` and
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
+  ignore: invalid_annotation_target
   rules:
     - prefer_single_quotes: true
     - prefer_const_constructors: true

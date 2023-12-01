@@ -19,43 +19,43 @@ mixin _$SummaryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)
+    required TResult Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)
         update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)?
+    TResult? Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)?
+    TResult Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SummaryInitial value) initial,
+    required TResult Function(_SummaryInitial value) initial,
     required TResult Function(TransactionsSuccessState value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SummaryInitial value)? initial,
+    TResult? Function(_SummaryInitial value)? initial,
     TResult? Function(TransactionsSuccessState value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(SummaryInitial value)? initial,
+    TResult Function(_SummaryInitial value)? initial,
     TResult Function(TransactionsSuccessState value)? update,
     required TResult orElse(),
   }) =>
@@ -81,25 +81,25 @@ class _$SummaryStateCopyWithImpl<$Res, $Val extends SummaryState>
 }
 
 /// @nodoc
-abstract class _$$SummaryInitialCopyWith<$Res> {
-  factory _$$SummaryInitialCopyWith(
-          _$SummaryInitial value, $Res Function(_$SummaryInitial) then) =
-      __$$SummaryInitialCopyWithImpl<$Res>;
+abstract class _$$_SummaryInitialCopyWith<$Res> {
+  factory _$$_SummaryInitialCopyWith(
+          _$_SummaryInitial value, $Res Function(_$_SummaryInitial) then) =
+      __$$_SummaryInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SummaryInitialCopyWithImpl<$Res>
-    extends _$SummaryStateCopyWithImpl<$Res, _$SummaryInitial>
-    implements _$$SummaryInitialCopyWith<$Res> {
-  __$$SummaryInitialCopyWithImpl(
-      _$SummaryInitial _value, $Res Function(_$SummaryInitial) _then)
+class __$$_SummaryInitialCopyWithImpl<$Res>
+    extends _$SummaryStateCopyWithImpl<$Res, _$_SummaryInitial>
+    implements _$$_SummaryInitialCopyWith<$Res> {
+  __$$_SummaryInitialCopyWithImpl(
+      _$_SummaryInitial _value, $Res Function(_$_SummaryInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SummaryInitial implements SummaryInitial {
-  const _$SummaryInitial();
+class _$_SummaryInitial implements _SummaryInitial {
+  const _$_SummaryInitial();
 
   @override
   String toString() {
@@ -109,7 +109,7 @@ class _$SummaryInitial implements SummaryInitial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SummaryInitial);
+        (other.runtimeType == runtimeType && other is _$_SummaryInitial);
   }
 
   @override
@@ -119,8 +119,8 @@ class _$SummaryInitial implements SummaryInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)
+    required TResult Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)
         update,
   }) {
     return initial();
@@ -130,8 +130,8 @@ class _$SummaryInitial implements SummaryInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)?
+    TResult? Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
   }) {
     return initial?.call();
@@ -141,8 +141,8 @@ class _$SummaryInitial implements SummaryInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)?
+    TResult Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
     required TResult orElse(),
   }) {
@@ -155,7 +155,7 @@ class _$SummaryInitial implements SummaryInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SummaryInitial value) initial,
+    required TResult Function(_SummaryInitial value) initial,
     required TResult Function(TransactionsSuccessState value) update,
   }) {
     return initial(this);
@@ -164,7 +164,7 @@ class _$SummaryInitial implements SummaryInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SummaryInitial value)? initial,
+    TResult? Function(_SummaryInitial value)? initial,
     TResult? Function(TransactionsSuccessState value)? update,
   }) {
     return initial?.call(this);
@@ -173,7 +173,7 @@ class _$SummaryInitial implements SummaryInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(SummaryInitial value)? initial,
+    TResult Function(_SummaryInitial value)? initial,
     TResult Function(TransactionsSuccessState value)? update,
     required TResult orElse(),
   }) {
@@ -184,8 +184,8 @@ class _$SummaryInitial implements SummaryInitial {
   }
 }
 
-abstract class SummaryInitial implements SummaryState {
-  const factory SummaryInitial() = _$SummaryInitial;
+abstract class _SummaryInitial implements SummaryState {
+  const factory _SummaryInitial() = _$_SummaryInitial;
 }
 
 /// @nodoc
@@ -195,7 +195,9 @@ abstract class _$$TransactionsSuccessStateCopyWith<$Res> {
       __$$TransactionsSuccessStateCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<TransactionEntity> transactions, AccountEntity accountEntity});
+      {AccountEntity accountEntity,
+      List<TransactionEntity> transactions,
+      List<AccountEntity> accounts});
 }
 
 /// @nodoc
@@ -209,18 +211,23 @@ class __$$TransactionsSuccessStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transactions = null,
     Object? accountEntity = null,
+    Object? transactions = null,
+    Object? accounts = null,
   }) {
     return _then(_$TransactionsSuccessState(
-      null == transactions
-          ? _value._transactions
-          : transactions // ignore: cast_nullable_to_non_nullable
-              as List<TransactionEntity>,
-      null == accountEntity
+      accountEntity: null == accountEntity
           ? _value.accountEntity
           : accountEntity // ignore: cast_nullable_to_non_nullable
               as AccountEntity,
+      transactions: null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<TransactionEntity>,
+      accounts: null == accounts
+          ? _value._accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<AccountEntity>,
     ));
   }
 }
@@ -229,9 +236,14 @@ class __$$TransactionsSuccessStateCopyWithImpl<$Res>
 
 class _$TransactionsSuccessState implements TransactionsSuccessState {
   const _$TransactionsSuccessState(
-      final List<TransactionEntity> transactions, this.accountEntity)
-      : _transactions = transactions;
+      {required this.accountEntity,
+      required final List<TransactionEntity> transactions,
+      required final List<AccountEntity> accounts})
+      : _transactions = transactions,
+        _accounts = accounts;
 
+  @override
+  final AccountEntity accountEntity;
   final List<TransactionEntity> _transactions;
   @override
   List<TransactionEntity> get transactions {
@@ -240,12 +252,17 @@ class _$TransactionsSuccessState implements TransactionsSuccessState {
     return EqualUnmodifiableListView(_transactions);
   }
 
+  final List<AccountEntity> _accounts;
   @override
-  final AccountEntity accountEntity;
+  List<AccountEntity> get accounts {
+    if (_accounts is EqualUnmodifiableListView) return _accounts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accounts);
+  }
 
   @override
   String toString() {
-    return 'SummaryState.update(transactions: $transactions, accountEntity: $accountEntity)';
+    return 'SummaryState.update(accountEntity: $accountEntity, transactions: $transactions, accounts: $accounts)';
   }
 
   @override
@@ -253,15 +270,19 @@ class _$TransactionsSuccessState implements TransactionsSuccessState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TransactionsSuccessState &&
+            (identical(other.accountEntity, accountEntity) ||
+                other.accountEntity == accountEntity) &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions) &&
-            (identical(other.accountEntity, accountEntity) ||
-                other.accountEntity == accountEntity));
+            const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_transactions), accountEntity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      accountEntity,
+      const DeepCollectionEquality().hash(_transactions),
+      const DeepCollectionEquality().hash(_accounts));
 
   @JsonKey(ignore: true)
   @override
@@ -275,35 +296,35 @@ class _$TransactionsSuccessState implements TransactionsSuccessState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)
+    required TResult Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)
         update,
   }) {
-    return update(transactions, accountEntity);
+    return update(accountEntity, transactions, accounts);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)?
+    TResult? Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
   }) {
-    return update?.call(transactions, accountEntity);
+    return update?.call(accountEntity, transactions, accounts);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            List<TransactionEntity> transactions, AccountEntity accountEntity)?
+    TResult Function(AccountEntity accountEntity,
+            List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
     required TResult orElse(),
   }) {
     if (update != null) {
-      return update(transactions, accountEntity);
+      return update(accountEntity, transactions, accounts);
     }
     return orElse();
   }
@@ -311,7 +332,7 @@ class _$TransactionsSuccessState implements TransactionsSuccessState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SummaryInitial value) initial,
+    required TResult Function(_SummaryInitial value) initial,
     required TResult Function(TransactionsSuccessState value) update,
   }) {
     return update(this);
@@ -320,7 +341,7 @@ class _$TransactionsSuccessState implements TransactionsSuccessState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SummaryInitial value)? initial,
+    TResult? Function(_SummaryInitial value)? initial,
     TResult? Function(TransactionsSuccessState value)? update,
   }) {
     return update?.call(this);
@@ -329,7 +350,7 @@ class _$TransactionsSuccessState implements TransactionsSuccessState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(SummaryInitial value)? initial,
+    TResult Function(_SummaryInitial value)? initial,
     TResult Function(TransactionsSuccessState value)? update,
     required TResult orElse(),
   }) {
@@ -342,11 +363,14 @@ class _$TransactionsSuccessState implements TransactionsSuccessState {
 
 abstract class TransactionsSuccessState implements SummaryState {
   const factory TransactionsSuccessState(
-      final List<TransactionEntity> transactions,
-      final AccountEntity accountEntity) = _$TransactionsSuccessState;
+          {required final AccountEntity accountEntity,
+          required final List<TransactionEntity> transactions,
+          required final List<AccountEntity> accounts}) =
+      _$TransactionsSuccessState;
 
-  List<TransactionEntity> get transactions;
   AccountEntity get accountEntity;
+  List<TransactionEntity> get transactions;
+  List<AccountEntity> get accounts;
   @JsonKey(ignore: true)
   _$$TransactionsSuccessStateCopyWith<_$TransactionsSuccessState>
       get copyWith => throw _privateConstructorUsedError;

@@ -31,6 +31,11 @@ class _ExpenseDatePickerWidgetState extends State<ExpenseDatePickerWidget> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
+                leading: Icon(
+                  Icons.today_rounded,
+                  color: context.secondary,
+                ),
+                title: Text(selectedDateTime.formattedDate),
                 onTap: () async {
                   final DateTime? dateTime = await paisaDatePicker(
                     context,
@@ -48,11 +53,6 @@ class _ExpenseDatePickerWidgetState extends State<ExpenseDatePickerWidget> {
                     });
                   }
                 },
-                leading: Icon(
-                  Icons.today_rounded,
-                  color: context.secondary,
-                ),
-                title: Text(selectedDateTime.formattedDate),
               ),
             ),
             Expanded(
@@ -60,6 +60,11 @@ class _ExpenseDatePickerWidgetState extends State<ExpenseDatePickerWidget> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
+                leading: Icon(
+                  MdiIcons.clockOutline,
+                  color: context.secondary,
+                ),
+                title: Text(selectedDateTime.formattedTime),
                 onTap: () async {
                   final TimeOfDay? timeOfDay = await paisaTimerPicker(context);
                   if (timeOfDay != null) {
@@ -73,11 +78,6 @@ class _ExpenseDatePickerWidgetState extends State<ExpenseDatePickerWidget> {
                     });
                   }
                 },
-                leading: Icon(
-                  MdiIcons.clockOutline,
-                  color: context.secondary,
-                ),
-                title: Text(selectedDateTime.formattedTime),
               ),
             ),
           ],

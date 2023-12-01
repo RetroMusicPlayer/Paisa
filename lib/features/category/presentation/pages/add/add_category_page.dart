@@ -10,7 +10,6 @@ import 'package:paisa/features/category/presentation/bloc/category_bloc.dart';
 import 'package:paisa/features/category/presentation/widgets/category_icon_picker_widget.dart';
 import 'package:paisa/features/category/presentation/widgets/color_picker_widget.dart';
 import 'package:paisa/features/category/presentation/widgets/set_budget_widget.dart';
-import 'package:paisa/main.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -28,10 +27,9 @@ class AddCategoryPage extends StatefulWidget {
 }
 
 class _AddCategoryPageState extends State<AddCategoryPage> {
-  final CategoryBloc categoryBloc = getIt.get();
-  final budgetController = TextEditingController();
-  final categoryController = TextEditingController();
-  final descController = TextEditingController();
+  final TextEditingController budgetController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
+  final TextEditingController descController = TextEditingController();
   late final bool isAddCategory = widget.categoryId == null;
 
   @override
@@ -45,101 +43,121 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
   @override
   void initState() {
     super.initState();
-    categoryBloc.add(FetchCategoryFromIdEvent(widget.categoryId));
+    BlocProvider.of<CategoryBloc>(context)
+        .add(FetchCategoryFromIdEvent(widget.categoryId));
   }
 
   @override
   Widget build(BuildContext context) {
     return PaisaAnnotatedRegionWidget(
       color: context.background,
-      child: BlocProvider(
-        create: (context) => categoryBloc,
-        child: BlocConsumer<CategoryBloc, CategoryState>(
-          listener: (context, state) {
-            if (state is CategoryAddedState) {
-              context.showMaterialSnackBar(
+      child: BlocConsumer<CategoryBloc, CategoryState>(
+        listener: (context, state) {
+          if (state is CategoryAddedState) {
+            context.showMaterialSnackBar(
+              isAddCategory
+                  ? context.loc.successAddCategory
+                  : context.loc.updatedCategory,
+              backgroundColor: context.primaryContainer,
+              color: context.onPrimaryContainer,
+            );
+            context.pop();
+          } else if (state is CategoryErrorState) {
+            context.showMaterialSnackBar(
+              state.errorString,
+              backgroundColor: context.errorContainer,
+              color: context.onErrorContainer,
+            );
+          } else if (state is CategoryDeletedState) {
+            context.showMaterialSnackBar(
+              context.loc.deletedCategory,
+              backgroundColor: context.error,
+              color: context.onError,
+            );
+            context.pop();
+          } else if (state is CategorySuccessState) {
+            budgetController.text = state.category.budget.toString();
+            budgetController.selection = TextSelection.collapsed(
+              offset: state.category.budget.toString().length,
+            );
+
+            categoryController.text = state.category.name ?? '';
+            categoryController.selection = TextSelection.collapsed(
+              offset: state.category.name?.length ?? 0,
+            );
+
+            descController.text = state.category.description ?? '';
+            descController.selection = TextSelection.collapsed(
+              offset: state.category.description?.length ?? 0,
+            );
+          }
+        },
+        builder: (context, state) {
+          return ScreenTypeLayout.builder(
+            mobile: (p0) => Scaffold(
+              appBar: context.materialYouAppBar(
                 isAddCategory
-                    ? context.loc.successAddCategory
-                    : context.loc.updatedCategory,
-                backgroundColor: context.primaryContainer,
-                color: context.onPrimaryContainer,
-              );
-              context.pop();
-            } else if (state is CategoryErrorState) {
-              context.showMaterialSnackBar(
-                state.errorString,
-                backgroundColor: context.errorContainer,
-                color: context.onErrorContainer,
-              );
-            } else if (state is CategoryDeletedState) {
-              context.showMaterialSnackBar(
-                context.loc.deletedCategory,
-                backgroundColor: context.error,
-                color: context.onError,
-              );
-              context.pop();
-            } else if (state is CategorySuccessState) {
-              budgetController.text = state.category.budget.toString();
-              budgetController.selection = TextSelection.collapsed(
-                offset: state.category.budget.toString().length,
-              );
+                    ? context.loc.addCategory
+                    : context.loc.updateCategory,
+                actions: [
+                  DeleteCategoryWidget(categoryId: widget.categoryId),
+                ],
+              ),
+              body: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SizedBox(height: 16),
+                            CategoryNameWidget(controller: categoryController),
+                            const SizedBox(height: 16),
+                            CategoryDescriptionWidget(
+                              controller: descController,
+                            ),
+                            const SizedBox(height: 16),
+                          ],
+                        ),
+                      ),
+                      const CategoryIconPickerWidget(),
+                      const CategoryColorWidget(),
+                      SetBudgetWidget(controller: budgetController),
+                      const TransferCategoryWidget(),
+                    ],
+                  ),
+                ),
+              ),
+              bottomNavigationBar: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: PaisaBigButton(
+                    onPressed: () {
+                      final isValid = _formKey.currentState!.validate();
+                      if (!isValid) {
+                        return;
+                      }
 
-              categoryController.text = state.category.name ?? '';
-              categoryController.selection = TextSelection.collapsed(
-                offset: state.category.name?.length ?? 0,
-              );
-
-              descController.text = state.category.description ?? '';
-              descController.selection = TextSelection.collapsed(
-                offset: state.category.description?.length ?? 0,
-              );
-            }
-          },
-          builder: (context, state) {
-            return ScreenTypeLayout.builder(
-              mobile: (p0) => Scaffold(
-                appBar: context.materialYouAppBar(
+                      BlocProvider.of<CategoryBloc>(context)
+                          .add(AddOrUpdateCategoryEvent(isAddCategory));
+                    },
+                    title: isAddCategory ? context.loc.add : context.loc.update,
+                  ),
+                ),
+              ),
+            ),
+            tablet: (p0) => Scaffold(
+              appBar: context.materialYouAppBar(
                   isAddCategory
                       ? context.loc.addCategory
                       : context.loc.updateCategory,
                   actions: [
                     DeleteCategoryWidget(categoryId: widget.categoryId),
-                  ],
-                ),
-                body: SingleChildScrollView(
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              const SizedBox(height: 16),
-                              CategoryNameWidget(
-                                  controller: categoryController),
-                              const SizedBox(height: 16),
-                              CategoryDescriptionWidget(
-                                controller: descController,
-                              ),
-                              const SizedBox(height: 16),
-                            ],
-                          ),
-                        ),
-                        const CategoryIconPickerWidget(),
-                        const CategoryColorWidget(),
-                        SetBudgetWidget(controller: budgetController),
-                        const TransferCategoryWidget(),
-                      ],
-                    ),
-                  ),
-                ),
-                bottomNavigationBar: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: PaisaBigButton(
+                    PaisaButton(
                       onPressed: () {
                         final isValid = _formKey.currentState!.validate();
                         if (!isValid) {
@@ -152,66 +170,40 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                       title:
                           isAddCategory ? context.loc.add : context.loc.update,
                     ),
-                  ),
+                    const SizedBox(width: 16),
+                  ]),
+              body: Form(
+                key: _formKey,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          const CategoryIconPickerWidget(),
+                          const ColorPickerWidget(),
+                          SetBudgetWidget(controller: budgetController),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 24),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          CategoryNameWidget(controller: categoryController),
+                          const SizedBox(height: 16),
+                          CategoryDescriptionWidget(controller: descController),
+                          const SizedBox(height: 16),
+                          const TransferCategoryWidget(),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              tablet: (p0) => Scaffold(
-                appBar: context.materialYouAppBar(
-                    isAddCategory
-                        ? context.loc.addCategory
-                        : context.loc.updateCategory,
-                    actions: [
-                      DeleteCategoryWidget(categoryId: widget.categoryId),
-                      PaisaButton(
-                        onPressed: () {
-                          final isValid = _formKey.currentState!.validate();
-                          if (!isValid) {
-                            return;
-                          }
-
-                          BlocProvider.of<CategoryBloc>(context)
-                              .add(AddOrUpdateCategoryEvent(isAddCategory));
-                        },
-                        title: isAddCategory
-                            ? context.loc.add
-                            : context.loc.update,
-                      ),
-                      const SizedBox(width: 16),
-                    ]),
-                body: Form(
-                  key: _formKey,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          children: [
-                            const CategoryIconPickerWidget(),
-                            const ColorPickerWidget(),
-                            SetBudgetWidget(controller: budgetController),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 24),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            CategoryNameWidget(controller: categoryController),
-                            const SizedBox(height: 16),
-                            CategoryDescriptionWidget(
-                                controller: descController),
-                            const SizedBox(height: 16),
-                            const TransferCategoryWidget(),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

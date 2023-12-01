@@ -15,33 +15,30 @@ class AccountsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: const Key('accounts_mobile'),
-      body: ValueListenableBuilder<Box<dynamic>>(
-        valueListenable: getIt
-            .get<Box<dynamic>>(instanceName: BoxType.settings.name)
-            .listenable(keys: [userAccountsStyleKey]),
-        builder: (_, settings, __) {
-          return ValueListenableBuilder<Box<AccountModel>>(
-            valueListenable: getIt.get<Box<AccountModel>>().listenable(),
-            builder: (_, value, __) {
-              final List<AccountEntity> accounts = value.toEntities();
-              if (accounts.isEmpty) {
-                return EmptyWidget(
-                  icon: Icons.credit_card,
-                  title: context.loc.emptyAccountMessageTitle,
-                  description: context.loc.emptyAccountMessageSubTitle,
-                );
-              }
-              if (settings.get(userAccountsStyleKey, defaultValue: false)) {
-                return AccountMobileHorizontalPage(accounts: accounts);
-              } else {
-                return AccountMobileVerticalPage(accounts: accounts);
-              }
-            },
-          );
-        },
-      ),
+    return ValueListenableBuilder<Box<dynamic>>(
+      valueListenable: getIt
+          .get<Box<dynamic>>(instanceName: BoxType.settings.name)
+          .listenable(keys: [userAccountsStyleKey]),
+      builder: (_, settings, __) {
+        return ValueListenableBuilder<Box<AccountModel>>(
+          valueListenable: getIt.get<Box<AccountModel>>().listenable(),
+          builder: (_, value, __) {
+            final List<AccountEntity> accounts = value.toEntities();
+            if (accounts.isEmpty) {
+              return EmptyWidget(
+                icon: Icons.credit_card,
+                title: context.loc.emptyAccountMessageTitle,
+                description: context.loc.emptyAccountMessageSubTitle,
+              );
+            }
+            if (settings.get(userAccountsStyleKey, defaultValue: false)) {
+              return AccountMobileHorizontalPage(accounts: accounts);
+            } else {
+              return AccountMobileVerticalPage(accounts: accounts);
+            }
+          },
+        );
+      },
     );
   }
 }
