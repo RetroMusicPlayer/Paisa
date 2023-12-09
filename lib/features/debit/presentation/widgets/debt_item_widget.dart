@@ -177,7 +177,7 @@ class DebtItemWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       child: LinearProgressIndicator(
                         value: progress,
-                        backgroundColor: context.secondaryContainer,
+                        backgroundColor: context.onSecondaryContainer,
                       ),
                     ),
                   ),
