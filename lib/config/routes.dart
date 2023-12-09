@@ -81,7 +81,8 @@ final GoRouter goRouter = GoRouter(
                 state.uri.queryParameters['type'];
             final String? accountId = state.uri.queryParameters['aid'];
             final String? categoryId = state.uri.queryParameters['cid'];
-            final int typeInt = int.tryParse(transactionTypeString ?? '') ?? 0;
+            final int typeInt = int.tryParse(transactionTypeString ?? '') ??
+                1; // 1 is for expenses
             final TransactionType transactionType =
                 TransactionType.values[typeInt];
             return BlocProvider(
