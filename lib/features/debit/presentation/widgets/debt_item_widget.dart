@@ -139,7 +139,7 @@ class DebtItemWidget extends StatelessWidget {
             value.getTransactionsFromId(debt.superId ?? 0);
         final double amount = transactions.fold<double>(0,
             (previousValue, element) => previousValue + (element.amount ?? 0));
-        double progress = amount == 0 ? 1 : amount / (debt.amount ?? 1);
+        double progress = amount / (debt.amount ?? 1);
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: PaisaFilledCard(
