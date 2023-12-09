@@ -167,7 +167,7 @@ class DebtItemWidget extends StatelessWidget {
                       ),
                     ),
                     trailing: Text(
-                      (debt.amount ?? 0 - amount).toFormateCurrency(context),
+                      ((debt.amount ?? 0) - amount).toFormateCurrency(context),
                       style: context.titleLarge?.copyWith(),
                     ),
                   ),
