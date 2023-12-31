@@ -1,1060 +1,218 @@
 {
   "appTitle": "Paisa",
-  "@appTitle": {
-    "description": "Назва додатку",
-    "type": "text"
-  },
   "home": "Головна",
-  "@home": {
-    "description": "Текст головної сторінки, відображений у нижній навігації або віджеті меню",
-    "type": "text"
-  },
   "transactions": "Транзакції",
-  "@transactions": {
-    "description": "Заголовок розділу, відображений на головній сторінці",
-    "type": "text"
-  },
   "welcomeMessage": "Ласкаво просимо назад!",
-  "@welcomeMessage": {
-    "description": "Текст, відображений на головному екрані під ім'ям користувача",
-    "type": "text"
-  },
   "categories": "Категорії",
-  "@categories": {
-    "description": "Текст категорій, відображений у нижній навігації або віджеті меню",
-    "type": "text"
-  },
   "accounts": "Рахунки",
-  "@accounts": {
-    "description": "Текст рахунків, відображений у нижній навігації або віджеті меню",
-    "type": "text"
-  },
   "budget": "Бюджет",
-  "@budget": {
-    "description": "Текст бюджету, відображений у нижній навігації або віджеті меню",
-    "type": "text"
-  },
   "overview": "Огляд",
-  "@overview": {
-    "description": "Текст огляду, відображений у нижній навігації або віджеті меню",
-    "type": "text"
-  },
   "defaultAccount": "Типовий рахунок",
-  "@defaultAccount": {
-    "description": "Текст, відображений на перемикачі на екрані додавання рахунку",
-    "type": "text"
-  },
   "recurring": "Періодичні витрати",
-  "@recurring": {
-    "description": "Текст періодичних витрат, відображений у нижній навігації або віджеті меню та заголовку сторінки періодичних витрат",
-    "type": "text"
-  },
   "debts": "Заборгованість",
-  "@debts": {
-    "description": "Текст заборгованості, відображений у нижній навігації або віджеті меню",
-    "type": "text"
-  },
   "addTransactionTooltip": "Додати транзакцію",
-  "@addTransactionTooltip": {
-    "description": "Підказка, відображена на головному екрані кнопки fab",
-    "type": "text"
-  },
   "addAccountTooltip": "Додати рахунок",
-  "@addAccountTooltip": {
-    "description": "Підказка, відображена на головному екрані кнопки fab рахунку",
-    "type": "text"
-  },
   "addCategoryTooltip": "Додати категорію",
-  "@addCategoryTooltip": {
-    "description": "Підказка, відображена на головному екрані кнопки fab категорії",
-    "type": "text"
-  },
   "addDebtTooltip": "Додати заборгованість",
-  "@addDebtTooltip": {
-    "description": "Підказка, відображена на головному екрані кнопки fab для заборгованості",
-    "type": "text"
-  },
   "addRecurringTooltip": "Додати періодичні витрати",
-  "@addRecurringTooltip": {
-    "description": "Підказка, відображена на головному екрані кнопки fab для періодичних витрат",
-    "type": "text"
-  },
   "selectDateRangeTooltip": "Діапазон дат",
-  "@selectDate": {
-    "description": "Підказка, відображена на головному екрані кнопки fab для огляду",
-    "type": "text"
-  },
   "transactionSubTittleText": "{bankName} • {dateString}",
-  "@transactionSubTittleText": {
-    "description": "Підказка, відображена на головному екрані кнопки fab для огляду",
-    "type": "text",
-    "placeholders": {
-      "bankName": {
-        "type": "String"
-      },
-      "dateString": {
-        "type": "String"
-      }
-    }
-  },
   "addCategory": "Додати категорію",
-  "@addCategory": {
-    "description": "Текст, відображений на панелі інструментів на сторінці категорій",
-    "type": "text"
-  },
   "addCategoryEmptyTitle": "Немає категорій",
-  "@addCategoryEmptyTitle": {
-    "description": "Заголовок тексту, відображеного на сторінці витрат, коли немає доступних категорій",
-    "type": "text"
-  },
   "addCategoryEmptySubTitle": "Додайте категорії для вибору",
-  "@addCategoryEmptySubTitle": {
-    "description": "Підзаголовок тексту, відображеного на сторінці витрат, коли немає доступних категорій",
-    "type": "text"
-  },
   "addAccountEmptyTitle": "Немає рахунків",
-  "@addAccountEmptyTitle": {
-    "description": "Заголовок тексту, відображеного на сторінці витрат, коли немає доступних рахунків",
-    "type": "text"
-  },
   "addAccountEmptySubTitle": "Додайте рахунок для вибору",
-  "@addAccountEmptySubTitle": {
-    "description": "Підзаголовок тексту, відображеного на сторінці витрат, коли немає доступних рахунків",
-    "type": "text"
-  },
   "addTransaction": "Додати транзакцію",
-  "@addTransaction": {
-    "description": "Текст додаваної транзакції, відображений на сторінці транзакцій у вигляді заголовка панелі інструментів",
-    "type": "text"
-  },
   "updateTransaction": "Оновити транзакцію",
-  "@updateTransaction": {
-    "description": "Текст оновленої транзакції, відображений на сторінці транзакцій у вигляді заголовка панелі інструментів",
-    "type": "text"
-  },
   "addedTransaction": "Транзакцію додано",
-  "@addedTransaction": {
-    "description": "Повідомлення про успішне додавання транзакції",
-    "type": "text"
-  },
   "updatedTransaction": "Транзакцію оновлено",
-  "@updatedTransaction": {
-    "description": "Повідомлення про успішне оновлення транзакції",
-    "type": "text"
-  },
   "deletedTransaction": "Транзакцію видалено",
-  "@deletedTransaction": {
-    "description": "Повідомлення про успішне видалення транзакції",
-    "type": "text"
-  },
   "expenseName": "Назва витрати",
-  "@expenseName": {
-    "description": "Текст, відображений у підказці для вводу назви витрати",
-    "type": "text"
-  },
   "description": "Опис",
-  "@description": {
-    "description": "Текст, відображений на текстовому полі сторінки транзакції для опису",
-    "type": "text"
-  },
   "selectAccount": "Вибрати рахунок",
-  "@selectAccount": {
-    "description": "Текст заголовка розділу, відображений на сторінці транзакцій для рахунків",
-    "type": "text"
-  },
   "selectCategory": "Вибрати категорію",
-  "@selectCategory": {
-    "description": "Текст заголовка розділу, відображений на сторінці транзакцій для категорій",
-    "type": "text"
-  },
   "settings": "Налаштування",
-  "@settings": {
-    "description": "Текст, відображений на кнопці бічного меню",
-    "type": "text"
-  },
   "localApp": "Розблокування за допомогою відбитка пальця",
-  "@localApp": {
-    "description": "Текст, відображений на кнопці біометричних налаштувань на сторінці налаштувань",
-    "type": "text"
-  },
   "expense": "Витрати",
-  "@expense": {
-    "description": "Текст, відображений на кількох місцях",
-    "type": "text"
-  },
   "transfer": "Переказ",
-  "@transfer": {
-    "description": "Текст, відображений на кількох місцях",
-    "type": "text"
-  },
   "daily": "Щоденно",
-  "@daily": {
-    "description": "Текст, відображений у фільтрі витрат",
-    "type": "text"
-  },
   "weekly": "Щотижня",
-  "@weekly": {
-    "description": "Текст, відображений у фільтрі витрат",
-    "type": "text"
-  },
   "monthly": "Щомісяця",
-  "@monthly": {
-    "description": "Текст, відображений у фільтрі витрат",
-    "type": "text"
-  },
   "yearly": "Щорічно",
-  "@yearly": {
-    "description": "Текст, відображений у фільтрі витрат",
-    "type": "text"
-  },
   "all": "Усе",
-  "@all": {
-    "description": "Текст, відображений у фільтрі витрат",
-    "type": "text"
-  },
   "updateAccount": "Оновити рахунок",
-  "@updateAccount": {
-    "description": "Текст оновлення рахунку, відображений на сторінці транзакцій у вигляді заголовка панелі інструментів",
-    "type": "text"
-  },
   "addAccount": "Додати рахунок",
-  "@addAccount": {
-    "description": "Текст додавання рахунку, відображений на сторінці транзакцій у вигляді заголовка панелі інструментів",
-    "type": "text"
-  },
   "transactionHistory": "Історія транзакцій",
-  "@transactionHistory": {
-    "description": "Текст заголовка розділу, відображений на сторінці рахунків як заголовок розділу",
-    "type": "text"
-  },
   "cash": "Готівка",
-  "@cash": {
-    "description": "Текст, відображений на кнопці чіпа сторінки рахунку",
-    "type": "text"
-  },
   "bank": "Банк",
-  "@bank": {
-    "description": "Текст, відображений на кнопці чіпа сторінки рахунку",
-    "type": "text"
-  },
   "wallet": "Гаманець",
-  "@wallet": {
-    "description": "Текст, відображений на кнопці чіпа сторінки рахунку",
-    "type": "text"
-  },
   "cardHolder": "Ім'я власника картки",
-  "@cardHolder": {
-    "description": "Текст, відображений на сторінці рахунку як підказка для текстового поля",
-    "type": "text"
-  },
   "accountName": "Назва рахунку",
-  "@accountName": {
-    "description": "Текст, відображений на сторінці рахунку як підказка для текстового поля",
-    "type": "text"
-  },
   "lastFourDigit": "Останні чотири цифри",
-  "@lastFourDigit": {
-    "description": "Текст, відображений на сторінці рахунку як підказка для текстового поля",
-    "type": "text"
-  },
   "addedAccount": "Рахунок додано",
-  "@addedAccount": {
-    "description": "Повідомлення про успішне додавання рахунку",
-    "type": "text"
-  },
   "updatedAccount": "Рахунок оновлено",
-  "@updatedAccount": {
-    "description": "Повідомлення про успішне оновлення рахунку",
-    "type": "text"
-  },
   "deletedAccount": "Рахунок видалено",
-  "@deletedAccount": {
-    "description": "Повідомлення про успішне видалення рахунку",
-    "type": "text"
-  },
   "deletedCategory": "Категорію видалено",
-  "@deletedCategory": {
-    "description": "Повідомлення про успішне видалення категорії",
-    "type": "text"
-  },
   "successAddCategory": "Категорію додано",
-  "@successAddCategory": {
-    "description": "Повідомлення про успішне додавання категорії",
-    "type": "text"
-  },
   "validName": "Введіть дійсне ім'я",
-  "@validName": {
-    "description": "Повідомлення про помилку, відображене при введенні імені, яке не є дійсним",
-    "type": "text"
-  },
   "profile": "Профіль",
-  "@profile": {
-    "description": "Текст, відображений у діалозі з нижнього аркушу",
-    "type": "text"
-  },
   "chooseTheme": "Вибрати тему",
-  "@chooseTheme": {
-    "description": "Текст заголовка теми на сторінці налаштувань для вибору теми",
-    "type": "text"
-  },
   "selectCurrency": "Вибрати валюту",
-  "@selectCurrency": {
-    "description": "Текст заголовка панелі інструментів для вибору валюти",
-    "type": "text"
-  },
   "errorAuth": "Помилка автентифікації",
-  "@errorAuth": {
-    "description": "Повідомлення про помилку, відображене при невдалій біометричній аутентифікації"
-  },
   "emptyAccountMessageTitle": "Аккаунти не доступні",
-  "@emptyAccountMessageTitle": {
-    "description": "Текст заголовка повідомлення, який відображається на сторінці облікових записів",
-    "type": "text"
-  },
   "emptyAccountMessageSubTitle": "Додайте рахунок, щоб відображати його тут",
-  "@emptyAccountMessageSubTitle": {
-    "description": "Текст підзаголовка повідомлення, відображений на сторінці рахунків",
-    "type": "text"
-  },
   "emptyCategoriesMessageTitle": "Немає доступних категорій",
-  "@emptyCategoriesMessageTitle": {
-    "description": "Текст заголовка повідомлення, відображений на сторінці категорій, коли немає доступних категорій",
-    "type": "text"
-  },
   "emptyCategoriesMessageSubTitle": "Додайте категорію, щоб відображати її тут",
-  "@emptyCategoriesMessageSubTitle": {
-    "description": "Текст підзаголовка повідомлення, відображений на сторінці категорій, коли немає доступних категорій",
-    "type": "text"
-  },
   "emptyOverviewMessageTitle": "Немає даних для перегляду",
-  "@emptyOverviewMessageTitle": {
-    "description": "Повідомлення про відсутність огляду бюджету",
-    "type": "text"
-  },
   "emptyOverviewMessageSubtitle": "Щоб переглянути свій бюджет, додайте свої витрати",
-  "@emptyOverviewMessageSubtitle": {
-    "description": "Опис відсутності огляду бюджету",
-    "type": "text"
-  },
   "amount": "Сума",
-  "@amount": {
-    "description": "Текст, відображений на підказці для введення імені",
-    "type": "text"
-  },
   "initialAmount": "Початкова сума",
-  "@initialAmount": {
-    "description": "Текст, відображений на підказці для введення імені"
-  },
   "validAmount": "Введіть дійсну суму",
-  "@validAmount": {
-    "description": "Текст, відображений на підказці для введення імені",
-    "type": "text"
-  },
   "dueDate": "Дата закінчення",
-  "@dueDate": {
-    "description": "Текст, відображений на сторінці боргу/кредиту при виборі дати закінчення",
-    "type": "text"
-  },
   "startDate": "Дата початку",
-  "@startDate": {
-    "description": "Текст, відображений на сторінці боргу/кредиту при виборі дати початку",
-    "type": "text"
-  },
   "socialLinks": "Соціальні посилання",
-  "@socialLinks": {
-    "description": "Текст заголовка, відображений на сторінці налаштувань",
-    "type": "text"
-  },
   "telegram": "Telegram",
-  "@telegram": {
-    "description": "Текст заголовка на сторінці налаштувань для кнопки Telegram",
-    "type": "text"
-  },
   "telegramGroup": "Група для відстеження та публікації помилок та запитань про функції",
-  "@telegramGroup": {
-    "description": "Текст підзаголовка на сторінці налаштувань для кнопки Telegram",
-    "type": "text"
-  },
   "privacyPolicy": "Політика конфіденційності",
-  "@privacyPolicy": {
-    "description": "Текст заголовка на сторінці налаштувань для кнопки політики конфіденційності",
-    "type": "text"
-  },
   "github": "GitHub",
-  "@github": {
-    "description": "Текст заголовка на сторінці налаштувань для кнопки GitHub ",
-    "type": "text"
-  },
   "githubText": "Розгалужуйте проект на GitHub",
-  "@githubText": {
-    "description": "Текст підзаголовка на кнопці GitHub",
-    "type": "text"
-  },
   "version": "Версія",
-  "@version": {
-    "description": "Текст заголовка на сторінці налаштувань для кнопки",
-    "type": "text"
-  },
   "versionNumber": "v{version}",
-  "@versionNumber": {
-    "description": "Текст підзаголовка на сторінці налаштувань для кнопки",
-    "placeholders": {
-      "version": {
-        "type": "String"
-      }
-    }
-  },
   "deleteAccount": "Видалення рахунку видаляє всі витрати, пов'язані з цим рахунком",
-  "@deleteAccount": {
-    "description": "Повідомлення про видалення рахунку",
-    "type": "text"
-  },
   "deleteCategory": "Видалення категорії видаляє всі витрати, пов'язані з цією категорією",
-  "@deleteCategory": {
-    "description": "Повідомлення про видалення категорії",
-    "type": "text"
-  },
   "deleteExpense": "Витрата буде остаточно видалена з рахунку",
-  "@deleteExpense": {
-    "description": "Повідомлення про видалення витрати",
-    "type": "text"
-  },
   "dialogDeleteTitle": "Остаточно видалити?",
-  "@dialogDeleteTitle": {
-    "description": "Остаточне видалення",
-    "type": "text"
-  },
   "updatedCategory": "Категорія оновлена",
-  "@updatedCategory": {
-    "description": "Успішне повідомлення при оновленні категорії",
-    "type": "text"
-  },
   "update": "Оновити",
-  "@update": {
-    "description": "Текст, відображений в кількох місцях на кнопці",
-    "type": "text"
-  },
   "add": "Додати",
-  "@add": {
-    "description": "Текст, відображений в кількох місцях на кнопці",
-    "type": "text"
-  },
   "done": "Готово",
-  "@done": {
-    "description": "Текст, відображений в кількох місцях на кнопці",
-    "type": "text"
-  },
   "cancel": "Скасувати",
-  "@cancel": {
-    "description": "Текст, відображений в кількох місцях на кнопці",
-    "type": "text"
-  },
   "custom": "Користувацька",
-  "@custom": {
-    "description": "Текст, відображений на одному з варіантів теми",
-    "type": "text"
-  },
   "accentColor": "Основний колір",
-  "@accentColor": {
-    "description": "Текст заголовка на сторінці налаштувань теми",
-    "type": "text"
-  },
   "dynamicColor": "Динамічний",
-  "@dynamicColor": {
-    "description": "Текст, відображений на кнопці перемикача опцій теми",
-    "type": "text"
-  },
   "pickColor": "Вибрати колір",
-  "@pickColor": {
-    "description": "Текст заголовка на виборі кольору",
-    "type": "text"
-  },
   "pickColorDesc": "Встановіть колір для вашої категорії",
-  "@pickColorDesc": {
-    "description": "Текст підзаголовка на кнопці вибору кольору категорії",
-    "type": "text"
-  },
   "pickColorAccountDesc": "Встановіть колір для вашого рахунку",
-  "@pickColorAccountDesc": {
-    "description": "Текст підзаголовка на кнопці вибору кольору рахунку",
-    "type": "text"
-  },
   "colors": "Кольори",
-  "@colors": {
-    "description": "Заголовок розділу на сторінці налаштувань для теми",
-    "type": "text"
-  },
   "others": "Інше",
-  "@others": {
-    "description": "Заголовок розділу на сторінці налаштувань для теми",
-    "type": "text"
-  },
   "madeWithLoveInIndia": "Зроблено з ♥ в Індії",
-  "@madeWithLoveInIndia": {
-    "description": "Повідомлення, відображене внизу екрану налаштувань",
-    "type": "text"
-  },
   "updateCategory": "Оновити категорію",
-  "@updateCategory": {
-    "description": "Текст, відображений на панелі інструментів екрану додавання категорії",
-    "type": "text"
-  },
   "accountInformationTitle": "Інформація",
-  "@accountInformationTitle": {
-    "description": "Текст заголовка на інформаційному діалозі",
-    "type": "text"
-  },
   "accountInformationSubTitle": "Деталі рахунку, які ви ввели, не передаються нікому, включаючи нас. Їх використовується лише для візуального представлення деталей рахунку, ви також можете ввести хибну інформацію",
-  "@accountInformationSubTitle": {
-    "description": "Текст підзаголовка на інформаційному діалозі",
-    "type": "text"
-  },
   "next": "Далі",
-  "@next": {
-    "description": "Текст, відображений на кнопці сторінки введення імені",
-    "type": "text"
-  },
   "image": "Зображення",
-  "@image": {
-    "description": "Текст, відображений на сторінці введення імені",
-    "type": "text"
-  },
   "welcome": "Привіт, ласкаво просимо до",
-  "@welcome": {
-    "description": "Повідомлення на сторінці введення імені",
-    "type": "text"
-  },
   "welcomeDesc": "Як ми можемо до вас звертатися?",
-  "@welcomeDesc": {
-    "description": "Опис привітання",
-    "type": "text"
-  },
   "nameHint": "Ім'я",
-  "@nameHint": {
-    "description": "Підказка для введення імені",
-    "type": "text"
-  },
   "enterNameHint": "Введіть ім'я",
-  "@enterNameHint": {
-    "description": "Підказка для введення тексту - ім'я",
-    "type": "text"
-  },
   "imageDesc": "Встановіть зображення вас",
-  "@imageDesc": {
-    "description": "Опис зображення",
-    "type": "text"
-  },
   "setBudget": "Встановіть бюджет для категорії",
-  "@setBudget": {
-    "description": "Текст, який відображається на екрані категорій для встановлення бюджету",
-    "type": "text"
-  },
   "income": "Дохід",
-  "@income": {
-    "description": "Текст, який відображається на кількох місцях",
-    "type": "text"
-  },
   "thisMonth": "Цей місяць",
-  "@thisMonth": {
-    "description": "Текст, який відображається у верхній частині домашнього екрану",
-    "type": "text"
-  },
   "totalBalance": "Загальний баланс",
-  "@totalBalance": {
-    "description": "Текст, який відображається у верхній частині домашнього екрану",
-    "type": "text"
-  },
   "ok": "Добре",
-  "@ok": {
-    "description": "Текст, який відображається на кнопці",
-    "type": "text"
-  },
   "searchMessage": "Почніть щось шукати!",
-  "@searchMessage": {
-    "description": "Повідомлення, яке відображається на екрані пошуку",
-    "type": "text"
-  },
   "emptySearchMessage": "Здається, нічого не знайдено!",
-  "@emptySearchMessage": {
-    "description": "Повідомлення, яке відображається на екрані пошуку",
-    "type": "text"
-  },
   "emptyExpensesMessageTitle": "Ще немає витрат?",
-  "@emptyExpensesMessageTitle": {
-    "description": "Заголовок, який відображається на сторінці, коли немає витрат",
-    "type": "text"
-  },
   "emptyExpensesMessageSubTitle": "Якщо немає витрат, почніть з додавання витрат, щоб побачити їх тут",
-  "@emptyExpensesMessageSunTitle": {
-    "description": "Підзаголовок, який відображається на сторінці, коли немає витрат",
-    "type": "text"
-  },
   "selectIconTitle": "Виберіть значок",
-  "@selectIconTitle": {
-    "description": "Текст заголовка, який відображається на кнопці на сторінці категорій",
-    "type": "text"
-  },
   "selectIconSubTitle": "Натисніть, щоб вибрати значок",
-  "@selectIconSubTitle": {
-    "description": "Текст підзаголовка, який відображається на кнопці на сторінці категорій",
-    "type": "text"
-  },
   "incomeName": "Назва доходу",
-  "@incomeName": {
-    "description": "Текст, який відображається на підказці введення",
-    "type": "text"
-  },
   "currencySign": "Знак валюти",
-  "@currencySign": {
-    "description": "Текст, який відображається на кнопці на екрані налаштувань",
-    "type": "text"
-  },
   "calendarFormat": "Формат календаря",
-  "@calendarFormat": {
-    "description": "Текст, який відображається на кнопці на екрані налаштувань",
-    "type": "text"
-  },
   "expenseByCategory": "Витрати за категорією",
-  "@expenseByCategory": {
-    "description": "Текст, який відображається у заголовку панелі інструментів",
-    "type": "text"
-  },
   "transactionsByCategory": "Операції за категорією",
-  "@transactionsByCategory": {
-    "description": "Текст, який відображається у заголовку панелі інструментів",
-    "type": "text"
-  },
   "backupAndRestoreTitle": "Резервне копіювання та відновлення",
-  "@backupAndRestoreTitle": {
-    "description": "Текст, який відображається у заголовку панелі інструментів",
-    "type": "text"
-  },
   "backupAndRestoreSubTitle": "Резервне копіювання та відновлення витрат, рахунків та категорій",
-  "@backupAndRestoreSubTitle": {
-    "description": "Текст підзаголовка, який відображається на кнопці налаштувань",
-    "type": "text"
-  },
   "exportData": "Експорт",
-  "@exportData": {
-    "description": "Текст, який відображається на кнопці імпорту та експорту",
-    "type": "text"
-  },
   "importData": "Імпорт",
-  "@importData": {
-    "description": "Текст, який відображається на кнопці імпорту та експорту",
-    "type": "text"
-  },
   "creatingBackup": "Створення резервної копії",
-  "@creatingBackup": {
-    "description": "Повідомлення, яке відображається при ініціації резервного копіювання",
-    "type": "text"
-  },
   "creatingBackupSuccess": "Резервне копіювання успішне",
-  "@creatingBackupSuccess": {
-    "description": "Повідомлення, яке відображається при успішному імпортуванні файлу резервної копії",
-    "type": "text"
-  },
   "restoringBackup": "Відновлення резервної копії",
-  "@restoringBackup": {
-    "description": "Повідомлення, яке відображається при імпортуванні файлу резервної копії",
-    "type": "text"
-  },
   "restoringBackupSuccess": "Відновлення успішне",
-  "@restoringBackupSuccess": {
-    "description": "Повідомлення, яке відображається при успішному відновленні файлу резервної копії",
-    "type": "text"
-  },
   "saveAsCSV": "Зберегти як CSV",
-  "@saveAsCSV": {
-    "description": "Зберегти як CSV"
-  },
   "saveAsCSVDesc": "Експорт даних у формат файлу CSV",
-  "@saveAsCSVDesc": {
-    "description": "Зберегти як CSV"
-  },
   "appRate": "Оцініть додаток",
-  "@appRate": {
-    "description": "Оцінка"
-  },
   "appRateDesc": "Любите цей додаток? Дайте нам знати, як ми можемо поліпшити його на Google Play Store",
-  "@appRateDesc": {
-    "description": "Оцінка"
-  },
   "raiseABugOrRequest": "Підняти помилку чи запитання",
-  "@raiseABugOrRequest": {
-    "description": "Підняти помилку чи запитання"
-  },
   "raiseABugOrRequestDesc": "Виявили помилку чи потрібну можливість? Запитуйте!",
-  "@raiseABugOrRequestDesc": {
-    "description": "Виявили помилку чи потрібну можливість? Запитуйте!"
-  },
   "transferName": "Ім'я переказу",
-  "@transferName": {
-    "description": "Ім'я переказу"
-  },
   "debt": "Заборгованість",
-  "@debt": {
-    "description": "Заборгованості"
-  },
   "credit": "Кредит",
-  "@credit": {
-    "description": "Кредит"
-  },
   "enterCategory": "Введіть категорію",
-  "@enterCategory": {
-    "description": "Введіть категорію"
-  },
   "addDebt": "Додати заборгованість",
-  "@addDebt": {
-    "description": "Додати заборгованість"
-  },
   "addCredit": "Додати кредит",
-  "@addCredit": {
-    "description": "Додати кредит"
-  },
   "enterBudget": "Введіть бюджет",
-  "@enterBudget": {
-    "description": "Введіть бюджет"
-  },
   "enterDescription": "Введіть опис",
-  "@enterDescription": {
-    "description": "Введіть опис"
-  },
   "validDescription": "Введіть дійсний опис",
-  "@validDescription": {
-    "description": "Введіть дійсний опис"
-  },
   "payDebt": "Сплатити заборгованість",
-  "@payDebt": {
-    "description": "Сплатити заборгованість"
-  },
   "payCredit": "Сплатити кредит",
-  "@payCredit": {
-    "description": "Сплатити кредит"
-  },
   "enterAmount": "Введіть суму",
-  "@enterAmount": {
-    "description": "Введіть суму"
-  },
   "emptyDebts": "Наразі немає заборгованостей",
-  "@emptyDebts": {
-    "description": "Наразі немає заборгованостей"
-  },
   "emptyDebtsDesc": "Додайте свої заборгованості, щоб бачити їх тут",
-  "@emptyDebtsDesc": {
-    "description": "Додайте свої заборгованості тут, щоб бачити їх відображені "
-  },
   "emptyCredit": "Наразі немає кредитів",
-  "@emptyCredit": {
-    "description": "Наразі немає кредитів "
-  },
   "emptyCreditDesc": "Додайте свої кредити, щоб бачити їх тут",
-  "@emptyCreditDesc": {
-    "description": "Додайте свої кредити тут, щоб бачити їх відображені "
-  },
   "enterInitialAmount": "Введіть початкову суму",
-  "@enterInitialAmount": {
-    "description": "Введіть початкову суму "
-  },
   "enterNumberOptional": "Введіть останні 4 цифри (необов'язково)",
-  "@enterNumberOptional": {
-    "description": "Необов'язковий номер"
-  },
   "enterAccountName": "Введіть назву рахунку",
-  "@enterAccountName": {
-    "description": "Введіть назву рахунку "
-  },
   "enterCardHolderName": "Введіть ім'я власника картки",
-  "@enterCardHolderName": {
-    "description": "Введіть назву рахунку "
-  },
   "search": "Пошук",
-  "@search": {
-    "description": "Пошук "
-  },
   "addNew": "Додати нове",
-  "@addNew": {
-    "description": "Додати нове "
-  },
   "delete": "Видалити",
-  "@delete": {
-    "description": "Видалити "
-  },
   "appBarSearch": "Пошук витрат, рахунків, категорій",
-  "@appBarSearch": {
-    "description": "Видалити "
-  },
   "noTransaction": "Порожній список транзакцій",
-  "@noTransaction": {
-    "description": "Порожній список транзакцій"
-  },
   "enterSymbol": "Введіть символ",
-  "@enterSymbol": {
-    "description": "Введіть символ"
-  },
   "leftSymbol": "Символ зліва",
-  "@leftSymbol": {
-    "description": "Символ зліва "
-  },
   "rightSymbol": "Символ справа",
-  "@rightSymbol": {
-    "description": "Символ справа "
-  },
   "customSymbol": "Власний символ",
-  "@customSymbol": {
-    "description": "Власний символ "
-  },
   "intoTitle": "Простий спосіб допомогти контролювати ваші заощадження",
-  "@intoTitle": {
-    "description": "Текст заголовка, який відображається на сторінці вступу",
-    "type": "text"
-  },
   "intoSummary1": "Керуйте своїми грошима за допомогою нашого додатка",
-  "@intoSummary1": {
-    "description": "Підказка 1, яка відображається на сторінці вступу",
-    "type": "text"
-  },
   "intoSummary2": "Легке відстеження витрат для кращого бюджету",
-  "@intoSummary2": {
-    "description": "Підказка 2, яка відображається на сторінці вступу",
-    "type": "text"
-  },
   "intoSummary3": "Будьте в курсі своїх витрат в будь-який час і в будь-якому місці",
-  "@intoSummary3": {
-    "description": "Підказка 3, яка відображається на сторінці вступу",
-    "type": "text"
-  },
   "introCTA": "Почати",
-  "@introCTA": {
-    "description": "Текст, який відображається на кнопці екрану вступу",
-    "type": "text"
-  },
   "deleteDebtOrCredit": "Видалення заборгованості або кредиту призведе до видалення всіх записів, пов'язаних з ним",
-  "@deleteDebtOrCredit": {
-    "description": "Видалити заборгованість або кредит ",
-    "type": "text"
-  },
   "backupAndRestoreJSONTitle": "Експорт даних у форматі JSON-файлу",
-  "@backupAndRestoreJSONTitle": {
-    "description": "Текст заголовка розділу, який відображається на сторінці експорту та імпорту",
-    "type": "text"
-  },
   "backupAndRestoreJSONDesc": "Файл буде звичайним JSON-файлом, створеним і експортованим для збереження. Зверніть увагу, що, якщо у майбутньому відбудуться зміни в Paisa, то цей файл буде недійсним для імпорту",
-  "@backupAndRestoreJSONDesc": {
-    "description": "Повідомлення, яке відображається на екрані імпорту та експорту",
-    "type": "text"
-  },
   "emptyBudgetMessageTitle": "Для жодної категорії не встановлено бюджету",
-  "@emptyBudgetMessageTitle": {
-    "description": "Текст заголовка, який відображається на екрані бюджету, коли бюджети недоступні",
-    "type": "text"
-  },
   "emptyBudgetMessageSubTitle": "Встановіть бюджет для будь-якої категорії, і ця категорія з'явиться тут",
-  "@emptyBudgetMessageSubTitle": {
-    "description": "Текст підзаголовка, який відображається на екрані бюджету, коли бюджети недоступні",
-    "type": "text"
-  },
   "recurringEmptyMessageTitle": "Немає повторюючихся подій?",
-  "@recurringEmptyMessageTitle": {
-    "description": "Текст заголовка, який відображається на екрані повторюючихся подій, коли події відсутні",
-    "type": "text"
-  },
   "recurringEmptyMessageSubTitle": "Додайте повторюючі події, щоб переглядати їх тут",
-  "@recurringEmptyMessageSubTitle": {
-    "description": "Текст підзаголовка, який відображається на екрані повторюючихся подій, коли події відсутні",
-    "type": "text"
-  },
   "recurringAction": "Додати повторюючі події",
-  "@recurringAction": {
-    "description": "Текст, який відображається на кнопці дії повторюючих подій",
-    "type": "text"
-  },
   "sortList": "Сортувати список",
-  "@sortList": {
-    "description": "Текст заголовка, який відображається на діалозі сортування",
-    "type": "text"
-  },
   "smallSizeFab": "Кнопка дії малого розміру",
-  "@smallSizeFab": {
-    "description": "Текст заголовка, який відображається на сторінці налаштувань для опції розміру кнопки дії",
-    "type": "text"
-  },
   "smallSizeFabMessage": "Показати кнопку дії малого розміру на всіх екранах",
-  "@smallSizeFabMessage": {
-    "description": "Текст заголовка, який відображається на сторінці налаштувань для опції розміру кнопки дії",
-    "type": "text"
-  },
   "selectDateErrorMessage": "Виберіть дату",
-  "@selectDateErrorMessage": {
-    "description": "Повідомлення, яке відображається, коли дата не вибрана при виплаті боргу",
-    "type": "text"
-  },
   "edit": "Редагувати",
-  "@edit": {
-    "description": "Текст, який відображається на кнопках",
-    "type": "text"
-  },
   "fromAccount": "Переказ рахунку з",
-  "@fromAccount": {
-    "description": "Текст, який відображається на секції заголовка рахунку в розділі переказу на сторінці транзакцій",
-    "type": "text"
-  },
   "toAccount": "Переказ рахунку до",
-  "@toAccount": {
-    "description": "Текст, який відображається на секції заголовка рахунку в розділі переказу на сторінці транзакцій",
-    "type": "text"
-  },
   "paisaLocked": "Paisa заблоковано",
-  "@paisaLocked": {
-    "description": "Текст, який відображається на секції заголовка екрана біометричного ідентифікації",
-    "type": "text"
-  },
   "authenticate": "Аутентифікуватися",
-  "@authenticate": {
-    "description": "Текст, який відображається на кнопці екрана біометричного ідентифікації",
-    "type": "text"
-  },
   "biometricMessage": "Доторкніться до сенсора відбитків пальців",
-  "@biometricMessage": {
-    "description": "Текст, який відображається на екрані біометричного ідентифікації під іконкою",
-    "type": "text"
-  },
   "addedCategories": "Додані категорії",
-  "@addedCategories": {
-    "description": "Текст, який відображається на заголовку розділу додавання категорії",
-    "type": "text"
-  },
   "back": "Назад",
-  "@back": {
-    "description": "Текст, який відображається на кнопці на екрані вступу",
-    "type": "text"
-  },
   "recommendedCategories": "Рекомендовані категорії",
-  "@recommendedCategories": {
-    "description": "Текст, який відображається на заголовку розділу додавання категорії",
-    "type": "text"
-  },
   "addedAccounts": "Вибрані рахунки",
-  "@addedAccounts": {
-    "description": "Текст, який відображається на заголовку розділу додавання рахунку",
-    "type": "text"
-  },
   "recommendedAccounts": "Рекомендовані рахунки",
-  "@recommendedAccounts": {
-    "description": "Текст, який відображається на заголовку розділу додавання рахунку",
-    "type": "text"
-  },
   "total": "Всього",
-  "@total": {
-    "description": "Текст, який відображається на підзаголовку екрану домашнього екрану на картці 'Всього'",
-    "type": "text"
-  },
   "colorsUI": "Кольори та інтерфейс",
-  "@colorsUI": {
-    "description": "Текст, який відображається на заголовку розділу на екрані налаштувань",
-    "type": "text"
-  },
   "more": "Більше",
-  "@more": {
-    "description": "Текст, який відображається на кнопці на екрані вибору іконки",
-    "type": "text"
-  },
   "chooseIcon": "Вибрати іконку",
-  "@chooseIcon": {
-    "description": "Текст заголовка, який відображається на екрані вибору іконки",
-    "type": "text"
-  },
   "transferCategory": "Перенести категорію",
-  "@transferCategory": {
-    "description": "Текст, який відображається на сторінці додавання категорії для додавання типової категорії",
-    "type": "text"
-  },
   "accountStyle": "Стиль рахунку",
-  "@accountStyle": {
-    "description": "Текст, який відображається на екрані налаштувань",
-    "type": "text"
-  },
   "accountStyleDescription": "Виберіть свій улюблений стиль відображення рахунку: вертикальний чи горизонтальний",
-  "@accountStyleDescription": {
-    "description": "Текст, який відображається на екрані налаштувань",
-    "type": "text"
-  },
   "supportMe": "Підтримати мене",
-  "@supportMe": {
-    "description": "Текст, який відображається на екрані налаштувань",
-    "type": "text"
-  },
   "supportMeDescription": "Якщо ви вважаєте, що я заслуговую на невеличку винагороду за свою важку роботу, ви можете купити мені віртуальне пиво",
-  "@supportMeDescription": {
-    "description": "Текст, який відображається на екрані налаштувань",
-    "@fontStyle": {
-      "description": "Текст, який відображається на екрані налаштувань",
-      "type": "text"
-    }
-  },
   "lockAppDescription": "Якщо ввімкнено, вам потрібно буде використовувати відбиток пальця, щоб відкрити Paisa.",
-  "@lockAppDescription": {
-    "description": "Текст, який відображається на сторінці налаштувань",
-    "type": "text"
-  },
   "fontStyle": "Стиль шрифту",
-  "@fontStyle": {
-      "description": "Текст, який відображається на сторінці налаштувань",
-      "type": "text"
-  },
   "fontStyleDescription": "Змініть стиль шрифту, щоб налаштувати зовнішній вигляд свого додатка. Виберіть з різних варіантів шрифтів для відповідності вашим уподобанням та покращення зручності читання.",
-  "@fontStyleDescription": {
-    "description": "Текст, який відображається на екрані налаштувань",
-    "type": "text"
-  },
   "chooseFont": "Виберіть шрифт",
-  "@chooseFont": {
-    "description": "Текст, який відображається на заголовку діалогового вікна вибору шрифту",
-    "type": "text"
-  },
   "chooseAppLanguage": "Виберіть мову",
-  "@chooseAppLanguage": {
-    "description": "Текст, який відображається на заголовку діалогового вікна вибору мови додатка",
-    "type": "text"
-  },
   "appLanguage": "Мова додатка",
-  "@appLanguage": {
-    "description": "Текст, який відображається на екрані налаштувань",
-    "type": "text"
-  },
   "excludeAccount": "Виключити рахунок",
-  "@excludeAccount": {
-    "description": "Текст, який відображається на сторінці додавання рахунку для виключення рахунку з обчислення загальної суми",
-    "type": "text"
-  },
   "accountNotFound": "Рахунок не знайдено!",
-  "@accountNotFound": {
-    "description": "Текст, який відображається на сповіщенні, коли рахунок не знайдено",
-    "type": "text"
-  },
   "bankNameError": "Встановіть назву банку",
-  "@bankNameError": {
-    "description": "Текст, який відображається на сповіщенні при додаванні рахунку",
-    "type": "text"
-  },
   "holderNameError": "Встановіть ім'я власника рахунку",
-  "@holderNameError": {
-    "description": "Текст, який відображається на сповіщенні при додаванні рахунку",
-    "type": "text"
-  },
   "accountColorError": "Встановіть назву кольору рахунку",
-  "@accountColorError": {
-    "description": "Текст, який відображається на сповіщенні при додаванні рахунку",
-    "type": "text"
-  },
   "emptySelectedAccountsInfo": "Виберіть рахунок зверху, щоб почати",
-  "@accountsIntroInfo": {
-    "description": "Текст, який відображається на екрані вступу, інформація про рахунки",
-    "type": "text"
-  },
-  "emptyrecommendedAccountsInfo": "Не залишилося рахунків для додавання",
-  "@emptyrecommendedAccountsInfo": {
-    "description": "Текст, який відображається на екрані вступу, інформація про рекомендовані рахунки",
-    "type": "text"
-  }
+  "emptyrecommendedAccountsInfo": "Не залишилося рахунків для додавання"
 }
