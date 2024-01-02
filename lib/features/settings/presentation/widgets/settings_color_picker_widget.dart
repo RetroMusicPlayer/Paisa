@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -74,7 +75,7 @@ class ColorPickerDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
+    if (!kIsWeb && Platform.isAndroid) {
       return FutureResolve<AndroidDeviceInfo>(
         future: DeviceInfoPlugin().androidInfo,
         builder: (info) {
