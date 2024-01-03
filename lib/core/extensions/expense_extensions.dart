@@ -91,6 +91,9 @@ extension ExpensesHelper on Iterable<TransactionEntity> {
   List<TransactionEntity> get incomeList =>
       where((element) => element.type == TransactionType.income).toList();
 
+  List<TransactionEntity> get transferList =>
+      where((element) => element.type == TransactionType.transfer).toList();
+
   List<TransactionEntity> isFilterTimeBetween(DateTimeRange range) =>
       where((element) => element.time!.isAfterBeforeTime(range)).toList();
 
@@ -106,12 +109,15 @@ extension ExpensesHelper on Iterable<TransactionEntity> {
           return previousValue;
         }
       });
-  double get fullTotal => totalIncome - totalExpense;
+  double get fullTotal => totalIncome - totalExpense + totalTransfer;
 
   double get totalExpense => expenseList.map((e) => e.currency).fold<double>(
       0, (previousValue, element) => previousValue + (element ?? 0));
 
   double get totalIncome => incomeList.map((e) => e.currency).fold<double>(
+      0, (previousValue, element) => previousValue + (element ?? 0));
+
+  double get totalTransfer => transferList.map((e) => e.currency).fold<double>(
       0, (previousValue, element) => previousValue + (element ?? 0));
 
   double get total => map((e) => e.currency).fold<double>(

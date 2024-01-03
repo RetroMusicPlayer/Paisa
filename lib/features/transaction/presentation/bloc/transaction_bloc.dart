@@ -127,11 +127,11 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       await addTransactionUseCase(AddTransactionParams(
         name:
             'Transfer from ${fromAccount!.bankName} to ${toAccount!.bankName}',
-        amount: validAmount,
+        amount: -validAmount,
         time: selectedDate,
         categoryId: categoryId,
         accountId: fromAccount!.superId!,
-        transactionType: TransactionType.expense,
+        transactionType: TransactionType.transfer,
         description: '',
       ));
 
@@ -142,7 +142,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
         time: selectedDate,
         categoryId: categoryId,
         accountId: toAccount!.superId!,
-        transactionType: TransactionType.income,
+        transactionType: TransactionType.transfer,
         description: '',
       ));
 
