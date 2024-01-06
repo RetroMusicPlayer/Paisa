@@ -46,44 +46,54 @@
 
 ### Expense Tracking
 
-- Tracking expenses, incomes & deposits
-- Account & budget wise overview
-- Manage categories
-  
-### Steps to translate
+- **Tracking expenses, incomes & deposits**: This feature allows users to record and monitor their financial activities. Users can log both expenses and income, as well as deposits made into their accounts. Each entry can be categorized for easy tracking and analysis.
 
-1. Create `.arb` file inside `lib/localization/app_<language_code>.arb` example `app_en.arb`
-2. Copy all transactions from `app_en.arb` to created file and remove all keys which annotates with `@`
-   From
+- **Account & budget wise overview**: This feature provides a comprehensive view of the user's financial situation. It shows the total balance across all accounts, as well as the progress towards individual budgets. This helps users understand their spending habits and plan their finances effectively.
 
-   ```json
-   {
-    "appTitle": "Paisa",
-    "@appTitle": {
-        "description": "The app name",
-        "type": "text",
-        "placeholders": {}
-    }
-   }
-    ```
+- **Manage categories**: This feature enables users to create custom categories for their expenses. These categories can be anything from groceries to entertainment to utilities. By grouping expenses into categories, users can easily identify areas where they might be overspending and take steps to reduce their costs.
 
-    To
+### Steps to Translate
 
-    ```json
-    {
-      "appTitle": "Paisa"
-    }
-    ```
+1. Create an `.arb` file inside `lib/localization/app_<language_code>.arb`. For example, `app_en.arb`.
 
-3. Run the app and check once
+2. Copy all transactions from `app_en.arb` to the newly created file and remove all keys which are annotated with `@`.
 
-### Steps to build project
+For instance, change this:
+
+```json
+ {
+ "appTitle": "Paisa",
+ "@appTitle": {
+     "description": "The app name",
+     "type": "text",
+     "placeholders": {}
+ }
+}
+ ```
+
+To this:
+
+```json
+{ "appTitle": "Paisa" }
+```
+
+3. Run the app and verify the changes.
+
+Sure, I can help you modify the instructions. Here's the updated version:
+
+### Steps to build and run the project
+
 1. Clone the Flutter Project:
-   * Use `git clone https://github.com/RetroMusicPlayer/Paisa.git` to download the project from the GitHub repository.
+    - Use the command `git clone https://github.com/RetroMusicPlayer/Paisa.git` to download the project from the GitHub repository.
+
 2. Install Dependencies:
-   * Navigate to the project directory and run `flutter pub get` to install the required dependencies.
-3. Run the App:
-   * Connect a device or emulator and run the app using `flutter run --flavor dev` or through your IDE.
+    - Navigate to the project directory and execute the command `flutter pub get` to install the required dependencies.
+
+3. Build the Project:
+    - Run the command `flutter pub run build_runner build` to generate necessary files for the project.
+
+4. Run the App:
+    - Connect a device or emulator and run the app using the command `flutter run --flavor dev` or through your IDE.
 
 ### Download
 
