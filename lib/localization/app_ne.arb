@@ -1,0 +1,1058 @@
+{
+    "appTitle": "Paisa",
+    "@appTitle": {
+        "description": "The app name",
+        "type": "text"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Home text shown in the bottom navigation or drawer widget",
+        "type": "text"
+    },
+    "transactions": "Transactions",
+    "@transactions": {
+        "description": "Section title shown on the home page",
+        "type": "text"
+    },
+    "welcomeMessage": "Welcome back!",
+    "@welcomeMessage": {
+        "description": "Text shown on the home screen under the user name",
+        "type": "text"
+    },
+    "categories": "Categories",
+    "@categories": {
+        "description": "Categories text shown in the bottom navigation or drawer widget",
+        "type": "text"
+    },
+    "accounts": "Accounts",
+    "@accounts": {
+        "description": "Accounts text shown in the bottom navigation or drawer widget",
+        "type": "text"
+    },
+    "budget": "Budget",
+    "@budget": {
+        "description": "Accounts text shown in the bottom navigation or drawer widget",
+        "type": "text"
+    },
+    "overview": "Overview",
+    "@overview": {
+        "description": "Accounts text shown in the bottom navigation or drawer widget",
+        "type": "text"
+    },
+    "defaultAccount": "Default account",
+    "@defaultAccount": {
+        "description": "Text shown on the switch in add account screen",
+        "type": "text"
+    },
+    "recurring": "Recurring",
+    "@recurring": {
+        "description": "Recurring text shown in the bottom navigation or drawer widget and recurring page toolbar title",
+        "type": "text"
+    },
+    "debts": "Debts",
+    "@debts": {
+        "description": "Debts text shown in the bottom navigation or drawer widget",
+        "type": "text"
+    },
+    "addTransactionTooltip": "Add transaction",
+    "@addTransactionTooltip": {
+        "description": "Tooltip shown on the home fab button",
+        "type": "text"
+    },
+    "addAccountTooltip": "Add account",
+    "@addAccountTooltip": {
+        "description": "Tooltip shown on the account fab button",
+        "type": "text"
+    },
+    "addCategoryTooltip": "Add category",
+    "@addCategoryTooltip": {
+        "description": "Tooltip shown on the category fab button",
+        "type": "text"
+    },
+    "addDebtTooltip": "Add debt",
+    "@addDebtTooltip": {
+        "description": "Tooltip shown on the category debt button",
+        "type": "text"
+    },
+    "addRecurringTooltip": "Add recurring",
+    "@addRecurringTooltip": {
+        "description": "Tooltip shown on the category recurring button",
+        "type": "text"
+    },
+    "selectDateRangeTooltip": "Date range",
+    "@selectDate": {
+        "description": "Tooltip shown on the overview fab button",
+        "type": "text"
+    },
+    "transactionSubTittleText": "{bankName} • {dateString}",
+    "@transactionSubTittleText": {
+        "description": "Tooltip shown on the overview fab button",
+        "type": "text",
+        "placeholders": {
+            "bankName": {
+                "type": "String"
+            },
+            "dateString": {
+                "type": "String"
+            }
+        }
+    },
+    "addCategory": "Add Category",
+    "@addCategory": {
+        "description": "Text shown on the toolbar on the category page",
+        "type": "text"
+    },
+    "addCategoryEmptyTitle": "No categories",
+    "@addCategoryEmptyTitle": {
+        "description": "Title text shown on the expense page when there is not categories available",
+        "type": "text"
+    },
+    "addCategoryEmptySubTitle": "Add categories to select",
+    "@addCategoryEmptySubTitle": {
+        "description": "Subtitle text shown on the expense page when there is not categories available",
+        "type": "text"
+    },
+    "addAccountEmptyTitle": "No accounts",
+    "@addAccountEmptyTitle": {
+        "description": "Title text shown on the expense page when there is not accounts available",
+        "type": "text"
+    },
+    "addAccountEmptySubTitle": "Add account to select",
+    "@addAccountEmptySubTitle": {
+        "description": "Subtitle text shown on the expense page when there is not accounts available",
+        "type": "text"
+    },
+    "addTransaction": "Add transaction",
+    "@addTransaction": {
+        "description": "Add transaction text shown on the transactions page as toolbar title",
+        "type": "text"
+    },
+    "updateTransaction": "Update transaction",
+    "@updateTransaction": {
+        "description": "Update transaction text shown on the transactions page as toolbar title",
+        "type": "text"
+    },
+    "addedTransaction": "Transaction added",
+    "@addedTransaction": {
+        "description": "Successful message when Transaction added",
+        "type": "text"
+    },
+    "updatedTransaction": "Transaction updated",
+    "@updatedTransaction": {
+        "description": "Successful message when Transaction updated",
+        "type": "text"
+    },
+    "deletedTransaction": "Transaction deleted",
+    "@deletedTransaction": {
+        "description": "Successful message when Transaction deleted",
+        "type": "text"
+    },
+    "expenseName": "Expense name",
+    "@expenseName": {
+        "description": "Text shown on input hint name",
+        "type": "text"
+    },
+    "description": "Description",
+    "@description": {
+        "description": "Text shown on the transaction page textfield description ",
+        "type": "text"
+    },
+    "selectAccount": "Select account",
+    "@selectAccount": {
+        "description": "Section title text shown on the transaction for accounts",
+        "type": "text"
+    },
+    "selectCategory": "Select category",
+    "@selectCategory": {
+        "description": "Section title text shown on the transaction for categories ",
+        "type": "text"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Text shown on the drawer button",
+        "type": "text"
+    },
+    "localApp": "Unlock with fingerprint",
+    "@localApp": {
+        "description": "Text shown on the settings page biometric button",
+        "type": "text"
+    },
+    "expense": "Expense",
+    "@expense": {
+        "description": "Text shown on the multiple places",
+        "type": "text"
+    },
+    "transfer": "Transfer",
+    "@transfer": {
+        "description": "Text shown on the multiple places",
+        "type": "text"
+    },
+    "daily": "Daily",
+    "@daily": {
+        "description": "Text shown on the expenses filter",
+        "type": "text"
+    },
+    "weekly": "Weekly",
+    "@weekly": {
+        "description": "Text shown on the expenses filter",
+        "type": "text"
+    },
+    "monthly": "Monthly",
+    "@monthly": {
+        "description": "Text shown on the expenses filter",
+        "type": "text"
+    },
+    "yearly": "Yearly",
+    "@yearly": {
+        "description": "Text shown on the expenses filter",
+        "type": "text"
+    },
+    "all": "All",
+    "@all": {
+        "description": "Text shown on the expenses filter",
+        "type": "text"
+    },
+    "updateAccount": "Update account",
+    "@updateAccount": {
+        "description": "Update account text shown on the transactions page as toolbar title",
+        "type": "text"
+    },
+    "addAccount": "Add Account",
+    "@addAccount": {
+        "description": "Add account text shown on the transactions page as toolbar title",
+        "type": "text"
+    },
+    "transactionHistory": "Transaction history",
+    "@transactionHistory": {
+        "description": "Title text shown on accounts page as section header title",
+        "type": "text"
+    },
+    "cash": "Cash",
+    "@cash": {
+        "description": "Text shown on the account page chip button",
+        "type": "text"
+    },
+    "bank": "Bank",
+    "@bank": {
+        "description": "Text shown on the account page chip button",
+        "type": "text"
+    },
+    "wallet": "Wallet",
+    "@wallet": {
+        "description": "Text shown on the account page chip button",
+        "type": "text"
+    },
+    "cardHolder": "Cardholder name",
+    "@cardHolder": {
+        "description": "Text shown on the account page as textfield hint",
+        "type": "text"
+    },
+    "accountName": "Account name",
+    "@accountName": {
+        "description": "Text shown on the account page as textfield hint",
+        "type": "text"
+    },
+    "lastFourDigit": "Last four digit number",
+    "@lastFourDigit": {
+        "description": "Text shown on the account page as textfield hint",
+        "type": "text"
+    },
+    "addedAccount": "Account added",
+    "@addedAccount": {
+        "description": "Successful message when account added",
+        "type": "text"
+    },
+    "updatedAccount": "Account updated",
+    "@updatedAccount": {
+        "description": "Successful message when account updated",
+        "type": "text"
+    },
+    "deletedAccount": "Account deleted",
+    "@deletedAccount": {
+        "description": "Successful message when account deleted",
+        "type": "text"
+    },
+    "deletedCategory": "Category deleted",
+    "@deletedCategory": {
+        "description": "Successful message when category deleted",
+        "type": "text"
+    },
+    "successAddCategory": "Category added",
+    "@successAddCategory": {
+        "description": "Successful message when category deleted",
+        "type": "text"
+    },
+    "validName": "Enter valid name",
+    "@validName": {
+        "description": "Error message shown when entered name is not valid",
+        "type": "text"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "Text shown on the bottom sheet dialog",
+        "type": "text"
+    },
+    "chooseTheme": "Choose theme",
+    "@chooseTheme": {
+        "description": "Title text shown on the settings page theme for theme chooser",
+        "type": "text"
+    },
+    "selectCurrency": "Select currency",
+    "@selectCurrency": {
+        "description": "Toolbar title text shown on choosing the currency",
+        "type": "text"
+    },
+    "errorAuth": "Authentication error",
+    "@errorAuth": {
+        "description": "Error message shown when biometric authentication fails",
+        "type": "text"
+    },
+    "emptyAccountMessageTitle": "No accounts are available",
+    "@emptyAccountMessageTitle": {
+        "description": "Message title text shown on the accounts page",
+        "type": "text"
+    },
+    "emptyAccountMessageSubTitle": "Add an account to display it here",
+    "@emptyAccountMessageSubTitle": {
+        "description": "Message sub title text shown on the accounts page",
+        "type": "text"
+    },
+    "emptyCategoriesMessageTitle": "No categories are available",
+    "@emptyCategoriesMessageTitle": {
+        "description": "Message title text shown on the categories page when no categories available",
+        "type": "text"
+    },
+    "emptyCategoriesMessageSubTitle": "Add a category to display it here",
+    "@emptyCategoriesMessageSubTitle": {
+        "description": "Message subtitle text shown on the categories page when no categories available",
+        "type": "text"
+    },
+    "emptyOverviewMessageTitle": "No overview data",
+    "@emptyOverviewMessageTitle": {
+        "description": "No overview data message",
+        "type": "text"
+    },
+    "emptyOverviewMessageSubtitle": "To see your spending overview, add your expenses",
+    "@emptyOverviewMessageSubtitle": {
+        "description": "No budget overview description ",
+        "type": "text"
+    },
+    "amount": "Amount",
+    "@amount": {
+        "description": "Text shown on the input hint name",
+        "type": "text"
+    },
+    "initialAmount": "Initial amount",
+    "@initialAmount": {
+        "description": "Text shown on the input hint name"
+    },
+    "validAmount": "Enter valid amount",
+    "@validAmount": {
+        "description": "Text shown on the input hint name",
+        "type": "text"
+    },
+    "dueDate": "End date",
+    "@dueDate": {
+        "description": "Text shown on the debt/ credit page when selecting end date",
+        "type": "text"
+    },
+    "startDate": "Start date",
+    "@startDate": {
+        "description": "Text shown on the debt/ credit page when selecting start date",
+        "type": "text"
+    },
+    "socialLinks": "Social links",
+    "@socialLinks": {
+        "description": "Section title shown on the settings page",
+        "type": "text"
+    },
+    "telegram": "Telegram",
+    "@telegram": {
+        "description": "Title text shown on settings page for telegram button",
+        "type": "text"
+    },
+    "telegramGroup": "A group to follow and post bugs and feature requests",
+    "@telegramGroup": {
+        "description": "Subtitle text shown on settings page for telegram button",
+        "type": "text"
+    },
+    "privacyPolicy": "Privacy & Policy",
+    "@privacyPolicy": {
+        "description": "Title text shown on settings page for privacy and policy button",
+        "type": "text"
+    },
+    "github": "GitHub",
+    "@github": {
+        "description": "Title text shown on settings page for github button ",
+        "type": "text"
+    },
+    "githubText": "Fork the project on GitHub",
+    "@githubText": {
+        "description": "Subtitle text shown on the github button",
+        "type": "text"
+    },
+    "version": "Version",
+    "@version": {
+        "description": "Title text shown on the settings page for button",
+        "type": "text"
+    },
+    "versionNumber": "v{version}",
+    "@versionNumber": {
+        "description": "Subtitle text shown on the settings page for button",
+        "placeholders": {
+            "version": {
+                "type": "String"
+            }
+        }
+    },
+    "deleteAccount": "Deleting the account deletes all expenses which are tied to this account",
+    "@deleteAccount": {
+        "description": "Delete account message",
+        "type": "text"
+    },
+    "deleteCategory": "Deleting the category deletes all expenses which are tied to this category",
+    "@deleteCategory": {
+        "description": "Delete category message",
+        "type": "text"
+    },
+    "deleteExpense": "Expense will be permanently removed from account",
+    "@deleteExpense": {
+        "description": "Delete expense message",
+        "type": "text"
+    },
+    "dialogDeleteTitle": "Permanently delete?",
+    "@dialogDeleteTitle": {
+        "description": "Permanently delete ",
+        "type": "text"
+    },
+    "updatedCategory": "Category updated",
+    "@updatedCategory": {
+        "description": "Successful message when category updated",
+        "type": "text"
+    },
+    "update": "Update",
+    "@update": {
+        "description": "Text shown on multiple places on button",
+        "type": "text"
+    },
+    "add": "Add",
+    "@add": {
+        "description": "Text shown on multiple places on button",
+        "type": "text"
+    },
+    "done": "Done",
+    "@done": {
+        "description": "Text shown on multiple places on button",
+        "type": "text"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Text shown on multiple places on button",
+        "type": "text"
+    },
+    "custom": "Custom",
+    "@custom": {
+        "description": "Text shown on the one of the theme option",
+        "type": "text"
+    },
+    "accentColor": "Primary color",
+    "@accentColor": {
+        "description": "Title text shown on the settings page theme button",
+        "type": "text"
+    },
+    "dynamicColor": "Dynamic",
+    "@dynamicColor": {
+        "description": "Text shown on the theme option switch button ",
+        "type": "text"
+    },
+    "pickColor": "Pick color",
+    "@pickColor": {
+        "description": "Title text shown on the color picker",
+        "type": "text"
+    },
+    "pickColorDesc": "Set color to your category",
+    "@pickColorDesc": {
+        "description": "Subtitle text shown on the category color picker button",
+        "type": "text"
+    },
+    "pickColorAccountDesc": "Set color to your account",
+    "@pickColorAccountDesc": {
+        "description": "Subtitle text shown on the account color picker button",
+        "type": "text"
+    },
+    "colors": "Colors",
+    "@colors": {
+        "description": "Section title on settings page for theme",
+        "type": "text"
+    },
+    "others": "Others",
+    "@others": {
+        "description": "Section title on settings page for theme",
+        "type": "text"
+    },
+    "madeWithLoveInIndia": "Made with ♥ in India",
+    "@madeWithLoveInIndia": {
+        "description": "Message shown on the bottom of the setting screen",
+        "type": "text"
+    },
+    "updateCategory": "Update Category",
+    "@updateCategory": {
+        "description": "Text shown on the adding category screen toolbar",
+        "type": "text"
+    },
+    "accountInformationTitle": "Information",
+    "@accountInformationTitle": {
+        "description": "Title text shown on the information dialog",
+        "type": "text"
+    },
+    "accountInformationSubTitle": "The account details you entered are not shared with anyone, including us. It is only used for visual representation of account details, you may enter false info too",
+    "@accountInformationSubTitle": {
+        "description": "Subtitle text shown on the information dialog",
+        "type": "text"
+    },
+    "next": "Next",
+    "@next": {
+        "description": "Text shown on the intro page button",
+        "type": "text"
+    },
+    "image": "Image",
+    "@image": {
+        "description": "Text shown on the intro page",
+        "type": "text"
+    },
+    "welcome": "Hi, Welcome to",
+    "@welcome": {
+        "description": "Intro page message for name input",
+        "type": "text"
+    },
+    "welcomeDesc": "What should we call you?",
+    "@welcomeDesc": {
+        "description": "Welcome desc ",
+        "type": "text"
+    },
+    "nameHint": "Name",
+    "@nameHint": {
+        "description": "Text input hint name",
+        "type": "text"
+    },
+    "enterNameHint": "Enter name",
+    "@enterNameHint": {
+        "description": "Text input hint name",
+        "type": "text"
+    },
+    "imageDesc": "Let's set an image of you",
+    "@imageDesc": {
+        "description": "Image desc ",
+        "type": "text"
+    },
+    "setBudget": "Set budget for category",
+    "@setBudget": {
+        "description": "Text shown on the category screen for setting budget",
+        "type": "text"
+    },
+    "income": "Income",
+    "@income": {
+        "description": "Text shown on multiple places",
+        "type": "text"
+    },
+    "thisMonth": "This month",
+    "@thisMonth": {
+        "description": "Text shown on the home screen top section",
+        "type": "text"
+    },
+    "totalBalance": "Total balance",
+    "@totalBalance": {
+        "description": "Text shown on the home screen top section",
+        "type": "text"
+    },
+    "ok": "Ok",
+    "@ok": {
+        "description": "Text shown on the button",
+        "type": "text"
+    },
+    "searchMessage": "Start searching something!",
+    "@searchMessage": {
+        "description": "Message shown on the search screen",
+        "type": "text"
+    },
+    "emptySearchMessage": "Looks like nothing was found!",
+    "@emptySearchMessage": {
+        "description": "Message shown on the search screen",
+        "type": "text"
+    },
+    "emptyExpensesMessageTitle": "No expenses yet?",
+    "@emptyExpensesMessageTitle": {
+        "description": "Title message shown on the page when there are no expenses",
+        "type": "text"
+    },
+    "emptyExpensesMessageSubTitle": "If there are no expenses, start by adding an expense to see it displayed here",
+    "@emptyExpensesMessageSunTitle": {
+        "description": "Subtitle message shown on the page when there are no expenses",
+        "type": "text"
+    },
+    "selectIconTitle": "Select icon",
+    "@selectIconTitle": {
+        "description": "Title text shown on the button in category page",
+        "type": "text"
+    },
+    "selectIconSubTitle": "Tap to select icon",
+    "@selectIconSubTitle": {
+        "description": "Subtitle text shown on the button in category page",
+        "type": "text"
+    },
+    "incomeName": "Income name",
+    "@incomeName": {
+        "description": "Text shown on the input hint",
+        "type": "text"
+    },
+    "currencySign": "Currency sign",
+    "@currencySign": {
+        "description": "Text shown on the button on settings screen",
+        "type": "text"
+    },
+    "calendarFormat": "Calendar format",
+    "@calendarFormat": {
+        "description": "Text shown on the button on settings screen",
+        "type": "text"
+    },
+    "expenseByCategory": "Expense by category",
+    "@expenseByCategory": {
+        "description": "Text shown on the toolbar title",
+        "type": "text"
+    },
+    "transactionsByCategory": "Transactions by category",
+    "@transactionsByCategory": {
+        "description": "Text shown on the toolbar title",
+        "type": "text"
+    },
+    "backupAndRestoreTitle": "Backup and restore",
+    "@backupAndRestoreTitle": {
+        "description": "Text shown on the toolbar title",
+        "type": "text"
+    },
+    "backupAndRestoreSubTitle": "Backup and restore your expenses, accounts & categories",
+    "@backupAndRestoreSubTitle": {
+        "description": "Subtitle text shown on the setting button",
+        "type": "text"
+    },
+    "exportData": "Export",
+    "@exportData": {
+        "description": "Text shown on the import and export button",
+        "type": "text"
+    },
+    "importData": "Import",
+    "@importData": {
+        "description": "IText shown on the import and export button",
+        "type": "text"
+    },
+    "creatingBackup": "Creating backup",
+    "@creatingBackup": {
+        "description": "Message shown when the backup is initiated",
+        "type": "text"
+    },
+    "creatingBackupSuccess": "Backup successful",
+    "@creatingBackupSuccess": {
+        "description": "Message shown when the importing backup file",
+        "type": "text"
+    },
+    "restoringBackup": "Restoring backup",
+    "@restoringBackup": {
+        "description": "Message shown when the importing backup file",
+        "type": "text"
+    },
+    "restoringBackupSuccess": "Restoring successful",
+    "@restoringBackupSuccess": {
+        "description": "Message shown when the importing backup file",
+        "type": "text"
+    },
+    "saveAsCSV": "Save as CSV",
+    "@saveAsCSV": {
+        "description": "Save as CSV "
+    },
+    "saveAsCSVDesc": "Export data into CSV file format",
+    "@saveAsCSVDesc": {
+        "description": "Save as CSV "
+    },
+    "appRate": "Rate the app",
+    "@appRate": {
+        "description": "Rate "
+    },
+    "appRateDesc": "Love this app? Let us know how we can make it better on the Google Play Store",
+    "@appRateDesc": {
+        "description": "Rate "
+    },
+    "raiseABugOrRequest": "Raise a bug or request",
+    "@raiseABugOrRequest": {
+        "description": "Raise a bug or request "
+    },
+    "raiseABugOrRequestDesc": "Found a bug or need a feature to be implemented? Ask away!",
+    "@raiseABugOrRequestDesc": {
+        "description": "Found a bug or need a feature to implement ask away "
+    },
+    "transferName": "Transfer name",
+    "@transferName": {
+        "description": "Transfer name "
+    },
+    "debt": "Debt",
+    "@debt": {
+        "description": "Debts "
+    },
+    "credit": "Credit",
+    "@credit": {
+        "description": "Credit "
+    },
+    "enterCategory": "Enter category",
+    "@enterCategory": {
+        "description": "Enter category "
+    },
+    "addDebt": "Add debt",
+    "@addDebt": {
+        "description": "Add debt "
+    },
+    "addCredit": "Add credit",
+    "@addCredit": {
+        "description": "Add credit "
+    },
+    "enterBudget": "Enter budget",
+    "@enterBudget": {
+        "description": "Enter budget "
+    },
+    "enterDescription": "Enter description",
+    "@enterDescription": {
+        "description": "Enter description "
+    },
+    "validDescription": "Enter valid description",
+    "@validDescription": {
+        "description": "Enter valid description "
+    },
+    "payDebt": "Pay debt",
+    "@payDebt": {
+        "description": "Pay debt "
+    },
+    "payCredit": "Pay credit",
+    "@payCredit": {
+        "description": "Pay credit "
+    },
+    "enterAmount": "Enter amount",
+    "@enterAmount": {
+        "description": "Enter amount "
+    },
+    "emptyDebts": "There are no debts at this time",
+    "@emptyDebts": {
+        "description": "There are no debts at this time "
+    },
+    "emptyDebtsDesc": "Add your debts to see them displayed here",
+    "@emptyDebtsDesc": {
+        "description": "Add your debts here to see them displayed "
+    },
+    "emptyCredit": "There are no credits at this time",
+    "@emptyCredit": {
+        "description": "There are no credits at this time "
+    },
+    "emptyCreditDesc": "Add your credits to see them displayed here",
+    "@emptyCreditDesc": {
+        "description": "Add your credits here to see them displayed "
+    },
+    "enterInitialAmount": "Enter initial amount",
+    "@enterInitialAmount": {
+        "description": "Enter initial amount "
+    },
+    "enterNumberOptional": "Enter last 4 digit (optional)",
+    "@enterNumberOptional": {
+        "description": "Optional number"
+    },
+    "enterAccountName": "Enter account name",
+    "@enterAccountName": {
+        "description": "Enter account name "
+    },
+    "enterCardHolderName": "Enter cardholder name",
+    "@enterCardHolderName": {
+        "description": "Enter account name "
+    },
+    "search": "Search",
+    "@search": {
+        "description": "Search "
+    },
+    "addNew": "Add new",
+    "@addNew": {
+        "description": "Add new "
+    },
+    "delete": "Delete",
+    "@delete": {
+        "description": "Delete "
+    },
+    "appBarSearch": "Search expenses, accounts, categories",
+    "@appBarSearch": {
+        "description": "Delete "
+    },
+    "noTransaction": "Empty in transaction",
+    "@noTransaction": {
+        "description": "Empty in transaction"
+    },
+    "enterSymbol": "Enter symbol",
+    "@enterSymbol": {
+        "description": "Enter symbol"
+    },
+    "leftSymbol": "Symbol on left",
+    "@leftSymbol": {
+        "description": "Symbol on left "
+    },
+    "rightSymbol": "Symbol on right",
+    "@rightSymbol": {
+        "description": "Symbol on right "
+    },
+    "customSymbol": "Custom symbol",
+    "@customSymbol": {
+        "description": "Custom symbol "
+    },
+    "intoTitle": "Simple way to help control your savings",
+    "@intoTitle": {
+        "description": "Title text shown on the intro page",
+        "type": "text"
+    },
+    "intoSummary1": "Manage your money with our app",
+    "@intoSummary1": {
+        "description": "Hint message 1 shown on the intro page",
+        "type": "text"
+    },
+    "intoSummary2": "Easy expense tracking for a better budget",
+    "@intoSummary2": {
+        "description": "Hint message 2 shown on the intro page",
+        "type": "text"
+    },
+    "intoSummary3": "Stay on top of your expenses, anytime, anywhere",
+    "@intoSummary3": {
+        "description": "Hint message 3 shown on the intro page",
+        "type": "text"
+    },
+    "introCTA": "Get started",
+    "@introCTA": {
+        "description": "Text shown on the intro screen button",
+        "type": "text"
+    },
+    "deleteDebtOrCredit": "Deleting the debt or credit deletes all records related to it",
+    "@deleteDebtOrCredit": {
+        "description": "Delete debt or credit ",
+        "type": "text"
+    },
+    "backupAndRestoreJSONTitle": "Export data as JSON file",
+    "@backupAndRestoreJSONTitle": {
+        "description": "Section title text shown on the export and import page",
+        "type": "text"
+    },
+    "backupAndRestoreJSONDesc": "The file will be a plain JSON file created and exported to save. Please note that if in case anything changes happen in the future in Paisa then this file will be invalid to import",
+    "@backupAndRestoreJSONDesc": {
+        "description": "Message shown on the import and export screen",
+        "type": "text"
+    },
+    "emptyBudgetMessageTitle": "No budgets have been set for any categories",
+    "@emptyBudgetMessageTitle": {
+        "description": "Title text shown on the budget screen when no budgets are available",
+        "type": "text"
+    },
+    "emptyBudgetMessageSubTitle": "Set a budget for any category, and that category will show up here",
+    "@emptyBudgetMessageSubTitle": {
+        "description": "Subtitle text shown on the budget screen when no budgets are available",
+        "type": "text"
+    },
+    "recurringEmptyMessageTitle": "No recurring events?",
+    "@recurringEmptyMessageTitle": {
+        "description": "Title text shown on the recurring page when no events available",
+        "type": "text"
+    },
+    "recurringEmptyMessageSubTitle": "Add recurring events to view them here",
+    "@recurringEmptyMessageSubTitle": {
+        "description": "Subtitle text shown on the recurring page when no events available",
+        "type": "text"
+    },
+    "recurringAction": "Add recurring events",
+    "@recurringAction": {
+        "description": "Text shown on the recurring action button",
+        "type": "text"
+    },
+    "sortList": "Sort list",
+    "@sortList": {
+        "description": "Title text shown on the sort dialog",
+        "type": "text"
+    },
+    "smallSizeFab": "Small size FAB",
+    "@smallSizeFab": {
+        "description": "Title text shown on the settings page for FAB size option",
+        "type": "text"
+    },
+    "smallSizeFabMessage": "Show small size action button on all screens",
+    "@smallSizeFabMessage": {
+        "description": "Title text shown on the settings page for FAB size option",
+        "type": "text"
+    },
+    "selectDateErrorMessage": "Select date",
+    "@selectDateErrorMessage": {
+        "description": "Message shown when the date is not select on debt payout ",
+        "type": "text"
+    },
+    "edit": "Edit",
+    "@edit": {
+        "description": "Text shown on the buttons",
+        "type": "text"
+    },
+    "fromAccount": "Transfer account from",
+    "@fromAccount": {
+        "description": "Text shown on the title section of account in transfer section in transaction page",
+        "type": "text"
+    },
+    "toAccount": "Transfer account to",
+    "@toAccount": {
+        "description": "Text shown on the title section of account in transfer section in transaction page",
+        "type": "text"
+    },
+    "paisaLocked": "Paisa Locked",
+    "@paisaLocked": {
+        "description": "Text shown on the title section of biometric screen",
+        "type": "text"
+    },
+    "authenticate": "Authenticate",
+    "@authenticate": {
+        "description": "Text shown on the button biometric screen",
+        "type": "text"
+    },
+    "biometricMessage": "Touch the fingerprint sensor",
+    "@biometricMessage": {
+        "description": "Text shown on the biometric screen below icon",
+        "type": "text"
+    },
+    "addedCategories": "Added categories",
+    "@addedCategories": {
+        "description": "Text shown on the add category section title",
+        "type": "text"
+    },
+    "back": "Back",
+    "@back": {
+        "description": "Text shown on the button on intro page",
+        "type": "text"
+    },
+    "recommendedCategories": "Recommended categories",
+    "@recommendedCategories": {
+        "description": "Text shown on the add category section title",
+        "type": "text"
+    },
+    "addedAccounts": "Selected accounts",
+    "@addedAccounts": {
+        "description": "Text shown on the add account section title",
+        "type": "text"
+    },
+    "recommendedAccounts": "Recommended accounts",
+    "@recommendedAccounts": {
+        "description": "Text shown on the add account section title",
+        "type": "text"
+    },
+    "total": "Total",
+    "@total": {
+        "description": "Text shown on the home screen sub title on total card",
+        "type": "text"
+    },
+    "colorsUI": "Colors & UI",
+    "@colorsUI": {
+        "description": "Text shown on the section title on settings screen",
+        "type": "text"
+    },
+    "more": "More",
+    "@more": {
+        "description": "Text shown on the button on icon chooser screen",
+        "type": "text"
+    },
+    "chooseIcon": "Choose icon",
+    "@chooseIcon": {
+        "description": "Title text shown on the icon chooser screen",
+        "type": "text"
+    },
+    "transferCategory": "Transfer category",
+    "@transferCategory": {
+        "description": "Text shown add category page for add default category ",
+        "type": "text"
+    },
+    "accountStyle": "Account style",
+    "@accountStyle": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "accountStyleDescription": "Select your preferred account display style : vertical or horizontal",
+    "@accountStyleDescription": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "supportMe": "Support me",
+    "@supportMe": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "supportMeDescription": "If you think I deserve a little treat for my hard work, you can buy me a virtual beer",
+    "@supportMeDescription": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "lockAppDescription": "When enabled, you'll need to use fingerprint to open Paisa.",
+    "@lockAppDescription": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "fontStyle": "Font style",
+    "@fontStyle": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "fontStyleDescription": "Change the font style to personalize your app's appearance. Select from various font options to suit your preferences and enhance readability.",
+    "@fontStyleDescription": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "chooseFont": "Choose font",
+    "@chooseFont": {
+        "description": "Text shown on font selection dialog title",
+        "type": "text"
+    },
+    "chooseAppLanguage": "Choose language",
+    "@chooseAppLanguage": {
+        "description": "Text shown on app language selection dialog title",
+        "type": "text"
+    },
+    "appLanguage": "App language",
+    "@appLanguage": {
+        "description": "Text shown on settings page",
+        "type": "text"
+    },
+    "excludeAccount": "Exclude account",
+    "@excludeAccount": {
+        "description": "Text shown on add account page for excluding the account from summing up",
+        "type": "text"
+    },
+    "accountNotFound": "Account not found!",
+    "@accountNotFound": {
+        "description": "Text shown on snackbar when account not found",
+        "type": "text"
+    },
+    "bankNameError": "Set bank name",
+    "@bankNameError": {
+        "description": "Text shown on snackbar when adding account",
+        "type": "text"
+    },
+    "holderNameError": "Set account holder name",
+    "@holderNameError": {
+        "description": "Text shown on snackbar when adding account",
+        "type": "text"
+    },
+    "accountColorError": "Set account color name",
+    "@accountColorError": {
+        "description": "Text shown on snackbar when adding account",
+        "type": "text"
+    },
+    "emptySelectedAccountsInfo": "Select account from above to start",
+    "@accountsIntroInfo": {
+        "description": "Text shown on intro page accounts info",
+        "type": "text"
+    },
+    "emptyrecommendedAccountsInfo": "No accounts left to add",
+    "@emptyrecommendedAccountsInfo": {
+        "description": "Text shown on intro page accounts info",
+        "type": "text"
+    }
+}
