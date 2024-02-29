@@ -44,16 +44,15 @@ class _PillsAccountWidgetState extends State<PillsAccountWidget> {
           itemCount: accounts.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            final AccountEntity account = accounts[index];
+            final AccountEntity? account = accounts.elementAtOrNull(index);
+
             return PaisaFilterChip(
-              color: Color(account.color ?? Colors.brown.shade200.value),
+              color: Color(account!.color ?? Colors.brown.shade200.value),
               onPressed: () {
                 setState(() {
-                  if (selectedAccount == account.superId) {
-                    selectedAccount = -1;
-                  } else {
-                    selectedAccount = account.superId ?? -1;
-                  }
+                  selectedAccount = selectedAccount == account.superId
+                      ? -1
+                      : account.superId ?? -1;
                   widget.accountSelected(account);
                 });
               },

@@ -32,6 +32,7 @@ class AccountTransactionsPage extends StatelessWidget {
     final ScrollController scrollController = ScrollController();
     BlocProvider.of<AccountBloc>(context)
         .add(FetchAccountAndExpenseFromIdEvent(accountId));
+
     return PaisaAnnotatedRegionWidget(
       color: context.background,
       child: Scaffold(
@@ -55,24 +56,22 @@ class AccountTransactionsPage extends StatelessWidget {
                   ),
                   child: BlocBuilder<AccountBloc, AccountState>(
                     builder: (context, state) {
-                      if (state is AccountAndExpensesState) {
-                        return RichText(
-                          text: TextSpan(
-                            text: context.loc.deleteAccount,
-                            style: context.bodyMedium,
-                            children: [
-                              TextSpan(
-                                text: state.account.name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                      return state is AccountAndExpensesState
+                          ? RichText(
+                              text: TextSpan(
+                                text: context.loc.deleteAccount,
+                                style: context.bodyMedium,
+                                children: [
+                                  TextSpan(
+                                    text: state.account.name,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        return const SizedBox.shrink();
-                      }
+                            )
+                          : const SizedBox.shrink();
                     },
                   ),
                   confirmationButton: TextButton(
@@ -91,7 +90,7 @@ class AccountTransactionsPage extends StatelessWidget {
                 );
               },
               icon: const Icon(Icons.delete_rounded),
-            )
+            ),
           ],
         ),
         body: BlocConsumer<AccountBloc, AccountState>(
@@ -101,41 +100,37 @@ class AccountTransactionsPage extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            if (state is AccountAndExpensesState) {
-              if (state.expenses.isEmpty) {
-                return EmptyWidget(
-                  icon: Icons.credit_card,
-                  title: context.loc.noTransaction,
-                  description: context.loc.emptyAccountMessageSubTitle,
-                );
-              } else {
-                return Scrollbar(
-                  controller: scrollController,
-                  child: ListView.builder(
-                    controller: scrollController,
-                    shrinkWrap: true,
-                    itemCount: state.expenses.length,
-                    itemBuilder: (context, index) {
-                      final TransactionEntity expense = state.expenses[index];
-                      final CategoryEntity? category =
-                          BlocProvider.of<HomeCubit>(context)
-                              .fetchCategoryFromId(expense.categoryId);
-                      if (category == null) {
-                        return const SizedBox.shrink();
-                      } else {
-                        return ExpenseItemWidget(
-                          expense: expense,
-                          account: state.account,
-                          category: category,
-                        );
-                      }
-                    },
-                  ),
-                );
-              }
-            } else {
-              return const SizedBox.shrink();
-            }
+            return state is AccountAndExpensesState
+                ? state.expenses.isEmpty
+                    ? EmptyWidget(
+                        icon: Icons.credit_card,
+                        title: context.loc.noTransaction,
+                        description: context.loc.emptyAccountMessageSubTitle,
+                      )
+                    : Scrollbar(
+                        controller: scrollController,
+                        child: ListView.builder(
+                          controller: scrollController,
+                          shrinkWrap: true,
+                          itemCount: state.expenses.length,
+                          itemBuilder: (context, index) {
+                            final TransactionEntity? expense =
+                                state.expenses.elementAtOrNull(index);
+                            final CategoryEntity? category =
+                                BlocProvider.of<HomeCubit>(context)
+                                    .fetchCategoryFromId(expense!.categoryId);
+
+                            return category == null
+                                ? const SizedBox.shrink()
+                                : ExpenseItemWidget(
+                                    expense: expense,
+                                    account: state.account,
+                                    category: category,
+                                  );
+                          },
+                        ),
+                      )
+                : const SizedBox.shrink();
           },
         ),
         bottomNavigationBar: SafeArea(

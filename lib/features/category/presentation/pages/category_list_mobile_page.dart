@@ -23,7 +23,9 @@ class CategoryListMobileWidget extends StatelessWidget {
       itemCount: categories.length,
       shrinkWrap: true,
       itemBuilder: (_, index) {
-        return CategoryItemMobileWidget(category: categories[index]);
+        return CategoryItemMobileWidget(
+          category: categories.elementAtOrNull(index) ?? const CategoryEntity(),
+        );
       },
     );
   }

@@ -74,12 +74,14 @@ class _FontPickerPageState extends State<FontPickerPage> {
                       element.toLowerCase().contains(filterFont.toLowerCase()))
                   .toList();
             }
+
             return Scrollbar(
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: tempFonts.length,
                 itemBuilder: (context, index) {
-                  final String font = tempFonts[index];
+                  final String? font = tempFonts.elementAtOrNull(index);
+
                   return RadioListTile(
                     value: font,
                     groupValue: selectedFont,
@@ -92,7 +94,7 @@ class _FontPickerPageState extends State<FontPickerPage> {
                       });
                     },
                     title: Text(
-                      font,
+                      font!,
                       style: GoogleFonts.getFont(font),
                     ),
                   );

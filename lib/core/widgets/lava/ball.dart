@@ -29,7 +29,9 @@ class Ball {
     double calculatePosition(double fullSize) =>
         Random().nextDouble() * fullSize;
     pos = ForcePoint(
-        calculatePosition(size.width), calculatePosition(size.height));
+      calculatePosition(size.width),
+      calculatePosition(size.height),
+    );
 
     this.size = size.shortestSide / 15 +
         (Random().nextDouble() * (h - i) + i) * (size.shortestSide / 15);

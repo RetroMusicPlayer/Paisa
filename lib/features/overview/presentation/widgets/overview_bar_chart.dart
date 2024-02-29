@@ -29,8 +29,11 @@ class OverViewBarChartWidget extends StatelessWidget {
           transactions: transactions,
           builder: (groupedTransactions) {
             final list = groupedTransactions.entries.map((e) {
-              final double total = e.value.fold<double>(0,
-                  (previousValue, element) => previousValue + element.currency);
+              final double total = e.value.fold<double>(
+                0,
+                (previousValue, element) => previousValue + element.currency,
+              );
+
               return total;
             }).toList();
             double maximum = list.reduce((a, b) => max(a, b));
@@ -38,10 +41,12 @@ class OverViewBarChartWidget extends StatelessWidget {
             final List<OverviewBarChartData> maps =
                 groupedTransactions.entries.map((e) {
               return OverviewBarChartData(
-                  xLabel: e.key,
-                  expense: e.value.totalExpense,
-                  income: e.value.totalIncome);
+                xLabel: e.key,
+                expense: e.value.totalExpense,
+                income: e.value.totalIncome,
+              );
             }).toList();
+
             return BarChartSample(
               values: maps,
               minMax: (maximum / 2, maximum),
@@ -71,11 +76,6 @@ class BarChartSample extends StatefulWidget {
 class BarChartSampleState extends State<BarChartSample> {
   final double width = 12;
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     if (value % 1 != 0) {
       return Container();
@@ -95,7 +95,7 @@ class BarChartSampleState extends State<BarChartSample> {
 
   Widget bottomTitles(double value, TitleMeta meta) {
     final Widget text = Text(
-      widget.values[value.toInt()].xLabel,
+      widget.values.elementAtOrNull(value.toInt())!.xLabel,
       textAlign: TextAlign.center,
       style: context.bodySmall?.copyWith(
         fontWeight: FontWeight.bold,
@@ -135,6 +135,7 @@ class BarChartSampleState extends State<BarChartSample> {
         widget.values.mapIndexed((index, element) {
       return makeGroupData(index, element.expense, element.income);
     }).toList();
+
     return AspectRatio(
       aspectRatio: (16 / 9),
       child: Column(
@@ -163,12 +164,8 @@ class BarChartSampleState extends State<BarChartSample> {
                       ),
                     ),
                     titlesData: FlTitlesData(
-                      rightTitles: const AxisTitles(
-                        
-                      ),
-                      topTitles: const AxisTitles(
-                        
-                      ),
+                      rightTitles: const AxisTitles(),
+                      topTitles: const AxisTitles(),
                       leftTitles: AxisTitles(
                         sideTitles: SideTitles(
                           showTitles: true,
@@ -203,6 +200,7 @@ class BarChartSampleState extends State<BarChartSample> {
 extension DoubleHelper on double {
   String toCompact(BuildContext context) {
     final CountryEntity country = Provider.of<CountryEntity>(context);
+
     return NumberFormat.compactCurrency(
       symbol: country.symbol,
     ).format(this);

@@ -49,21 +49,25 @@ class _AccountPageViewWidgetState extends State<AccountPageViewWidget>
               controller: _controller,
               itemCount: widget.accounts.length,
               onPageChanged: (index) {
-                BlocProvider.of<AccountBloc>(context)
-                    .add(AccountSelectedEvent(widget.accounts[index]));
+                BlocProvider.of<AccountBloc>(context).add(AccountSelectedEvent(
+                  widget.accounts.elementAtOrNull(index) ??
+                      const AccountEntity(),
+                ));
               },
               itemBuilder: (_, index) {
                 return BlocBuilder<AccountBloc, AccountState>(
                   builder: (context, state) {
                     if (state is AccountSelectedState) {
-                      final AccountEntity account = widget.accounts[index];
+                      final AccountEntity? account =
+                          widget.accounts.elementAtOrNull(index);
                       final String expense = state.expenses.totalExpense
                           .toFormateCurrency(context);
                       final String income =
                           state.expenses.totalIncome.toFormateCurrency(context);
                       final String totalBalance =
-                          (state.expenses.fullTotal + account.initialAmount)
+                          (state.expenses.fullTotal + account!.initialAmount)
                               .toFormateCurrency(context);
+
                       return AccountCard(
                         key: ValueKey(account.hashCode),
                         expense: expense,
@@ -108,9 +112,9 @@ class _AccountPageViewWidgetState extends State<AccountPageViewWidget>
                           ).push(context);
                         },
                       );
-                    } else {
-                      return const SizedBox.shrink();
                     }
+
+                    return const SizedBox.shrink();
                   },
                 );
               },
@@ -154,29 +158,29 @@ class AccountPageViewDotsIndicator extends StatelessWidget {
     if (accounts.length == 1) {
       return const SizedBox.shrink();
     }
+
     return BlocBuilder<AccountBloc, AccountState>(
       builder: (context, state) {
-        if (state is AccountSelectedState) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: List.generate(accounts.length, (index) {
-                return GestureDetector(
-                  onTap: () {
-                    pageController.jumpToPage(index);
-                  },
-                  child: _indicator(
-                    context,
-                    accounts[index] == state.account,
-                  ),
-                );
-              }),
-            ),
-          );
-        } else {
-          return const SizedBox.shrink();
-        }
+        return state is AccountSelectedState
+            ? Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(accounts.length, (index) {
+                    return GestureDetector(
+                      onTap: () {
+                        pageController.jumpToPage(index);
+                      },
+                      child: _indicator(
+                        context,
+                        accounts.elementAtOrNull(index) == state.account,
+                      ),
+                    );
+                  }),
+                ),
+              )
+            : const SizedBox.shrink();
       },
     );
   }

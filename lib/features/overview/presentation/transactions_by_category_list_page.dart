@@ -54,14 +54,16 @@ class TransactionByCategoryPage extends StatelessWidget {
           itemCount: expenses.length,
           itemBuilder: (BuildContext context, int index) {
             final AccountEntity? account = BlocProvider.of<HomeCubit>(context)
-                .fetchAccountFromId(expenses[index].accountId);
+                .fetchAccountFromId(expenses.elementAtOrNull(index)!.accountId);
             final CategoryEntity? category = BlocProvider.of<HomeCubit>(context)
-                .fetchCategoryFromId(expenses[index].categoryId);
+                .fetchCategoryFromId(
+                    expenses.elementAtOrNull(index)!.categoryId);
             if (account == null || category == null) {
               return const SizedBox.shrink();
             }
+
             return ExpenseItemWidget(
-              expense: expenses[index],
+              expense: expenses.elementAtOrNull(index)!,
               account: account,
               category: category,
             );

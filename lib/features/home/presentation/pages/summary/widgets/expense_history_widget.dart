@@ -27,23 +27,24 @@ class ExpenseHistoryWidget extends StatelessWidget {
         icon: Icons.money_off_rounded,
         description: context.loc.emptyExpensesMessageSubTitle,
       );
-    } else {
-      final maps = groupBy(
-          expenses,
-          (TransactionEntity element) =>
-              element.time.formatted(FilterExpense.monthly));
-      return ListView.separated(
-        separatorBuilder: (context, index) => const Divider(),
-        shrinkWrap: true,
-        padding: EdgeInsets.zero,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: maps.entries.length,
-        itemBuilder: (_, mapIndex) => ExpenseMonthCardWidget(
-          title: maps.keys.elementAt(mapIndex),
-          total: maps.values.elementAt(mapIndex).filterTotal,
-          expenses: maps.values.elementAt(mapIndex),
-        ),
-      );
     }
+    final maps = groupBy(
+      expenses,
+      (TransactionEntity element) =>
+          element.time.formatted(FilterExpense.monthly),
+    );
+
+    return ListView.separated(
+      separatorBuilder: (context, index) => const Divider(),
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: maps.entries.length,
+      itemBuilder: (_, mapIndex) => ExpenseMonthCardWidget(
+        title: maps.keys.elementAtOrNull(mapIndex)!,
+        total: maps.values.elementAtOrNull(mapIndex)!.filterTotal,
+        expenses: maps.values.elementAtOrNull(mapIndex)!,
+      ),
+    );
   }
 }

@@ -13,7 +13,7 @@ Future<void> paisaBottomSheet(
   return showModalBottomSheet(
     context: context,
     builder: (_) => Padding(
-      padding: MediaQuery.of(context).viewInsets,
+      padding: MediaQuery.viewInsetsOf(context),
       child: SafeArea(
         child: Material(
           shape: const RoundedRectangleBorder(

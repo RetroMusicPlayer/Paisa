@@ -25,8 +25,8 @@ Future<IconData> paisaIconPicker({
         style: context.titleMedium,
       ),
       content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.5,
+        width: MediaQuery.sizeOf(context).width * 0.9,
+        height: MediaQuery.sizeOf(context).height * 0.5,
         child: _IconPickerWidget(
           iconKeys: iconKeys,
           selectedIcon: selectedIcon,
@@ -59,10 +59,11 @@ Future<IconData> paisaIconPicker({
           child: Text(
             context.loc.done,
           ),
-        )
+        ),
       ],
     ),
   );
+
   return selectedIcon;
 }
 
@@ -109,8 +110,9 @@ class _IconPickerWidgetState extends State<_IconPickerWidget> {
             shrinkWrap: true,
             itemCount: iconKeys.length,
             itemBuilder: (_, index) {
-              final bool isSelected =
-                  selectedIcon == MdiIcons.fromString(iconKeys[index]);
+              final bool isSelected = selectedIcon ==
+                  MdiIcons.fromString(iconKeys.elementAtOrNull(index) ?? '');
+
               return Container(
                 margin: const EdgeInsets.all(4),
                 decoration: isSelected
@@ -123,17 +125,19 @@ class _IconPickerWidgetState extends State<_IconPickerWidget> {
                       )
                     : null,
                 child: IconButton(
-                  key: ValueKey(iconKeys[index].hashCode),
+                  key: ValueKey(iconKeys.elementAtOrNull(index).hashCode),
                   color: isSelected
                       ? context.primary
                       : Theme.of(context).disabledColor,
                   onPressed: () {
                     setState(() {
-                      selectedIcon = MdiIcons.fromString(iconKeys[index]);
+                      selectedIcon = MdiIcons.fromString(
+                          iconKeys.elementAtOrNull(index) ?? '');
                       widget.onSelectedIcon.call(selectedIcon ?? MdiIcons.home);
                     });
                   },
-                  icon: Icon(MdiIcons.fromString(iconKeys[index])),
+                  icon: Icon(MdiIcons.fromString(
+                      iconKeys.elementAtOrNull(index) ?? '')),
                 ),
               );
             },

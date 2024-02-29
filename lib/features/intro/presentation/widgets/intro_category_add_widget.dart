@@ -43,11 +43,13 @@ class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
     return ValueListenableBuilder<Box<CategoryModel>>(
       valueListenable: getIt.get<Box<CategoryModel>>().listenable(),
       builder: (context, value, child) {
         final List<CategoryModel> categoryModels =
             value.values.filterDefault.toList();
+
         return PaisaAnnotatedRegionWidget(
           color: context.background,
           child: Scaffold(
@@ -68,9 +70,11 @@ class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
                           itemCount: categoryModels.length,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            final CategoryModel model = categoryModels[index];
+                            final CategoryModel? model =
+                                categoryModels.elementAtOrNull(index);
+
                             return CategoryItemWidget(
-                              model: model,
+                              model: model!,
                               onPress: () async {
                                 await model.delete();
                                 defaultModels.add(model);
@@ -90,9 +94,11 @@ class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
                         itemCount: categoryModels.length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          final CategoryModel model = categoryModels[index];
+                          final CategoryModel? model =
+                              categoryModels.elementAtOrNull(index);
+
                           return CategoryItemWidget(
-                            model: model,
+                            model: model!,
                             onPress: () async {
                               await model.delete();
                               defaultModels.add(model);

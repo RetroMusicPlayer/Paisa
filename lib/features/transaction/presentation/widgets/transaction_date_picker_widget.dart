@@ -40,7 +40,7 @@ class _ExpenseDatePickerWidgetState extends State<ExpenseDatePickerWidget> {
                     context,
                     selectedDateTime: selectedDateTime,
                   );
-                  if (dateTime != null) {
+                  if (dateTime != null && mounted) {
                     setState(() {
                       selectedDateTime = selectedDateTime.copyWith(
                         day: dateTime.day,
@@ -66,7 +66,7 @@ class _ExpenseDatePickerWidgetState extends State<ExpenseDatePickerWidget> {
                 ),
                 onTap: () async {
                   final TimeOfDay? timeOfDay = await paisaTimerPicker(context);
-                  if (timeOfDay != null) {
+                  if (timeOfDay != null && mounted) {
                     setState(() {
                       selectedDateTime = selectedDateTime.copyWith(
                         hour: timeOfDay.hour,

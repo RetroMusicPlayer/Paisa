@@ -34,7 +34,7 @@ class _AppLanguageChangerPageState extends State<AppLanguageChangerPage> {
     if (!mounted) {
       return;
     }
-    context.pop();
+    context.pop(); // ??
   }
 
   @override
@@ -47,7 +47,8 @@ class _AppLanguageChangerPageState extends State<AppLanguageChangerPage> {
           shrinkWrap: true,
           itemCount: languages.length,
           itemBuilder: (_, index) {
-            final LanguageEntity entity = languages[index];
+            final LanguageEntity? entity = languages.elementAtOrNull(index);
+
             return ListTile(
               onTap: () {
                 setState(() {
@@ -55,11 +56,12 @@ class _AppLanguageChangerPageState extends State<AppLanguageChangerPage> {
                 });
               },
               title: Text(
-                entity.value,
+                entity!.value,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: selectedLanguage == entity.code
-                        ? Theme.of(context).colorScheme.primary
-                        : null),
+                      color: selectedLanguage == entity.code
+                          ? Theme.of(context).colorScheme.primary
+                          : null,
+                    ),
               ),
             );
           },

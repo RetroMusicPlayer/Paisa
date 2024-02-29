@@ -15,10 +15,11 @@ extension DateUtils on DateTime {
   String get toReadable => DateFormat('dd EEE').format(this);
 
   String get formattedDate {
-    final selectedCalendarFormat = CalendarFormats.values[getIt
+    final selectedCalendarFormat = CalendarFormats.values.elementAtOrNull(getIt
         .get<Box<dynamic>>(instanceName: BoxType.settings.name)
-        .get(calendarFormatKey, defaultValue: 2)];
-    return selectedCalendarFormat.dateFormat.format(this);
+        .get(calendarFormatKey, defaultValue: 2));
+
+    return selectedCalendarFormat!.dateFormat.format(this);
   }
 
   String get formattedTime => DateFormat('hh:mm a').format(this);
@@ -28,11 +29,13 @@ extension DateUtils on DateTime {
 
   bool get isToday {
     final now = DateTime.now();
+
     return now.day == day && now.month == month && now.year == year;
   }
 
   bool get isTomorrow {
     final tomorrow = DateTime.now().add(const Duration(days: 1));
+
     return tomorrow.day == day &&
         tomorrow.month == month &&
         tomorrow.year == year;
@@ -40,6 +43,7 @@ extension DateUtils on DateTime {
 
   bool get isYesterday {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
+
     return yesterday.day == day &&
         yesterday.month == month &&
         yesterday.year == year;
@@ -52,7 +56,10 @@ extension DateUtils on DateTime {
 
   int get ordinalDate {
     const offsets = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
-    return offsets[month - 1] + day + (isLeapYear && month > 2 ? 1 : 0);
+
+    return offsets.elementAtOrNull(month - 1)! +
+        day +
+        (isLeapYear && month > 2 ? 1 : 0);
   }
 
   /// True if this date is on a leap year.
@@ -70,11 +77,14 @@ extension DateUtils on DateTime {
         DateTime(year, 12, 31).weekday != DateTime.thursday) {
       return 1;
     }
+
     return woy;
   }
 
-  String formatted(FilterExpense filterBudget,
-      {String monthFormat = 'MMMM yyyy'}) {
+  String formatted(
+    FilterExpense filterBudget, {
+    String monthFormat = 'MMMM yyyy',
+  }) {
     switch (filterBudget) {
       case FilterExpense.daily:
         return year == DateTime.now().year
@@ -100,5 +110,6 @@ extension DateUtils on DateTime {
 int daysElapsedSince(DateTime from, DateTime to) {
   from = DateTime(from.year, from.month, from.day);
   to = DateTime(to.year, to.month, to.day);
+
   return to.difference(from).inDays;
 }

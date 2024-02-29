@@ -50,7 +50,7 @@ class SelectCategoryIcon extends StatelessWidget {
                   ),
                 ),
               ),
-              SelectedItem(categories: categories)
+              SelectedItem(categories: categories),
             ],
           ),
           mobile: (p0) => Column(
@@ -65,7 +65,7 @@ class SelectCategoryIcon extends StatelessWidget {
                   ),
                 ),
               ),
-              SelectedItem(categories: categories)
+              SelectedItem(categories: categories),
             ],
           ),
         );
@@ -85,6 +85,7 @@ class SelectedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final expenseBloc = BlocProvider.of<TransactionBloc>(context);
+
     return BlocBuilder<TransactionBloc, TransactionState>(
       builder: (context, state) {
         return Padding(
@@ -106,20 +107,21 @@ class SelectedItem extends StatelessWidget {
                     iconColor: context.primary,
                     titleColor: context.primary,
                   );
-                } else {
-                  final CategoryEntity category = categories[index - 1];
-                  final bool selected =
-                      category.superId == expenseBloc.selectedCategoryId;
-                  return CategoryChip(
-                    selected: selected,
-                    onSelected: (value) => expenseBloc
-                        .add(TransactionEvent.changeCategory(category)),
-                    icon: category.icon ?? 0,
-                    title: category.name ?? '',
-                    titleColor: Color(category.color ?? context.primary.value),
-                    iconColor: Color(category.color ?? context.primary.value),
-                  );
                 }
+                final CategoryEntity? category =
+                    categories.elementAtOrNull(index - 1);
+                final bool selected =
+                    category!.superId == expenseBloc.selectedCategoryId;
+
+                return CategoryChip(
+                  selected: selected,
+                  onSelected: (value) => expenseBloc
+                      .add(TransactionEvent.changeCategory(category)),
+                  icon: category.icon ?? 0,
+                  title: category.name ?? '',
+                  titleColor: Color(category.color ?? context.primary.value),
+                  iconColor: Color(category.color ?? context.primary.value),
+                );
               },
             ),
           ),

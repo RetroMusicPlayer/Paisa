@@ -19,8 +19,7 @@ Future<int> paisaColorPicker(
       ),
     ),
     constraints: BoxConstraints(
-      maxWidth:
-          MediaQuery.of(context).size.width >= 700 ? 700 : double.infinity,
+      maxWidth: MediaQuery.sizeOf(context).width >= 700 ? 700 : double.infinity,
     ),
     builder: (context) => SafeArea(
       child: Padding(
@@ -61,6 +60,7 @@ Future<int> paisaColorPicker(
       ),
     ),
   );
+
   return color ?? selectedColor;
 }
 
@@ -89,51 +89,45 @@ class _ColorPickerGridWidgetState extends State<ColorPickerGridWidget> {
       shrinkWrap: true,
       itemCount: Colors.primaries.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: MediaQuery.of(context).size.width >= 700 ? 9 : 6,
+        crossAxisCount: MediaQuery.sizeOf(context).width >= 700 ? 9 : 6,
       ),
       itemBuilder: (_, index) {
-        final color = Colors.primaries[index].value;
-        if (color == selectedColor) {
-          return Stack(
-            children: [
-              Center(
-                child: SizedBox(
-                  height: 42,
-                  width: 42,
-                  child: Container(
-                    padding: EdgeInsets.zero,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(width: 2, color: Color(color)),
-                    ),
+        final color = Colors.primaries.elementAtOrNull(index)!.value;
+
+        return color == selectedColor
+            ? Stack(children: [
+                Center(
+                  child: SizedBox(
+                    height: 42,
+                    width: 42,
                     child: Container(
+                      padding: EdgeInsets.zero,
                       decoration: BoxDecoration(
-                        color: Color(color),
                         borderRadius: BorderRadius.circular(50),
+                        border: Border.all(width: 2, color: Color(color)),
                       ),
-                      margin: const EdgeInsets.all(4),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(color),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        margin: const EdgeInsets.all(4),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          );
-        } else {
-          return InkWell(
-            borderRadius: BorderRadius.circular(50),
-            onTap: () {
-              widget.onSelected.call(color);
-              setState(() {
-                selectedColor = color;
-              });
-            },
-            child: Center(
-              child: CircleAvatar(
-                backgroundColor: Color(color),
-              ),
-            ),
-          );
-        }
+              ])
+            : InkWell(
+                borderRadius: BorderRadius.circular(50),
+                onTap: () {
+                  widget.onSelected.call(color);
+                  setState(() {
+                    selectedColor = color;
+                  });
+                },
+                child:
+                    Center(child: CircleAvatar(backgroundColor: Color(color))),
+              );
       },
     );
   }

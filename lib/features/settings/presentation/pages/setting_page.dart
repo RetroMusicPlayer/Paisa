@@ -34,12 +34,13 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentTheme = ThemeMode.values[getIt
+    final currentTheme = ThemeMode.values.elementAtOrNull(getIt
         .get<Box<dynamic>>(instanceName: BoxType.settings.name)
-        .get(themeModeKey, defaultValue: 0)];
-    final currentFormat = CalendarFormats.values[getIt
+        .get(themeModeKey, defaultValue: 0));
+    final currentFormat = CalendarFormats.values.elementAtOrNull(getIt
         .get<Box<dynamic>>(instanceName: BoxType.settings.name)
-        .get(calendarFormatKey, defaultValue: 2)];
+        .get(calendarFormatKey, defaultValue: 2));
+
     return PaisaAnnotatedRegionWidget(
       color: Colors.transparent,
       child: Scaffold(
@@ -58,11 +59,11 @@ class SettingsPage extends StatelessWidget {
                 SettingsOption(
                   icon: MdiIcons.brightness4,
                   title: context.loc.chooseTheme,
-                  subtitle: currentTheme.themeName,
+                  subtitle: currentTheme!.themeName,
                   onTap: () {
                     showModalBottomSheet(
                       constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width >= 700
+                        maxWidth: MediaQuery.sizeOf(context).width >= 700
                             ? 700
                             : double.infinity,
                       ),
@@ -96,11 +97,11 @@ class SettingsPage extends StatelessWidget {
                 SettingsOption(
                   icon: MdiIcons.calendar,
                   title: context.loc.calendarFormat,
-                  subtitle: currentFormat.exampleValue,
+                  subtitle: currentFormat!.exampleValue,
                   onTap: () {
                     showModalBottomSheet(
                       constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width >= 700
+                        maxWidth: MediaQuery.sizeOf(context).width >= 700
                             ? 700
                             : double.infinity,
                       ),

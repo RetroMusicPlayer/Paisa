@@ -154,6 +154,7 @@ class DebitBloc extends Bloc<DebtsEvent, DebtsState> {
     if (debitId == null) {
       add(SelectedStartDateEvent(DateTime.now()));
       add(SelectedEndDateEvent(DateTime.now()));
+
       return;
     }
 
@@ -193,7 +194,8 @@ class DebitBloc extends Bloc<DebtsEvent, DebtsState> {
     final int debitId = event.id;
     await deleteDebtUseCase(DeleteDebitParams(debitId));
     await deleteDebitTransactionsByDebitIdUseCase(
-        DeleteDebitTransactionsDebitIdParams(debitId));
+      DeleteDebitTransactionsDebitIdParams(debitId),
+    );
     emit(DeleteDebtsState());
   }
 

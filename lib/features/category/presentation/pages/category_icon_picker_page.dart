@@ -24,13 +24,15 @@ class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
   @override
   Widget build(BuildContext context) {
     final map = paisaIconMap.entries.toList();
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              GoRouter.of(context).pop(selectedIcon);
-            },
-            icon: const Icon(Icons.close)),
+          onPressed: () {
+            GoRouter.of(context).pop(selectedIcon);
+          },
+          icon: const Icon(Icons.close),
+        ),
         title: Text(context.loc.chooseIcon),
         actions: [
           PaisaTextButton(
@@ -41,7 +43,7 @@ class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
               ).then((resultIcon) => selectedIcon = resultIcon);
             },
             title: context.loc.more,
-          )
+          ),
         ],
       ),
       bottomNavigationBar: SafeArea(
@@ -59,7 +61,8 @@ class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
         itemCount: map.length,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          final iconData = map[index];
+          final iconData = map.elementAtOrNull(index);
+
           return PaisaFilledCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,10 +72,9 @@ class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16,
                   ),
-                  visualDensity:
-                      const VisualDensity(vertical: -3),
+                  visualDensity: const VisualDensity(vertical: -3),
                   title: Text(
-                    iconData.key,
+                    iconData!.key,
                     style: context.titleMedium?.copyWith(
                       color: context.primary,
                       fontWeight: FontWeight.w600,
@@ -89,7 +91,8 @@ class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
                   ),
                   itemBuilder: (context, index) {
                     final bool isSelected =
-                        selectedIcon == iconData.value[index];
+                        selectedIcon == iconData.value.elementAtOrNull(index);
+
                     return Container(
                       margin: const EdgeInsets.all(4),
                       decoration: isSelected
@@ -103,20 +106,22 @@ class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
                           : null,
                       child: IconButton(
                         iconSize: 30,
-                        key: ValueKey(iconData.value[index].hashCode),
+                        key: ValueKey(
+                            iconData.value.elementAtOrNull(index).hashCode),
                         color: isSelected
                             ? context.primary
                             : Theme.of(context).iconTheme.color,
                         onPressed: () {
                           setState(() {
-                            selectedIcon = iconData.value[index];
+                            selectedIcon =
+                                iconData.value.elementAtOrNull(index);
                           });
                         },
-                        icon: Icon(iconData.value[index]),
+                        icon: Icon(iconData.value.elementAtOrNull(index)),
                       ),
                     );
                   },
-                )
+                ),
               ],
             ),
           );

@@ -59,6 +59,7 @@ class IntroCountryPickerWidget extends StatelessWidget {
                         ),
                       );
                     }
+
                     return Container();
                   },
                 ),
@@ -97,9 +98,10 @@ class _CountriesWidgetState extends State<CountriesWidget> {
       shrinkWrap: true,
       itemCount: widget.countries.length,
       itemBuilder: (context, index) {
-        final CountryEntity model = widget.countries[index];
+        final CountryEntity? model = widget.countries.elementAtOrNull(index);
+
         return CountryWidget(
-          countryModel: model,
+          countryModel: model!,
           selected:
               context.read<CountryPickerCubit>().state.selectedCountry == model,
           onSelected: () {
@@ -163,7 +165,7 @@ class CountryWidget extends StatelessWidget {
                 countryModel.code,
                 overflow: TextOverflow.ellipsis,
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -47,7 +47,7 @@ class TransactionsHeaderWidget extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             constraints: BoxConstraints(
-              maxWidth: MediaQuery.of(context).size.width >= 700
+              maxWidth: MediaQuery.sizeOf(context).width >= 700
                   ? 700
                   : double.infinity,
             ),
@@ -59,7 +59,8 @@ class TransactionsHeaderWidget extends StatelessWidget {
             ),
             builder: (context) {
               return FilterHomeExpensesWidget(
-                  summaryController: summaryController);
+                summaryController: summaryController,
+              );
             },
           );
         },

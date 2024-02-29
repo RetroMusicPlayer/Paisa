@@ -39,15 +39,18 @@ class BudgetPage extends StatelessWidget {
               description: context.loc.emptyBudgetMessageSubTitle,
             );
           }
+
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
             itemCount: categories.length,
             itemBuilder: (context, index) {
-              final CategoryEntity category = categories[index];
+              final CategoryEntity? category =
+                  categories.elementAtOrNull(index);
               final List<TransactionEntity> expenses =
                   BlocProvider.of<HomeCubit>(context)
-                      .fetchExpensesFromCategoryId(category.superId!)
+                      .fetchExpensesFromCategoryId(category!.superId!)
                       .thisMonthExpensesList;
+
               return BudgetItem(category: category, expenses: expenses);
             },
             separatorBuilder: (BuildContext context, int index) =>
@@ -109,7 +112,7 @@ class BudgetItem extends StatelessWidget {
                         text:
                             ' ${category.finalBudget.toFormateCurrency(context)}',
                         style: const TextStyle(fontWeight: FontWeight.bold),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -123,7 +126,7 @@ class BudgetItem extends StatelessWidget {
                       TextSpan(
                         text: ' ${totalExpenses.toFormateCurrency(context)}',
                         style: const TextStyle(fontWeight: FontWeight.bold),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -138,7 +141,7 @@ class BudgetItem extends StatelessWidget {
                         text:
                             ' ${(difference < 0 ? 0.0 : difference).toFormateCurrency(context)}',
                         style: const TextStyle(fontWeight: FontWeight.bold),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -152,7 +155,7 @@ class BudgetItem extends StatelessWidget {
               color: category.foregroundColor,
               backgroundColor: category.backgroundColor,
             ),
-          )
+          ),
         ],
       ),
     );

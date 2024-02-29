@@ -43,7 +43,8 @@ class FileHandler {
         throw FileNotFoundException();
       }
 
-      final jsonString = await _readJSONFromFile(result.files.first.path!);
+      final jsonString =
+          await _readJSONFromFile(result.files.firstOrNull!.path!);
       final Data data = Data.fromRawJson(jsonString);
 
       await expenseDataManager.clear();
@@ -72,17 +73,19 @@ class FileHandler {
   Future<FilePickerResult?> _pickFile() async {
     if (defaultTargetPlatform == TargetPlatform.android) {
       final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+
       return FilePicker.platform.pickFiles(
         type: androidInfo.version.sdkInt < 29 ? FileType.any : FileType.custom,
         allowedExtensions: androidInfo.version.sdkInt < 29 ? null : ['json'],
       );
-    } else {
-      return FilePicker.platform.pickFiles();
     }
+
+    return FilePicker.platform.pickFiles();
   }
 
   Future<String> _readJSONFromFile(String path) async {
     final Uint8List bytes = await File(path).readAsBytes();
+
     return String.fromCharCodes(bytes);
   }
 
@@ -90,11 +93,13 @@ class FileHandler {
     final File file = await getTempFile();
     final List<int> jsonBytes = await _fetchAllDataAndEncode();
     await file.writeAsBytes(jsonBytes);
+
     return file.path;
   }
 
   Future<File> getTempFile() async {
     final Directory tempDir = await getTemporaryDirectory();
+
     return await File('${tempDir.path}/paisa_backup.json').create();
   }
 
@@ -108,6 +113,7 @@ class FileHandler {
       'accounts': accounts.toJson(),
       'categories': categories.toJson(),
     };
+
     return utf8.encode(jsonEncode(data));
   }
 }

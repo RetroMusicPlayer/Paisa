@@ -34,6 +34,7 @@ class UserProfileBottomSheetWidget extends StatelessWidget {
     String name = settingsUseCase.get(userNameKey, defaultValue: '');
     controller.text = name;
     controller.selection = TextSelection.collapsed(offset: name.length);
+
     return BlocProvider(
       create: (context) => profileCubit,
       child: BlocListener<ProfileCubit, ProfileState>(
@@ -46,7 +47,7 @@ class UserProfileBottomSheetWidget extends StatelessWidget {
           }
         },
         child: Padding(
-          padding: MediaQuery.of(context).viewInsets,
+          padding: MediaQuery.viewInsetsOf(context),
           child: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -91,7 +92,7 @@ class UserProfileBottomSheetWidget extends StatelessWidget {
                     child: Text(context.loc.update),
                   ),
                 ),
-                const SizedBox(height: 10)
+                const SizedBox(height: 10),
               ],
             ),
           ),

@@ -36,11 +36,13 @@ class CSVExport extends Export {
     final File file = await getTempFile();
     final String csvString = await _fetchAllDataAndEncode();
     await file.writeAsString(csvString);
+
     return file.path;
   }
 
   Future<File> getTempFile() async {
     final Directory tempDir = await getTemporaryDirectory();
+
     return await File('${tempDir.path}/paisa_backup.csv').create();
   }
 
@@ -49,6 +51,7 @@ class CSVExport extends Export {
         expenseDataManager.export().toList();
     final List<List<String>> data = csvDataList(expenses);
     final String csvData = const ListToCsvConverter().convert(data);
+
     return csvData;
   }
 
@@ -69,9 +72,10 @@ class CSVExport extends Export {
       ...List.generate(
         expenses.length,
         (index) {
-          final expense = expenses[index];
-          final account = accountDataManager.findById(expense.accountId);
+          final expense = expenses.elementAtOrNull(index);
+          final account = accountDataManager.findById(expense!.accountId);
           final category = categoryDataManager.findById(expense.categoryId);
+
           return expenseRow(
             index,
             expense: expense,

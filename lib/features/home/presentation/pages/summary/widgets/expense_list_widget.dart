@@ -32,20 +32,19 @@ class ExpenseListWidget extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: expenses.length,
       itemBuilder: (_, index) {
-        final TransactionEntity expense = expenses[index];
+        final TransactionEntity? expense = expenses.elementAtOrNull(index);
         final AccountEntity? account = BlocProvider.of<HomeCubit>(context)
-            .fetchAccountFromId(expense.accountId);
+            .fetchAccountFromId(expense!.accountId);
         final CategoryEntity? category = BlocProvider.of<HomeCubit>(context)
             .fetchCategoryFromId(expense.categoryId);
-        if (account == null || category == null) {
-          return const SizedBox.shrink();
-        } else {
-          return ExpenseItemWidget(
-            expense: expense,
-            account: account,
-            category: category,
-          );
-        }
+
+        return account == null || category == null
+            ? const SizedBox.shrink()
+            : ExpenseItemWidget(
+                expense: expense,
+                account: account,
+                category: category,
+              );
       },
     );
   }

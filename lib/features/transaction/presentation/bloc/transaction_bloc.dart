@@ -79,6 +79,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     final int? expenseId = event.expenseId;
     if (expenseId == null) {
       selectedAccountId = settingsUseCase.get(defaultAccountIdKey);
+
       return;
     }
 
@@ -111,21 +112,23 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
           (fromAccount == toAccount)) {
         return emit(
           const TransactionState.transactionError(
-              'Select both from and to accounts'),
+            'Select both from and to accounts',
+          ),
         );
       }
       final double? validAmount = transactionAmount;
       final int? categoryId = selectedCategoryId;
       if (validAmount == null || validAmount == 0.0) {
         return emit(
-            const TransactionState.transactionError('Enter valid amount'));
+          const TransactionState.transactionError('Enter valid amount'),
+        );
       }
       if (categoryId == null) {
         return emit(const TransactionState.transactionError('Select category'));
       }
       await addTransactionUseCase(AddTransactionParams(
         name:
-            'Transfer from ${fromAccount!.bankName} to ${toAccount!.bankName}',
+            'Transfer from ${fromAccount?.bankName ?? ''} to ${toAccount?.bankName ?? ''}',
         amount: validAmount,
         time: selectedDate,
         categoryId: categoryId,
@@ -135,7 +138,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
 
       await addTransactionUseCase(AddTransactionParams(
         name:
-            'Received from ${fromAccount?.bankName} to ${toAccount?.bankName}',
+            'Received from ${fromAccount?.bankName ?? ''} to ${toAccount?.bankName ?? ''}',
         amount: validAmount,
         time: selectedDate,
         categoryId: categoryId,
@@ -155,7 +158,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
 
       if (validAmount == null || validAmount == 0.0) {
         return emit(
-            const TransactionState.transactionError('Enter valid amount'));
+          const TransactionState.transactionError('Enter valid amount'),
+        );
       }
 
       if (accountId == null || accountId == -1) {
@@ -218,7 +222,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
         accounts.length <= 1 &&
         event.transactionType == TransactionType.transfer) {
       emit(const TransactionState.transactionError(
-          'Need two or more accounts '));
+        'Need two or more accounts ',
+      ));
     } else {
       transactionType = event.transactionType;
       emit(TransactionState.changeTransactionType(event.transactionType));

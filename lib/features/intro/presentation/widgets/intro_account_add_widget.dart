@@ -38,6 +38,7 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
     return PaisaAnnotatedRegionWidget(
       color: context.background,
       child: Scaffold(
@@ -45,6 +46,7 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
           valueListenable: getIt.get<Box<AccountModel>>().listenable(),
           builder: (context, value, child) {
             final List<AccountModel> categoryModels = value.values.toList();
+
             return ListView(
               children: [
                 IntroTopWidget(
@@ -62,9 +64,11 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
                           itemCount: categoryModels.length,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            final AccountModel model = categoryModels[index];
+                            final AccountModel? model =
+                                categoryModels.elementAtOrNull(index);
+
                             return AccountItemWidget(
-                              model: model,
+                              model: model!,
                               onPress: () async {
                                 await model.delete();
                                 defaultModels.add(model);
@@ -84,9 +88,11 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
                         itemCount: categoryModels.length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          final AccountModel model = categoryModels[index];
+                          final AccountModel? model =
+                              categoryModels.elementAtOrNull(index);
+
                           return AccountItemWidget(
-                            model: model,
+                            model: model!,
                             onPress: () async {
                               await model.delete();
                               defaultModels.add(model);
@@ -118,10 +124,11 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
                             .map((model) => FilterChip(
                                   onSelected: (value) {
                                     dataSource.add(model.copyWith(
-                                        name: settings.get(
-                                      userNameKey,
-                                      defaultValue: model.name,
-                                    )));
+                                      name: settings.get(
+                                        userNameKey,
+                                        defaultValue: model.name,
+                                      ),
+                                    ));
                                     setState(() {
                                       defaultModels.remove(model);
                                     });
@@ -142,8 +149,7 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
                                     model.cardType.icon,
                                     color: context.primary,
                                   ),
-                                ))
-                            ,
+                                )),
                         FilterChip(
                           onSelected: (value) {
                             const AccountPageData().push(context);
@@ -164,7 +170,7 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
                             Icons.add_rounded,
                             color: context.primary,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   );

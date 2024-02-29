@@ -36,6 +36,7 @@ class AccountDataSourceImpl implements AccountDataSource {
     final int id = await accountBox.add(account);
     account.superId = id;
     await account.save();
+
     return id;
   }
 

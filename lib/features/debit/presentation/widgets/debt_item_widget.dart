@@ -32,10 +32,10 @@ class DebtItemWidget extends StatelessWidget {
       context: context,
       constraints: BoxConstraints(
         maxWidth:
-            MediaQuery.of(context).size.width >= 700 ? 700 : double.infinity,
+            MediaQuery.sizeOf(context).width >= 700 ? 700 : double.infinity,
       ),
       builder: (context) => Padding(
-        padding: MediaQuery.of(context).viewInsets,
+        padding: MediaQuery.viewInsetsOf(context),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -66,8 +66,10 @@ class DebtItemWidget extends StatelessWidget {
                                 if (text.isNotEmpty) {
                                   double.parse(text);
                                 }
+
                                 return newValue;
                               } catch (_) {}
+
                               return oldValue;
                             },
                           ),
@@ -83,7 +85,7 @@ class DebtItemWidget extends StatelessWidget {
                       },
                       icon: const Icon(Icons.date_range),
                     ),
-                  )
+                  ),
                 ],
               ),
               Padding(
@@ -104,11 +106,13 @@ class DebtItemWidget extends StatelessWidget {
                       final double amount =
                           double.tryParse(controller.text) ?? 0;
                       getIt.get<DebitBloc>().add(
-                          AddTransactionToDebtEvent(debt, amount, dateTime!));
+                            AddTransactionToDebtEvent(debt, amount, dateTime!),
+                          );
                       Navigator.pop(context);
                     } else {
                       context.showMaterialSnackBar(
-                          context.loc.selectDateErrorMessage);
+                        context.loc.selectDateErrorMessage,
+                      );
                       Navigator.pop(context);
                     }
                   },
@@ -116,7 +120,7 @@ class DebtItemWidget extends StatelessWidget {
                     context.loc.update,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -131,6 +135,7 @@ class DebtItemWidget extends StatelessWidget {
       firstDate: DateTime(2020),
       lastDate: DateTime(2050),
     );
+
     return time;
   }
 
@@ -142,7 +147,10 @@ class DebtItemWidget extends StatelessWidget {
         final List<DebitTransactionEntity> transactions =
             value.getTransactionsFromId(debt.superId ?? 0);
         final double amount = transactions.fold<double>(
-            0, (previousValue, element) => previousValue + element.amount);
+          0,
+          (previousValue, element) => previousValue + element.amount,
+        );
+
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: PaisaFilledCard(

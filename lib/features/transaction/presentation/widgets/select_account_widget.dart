@@ -52,7 +52,7 @@ class SelectedAccount extends StatelessWidget {
               ),
               AccountSelectedItem(
                 accounts: accounts,
-              )
+              ),
             ],
           ),
           mobile: (p0) => Column(
@@ -69,7 +69,7 @@ class SelectedAccount extends StatelessWidget {
               ),
               AccountSelectedItem(
                 accounts: accounts,
-              )
+              ),
             ],
           ),
         );
@@ -112,20 +112,20 @@ class AccountSelectedItem extends StatelessWidget {
                     const AccountPageData().push(context);
                   },
                 );
-              } else {
-                final AccountEntity account = accounts[index - 1];
-                return ItemWidget(
-                  color: context.secondary,
-                  selected: account.superId ==
-                      BlocProvider.of<TransactionBloc>(context)
-                          .selectedAccountId,
-                  title: account.name ?? '',
-                  icon: account.cardType!.icon.codePoint,
-                  onPressed: () => BlocProvider.of<TransactionBloc>(context)
-                      .add(TransactionEvent.changeAccount(account)),
-                  subtitle: account.bankName,
-                );
               }
+              final AccountEntity? account =
+                  accounts.elementAtOrNull(index - 1);
+
+              return ItemWidget(
+                color: context.secondary,
+                selected: account!.superId ==
+                    BlocProvider.of<TransactionBloc>(context).selectedAccountId,
+                title: account.name ?? '',
+                icon: account.cardType!.icon.codePoint,
+                onPressed: () => BlocProvider.of<TransactionBloc>(context)
+                    .add(TransactionEvent.changeAccount(account)),
+                subtitle: account.bankName,
+              );
             },
           ),
         );

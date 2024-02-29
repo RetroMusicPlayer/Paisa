@@ -62,7 +62,7 @@ class _SearchPageState extends State<SearchPage> {
                       isScrollControlled: true,
                       isDismissible: true,
                       constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width >= 700
+                        maxWidth: MediaQuery.sizeOf(context).width >= 700
                             ? 700
                             : double.infinity,
                       ),
@@ -100,7 +100,7 @@ class _SearchPageState extends State<SearchPage> {
                     color: context.onSurfaceVariant,
                   ),
                 ),
-                const SizedBox(width: 8)
+                const SizedBox(width: 8),
               ],
             ),
           ),
@@ -155,9 +155,9 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
             );
-          } else {
-            return const SizedBox.shrink();
           }
+
+          return const SizedBox.shrink();
         },
       ),
     );
@@ -207,14 +207,17 @@ class _FilterWidgetState extends State<FilterWidget> {
           valueListenable: getIt.get<Box<AccountModel>>().listenable(),
           builder: (context, value, child) {
             final accounts = value.values.toEntities();
+
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Wrap(
                 spacing: 4.0,
                 runSpacing: 8.0,
                 children: List.generate(accounts.length, (index) {
-                  final AccountEntity account = accounts[index];
-                  final isSelected = selectedAccount.contains(account.superId);
+                  final AccountEntity? account =
+                      accounts.elementAtOrNull(index);
+                  final isSelected = selectedAccount.contains(account!.superId);
+
                   return Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: FilterChip(
@@ -247,15 +250,14 @@ class _FilterWidgetState extends State<FilterWidget> {
                       showCheckmark: false,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       label: Text(account.bankName ?? ''),
-                      labelStyle: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(
-                              color: isSelected
-                                  ? context.primary
-                                  : Theme.of(context)
-                                      .colorScheme
-                                      .onSurfaceVariant),
+                      labelStyle:
+                          Theme.of(context).textTheme.titleMedium?.copyWith(
+                                color: isSelected
+                                    ? context.primary
+                                    : Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant,
+                              ),
                       padding: const EdgeInsets.all(12),
                     ),
                   );
@@ -284,9 +286,11 @@ class _FilterWidgetState extends State<FilterWidget> {
                 spacing: 4.0,
                 runSpacing: 8.0,
                 children: List.generate(categories.length, (index) {
-                  final CategoryEntity categoryEntity = categories[index];
+                  final CategoryEntity? categoryEntity =
+                      categories.elementAtOrNull(index);
                   final bool isSelected =
-                      selectedCategory.contains(categoryEntity.superId);
+                      selectedCategory.contains(categoryEntity!.superId);
+
                   return Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: FilterChip(
@@ -319,15 +323,14 @@ class _FilterWidgetState extends State<FilterWidget> {
                       showCheckmark: false,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       label: Text(categoryEntity.name ?? ''),
-                      labelStyle: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(
-                              color: isSelected
-                                  ? context.primary
-                                  : Theme.of(context)
-                                      .colorScheme
-                                      .onSurfaceVariant),
+                      labelStyle:
+                          Theme.of(context).textTheme.titleMedium?.copyWith(
+                                color: isSelected
+                                    ? context.primary
+                                    : Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant,
+                              ),
                       padding: const EdgeInsets.all(12),
                     ),
                   );

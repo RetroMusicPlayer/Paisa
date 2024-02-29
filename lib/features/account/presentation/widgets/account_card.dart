@@ -102,7 +102,7 @@ class MobileAccountCard extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: GlassmorphicContainer(
           height: 260,
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery.sizeOf(context).width,
           borderRadius: 24,
           blur: 25,
           alignment: Alignment.bottomCenter,
@@ -241,7 +241,7 @@ class TabletAccountCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: GlassmorphicContainer(
           height: 260,
-          width: MediaQuery.of(context).size.width / 2,
+          width: MediaQuery.sizeOf(context).width / 2,
           borderRadius: 24,
           blur: 20,
           alignment: Alignment.bottomCenter,
@@ -396,7 +396,7 @@ class DesktopAccountCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: GlassmorphicContainer(
           height: 240,
-          width: MediaQuery.of(context).size.width / 2,
+          width: MediaQuery.sizeOf(context).width / 2,
           borderRadius: 24,
           blur: 10,
           alignment: Alignment.bottomCenter,

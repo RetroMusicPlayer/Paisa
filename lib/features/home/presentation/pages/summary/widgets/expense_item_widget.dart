@@ -25,14 +25,12 @@ class ExpenseItemWidget extends StatelessWidget {
   final TransactionEntity expense;
 
   String getSubtitle(BuildContext context) {
-    if (expense.type == TransactionType.transfer) {
-      return expense.time.shortDayString;
-    } else {
-      return context.loc.transactionSubTittleText(
-        account.bankName ?? '',
-        expense.time.shortDayString,
-      );
-    }
+    return expense.type == TransactionType.transfer
+        ? expense.time.shortDayString
+        : context.loc.transactionSubTittleText(
+            account.bankName ?? '',
+            expense.time.shortDayString,
+          );
   }
 
   @override
@@ -89,7 +87,7 @@ class ExpenseTransferItemWidget extends StatelessWidget {
   final AccountEntity fromAccount, toAccount;
 
   String get title {
-    return 'Transfer from ${fromAccount.bankName} to ${toAccount.bankName}';
+    return 'Transfer from ${fromAccount.bankName ?? ''} to ${toAccount.bankName ?? ''}';
   }
 
   @override

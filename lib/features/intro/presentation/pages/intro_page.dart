@@ -88,9 +88,9 @@ class IntroBigScreenWidget extends StatelessWidget {
                                 .textTheme
                                 .titleMedium
                                 ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurface),
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
                           ),
                         ),
                         ListTile(
@@ -106,9 +106,9 @@ class IntroBigScreenWidget extends StatelessWidget {
                                 .textTheme
                                 .titleMedium
                                 ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurface),
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
                           ),
                         ),
                         ListTile(
@@ -124,19 +124,20 @@ class IntroBigScreenWidget extends StatelessWidget {
                                 .textTheme
                                 .titleMedium
                                 ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurface),
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
                           ),
                         ),
                         const SizedBox(height: 24),
                         PaisaBigButton(
                           onPressed: () => getIt
                               .get<Box<dynamic>>(
-                                  instanceName: BoxType.settings.name)
+                                instanceName: BoxType.settings.name,
+                              )
                               .put(userIntroKey, true),
                           title: context.loc.introCTA,
-                        )
+                        ),
                       ],
                     ),
                   ],
@@ -145,8 +146,8 @@ class IntroBigScreenWidget extends StatelessWidget {
             ),
             Expanded(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.sizeOf(context).width,
+                height: MediaQuery.sizeOf(context).height,
                 child: Padding(
                   padding: const EdgeInsets.all(24.0),
                   child: LavaAnimation(
@@ -178,8 +179,8 @@ class IntoMobileWidget extends StatelessWidget {
           toolbarHeight: 0,
         ),
         body: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).height,
           child: LavaAnimation(
             color: context.primaryContainer,
             child: Padding(
@@ -237,7 +238,7 @@ class IntoMobileWidget extends StatelessWidget {
                           context.loc.intoSummary3,
                           style: context.titleMedium,
                         ),
-                      )
+                      ),
                     ],
                   ),
                   const Spacer(),
@@ -250,7 +251,7 @@ class IntoMobileWidget extends StatelessWidget {
                         color: context.bodySmall?.color,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

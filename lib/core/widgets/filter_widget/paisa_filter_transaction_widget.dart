@@ -19,9 +19,8 @@ class PaisaFilterTransactionWidget extends StatelessWidget {
         showModalBottomSheet(
           context: context,
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width >= 700
-                ? 700
-                : double.infinity,
+            maxWidth:
+                MediaQuery.sizeOf(context).width >= 700 ? 700 : double.infinity,
           ),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(

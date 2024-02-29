@@ -24,9 +24,11 @@ class CategoryListWidget extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: categoryGrouped.length,
       itemBuilder: (context, index) {
-        final MapEntry<CategoryEntity, List<TransactionEntity>> map =
-            categoryGrouped[index];
-        final Color color = Color(map.key.color ?? Colors.amber.shade100.value);
+        final MapEntry<CategoryEntity, List<TransactionEntity>>? map =
+            categoryGrouped.elementAtOrNull(index);
+        final Color color =
+            Color(map!.key.color ?? Colors.amber.shade100.value);
+
         return InkWell(
           onTap: () {
             TransactionsByCategoryPageData(map.key.superId!).push(context);
@@ -57,7 +59,7 @@ class CategoryListWidget extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(map.key.name ?? ''),
                       ),
-                    )
+                    ),
                   ],
                 ),
                 Row(
@@ -77,9 +79,9 @@ class CategoryListWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(map.value.total.toFormateCurrency(context))
+                    Text(map.value.total.toFormateCurrency(context)),
                   ],
-                )
+                ),
               ],
             ),
           ),

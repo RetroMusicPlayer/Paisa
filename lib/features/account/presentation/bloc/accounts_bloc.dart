@@ -176,10 +176,12 @@ class AccountBloc extends Bloc<AccountsEvent, AccountState> {
     final AccountEntity? account = getAccountUseCase(
       GetAccountParams(accountId),
     );
-    final List<TransactionEntity> expenses = getTransactionsByAccountIdUseCase(
-      GetTransactionsByAccountIdParams(accountId),
-    );
+
     if (account != null) {
+      final List<TransactionEntity> expenses =
+          getTransactionsByAccountIdUseCase(
+        GetTransactionsByAccountIdParams(accountId),
+      );
       emit(AccountAndExpensesState(account, expenses));
     }
   }

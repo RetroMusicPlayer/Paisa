@@ -21,7 +21,7 @@ class DebtsListWidget extends StatelessWidget {
       shrinkWrap: true,
       itemCount: debts.length,
       itemBuilder: (context, index) => DebtItemWidget(
-        debt: debts[index],
+        debt: debts.elementAtOrNull(index)!,
       ),
     );
   }

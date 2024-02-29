@@ -62,7 +62,8 @@ class _TransactionPageState extends State<TransactionPage> {
     super.initState();
     transactionBloc
       ..add(TransactionEvent.changeTransactionType(
-          widget.transactionType ?? TransactionType.expense))
+        widget.transactionType ?? TransactionType.expense,
+      ))
       ..add(TransactionEvent.findTransaction(widget.transactionId));
   }
 
@@ -121,6 +122,7 @@ class _TransactionPageState extends State<TransactionPage> {
               context.read<TransactionBloc>().selectedCategoryId =
                   widget.categoryId;
             }
+
             return ScreenTypeLayout.builder(
               mobile: (p0) => Scaffold(
                 extendBody: true,
@@ -147,19 +149,15 @@ class _TransactionPageState extends State<TransactionPage> {
                   buildWhen: (previous, current) =>
                       current is ChangeTransactionTypeState,
                   builder: (context, state) {
-                    if (state is ChangeTransactionTypeState) {
-                      if (state.transactionType == TransactionType.transfer) {
-                        return TransferWidget(controller: amountController);
-                      } else {
-                        return ExpenseIncomeWidget(
-                          amountController: amountController,
-                          descriptionController: descriptionController,
-                          nameController: nameController,
-                        );
-                      }
-                    } else {
-                      return const SizedBox.shrink();
-                    }
+                    return state is ChangeTransactionTypeState
+                        ? state.transactionType == TransactionType.transfer
+                            ? TransferWidget(controller: amountController)
+                            : ExpenseIncomeWidget(
+                                amountController: amountController,
+                                descriptionController: descriptionController,
+                                nameController: nameController,
+                              )
+                        : const SizedBox.shrink();
                   },
                 ),
                 bottomNavigationBar: SafeArea(
@@ -182,7 +180,7 @@ class _TransactionPageState extends State<TransactionPage> {
                     statusBarColor: Colors.transparent,
                     systemNavigationBarColor: Colors.transparent,
                     statusBarIconBrightness:
-                        MediaQuery.of(context).platformBrightness ==
+                        MediaQuery.platformBrightnessOf(context) ==
                                 Brightness.dark
                             ? Brightness.light
                             : Brightness.dark,
@@ -229,10 +227,12 @@ class _TransactionPageState extends State<TransactionPage> {
                               TransactionNameWidget(controller: nameController),
                               const SizedBox(height: 16),
                               ExpenseDescriptionWidget(
-                                  controller: descriptionController),
+                                controller: descriptionController,
+                              ),
                               const SizedBox(height: 16),
                               TransactionAmountWidget(
-                                  controller: amountController),
+                                controller: amountController,
+                              ),
                               const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                                 child: ExpenseDatePickerWidget(),

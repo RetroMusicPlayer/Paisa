@@ -31,14 +31,14 @@ class CategoryListTabletWidget extends StatelessWidget {
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount:
-            MediaQuery.of(context).orientation == Orientation.landscape ? 3 : 2,
+            MediaQuery.orientationOf(context) == Orientation.landscape ? 3 : 2,
         childAspectRatio: 4,
       ),
       itemCount: categories.length,
       shrinkWrap: true,
       itemBuilder: (_, index) {
         return CategoryItemTabletWidget(
-          category: categories[index],
+          category: categories.elementAtOrNull(index) ?? const CategoryEntity(),
           onPressed: () => paisaAlertDialog(
             context,
             title: Text(context.loc.dialogDeleteTitle),
@@ -47,10 +47,11 @@ class CategoryListTabletWidget extends StatelessWidget {
                 text: context.loc.deleteCategory,
                 children: [
                   TextSpan(
-                      text: categories[index].name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      )),
+                    text: categories.elementAtOrNull(index)!.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
                 style: context.bodyLarge,
               ),
@@ -60,8 +61,8 @@ class CategoryListTabletWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
               ),
               onPressed: () {
-                addCategoryBloc
-                    .add(CategoryDeleteEvent(categories[index].superId!));
+                addCategoryBloc.add(CategoryDeleteEvent(
+                    categories.elementAtOrNull(index)!.superId!));
                 Navigator.pop(context);
               },
               child: const Text('Delete'),

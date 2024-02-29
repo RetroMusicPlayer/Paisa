@@ -27,7 +27,9 @@ class _VersionWidgetState extends State<VersionWidget> {
 
   Future<void> fetchDeviceInfo() async {
     packageInfo = await PackageInfo.fromPlatform();
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -39,6 +41,7 @@ class _VersionWidgetState extends State<VersionWidget> {
       );
     }
     final version = packageInfo?.version ?? '';
+
     return SettingsOption(
       icon: MdiIcons.numeric,
       title: context.loc.version,

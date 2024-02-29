@@ -42,7 +42,7 @@ _addDummyData() async {
       AccountModel(
         bankName: 'Bank Name $i',
         name: 'Holder name $i',
-        cardType: CardType.values[Random().nextInt(3)],
+        cardType: CardType.values.elementAtOrNull(Random().nextInt(3))!,
         color: Colors.amber.value,
       ),
     );
@@ -71,7 +71,7 @@ _addDummyData() async {
       accountId: accountId,
       categoryId: categoryId,
       currency: Random().nextDouble() * 100000,
-      type: TransactionType.values[Random().nextInt(2)],
+      type: TransactionType.values.elementAtOrNull(Random().nextInt(2))!,
     ));
   }
 }

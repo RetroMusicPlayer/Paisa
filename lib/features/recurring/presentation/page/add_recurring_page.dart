@@ -189,7 +189,7 @@ class SelectedAccount extends StatelessWidget {
                 BlocProvider.of<RecurringCubit>(context).selectedAccountId =
                     selectedId;
               },
-            )
+            ),
           ],
         );
       },
@@ -237,22 +237,23 @@ class _AccountSelectedWidgetState extends State<AccountSelectedWidget> {
                 const AccountPageData().push(context);
               },
             );
-          } else {
-            final AccountEntity account = widget.accounts[index - 1];
-            return ItemWidget(
-              color: Color(account.color ?? context.primary.value),
-              selected: account.superId == selectedId,
-              title: account.name ?? '',
-              icon: account.cardType!.icon.codePoint,
-              onPressed: () {
-                setState(() {
-                  selectedId = account.superId!;
-                  widget.onSelected(selectedId);
-                });
-              },
-              subtitle: account.bankName,
-            );
           }
+          final AccountEntity? account =
+              widget.accounts.elementAtOrNull(index - 1);
+
+          return ItemWidget(
+            color: Color(account!.color ?? context.primary.value),
+            selected: account.superId == selectedId,
+            title: account.name ?? '',
+            icon: account.cardType!.icon.codePoint,
+            onPressed: () {
+              setState(() {
+                selectedId = account.superId!;
+                widget.onSelected(selectedId);
+              });
+            },
+            subtitle: account.bankName,
+          );
         },
       ),
     );
@@ -298,7 +299,7 @@ class SelectCategory extends StatelessWidget {
                 BlocProvider.of<RecurringCubit>(context).selectedCategoryId =
                     selectedId;
               },
-            )
+            ),
           ],
         );
       },
@@ -369,45 +370,47 @@ class _CategorySelectWidgetState extends State<CategorySelectWidget> {
                   padding: const EdgeInsets.all(12),
                 ),
               );
-            } else {
-              final CategoryEntity category = widget.categories[index - 1];
-              return Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: FilterChip(
-                  selected: category.superId == selectedId,
-                  onSelected: (value) {
-                    setState(() {
-                      selectedId = category.superId!;
-                      widget.onSelected(selectedId);
-                    });
-                  },
-                  avatar: Icon(
-                    color: category.superId == selectedId
-                        ? context.primary
-                        : context.onSurfaceVariant,
-                    IconData(
-                      category.icon ?? 0,
-                      fontFamily: fontFamilyName,
-                      fontPackage: fontFamilyPackageName,
-                    ),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28),
-                    side: BorderSide(
-                      color: context.primary,
-                    ),
-                  ),
-                  showCheckmark: false,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  label: Text(category.name ?? ''),
-                  labelStyle: context.titleMedium?.copyWith(
-                      color: category.superId == selectedId
-                          ? context.primary
-                          : context.onSurfaceVariant),
-                  padding: const EdgeInsets.all(12),
-                ),
-              );
             }
+            final CategoryEntity? category =
+                widget.categories.elementAtOrNull(index - 1);
+
+            return Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: FilterChip(
+                selected: category!.superId == selectedId,
+                onSelected: (value) {
+                  setState(() {
+                    selectedId = category.superId!;
+                    widget.onSelected(selectedId);
+                  });
+                },
+                avatar: Icon(
+                  color: category.superId == selectedId
+                      ? context.primary
+                      : context.onSurfaceVariant,
+                  IconData(
+                    category.icon ?? 0,
+                    fontFamily: fontFamilyName,
+                    fontPackage: fontFamilyPackageName,
+                  ),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(28),
+                  side: BorderSide(
+                    color: context.primary,
+                  ),
+                ),
+                showCheckmark: false,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                label: Text(category.name ?? ''),
+                labelStyle: context.titleMedium?.copyWith(
+                  color: category.superId == selectedId
+                      ? context.primary
+                      : context.onSurfaceVariant,
+                ),
+                padding: const EdgeInsets.all(12),
+              ),
+            );
           },
         ),
       ),
@@ -438,9 +441,9 @@ class RecurringNameWidget extends StatelessWidget {
         validator: (value) {
           if (value!.isNotEmpty) {
             return null;
-          } else {
-            return context.loc.validName;
           }
+
+          return context.loc.validName;
         },
         onChanged: (value) =>
             BlocProvider.of<RecurringCubit>(context).recurringName = value,
@@ -474,8 +477,10 @@ class RecurringAmountWidget extends StatelessWidget {
             try {
               final text = newValue.text;
               if (text.isNotEmpty) double.parse(text);
+
               return newValue;
             } catch (_) {}
+
             return oldValue;
           }),
         ],
@@ -486,9 +491,9 @@ class RecurringAmountWidget extends StatelessWidget {
         validator: (value) {
           if (value!.isNotEmpty) {
             return null;
-          } else {
-            return context.loc.validAmount;
           }
+
+          return context.loc.validAmount;
         },
       ),
     );
@@ -528,7 +533,7 @@ class _RecurringDatePickerWidgetState extends State<RecurringDatePickerWidget> {
                 firstDate: DateTime(1950),
                 lastDate: DateTime.now(),
               );
-              if (dateTime != null) {
+              if (dateTime != null && mounted) {
                 setState(() {
                   selectedDateTime = selectedDateTime.copyWith(
                     day: dateTime.day,
@@ -558,7 +563,7 @@ class _RecurringDatePickerWidgetState extends State<RecurringDatePickerWidget> {
                 initialTime: TimeOfDay.now(),
                 initialEntryMode: TimePickerEntryMode.dialOnly,
               );
-              if (timeOfDay != null) {
+              if (timeOfDay != null && mounted) {
                 setState(() {
                   selectedDateTime = selectedDateTime.copyWith(
                     hour: timeOfDay.hour,

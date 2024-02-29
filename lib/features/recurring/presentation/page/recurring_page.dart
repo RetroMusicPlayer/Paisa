@@ -35,6 +35,7 @@ class RecurringPage extends StatelessWidget {
                 },
               );
             }
+
             return RecurringListWidget(recurringModels: recurringModels);
           },
         ),
@@ -56,11 +57,13 @@ class RecurringListWidget extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemCount: recurringModels.length,
       itemBuilder: (context, index) {
-        final RecurringModel expense = recurringModels[index];
+        final RecurringModel? expense = recurringModels.elementAtOrNull(index);
+
         return ListTile(
-          title: Text(expense.name),
+          title: Text(expense!.name),
           subtitle: Text(
-              '${expense.recurringType.name(context)} - ${expense.recurringDate.shortDayString}'),
+            '${expense.recurringType.name(context)} - ${expense.recurringDate.shortDayString}',
+          ),
           trailing: IconButton(
             onPressed: () async {
               await expense.delete();

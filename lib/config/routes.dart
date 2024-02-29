@@ -33,7 +33,7 @@ final GoRouter goRouter = GoRouter(
   initialLocation: const IntroRouterData().location,
   refreshListenable: settings.listenable(),
   debugLogDiagnostics: true,
-  observers: <NavigatorObserver>[
+  observers: [
     HeroController(),
   ],
   routes: $appRoutes,
@@ -83,6 +83,7 @@ final GoRouter goRouter = GoRouter(
     } else if (name.isNotEmpty && image.isNotEmpty && isLogging) {
       return const LandingPageData().location;
     }
+
     return null;
   },
 );
@@ -95,7 +96,7 @@ class ErrorRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return Center(
-      child: Text(state.error.toString()),
+      child: Text(state.error!.toString()),
     );
   }
 }
@@ -309,10 +310,11 @@ class FontPickerPageData extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return FontPickerPage(
-        currentFont: settings.get(
-      appFontChangerKey,
-      defaultValue: 'Outfit',
-    ));
+      currentFont: settings.get(
+        appFontChangerKey,
+        defaultValue: 'Outfit',
+      ),
+    );
   }
 }
 

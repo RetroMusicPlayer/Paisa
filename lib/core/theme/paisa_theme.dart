@@ -43,16 +43,14 @@ NavigationBarThemeData navigationBarThemeData(
     backgroundColor: colorScheme.surface,
     labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
     labelTextStyle: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
-        return textTheme?.bodyLarge?.copyWith(
-          fontWeight: FontWeight.bold,
-          color: colorScheme.onSurface,
-        );
-      } else {
-        return textTheme?.bodyLarge?.copyWith(
-          color: colorScheme.onSurface.withOpacity(0.75),
-        );
-      }
+      return states.contains(MaterialState.selected)
+          ? textTheme?.bodyLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: colorScheme.onSurface,
+            )
+          : textTheme?.bodyLarge?.copyWith(
+              color: colorScheme.onSurface.withOpacity(0.75),
+            );
     }),
   );
 }
@@ -64,13 +62,11 @@ NavigationDrawerThemeData navigationDrawerThemeData(
   return NavigationDrawerThemeData(
     backgroundColor: colorScheme.surface,
     labelTextStyle: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
-        return textTheme?.bodyLarge?.copyWith(
-          fontWeight: FontWeight.bold,
-        );
-      } else {
-        return textTheme?.bodyLarge;
-      }
+      return states.contains(MaterialState.selected)
+          ? textTheme?.bodyLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+            )
+          : textTheme?.bodyLarge;
     }),
   );
 }
@@ -147,8 +143,13 @@ extension ColorExtension on Color {
   Color darken([int percent = 40]) {
     assert(1 <= percent && percent <= 100);
     final value = 1 - percent / 100;
-    return Color.fromARGB(alpha, (red * value).round(), (green * value).round(),
-        (blue * value).round());
+
+    return Color.fromARGB(
+      alpha,
+      (red * value).round(),
+      (green * value).round(),
+      (blue * value).round(),
+    );
   }
 }
 

@@ -82,9 +82,9 @@ class _CategoryPageState extends State<CategoryPage> {
             );
             context.pop();
           } else if (state is CategorySuccessState) {
-            budgetController.text = state.category.budget.toString();
+            budgetController.text = state.category.budget!.toString();
             budgetController.selection = TextSelection.collapsed(
-              offset: state.category.budget.toString().length,
+              offset: state.category.budget!.toString().length,
             );
 
             categoryController.text = state.category.name ?? '';
@@ -158,26 +158,26 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
             tablet: (p0) => Scaffold(
               appBar: context.materialYouAppBar(
-                  isAddCategory
-                      ? context.loc.addCategory
-                      : context.loc.updateCategory,
-                  actions: [
-                    DeleteCategoryWidget(categoryId: widget.categoryId),
-                    PaisaButton(
-                      onPressed: () {
-                        final isValid = _formKey.currentState!.validate();
-                        if (!isValid) {
-                          return;
-                        }
+                isAddCategory
+                    ? context.loc.addCategory
+                    : context.loc.updateCategory,
+                actions: [
+                  DeleteCategoryWidget(categoryId: widget.categoryId),
+                  PaisaButton(
+                    onPressed: () {
+                      final isValid = _formKey.currentState!.validate();
+                      if (!isValid) {
+                        return;
+                      }
 
-                        BlocProvider.of<CategoryBloc>(context)
-                            .add(AddOrUpdateCategoryEvent(isAddCategory));
-                      },
-                      title:
-                          isAddCategory ? context.loc.add : context.loc.update,
-                    ),
-                    const SizedBox(width: 16),
-                  ]),
+                      BlocProvider.of<CategoryBloc>(context)
+                          .add(AddOrUpdateCategoryEvent(isAddCategory));
+                    },
+                    title: isAddCategory ? context.loc.add : context.loc.update,
+                  ),
+                  const SizedBox(width: 16),
+                ],
+              ),
               body: Form(
                 key: _formKey,
                 child: Row(
@@ -258,6 +258,7 @@ class DeleteCategoryWidget extends StatelessWidget {
     if (categoryId == null) {
       return const SizedBox.shrink();
     }
+
     return ScreenTypeLayout.builder(
       mobile: (p0) => IconButton(
         onPressed: () => onPressed(context),
@@ -284,11 +285,12 @@ class CategoryColorWidget extends StatelessWidget {
         return ListTile(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           onTap: () {
-            paisaColorPicker(context,
-                    defaultColor:
-                        BlocProvider.of<CategoryBloc>(context).selectedColor ??
-                            Colors.red.value)
-                .then((color) {
+            paisaColorPicker(
+              context,
+              defaultColor:
+                  BlocProvider.of<CategoryBloc>(context).selectedColor ??
+                      Colors.red.value,
+            ).then((color) {
               BlocProvider.of<CategoryBloc>(context)
                   .add(CategoryColorSelectedEvent(color));
             });
@@ -305,8 +307,9 @@ class CategoryColorWidget extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Color(
-                  BlocProvider.of<CategoryBloc>(context).selectedColor ??
-                      Colors.red.value),
+                BlocProvider.of<CategoryBloc>(context).selectedColor ??
+                    Colors.red.value,
+              ),
             ),
           ),
         );
@@ -363,11 +366,7 @@ class CategoryNameWidget extends StatelessWidget {
       onChanged: (value) =>
           BlocProvider.of<CategoryBloc>(context).categoryTitle = value,
       validator: (value) {
-        if (value!.isNotEmpty) {
-          return null;
-        } else {
-          return context.loc.validName;
-        }
+        return value!.isNotEmpty ? null : context.loc.validName;
       },
     );
   }

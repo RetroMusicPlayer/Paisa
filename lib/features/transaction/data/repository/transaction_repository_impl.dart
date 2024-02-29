@@ -45,13 +45,11 @@ class ExpenseRepositoryImpl extends TransactionRepository {
           description: description,
         ),
       );
-      if (result != -1) {
-        return right(true);
-      } else {
-        return right(false);
-      }
+
+      return result != -1 ? right(true) : right(false);
     } catch (err) {
       debugPrint(err.toString());
+
       return left(FailedToAddTransactionFailure());
     }
   }

@@ -27,6 +27,7 @@ class SettingsColorPickerWidget extends StatelessWidget {
     if (isDynamic) {
       return context.primary.value;
     }
+
     return value.get(appColorKey, defaultValue: 0xFF795548);
   }
 
@@ -42,6 +43,7 @@ class SettingsColorPickerWidget extends StatelessWidget {
       builder: (context, value, _) {
         final isDynamic = value.get(dynamicThemeKey, defaultValue: false);
         final color = _extractColorValue(context, value);
+
         return SettingsOption(
           icon: MdiIcons.palette,
           title: context.loc.accentColor,
@@ -60,7 +62,7 @@ class SettingsColorPickerWidget extends StatelessWidget {
             ),
             context: context,
             constraints: BoxConstraints(
-              maxWidth: MediaQuery.of(context).size.width >= 700
+              maxWidth: MediaQuery.sizeOf(context).width >= 700
                   ? 700
                   : double.infinity,
             ),
@@ -85,6 +87,7 @@ class ColorPickerDialogWidget extends StatelessWidget {
         builder: (info) {
           final sdk = info.version.sdkInt;
           bool isAndroid12 = sdk >= 29;
+
           return ValueListenableBuilder<Box<dynamic>>(
             valueListenable: settings.listenable(),
             builder: (context, value, _) {
@@ -149,49 +152,49 @@ class ColorPickerDialogWidget extends StatelessWidget {
           );
         },
       );
-    } else {
-      int selectedColor = settings.get(
-        appColorKey,
-        defaultValue: 0xFF795548,
-      );
-      return SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            ListTile(
-              title: Text(
-                context.loc.pickColor,
-                style: context.titleLarge,
-              ),
-            ),
-            ColorPickerGridWidget(
-              onSelected: (color) {
-                selectedColor = color;
-              },
-              selectedColor: selectedColor,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0, bottom: 16),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 12,
-                  ),
-                ),
-                onPressed: () => settings
-                    .put(appColorKey, selectedColor)
-                    .then((value) => Navigator.pop(context)),
-                child: Text(context.loc.done),
-              ),
-            ),
-          ],
-        ),
-      );
     }
+    int selectedColor = settings.get(
+      appColorKey,
+      defaultValue: 0xFF795548,
+    );
+
+    return SafeArea(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          ListTile(
+            title: Text(
+              context.loc.pickColor,
+              style: context.titleLarge,
+            ),
+          ),
+          ColorPickerGridWidget(
+            onSelected: (color) {
+              selectedColor = color;
+            },
+            selectedColor: selectedColor,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0, bottom: 16),
+            child: TextButton(
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
+              ),
+              onPressed: () => settings
+                  .put(appColorKey, selectedColor)
+                  .then((value) => Navigator.pop(context)),
+              child: Text(context.loc.done),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

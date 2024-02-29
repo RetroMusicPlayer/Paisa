@@ -96,7 +96,7 @@ class AccountPageState extends State<AccountPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10)
+                const SizedBox(height: 10),
               ],
             ),
           );
@@ -137,21 +137,25 @@ class AccountPageState extends State<AccountPage> {
             } else if (state is AccountSuccessState) {
               accountNameController.text = state.account.bankName ?? '';
               accountNameController.selection = TextSelection.collapsed(
-                  offset: state.account.bankName?.length ?? 0);
+                offset: state.account.bankName?.length ?? 0,
+              );
 
               accountNumberController.text = state.account.number ?? '';
               accountNumberController.selection = TextSelection.collapsed(
-                  offset: state.account.number?.length ?? 0);
+                offset: state.account.number?.length ?? 0,
+              );
 
               accountHolderController.text = state.account.name ?? '';
               accountHolderController.selection = TextSelection.collapsed(
-                  offset: state.account.name?.length ?? 0);
+                offset: state.account.name?.length ?? 0,
+              );
 
               accountInitialAmountController.text =
-                  state.account.amount.toString();
+                  state.account.amount!.toString();
               accountInitialAmountController.selection =
                   TextSelection.collapsed(
-                      offset: state.account.amount.toString().length);
+                offset: state.account.amount!.toString().length,
+              );
             }
           },
           builder: (context, state) {
@@ -202,7 +206,7 @@ class AccountPageState extends State<AccountPage> {
                               AccountDefaultSwitchWidget(
                                 accountId: widget.accountId ?? -1,
                               ),
-                              const AccountColorPickerWidget()
+                              const AccountColorPickerWidget(),
                             ],
                           ),
                         ),
@@ -286,7 +290,7 @@ class AccountPageState extends State<AccountPage> {
                                 AccountDefaultSwitchWidget(
                                   accountId: widget.accountId ?? -1,
                                 ),
-                                const AccountColorPickerWidget()
+                                const AccountColorPickerWidget(),
                               ],
                             ),
                           ),
@@ -339,8 +343,9 @@ class AccountColorPickerWidget extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Color(
-                  BlocProvider.of<AccountBloc>(context).selectedColor ??
-                      Colors.red.value),
+                BlocProvider.of<AccountBloc>(context).selectedColor ??
+                    Colors.red.value,
+              ),
             ),
           ),
         );
@@ -392,6 +397,7 @@ class DeleteAccountWidget extends StatelessWidget {
     if (accountId == null) {
       return const SizedBox.shrink();
     }
+
     return ScreenTypeLayout.builder(
       mobile: (p0) => IconButton(
         onPressed: () => onPressed(context),
@@ -482,8 +488,10 @@ class AccountInitialAmountWidget extends StatelessWidget {
           try {
             final text = newValue.text;
             if (text.isNotEmpty) double.parse(text);
+
             return newValue;
           } catch (_) {}
+
           return oldValue;
         }),
       ],

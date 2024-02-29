@@ -66,10 +66,8 @@ class _PaisaAppState extends State<PaisaApp> {
             dynamicThemeKey,
             defaultValue: false,
           );
-          final ThemeMode themeMode = ThemeMode.values[value.get(
-            themeModeKey,
-            defaultValue: 0,
-          )];
+          final ThemeMode? themeMode = ThemeMode.values
+              .elementAtOrNull(value.get(themeModeKey, defaultValue: 0));
           final int color = value.get(
             appColorKey,
             defaultValue: 0xFF795548,
@@ -98,6 +96,7 @@ class _PaisaAppState extends State<PaisaApp> {
 
               final CountryEntity model =
                   CountryModel.fromJson(jsonString ?? {}).toEntity();
+
               return model;
             },
             child: DynamicColorBuilder(

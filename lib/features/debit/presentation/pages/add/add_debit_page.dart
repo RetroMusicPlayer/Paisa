@@ -120,7 +120,7 @@ class _DebitPageState extends State<DebitPage> {
                         Icons.delete_rounded,
                         color: context.error,
                       ),
-                    )
+                    ),
                 ],
               ),
               body: Form(
@@ -167,26 +167,28 @@ class _DebitPageState extends State<DebitPage> {
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: transactions.length,
                           itemBuilder: (_, index) {
-                            final DebitTransactionEntity transaction =
-                                transactions[index];
+                            final DebitTransactionEntity? transaction =
+                                transactions.elementAtOrNull(index);
+
                             return ListTile(
                               leading: IconButton(
                                 onPressed: () {
                                   debitBloc.add(
                                     DeleteTransactionEvent(
-                                        transaction.superId!),
+                                      transaction!.superId!,
+                                    ),
                                   );
                                 },
                                 icon: const Icon(Icons.delete),
                               ),
-                              title: Text(transaction.now.formattedDate),
+                              title: Text(transaction!.now.formattedDate),
                               trailing: Text(transaction.amount
                                   .toFormateCurrency(context)),
                             );
                           },
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -221,50 +223,47 @@ class StartAndEndDateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final debtBloc = BlocProvider.of<DebitBloc>(context);
+
     return Row(
       children: [
         BlocBuilder(
           bloc: debtBloc,
           buildWhen: (previous, current) => current is SelectedStartDateState,
           builder: (context, state) {
-            if (state is SelectedStartDateState) {
-              return Expanded(
-                child: DatePickerWidget(
-                  onSelected: (date) {
-                    debtBloc.add(SelectedStartDateEvent(date));
-                  },
-                  title: context.loc.startDate,
-                  subtitle: state.startDateTime.formattedDate,
-                  icon: MdiIcons.calendarStart,
-                  lastDate: DateTime.now(),
-                  firstDate: DateTime(2000),
-                ),
-              );
-            } else {
-              return const SizedBox.shrink();
-            }
+            return state is SelectedStartDateState
+                ? Expanded(
+                    child: DatePickerWidget(
+                      onSelected: (date) {
+                        debtBloc.add(SelectedStartDateEvent(date));
+                      },
+                      title: context.loc.startDate,
+                      subtitle: state.startDateTime.formattedDate,
+                      icon: MdiIcons.calendarStart,
+                      lastDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                    ),
+                  )
+                : const SizedBox.shrink();
           },
         ),
         BlocBuilder(
           bloc: debtBloc,
           buildWhen: (previous, current) => current is SelectedEndDateState,
           builder: (context, state) {
-            if (state is SelectedEndDateState) {
-              return Expanded(
-                child: DatePickerWidget(
-                  onSelected: (date) {
-                    debtBloc.add(SelectedEndDateEvent(date));
-                  },
-                  title: context.loc.dueDate,
-                  subtitle: state.endDateTime.formattedDate,
-                  icon: MdiIcons.calendarEnd,
-                  lastDate: DateTime(2050),
-                  firstDate: DateTime.now(),
-                ),
-              );
-            } else {
-              return const SizedBox.shrink();
-            }
+            return state is SelectedEndDateState
+                ? Expanded(
+                    child: DatePickerWidget(
+                      onSelected: (date) {
+                        debtBloc.add(SelectedEndDateEvent(date));
+                      },
+                      title: context.loc.dueDate,
+                      subtitle: state.endDateTime.formattedDate,
+                      icon: MdiIcons.calendarEnd,
+                      lastDate: DateTime(2050),
+                      firstDate: DateTime.now(),
+                    ),
+                  )
+                : const SizedBox.shrink();
           },
         ),
       ],
@@ -328,11 +327,7 @@ class NameWidget extends StatelessWidget {
       keyboardType: TextInputType.name,
       hintText: context.loc.nameHint,
       validator: (value) {
-        if (value!.length >= 2) {
-          return null;
-        } else {
-          return context.loc.validName;
-        }
+        return value!.length >= 2 ? null : context.loc.validName;
       },
       onChanged: (value) =>
           BlocProvider.of<DebitBloc>(context).currentName = value,
@@ -355,11 +350,7 @@ class DescriptionWidget extends StatelessWidget {
       keyboardType: TextInputType.name,
       hintText: context.loc.description,
       validator: (value) {
-        if (value!.length >= 3) {
-          return null;
-        } else {
-          return context.loc.validDescription;
-        }
+        return value!.length >= 3 ? null : context.loc.validDescription;
       },
       onChanged: (value) =>
           BlocProvider.of<DebitBloc>(context).currentDescription = value,
@@ -391,17 +382,15 @@ class AmountWidget extends StatelessWidget {
           try {
             final text = newValue.text;
             if (text.isNotEmpty) double.parse(text);
+
             return newValue;
           } catch (_) {}
+
           return oldValue;
         }),
       ],
       validator: (value) {
-        if (value!.isNotEmpty) {
-          return null;
-        } else {
-          return context.loc.validAmount;
-        }
+        return value!.isNotEmpty ? null : context.loc.validAmount;
       },
     );
   }

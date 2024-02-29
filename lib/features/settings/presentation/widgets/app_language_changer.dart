@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -15,6 +16,7 @@ class AppLanguageChanger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String code = settings.get(appLanguageKey, defaultValue: 'en');
+
     return ListTile(
       leading: Icon(
         MdiIcons.translate,
@@ -25,7 +27,7 @@ class AppLanguageChanger extends StatelessWidget {
       },
       title: Text(context.loc.appLanguage),
       subtitle: Text(Languages.languages
-          .firstWhere((element) => element.code == code)
+          .firstWhereOrNull((element) => element.code == code)!
           .value),
     );
   }
