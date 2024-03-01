@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/h.savarala/Documents/flutter
-FLUTTER_APPLICATION_PATH=/Users/h.savarala/Desktop/dev/Paisa
+FLUTTER_ROOT=/home/spud/development/flutter
+FLUTTER_APPLICATION_PATH=/home/spud/paisadev2
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=6.0.2

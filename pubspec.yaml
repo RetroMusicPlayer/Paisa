@@ -60,7 +60,6 @@ dev_dependencies:
   flutter_app_name: ^0.1.1
   flutter_launcher_icons: ^0.11.0
   flutter_lints: ^3.0.1
-  flutter_native_splash: ^2.2.0+1
   freezed: ^2.4.6
   hive_generator: ^2.0.0
   import_sorter: ^4.6.0
