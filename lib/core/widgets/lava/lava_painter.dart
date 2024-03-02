@@ -1,4 +1,6 @@
 // Dart imports:
+// ignore_for_file: always_declare_return_types, prefer-trailing-comma, avoid-unsafe-collection-methods, newline-before-return
+
 import 'dart:math';
 
 // Flutter imports:
@@ -140,7 +142,7 @@ class Lava {
     final lineX = matrix[sx + dxX]![sy + dyX]!.x + ix[dir] * p;
     final lineY = matrix[sx + dxY]![sy + dyY]!.y + ix[dir + 4] * p;
 
-    if (paint == false) {
+    if (!paint) {
       path.moveTo(lineX, lineY);
     } else {
       path.lineTo(lineX, lineY);

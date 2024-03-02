@@ -50,6 +50,7 @@ class LocalTransactionManagerImpl implements TransactionDataSource {
     final id = await transactionBox.add(transaction);
     transaction.superId = id;
     transaction.save();
+
     return id;
   }
 
@@ -61,6 +62,7 @@ class LocalTransactionManagerImpl implements TransactionDataSource {
     final keys = transactionBox.values
         .where((element) => element.accountId == accountId)
         .map((e) => e.key);
+
     return transactionBox.deleteAll(keys);
   }
 
@@ -69,6 +71,7 @@ class LocalTransactionManagerImpl implements TransactionDataSource {
     final keys = transactionBox.values
         .where((element) => element.categoryId == categoryId)
         .map((e) => e.key);
+
     return transactionBox.deleteAll(keys);
   }
 
@@ -90,13 +93,15 @@ class LocalTransactionManagerImpl implements TransactionDataSource {
 
   @override
   Future<List<TransactionModel>> filteredExpenses(
-      DateTimeRange dateTimeRange) async {
+    DateTimeRange dateTimeRange,
+  ) async {
     final List<TransactionModel> expenses =
         transactionBox.values.sortedBy<DateTime>((element) => element.time);
     final filteredExpenses = expenses.takeWhile((value) {
       return value.time.isAfter(dateTimeRange.start) &&
           value.time.isBefore(dateTimeRange.end);
     }).toList();
+
     return filteredExpenses;
   }
 

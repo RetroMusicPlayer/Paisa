@@ -63,15 +63,10 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final actionButton =
         HomeFloatingActionButtonWidget(summaryController: getIt.get());
+
     return PaisaAnnotatedRegionWidget(
-      child: WillPopScope(
-        onWillPop: () async {
-          if (context.read<HomeCubit>().state.index == 0) {
-            return true;
-          }
-          context.read<HomeCubit>().setCurrentIndex(0);
-          return false;
-        },
+      child: PopScope(
+        canPop: context.read<HomeCubit>().state.index == 0,
         child: ScreenTypeLayout.builder(
           mobile: (p0) => HomeMobileWidget(
             floatingActionButton: actionButton,

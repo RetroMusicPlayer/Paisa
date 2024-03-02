@@ -24,17 +24,13 @@ class VariableFABSize extends StatelessWidget {
       valueListenable: settings.listenable(keys: [smallSizeFabKey]),
       builder: (context, value, child) {
         final isSmallSize = value.get(smallSizeFabKey, defaultValue: false);
-        if (isSmallSize) {
-          return FloatingActionButton(
-            onPressed: onPressed,
-            child: Icon(icon),
-          );
-        } else {
-          return FloatingActionButton.large(
-            onPressed: onPressed,
-            child: Icon(icon),
-          );
-        }
+
+        return isSmallSize
+            ? FloatingActionButton(onPressed: onPressed, child: Icon(icon))
+            : FloatingActionButton.large(
+                onPressed: onPressed,
+                child: Icon(icon),
+              );
       },
     );
   }

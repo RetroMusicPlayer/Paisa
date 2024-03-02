@@ -11,7 +11,7 @@ class HomeSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints:
-          BoxConstraints(maxWidth: MediaQuery.of(context).size.width / 3),
+          BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 3),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(34),
         color: context.surfaceVariant,

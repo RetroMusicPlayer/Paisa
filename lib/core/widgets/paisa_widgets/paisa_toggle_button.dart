@@ -24,17 +24,24 @@ class PaisaToggleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final textColor = isSelected ? context.primary : null;
     final color = isSelected ? context.primaryContainer : null;
-    final BorderRadius borderRadius = itemIndex == ItemIndex.first
-        ? const BorderRadius.only(
-            topLeft: Radius.circular(8),
-            topRight: Radius.circular(8),
-          )
-        : itemIndex == ItemIndex.last
-            ? const BorderRadius.only(
-                bottomLeft: Radius.circular(8),
-                bottomRight: Radius.circular(8),
-              )
-            : const BorderRadius.only();
+    final BorderRadius borderRadius;
+    switch (itemIndex) {
+      case ItemIndex.first:
+        borderRadius = const BorderRadius.only(
+          topLeft: Radius.circular(8),
+          topRight: Radius.circular(8),
+        );
+        break;
+      case ItemIndex.last:
+        borderRadius = const BorderRadius.only(
+          bottomLeft: Radius.circular(8),
+          bottomRight: Radius.circular(8),
+        );
+        break;
+      default:
+        borderRadius = const BorderRadius.only();
+    }
+
     return InkWell(
       onTap: onPressed,
       child: Container(

@@ -17,6 +17,7 @@ class ExportAndImportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingCubit settingCubit = BlocProvider.of<SettingCubit>(context);
+
     return PaisaAnnotatedRegionWidget(
       color: context.background,
       child: BlocListener(
@@ -37,15 +38,13 @@ class ExportAndImportPage extends StatelessWidget {
               BlocBuilder(
                 bloc: settingCubit,
                 builder: (context, state) {
-                  if (state is ImportFileLoading) {
-                    return const SizedBox(
-                      height: 16,
-                      width: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    );
-                  } else {
-                    return const SizedBox.shrink();
-                  }
+                  return state is ImportFileLoading
+                      ? const SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const SizedBox.shrink();
                 },
               ),
               const SizedBox(width: 16),

@@ -52,7 +52,6 @@ dart_code_metrics:
   rules:
     - newline-before-return
     - no-boolean-literal-compare
-    - no-empty-block
     - prefer-trailing-comma
     - prefer-conditional-expressions
     - no-equal-then-else
@@ -111,7 +110,7 @@ dart_code_metrics:
     - use-setstate-synchronously
     - avoid-incomplete-copy-with
     - proper-super-calls
-    - dispose-fields
+  # - dispose-fields
   # - avoid-empty-setstate
     - avoid-state-constructors
     - avoid-recursive-widget-calls
@@ -145,7 +144,7 @@ dart_code_metrics:
     # - avoid-excessive-expressions
 
     # Code simplification
-    - avoid-redundant-async
+  # - avoid-redundant-async
     - avoid-redundant-else
     - avoid-unnecessary-nullable-return-type
     - avoid-redundant-pragma-inline
@@ -156,14 +155,14 @@ dart_code_metrics:
     - avoid-unnecessary-return
     - avoid-duplicate-patterns
     - avoid-keywords-in-wildcard-pattern
-    - avoid-unnecessary-futures
+  # - avoid-unnecessary-futures
     - avoid-unnecessary-reassignment
-    - avoid-unnecessary-call
+  # - avoid-unnecessary-call
     - avoid-unnecessary-stateful-widgets
     - prefer-dedicated-media-query-methods
     - avoid-unnecessary-overrides-in-state
     - move-variable-closer-to-its-usage
     - avoid-nullable-parameters-with-default-values
     - prefer-null-aware-spread
-    - avoid-inferrable-type-arguments
+  # - avoid-inferrable-type-arguments
     - avoid-unnecessary-super

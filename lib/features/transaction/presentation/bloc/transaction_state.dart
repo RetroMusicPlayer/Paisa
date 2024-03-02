@@ -6,21 +6,24 @@ class TransactionState with _$TransactionState {
       ChangeAccountState;
 
   const factory TransactionState.changeTransactionType(
-      TransactionType transactionType) = ChangeTransactionTypeState;
+    TransactionType transactionType,
+  ) = ChangeTransactionTypeState;
 
   const factory TransactionState.changecCategory(CategoryEntity category) =
       ChangeCategoryState;
 
   const factory TransactionState.defaultCategory(
-      List<CategoryEntity> categories) = DefaultCategoriesState;
+    List<CategoryEntity> categories,
+  ) = DefaultCategoriesState;
 
   const factory TransactionState.initial() = ExpenseInitial;
 
   const factory TransactionState.transaction(TransactionEntity transaction) =
       TransactionFoundState;
 
-  const factory TransactionState.transactionAdded(
-      {@Default(false) bool isAddOrUpdate}) = TransactionAdded;
+  const factory TransactionState.transactionAdded({
+    @Default(false) bool isAddOrUpdate,
+  }) = TransactionAdded;
 
   const factory TransactionState.transactionDeleted() = TransactionDeletedState;
 

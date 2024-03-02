@@ -26,7 +26,7 @@ class PaisaUserWidget extends StatelessWidget {
       onTap: () => showModalBottomSheet(
         constraints: BoxConstraints(
           maxWidth:
-              MediaQuery.of(context).size.width >= 700 ? 700 : double.infinity,
+              MediaQuery.sizeOf(context).width >= 700 ? 700 : double.infinity,
         ),
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(

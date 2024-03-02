@@ -83,7 +83,7 @@ class _BiometricPageState extends State<BiometricPage> {
                   Text(
                     context.loc.biometricMessage,
                     style: context.bodyMedium,
-                  )
+                  ),
                 ],
               ),
             ),

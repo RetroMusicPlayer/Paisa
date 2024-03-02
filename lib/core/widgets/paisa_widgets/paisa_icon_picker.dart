@@ -132,12 +132,14 @@ class _IconPickerWidgetState extends State<_IconPickerWidget> {
                   onPressed: () {
                     setState(() {
                       selectedIcon = MdiIcons.fromString(
-                          iconKeys.elementAtOrNull(index) ?? '');
+                        iconKeys.elementAtOrNull(index) ?? '',
+                      );
                       widget.onSelectedIcon.call(selectedIcon ?? MdiIcons.home);
                     });
                   },
                   icon: Icon(MdiIcons.fromString(
-                      iconKeys.elementAtOrNull(index) ?? '')),
+                    iconKeys.elementAtOrNull(index) ?? '',
+                  )),
                 ),
               );
             },

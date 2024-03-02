@@ -35,6 +35,7 @@ class ItemWidget extends StatelessWidget {
         : RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           );
+
     return SizedBox(
       width: 150,
       child: Card(
@@ -78,7 +79,7 @@ class ItemWidget extends StatelessWidget {
                         maxLines: 1,
                       )
                     : null,
-              )
+              ),
             ],
           ),
         ),

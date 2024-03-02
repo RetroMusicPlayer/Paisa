@@ -7,7 +7,8 @@ class TransactionEvent with _$TransactionEvent {
 
   const factory TransactionEvent.delete(int expenseId) = _ClearExpenseEvent;
   const factory TransactionEvent.changeTransactionType(
-      TransactionType transactionType) = _ChangeTransactionTypeEvent;
+    TransactionType transactionType,
+  ) = _ChangeTransactionTypeEvent;
 
   const factory TransactionEvent.transferAccount(
     AccountEntity account, {

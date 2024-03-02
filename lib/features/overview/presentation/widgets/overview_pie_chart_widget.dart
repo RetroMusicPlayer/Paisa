@@ -25,6 +25,7 @@ class OverviewPieChartWidget extends StatelessWidget {
         final List<MapEntry<CategoryEntity, List<TransactionEntity>>>
             mapExpenses = categoryGroupedExpenses.toNonNull();
         final double total = transactions.total;
+
         return Column(
           children: [
             PieChartWidget(
@@ -34,7 +35,7 @@ class OverviewPieChartWidget extends StatelessWidget {
             CategoryListWidget(
               categoryGrouped: mapExpenses,
               totalExpense: total,
-            )
+            ),
           ],
         );
       },
@@ -56,6 +57,7 @@ class PieChartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<PieChartSectionData> sections = map.map((e) {
       final Color color = Color(e.key.color ?? Colors.amber.value);
+
       return PieChartSectionData(
         color: color.withOpacity(0.3),
         value: e.value.total / total,
@@ -66,6 +68,7 @@ class PieChartWidget extends StatelessWidget {
         ),
       );
     }).toList();
+
     return SizedBox(
       height: 200,
       child: PieChart(
@@ -122,7 +125,7 @@ class Indicator extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: textColor,
           ),
-        )
+        ),
       ],
     );
   }
@@ -130,10 +133,12 @@ class Indicator extends StatelessWidget {
 
 extension TransactionsHelper on Iterable<TransactionEntity> {
   Map<CategoryEntity?, List<TransactionEntity>> toCategoryGrouped(
-      Iterable<CategoryEntity> categoryModels) {
+    Iterable<CategoryEntity> categoryModels,
+  ) {
     return groupBy(this, (entity) {
       final CategoryEntity? categoryEntity = categoryModels
           .firstWhereOrNull((element) => element.superId == entity.categoryId);
+
       return categoryEntity;
     });
   }
@@ -149,6 +154,7 @@ extension MapTransactionsHelper
         mapExpenses.add(MapEntry(element.key!, element.value));
       }
     }
+
     return mapExpenses.sorted((a, b) {
       return b.value.total.compareTo(a.value.total);
     });

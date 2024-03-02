@@ -35,8 +35,10 @@ class TransactionAmountWidget extends StatelessWidget {
             try {
               final text = newValue.text;
               if (text.isNotEmpty) double.parse(text);
+
               return newValue;
             } catch (_) {}
+
             return oldValue;
           }),
         ],
@@ -45,11 +47,7 @@ class TransactionAmountWidget extends StatelessWidget {
           BlocProvider.of<TransactionBloc>(context).transactionAmount = amount;
         },
         validator: (value) {
-          if (value!.isNotEmpty) {
-            return null;
-          } else {
-            return context.loc.validAmount;
-          }
+          return value!.isNotEmpty ? null : context.loc.validAmount;
         },
       ),
     );

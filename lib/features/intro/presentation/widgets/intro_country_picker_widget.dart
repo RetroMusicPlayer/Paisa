@@ -15,7 +15,10 @@ import 'package:paisa/features/intro/presentation/widgets/intro_image_picker_wid
 class IntroCountryPickerWidget extends StatelessWidget {
   const IntroCountryPickerWidget({
     super.key,
+    required this.onCountrySelected, // Add this line
   });
+
+  final VoidCallback onCountrySelected; // Add this line
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +51,17 @@ class IntroCountryPickerWidget extends StatelessWidget {
                         mobile: (p0) => CountriesWidget(
                           countries: state.countries,
                           crossAxisCount: 2,
+                          onCountrySelected: onCountrySelected,
                         ),
                         tablet: (p0) => CountriesWidget(
                           countries: state.countries,
                           crossAxisCount: 3,
+                          onCountrySelected: onCountrySelected,
                         ),
                         desktop: (p0) => CountriesWidget(
                           countries: state.countries,
                           crossAxisCount: 6,
+                          onCountrySelected: onCountrySelected,
                         ),
                       );
                     }
@@ -77,11 +83,12 @@ class CountriesWidget extends StatefulWidget {
     super.key,
     required this.countries,
     required this.crossAxisCount,
+    required this.onCountrySelected, // Add this line
   });
 
   final List<CountryEntity> countries;
   final int crossAxisCount;
-
+  final VoidCallback onCountrySelected; // Add this line
   @override
   State<CountriesWidget> createState() => _CountriesWidgetState();
 }
@@ -107,6 +114,7 @@ class _CountriesWidgetState extends State<CountriesWidget> {
           onSelected: () {
             setState(() {});
             context.read<CountryPickerCubit>().updateSelectedCountry(model);
+            widget.onCountrySelected();
           },
         );
       },

@@ -32,58 +32,53 @@ class UserImageWidget extends StatelessWidget {
         if (image == 'no-image') {
           image = '';
         }
+
         return ScreenTypeLayout.builder(
           mobile: (p0) => Builder(
             builder: (context) {
-              if (image.isEmpty) {
-                return ClipOval(
-                  child: Container(
-                    width: 42,
-                    height: 42,
-                    color: context.secondaryContainer,
-                    child: Icon(
-                      Icons.account_circle_outlined,
-                      color: context.onSecondaryContainer,
-                    ),
-                  ),
-                );
-              } else {
-                return Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: CircleAvatar(
-                    foregroundImage: FileImage(File(image)),
-                  ),
-                );
-              }
+              return image.isEmpty
+                  ? ClipOval(
+                      child: Container(
+                        width: 42,
+                        height: 42,
+                        color: context.secondaryContainer,
+                        child: Icon(
+                          Icons.account_circle_outlined,
+                          color: context.onSecondaryContainer,
+                        ),
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: CircleAvatar(
+                        foregroundImage: FileImage(File(image)),
+                      ),
+                    );
             },
           ),
           tablet: (p0) => Builder(
             builder: (context) {
-              if (image.isEmpty) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipOval(
-                    child: Container(
-                      width: 42,
-                      height: 42,
-                      color: context.secondaryContainer,
-                      child: Icon(
-                        Icons.account_circle_outlined,
-                        color: context.onSecondaryContainer,
+              return image.isEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipOval(
+                        child: Container(
+                          width: 42,
+                          height: 42,
+                          color: context.secondaryContainer,
+                          child: Icon(
+                            Icons.account_circle_outlined,
+                            color: context.onSecondaryContainer,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              } else {
-                return Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: CircleAvatar(
-                    foregroundImage: FileImage(
-                      File(image),
-                    ),
-                  ),
-                );
-              }
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: CircleAvatar(
+                        foregroundImage: FileImage(File(image)),
+                      ),
+                    );
             },
           ),
         );

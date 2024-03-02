@@ -41,22 +41,17 @@ class TransactionDeleteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (expenseId == null) {
-      return const SizedBox.shrink();
-    } else {
-      return ScreenTypeLayout.builder(
-        mobile: (p0) => IconButton(
-          onPressed: () => onPressed(context),
-          icon: Icon(
-            Icons.delete_rounded,
-            color: context.error,
-          ),
-        ),
-        tablet: (p0) => PaisaTextButton(
-          onPressed: () => onPressed(context),
-          title: context.loc.delete,
-        ),
-      );
-    }
+    return expenseId == null
+        ? const SizedBox.shrink()
+        : ScreenTypeLayout.builder(
+            mobile: (p0) => IconButton(
+              onPressed: () => onPressed(context),
+              icon: Icon(Icons.delete_rounded, color: context.error),
+            ),
+            tablet: (p0) => PaisaTextButton(
+              onPressed: () => onPressed(context),
+              title: context.loc.delete,
+            ),
+          );
   }
 }

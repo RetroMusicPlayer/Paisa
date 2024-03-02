@@ -28,6 +28,7 @@ class TransactionNameWidget extends StatelessWidget {
         if (state is ChangeTransactionTypeState) {
           hintName = state.transactionType.hintName(context);
         }
+
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: PaisaTextFormField(
@@ -39,11 +40,7 @@ class TransactionNameWidget extends StatelessWidget {
               FilteringTextInputFormatter.singleLineFormatter,
             ],
             validator: (value) {
-              if (value!.isNotEmpty) {
-                return null;
-              } else {
-                return context.loc.validName;
-              }
+              return value!.isNotEmpty ? null : context.loc.validName;
             },
             onChanged: (value) =>
                 BlocProvider.of<TransactionBloc>(context).expenseName = value,

@@ -40,7 +40,7 @@ class SettingsGroup extends StatelessWidget {
               ),
             ),
           ),
-          ...options
+          ...options,
         ],
       ),
     );

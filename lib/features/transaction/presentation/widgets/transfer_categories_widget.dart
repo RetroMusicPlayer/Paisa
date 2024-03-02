@@ -20,47 +20,44 @@ class TransferCategoriesWidget extends StatelessWidget {
     context
         .read<TransactionBloc>()
         .add(const TransactionEvent.defaultCategory());
+
     return BlocBuilder<TransactionBloc, TransactionState>(
       buildWhen: (previous, current) => current is DefaultCategoriesState,
       builder: (context, state) {
-        if (state is DefaultCategoriesState) {
-          if (state.categories.isEmpty) {
-            return ListTile(
-              onTap: () async {
-                await const CategoryPageData().push(context);
-                if (context.mounted) {
-                  context
-                      .read<TransactionBloc>()
-                      .add(const TransactionEvent.defaultCategory());
-                }
-              },
-              title: Text(context.loc.addCategoryEmptyTitle),
-              subtitle: Text(context.loc.addCategoryEmptySubTitle),
-              trailing: const Icon(Icons.keyboard_arrow_right),
-            );
-          } else {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    context.loc.selectCategory,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SelectDefaultCategoryWidget(
-                  categories: state.categories,
-                ),
-              ],
-            );
-          }
-        } else {
-          return const SizedBox.shrink();
-        }
+        return state is DefaultCategoriesState
+            ? state.categories.isEmpty
+                ? ListTile(
+                    onTap: () async {
+                      await const CategoryPageData().push(context);
+                      if (context.mounted) {
+                        context
+                            .read<TransactionBloc>()
+                            .add(const TransactionEvent.defaultCategory());
+                      }
+                    },
+                    title: Text(context.loc.addCategoryEmptyTitle),
+                    subtitle: Text(context.loc.addCategoryEmptySubTitle),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          context.loc.selectCategory,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SelectDefaultCategoryWidget(
+                        categories: state.categories,
+                      ),
+                    ],
+                  )
+            : const SizedBox.shrink();
       },
     );
   }
@@ -76,6 +73,7 @@ class SelectDefaultCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final expenseBloc = BlocProvider.of<TransactionBloc>(context);
+
     return BlocBuilder<TransactionBloc, TransactionState>(
       builder: (context, state) {
         return Padding(
@@ -97,20 +95,21 @@ class SelectDefaultCategoryWidget extends StatelessWidget {
                     iconColor: context.primary,
                     titleColor: context.primary,
                   );
-                } else {
-                  final CategoryEntity category = categories[index - 1];
-                  final bool selected =
-                      category.superId == expenseBloc.selectedCategoryId;
-                  return CategoryChip(
-                    selected: selected,
-                    onSelected: (value) => expenseBloc
-                        .add(TransactionEvent.changeCategory(category)),
-                    icon: category.icon ?? 0,
-                    title: category.name ?? '',
-                    titleColor: Color(category.color ?? context.primary.value),
-                    iconColor: Color(category.color ?? context.primary.value),
-                  );
                 }
+                final CategoryEntity? category =
+                    categories.elementAtOrNull(index - 1);
+                final bool selected =
+                    category!.superId == expenseBloc.selectedCategoryId;
+
+                return CategoryChip(
+                  selected: selected,
+                  onSelected: (value) => expenseBloc
+                      .add(TransactionEvent.changeCategory(category)),
+                  icon: category.icon ?? 0,
+                  title: category.name ?? '',
+                  titleColor: Color(category.color ?? context.primary.value),
+                  iconColor: Color(category.color ?? context.primary.value),
+                );
               },
             ),
           ),

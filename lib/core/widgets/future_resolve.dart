@@ -19,11 +19,9 @@ class FutureResolve<T> extends StatelessWidget {
     return FutureBuilder(
       future: future,
       builder: (context, snapshot) {
-        if (snapshot.hasData && snapshot.data != null) {
-          return builder.call(snapshot.data as T);
-        } else {
-          return const SizedBox.shrink();
-        }
+        return snapshot.hasData && snapshot.data != null
+            ? builder.call(snapshot.data as T)
+            : const SizedBox.shrink();
       },
     );
   }

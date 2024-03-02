@@ -33,6 +33,7 @@ class AccountTransactionWidget extends StatelessWidget {
               description: context.loc.emptyExpensesMessageTitle,
             );
           }
+
           return ListView(
             physics: isScroll ? null : const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -43,12 +44,12 @@ class AccountTransactionWidget extends StatelessWidget {
               AccountHistoryWidget(
                 expenses: state.expenses,
                 summaryController: Provider.of<SummaryController>(context),
-              )
+              ),
             ],
           );
-        } else {
-          return const SizedBox.shrink();
         }
+
+        return const SizedBox.shrink();
       },
     );
   }

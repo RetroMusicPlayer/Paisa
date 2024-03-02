@@ -19,6 +19,7 @@ class CurrencyChangeWidget extends StatelessWidget {
     final GetSelectedCountryUseCase getSelectedCountryUseCase =
         getIt<GetSelectedCountryUseCase>();
     final String? currentSymbol = getSelectedCountryUseCase(NoParams())?.code;
+
     return ListTile(
       leading: Icon(
         MdiIcons.currencySign,

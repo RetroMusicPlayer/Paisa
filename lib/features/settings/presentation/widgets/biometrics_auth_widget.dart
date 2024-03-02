@@ -48,7 +48,7 @@ class _BiometricAuthWidgetState extends State<BiometricAuthWidget> {
     return FutureResolve<List<bool>>(
       future: Future.wait([
         widget.authenticate.isDeviceSupported(),
-        widget.authenticate.canCheckBiometrics()
+        widget.authenticate.canCheckBiometrics(),
       ]),
       builder: (supported) {
         return Visibility(

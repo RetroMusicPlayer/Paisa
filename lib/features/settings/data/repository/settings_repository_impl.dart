@@ -30,6 +30,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }) async {
     try {
       final bool result = await import.import();
+
       return right(result);
     } on FileNotFoundException {
       return left(FileNotFoundFailure());
@@ -42,17 +43,16 @@ class SettingsRepositoryImpl implements SettingsRepository {
   Future<void> put(String key, value) => settings.put(key, value);
 
   @override
-  Future<Either<Failure, String>> exportDataToFile(
-      {required Export export}) async {
+  Future<Either<Failure, String>> exportDataToFile({
+    required Export export,
+  }) async {
     try {
       final String path = await export.export();
-      if (path.isEmpty) {
-        return left(FileNotFoundFailure());
-      } else {
-        return right(path);
-      }
+
+      return path.isEmpty ? left(FileNotFoundFailure()) : right(path);
     } catch (err) {
       print(err);
+
       return left(ErrorFileExportFailure());
     }
   }

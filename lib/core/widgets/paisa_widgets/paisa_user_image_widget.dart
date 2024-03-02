@@ -50,35 +50,33 @@ class PaisaUserImageWidget extends StatelessWidget {
                       color: context.onPrimary,
                     ),
                   );
-                } else {
-                  if (useDefault) {
-                    return CircleAvatar(
-                      foregroundImage: FileImage(File(image)),
-                      maxRadius: maxRadius,
-                    );
-                  } else {
-                    return Badge(
-                      alignment: AlignmentDirectional.bottomEnd,
-                      label: GestureDetector(
-                        onTap: () {
-                          value.put(userImageKey, '');
-                        },
-                        child: Center(
-                          child: Icon(
-                            MdiIcons.delete,
-                            size: 8,
-                            color: context.onPrimary,
-                          ),
-                        ),
-                      ),
-                      backgroundColor: context.primary,
-                      child: CircleAvatar(
+                }
+
+                return useDefault
+                    ? CircleAvatar(
                         foregroundImage: FileImage(File(image)),
                         maxRadius: maxRadius,
-                      ),
-                    );
-                  }
-                }
+                      )
+                    : Badge(
+                        alignment: AlignmentDirectional.bottomEnd,
+                        label: GestureDetector(
+                          onTap: () {
+                            value.put(userImageKey, '');
+                          },
+                          child: Center(
+                            child: Icon(
+                              MdiIcons.delete,
+                              size: 8,
+                              color: context.onPrimary,
+                            ),
+                          ),
+                        ),
+                        backgroundColor: context.primary,
+                        child: CircleAvatar(
+                          foregroundImage: FileImage(File(image)),
+                          maxRadius: maxRadius,
+                        ),
+                      );
               },
             ),
           );

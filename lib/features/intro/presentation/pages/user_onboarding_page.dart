@@ -20,7 +20,8 @@ import 'package:paisa/main.dart';
 class UserOnboardingPage extends StatefulWidget {
   const UserOnboardingPage({
     super.key,
-    this.forceCountrySelector = false,
+    this.forceCountrySelector =
+        false, // Forces immediate country selection, is this a shortcut for testing?
   });
   final bool forceCountrySelector;
   @override
@@ -32,6 +33,13 @@ class _UserOnboardingPageState extends State<UserOnboardingPage> {
   final TextEditingController _nameController = TextEditingController();
 
   int currentIndex = 0;
+  bool countrySelected = false;
+
+  void setCountrySelected() {
+    setState(() {
+      countrySelected = true;
+    });
+  }
 
   @override
   void initState() {
@@ -120,7 +128,18 @@ class _UserOnboardingPageState extends State<UserOnboardingPage> {
                     } else if (currentIndex == 3) {
                       saveCategoryAndNavigate();
                     } else if (currentIndex == 4) {
-                      const LandingPageData().go(context);
+                      if (countrySelected) {
+                        const LandingPageData().go(context);
+                      } else {
+                        // Show a message to the user to select a country
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Please select a country before continuing',
+                            ),
+                          ),
+                        );
+                      }
                     }
                   },
                   extendedPadding: const EdgeInsets.symmetric(horizontal: 24),
@@ -151,7 +170,9 @@ class _UserOnboardingPageState extends State<UserOnboardingPage> {
             const IntroCategoryAddWidget(),
             BlocProvider<CountryPickerCubit>(
               create: (context) => getIt<CountryPickerCubit>()..fetchCountry(),
-              child: const IntroCountryPickerWidget(),
+              child: IntroCountryPickerWidget(
+                onCountrySelected: setCountrySelected,
+              ),
             ),
           ],
         ),

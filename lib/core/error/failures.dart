@@ -14,9 +14,9 @@ class ErrorImagePickFailure extends Failure {}
 
 String mapFailureToMessage(Failure failure) {
   switch (failure.runtimeType) {
-    case FileNotFoundFailure:
+    case const (FileNotFoundFailure):
       return 'File not found';
-    case ErrorFileExportFailure:
+    case const (ErrorFileExportFailure):
       return 'Error file export';
     default:
       return 'Unexpected error';

@@ -31,13 +31,11 @@ class AccountsHorizontalTabletPage extends StatelessWidget {
               AccountPageViewWidget(accounts: accounts),
               BlocBuilder<AccountBloc, AccountState>(
                 builder: (context, state) {
-                  if (state is AccountSelectedState) {
-                    return AccountSummaryWidget(expenses: state.expenses);
-                  } else {
-                    return const SizedBox.shrink();
-                  }
+                  return state is AccountSelectedState
+                      ? AccountSummaryWidget(expenses: state.expenses)
+                      : const SizedBox.shrink();
                 },
-              )
+              ),
             ],
           ),
         ),

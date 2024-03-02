@@ -22,11 +22,9 @@ class FilterDateRangeWidget extends StatelessWidget {
     return ValueListenableBuilder<DateTimeRange?>(
       valueListenable: dateTimeRangeNotifier,
       builder: (context, value, child) {
-        if (value != null) {
-          return builder.call(expenses.isFilterTimeBetween(value));
-        } else {
-          return builder.call(expenses.toList());
-        }
+        return value != null
+            ? builder.call(expenses.isFilterTimeBetween(value))
+            : builder.call(expenses.toList());
       },
     );
   }

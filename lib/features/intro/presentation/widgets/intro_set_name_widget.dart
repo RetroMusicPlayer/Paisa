@@ -55,11 +55,7 @@ class IntroSetNameWidget extends StatelessWidget {
                 label: context.loc.nameHint,
                 keyboardType: TextInputType.name,
                 validator: (val) {
-                  if (val!.isNotEmpty) {
-                    return null;
-                  } else {
-                    return context.loc.enterNameHint;
-                  }
+                  return val!.isNotEmpty ? null : context.loc.enterNameHint;
                 },
               ),
             ),

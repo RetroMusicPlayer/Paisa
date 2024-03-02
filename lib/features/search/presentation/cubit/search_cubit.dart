@@ -29,8 +29,7 @@ class SearchCubit extends Cubit<SearchState> {
     );
     if (expenses.isEmpty) {
       return emit(SearchEmptyState());
-    } else {
-      emit(SearchResultState(expenses));
     }
+    emit(SearchResultState(expenses));
   }
 }
