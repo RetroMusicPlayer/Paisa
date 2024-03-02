@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 // Project imports:
-import 'package:paisa/core/constants/icon_constants.dart';
 import 'package:paisa/core/extensions/build_context_extension.dart';
 import 'package:paisa/core/extensions/color_extension.dart';
 import 'package:paisa/core/extensions/text_style_extension.dart';
@@ -332,7 +332,7 @@ class _TransferCategoryWidgetState extends State<TransferCategoryWidget> {
       builder: (context, state) {
         return SwitchListTile(
           secondary: Icon(
-            PaisaMdiIcons.swapHorizontal,
+            MdiIcons.swapHorizontal,
             color: context.primary,
           ),
           subtitle: Text(context.loc.transferCategorySubtitle),

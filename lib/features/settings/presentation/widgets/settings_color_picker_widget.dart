@@ -2,12 +2,14 @@
 import 'dart:io';
 
 // Flutter imports:
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 // Project imports:
 import 'package:paisa/config/routes.dart';
@@ -33,44 +35,87 @@ class SettingsColorPickerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Box<dynamic>>(
-      valueListenable: settings.listenable(
-        keys: [
-          appColorKey,
-          dynamicThemeKey,
-        ],
-      ),
-      builder: (context, value, _) {
-        final isDynamic = value.get(dynamicThemeKey, defaultValue: false);
-        final color = _extractColorValue(context, value);
+    if (kIsWeb) {
+      return ValueListenableBuilder<Box<dynamic>>(
+        valueListenable: settings.listenable(
+          keys: [
+            appColorKey,
+            dynamicThemeKey,
+          ],
+        ),
+        builder: (context, value, _) {
+          final isDynamic = value.get(dynamicThemeKey, defaultValue: false);
+          final color = _extractColorValue(context, value);
 
-        return SettingsOption(
-          icon: MdiIcons.palette,
-          title: context.loc.accentColor,
-          subtitle: isDynamic ? context.loc.dynamicColor : context.loc.custom,
-          trailing: CircleAvatar(
-            backgroundColor: Color(color),
-            maxRadius: 16,
-          ),
-          onTap: () => showModalBottomSheet(
-            isScrollControlled: true,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
+          return SettingsOption(
+            icon: MdiIcons.palette,
+            title: context.loc.accentColor,
+            subtitle: isDynamic ? context.loc.dynamicColor : context.loc.custom,
+            trailing: CircleAvatar(
+              backgroundColor: Color(color),
+              maxRadius: 16,
+            ),
+            onTap: () => showModalBottomSheet(
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
               ),
+              context: context,
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.sizeOf(context).width >= 700
+                    ? 700
+                    : double.infinity,
+              ),
+              builder: (context) => const ColorPickerDialogWidget(),
             ),
-            context: context,
-            constraints: BoxConstraints(
-              maxWidth: MediaQuery.sizeOf(context).width >= 700
-                  ? 700
-                  : double.infinity,
+          );
+        },
+      );
+    } else if (Platform.isAndroid || Platform.isIOS) {
+      return ValueListenableBuilder<Box<dynamic>>(
+        valueListenable: settings.listenable(
+          keys: [
+            appColorKey,
+            dynamicThemeKey,
+          ],
+        ),
+        builder: (context, value, _) {
+          final isDynamic = value.get(dynamicThemeKey, defaultValue: false);
+          final color = _extractColorValue(context, value);
+
+          return SettingsOption(
+            icon: MdiIcons.palette,
+            title: context.loc.accentColor,
+            subtitle: isDynamic ? context.loc.dynamicColor : context.loc.custom,
+            trailing: CircleAvatar(
+              backgroundColor: Color(color),
+              maxRadius: 16,
             ),
-            builder: (context) => const ColorPickerDialogWidget(),
-          ),
-        );
-      },
-    );
+            onTap: () => showModalBottomSheet(
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+              ),
+              context: context,
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.sizeOf(context).width >= 700
+                    ? 700
+                    : double.infinity,
+              ),
+              builder: (context) => const ColorPickerDialogWidget(),
+            ),
+          );
+        },
+      );
+    }
+
+    return Container();
   }
 }
 
@@ -81,7 +126,53 @@ class ColorPickerDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
+    if (!kIsWeb) {
+      int selectedColor = settings.get(
+        appColorKey,
+        defaultValue: 0xFF795548,
+      );
+
+      return SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ListTile(
+              title: Text(
+                context.loc.pickColor,
+                style: context.titleLarge,
+              ),
+            ),
+            ColorPicker(
+              pickerColor: Color(selectedColor),
+              onColorChanged: (color) {
+                selectedColor = color.value;
+              },
+              pickerAreaHeightPercent: 0.8,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0, bottom: 16),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+                onPressed: () => settings
+                    .put(appColorKey, selectedColor)
+                    .then((value) => Navigator.pop(context)),
+                child: Text(context.loc.done),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+    if (!kIsWeb && Platform.isAndroid) {
       return FutureResolve<AndroidDeviceInfo>(
         future: DeviceInfoPlugin().androidInfo,
         builder: (info) {
@@ -151,6 +242,51 @@ class ColorPickerDialogWidget extends StatelessWidget {
             },
           );
         },
+      );
+    } else if (!kIsWeb) {
+      int selectedColor = settings.get(
+        appColorKey,
+        defaultValue: 0xFF795548,
+      );
+
+      return SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ListTile(
+              title: Text(
+                context.loc.pickColor,
+                style: context.titleLarge,
+              ),
+            ),
+            ColorPicker(
+              pickerColor: Color(selectedColor),
+              onColorChanged: (color) {
+                selectedColor = color.value;
+              },
+              pickerAreaHeightPercent: 0.8,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0, bottom: 16),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+                onPressed: () => settings
+                    .put(appColorKey, selectedColor)
+                    .then((value) => Navigator.pop(context)),
+                child: Text(context.loc.done),
+              ),
+            ),
+          ],
+        ),
       );
     }
     int selectedColor = settings.get(

@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -17,18 +18,24 @@ class DynamicColorSwitchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return StatefulBuilder(
       builder: (context, setState) {
+        bool? dynamicTheme = kIsWeb
+            ? false
+            : settings.get(
+                dynamicThemeKey,
+                defaultValue: false,
+              );
+
         return SettingsOption(
           title: context.loc.dynamicColor,
           trailing: Switch(
             activeColor: context.primary,
-            value: settings.get(
-              dynamicThemeKey,
-              defaultValue: false,
-            ),
-            onChanged: (value) {
-              settings.put(dynamicThemeKey, value);
-              setState(() {});
-            },
+            value: dynamicTheme!,
+            onChanged: kIsWeb
+                ? null
+                : (value) {
+                    settings.put(dynamicThemeKey, value);
+                    setState(() {});
+                  },
           ),
         );
       },

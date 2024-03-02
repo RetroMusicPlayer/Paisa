@@ -37,25 +37,23 @@ class ChooseThemeModeWidgetState extends State<ChooseThemeModeWidget> {
               style: context.titleLarge,
             ),
           ),
-          ...ThemeMode.values
-              .map(
-                (e) => RadioListTile(
-                  value: e,
-                  activeColor: context.primary,
-                  groupValue: currentIndex,
-                  onChanged: (ThemeMode? value) {
-                    currentIndex = value!;
-                    setState(() {});
-                  },
-                  title: Text(
-                    e.themeName,
-                    style: TextStyle(
-                      color: context.onSurface,
-                    ),
-                  ),
+          ...ThemeMode.values.map(
+            (e) => RadioListTile(
+              value: e,
+              activeColor: context.primary,
+              groupValue: currentIndex,
+              onChanged: (ThemeMode? value) {
+                currentIndex = value!;
+                setState(() {});
+              },
+              title: Text(
+                e.themeName,
+                style: TextStyle(
+                  color: context.onSurface,
                 ),
-              )
-              ,
+              ),
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -67,7 +65,9 @@ class ChooseThemeModeWidgetState extends State<ChooseThemeModeWidget> {
                       borderRadius: BorderRadius.circular(24),
                     ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 12),
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
                   ),
                   onPressed: () => Navigator.pop(context),
                   child: Text(
@@ -95,7 +95,7 @@ class ChooseThemeModeWidgetState extends State<ChooseThemeModeWidget> {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

@@ -77,8 +77,8 @@ class HiveAdapters {
       return 'paisa';
     } else if (TargetPlatform.windows == defaultTargetPlatform) {
       return 'paisa';
-    } else {
-      return null;
     }
+
+    return null;
   }
 }

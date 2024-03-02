@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:go_router/go_router.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 // Project imports:
-import 'package:paisa/core/constants/icon_constants.dart';
 
 import 'package:paisa/core/extensions/build_context_extension.dart';
 import 'package:paisa/core/extensions/color_extension.dart';
@@ -20,7 +20,7 @@ class CategoryIconPickerPage extends StatefulWidget {
 }
 
 class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
-  late IconData? selectedIcon = PaisaMdiIcons.abTesting;
+  late IconData? selectedIcon = MdiIcons.abTesting;
 
   @override
   Widget build(BuildContext context) {
@@ -132,3 +132,151 @@ class _CategoryIconPickerPageState extends State<CategoryIconPickerPage> {
     );
   }
 }
+
+final paisaIconMap = {
+  'Animal': [
+    MdiIcons.butterfly,
+    MdiIcons.cat,
+    MdiIcons.cow,
+    MdiIcons.dog,
+    MdiIcons.dogSide,
+    MdiIcons.duck,
+    MdiIcons.fish,
+    MdiIcons.horse,
+    MdiIcons.owl,
+    MdiIcons.panda,
+    MdiIcons.pig,
+    MdiIcons.sheep,
+    MdiIcons.rabbit,
+    MdiIcons.snail,
+    MdiIcons.snake,
+    MdiIcons.spider,
+    MdiIcons.tortoise,
+    MdiIcons.turtle,
+    MdiIcons.turkey,
+  ],
+  'Brands': [
+    MdiIcons.android,
+    MdiIcons.angular,
+    MdiIcons.apple,
+    MdiIcons.atlassian,
+    MdiIcons.aws,
+    MdiIcons.bitbucket,
+    MdiIcons.bitcoin,
+    MdiIcons.blenderSoftware,
+    MdiIcons.bootstrap,
+    MdiIcons.codepen,
+    MdiIcons.devTo,
+    MdiIcons.deviantart,
+    MdiIcons.docker,
+    MdiIcons.dropbox,
+    MdiIcons.evernote,
+    MdiIcons.facebook,
+    MdiIcons.firebase,
+    MdiIcons.firefox,
+    MdiIcons.github,
+    MdiIcons.gitlab,
+    MdiIcons.gmail,
+    MdiIcons.google,
+    MdiIcons.googleAds,
+    MdiIcons.googleDrive,
+    MdiIcons.googlePlay,
+    MdiIcons.hulu,
+    MdiIcons.instagram,
+    MdiIcons.jira,
+    MdiIcons.kickstarter,
+    MdiIcons.languageSwift,
+    MdiIcons.linkedin,
+    MdiIcons.microsoft,
+    MdiIcons.microsoftAzure,
+    MdiIcons.nintendoSwitch,
+    MdiIcons.onepassword,
+    MdiIcons.pandora,
+    MdiIcons.patreon,
+    MdiIcons.pinterest,
+    MdiIcons.qqchat,
+    MdiIcons.reddit,
+    MdiIcons.skype,
+    MdiIcons.snapchat,
+    MdiIcons.soundcloud,
+    MdiIcons.spotify,
+    MdiIcons.steam,
+    MdiIcons.wechat,
+    MdiIcons.whatsapp,
+    MdiIcons.wikipedia,
+    MdiIcons.wordpress,
+    MdiIcons.youtube,
+  ],
+  'Computer': [
+    MdiIcons.album,
+    MdiIcons.audioVideo,
+    MdiIcons.earbuds,
+    MdiIcons.headphones,
+    MdiIcons.musicNote,
+    MdiIcons.speaker,
+    MdiIcons.printer,
+    MdiIcons.radio,
+    MdiIcons.wifi,
+    MdiIcons.bluetooth,
+    MdiIcons.phone,
+    MdiIcons.laptop,
+    MdiIcons.desktopClassic,
+    MdiIcons.televisionSpeaker,
+    MdiIcons.videoVintage,
+    MdiIcons.film,
+    MdiIcons.camcorder,
+    MdiIcons.video,
+    MdiIcons.webcam,
+    MdiIcons.camera,
+  ],
+  'Food': [
+    MdiIcons.carrot,
+    MdiIcons.chiliMild,
+    MdiIcons.corn,
+    MdiIcons.egg,
+    MdiIcons.foodApple,
+    MdiIcons.fruitGrapes,
+    MdiIcons.fruitCherries,
+  ],
+  'Health': [
+    MdiIcons.pillMultiple,
+    MdiIcons.needle,
+    MdiIcons.motherNurse,
+    MdiIcons.truckPlus,
+    MdiIcons.medication,
+    MdiIcons.hospitalBuilding,
+    MdiIcons.emoticonSick,
+  ],
+  'Shopping': [
+    MdiIcons.basket,
+    MdiIcons.cart,
+    MdiIcons.cash,
+    MdiIcons.creditCard,
+    MdiIcons.sale,
+    MdiIcons.shopping,
+    MdiIcons.store,
+    MdiIcons.cashRegister,
+    MdiIcons.cartVariant,
+  ],
+  'Transportation': [
+    MdiIcons.airplane,
+    MdiIcons.car,
+    MdiIcons.ferry,
+    MdiIcons.taxi,
+    MdiIcons.tram,
+    MdiIcons.train,
+    MdiIcons.bus,
+  ],
+  'Other': [
+    MdiIcons.circle,
+    MdiIcons.circleHalf,
+    MdiIcons.heart,
+    MdiIcons.hexagon,
+    MdiIcons.decagram,
+    MdiIcons.shape,
+    MdiIcons.hexagonMultiple,
+    MdiIcons.triangle,
+    MdiIcons.shapePlus,
+    MdiIcons.swapHorizontal,
+  ],
+};

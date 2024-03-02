@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 // Project imports:
 import 'package:paisa/config/routes.dart';
 import 'package:paisa/core/constants/constants.dart';
-import 'package:paisa/core/constants/icon_constants.dart';
 import 'package:paisa/core/extensions/build_context_extension.dart';
 import 'package:paisa/core/extensions/color_extension.dart';
 import 'package:paisa/features/category/presentation/bloc/category_bloc.dart';
@@ -23,7 +23,7 @@ class CategoryIconPickerWidget extends StatelessWidget {
           current is CategorySuccessState,
       bloc: BlocProvider.of<CategoryBloc>(context),
       builder: (context, state) {
-        IconData iconData = PaisaMdiIcons.home;
+        IconData iconData = MdiIcons.home;
         if (state is CategoryIconSelectedState) {
           iconData = IconData(
             state.categoryIcon,
