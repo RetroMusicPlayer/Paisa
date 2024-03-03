@@ -30,6 +30,7 @@ class OverviewTransactionWidget extends StatelessWidget {
             description: context.loc.emptyOverviewMessageSubtitle,
           );
         }
+
         return FilterDateRangeWidget(
           dateTimeRangeNotifier:
               getIt<SummaryController>().dateTimeRangeNotifier,
@@ -42,6 +43,7 @@ class OverviewTransactionWidget extends StatelessWidget {
                 description: context.loc.emptyOverviewMessageSubtitle,
               );
             }
+
             return builder(expenses);
           },
         );

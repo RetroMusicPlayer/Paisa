@@ -16,6 +16,7 @@ class Authenticate {
     } on PlatformException catch (_) {
       canCheckBiometrics = false;
     }
+
     return canCheckBiometrics;
   }
 
@@ -26,6 +27,7 @@ class Authenticate {
     } on PlatformException catch (_) {
       availableBiometrics = <BiometricType>[];
     }
+
     return availableBiometrics;
   }
 
@@ -43,6 +45,7 @@ class Authenticate {
     } on PlatformException catch (_) {
       return false;
     }
+
     return authenticated;
   }
 
