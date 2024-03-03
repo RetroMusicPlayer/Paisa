@@ -34,12 +34,14 @@ class ProfileRepositoryImpl implements ProfileRepository {
       if (imageFile != null) {
         final String path = await _saveImageFileToCache(imageFile);
         await settings.put(userImageKey, path);
+
         return right(true);
-      } else {
-        return left(FileNotFoundFailure());
       }
+
+      return left(FileNotFoundFailure());
     } catch (err) {
       debugPrint(err.toString());
+
       return left(ErrorImagePickFailure());
     }
   }
@@ -49,6 +51,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     final cachePath = '${directory.path}/profile_picture.jpg';
     final imageFile = File(xFile.path);
     await imageFile.copy(cachePath);
+
     return cachePath;
   }
 }
