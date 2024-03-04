@@ -1,5 +1,5 @@
 
-name: Android Release
+name: Build Android App
 
 on:
   push:
@@ -41,12 +41,8 @@ jobs:
          channel: 'stable'
          cache: true
       - run: flutter pub get
-      - run: flutter build apk
-      - run: flutter build appbundle
-
-        
-        
-
+      - run: flutter build apk --release --no-tree-shake-icons
+      - run: flutter build appbundle --no-tree-shake-icons
       - name: Upload Android Release
         uses: actions/upload-artifact@v4
         with:
