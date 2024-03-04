@@ -41,8 +41,8 @@ jobs:
          channel: 'stable'
          cache: true
       - run: flutter pub get
-      - run: flutter build apk --release --no-tree-shake-icons
-      - run: flutter build appbundle --no-tree-shake-icons
+      - run: flutter build apk --flavor prod --no-tree-shake-icons
+      - run: flutter build appbundle --flavor prod --no-tree-shake-icons
       - name: Upload Android Release
         uses: actions/upload-artifact@v4
         with:
