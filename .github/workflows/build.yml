@@ -33,9 +33,6 @@ jobs:
           distribution: "zulu"
           java-version: "17.x"
           cache: gradle
-      - name: Get dependencies
-        run: flutter pub get
-
       - name: Flutter action
         uses: subosito/flutter-action@v2.13.0
       - uses: actions/checkout@v4
