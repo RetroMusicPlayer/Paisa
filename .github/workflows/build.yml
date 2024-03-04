@@ -24,10 +24,10 @@ jobs:
           encodedString: ${{ secrets.KEYSTORE }}
       - name: Create key.properties
         run: |
-          echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
-          echo "storePassword=${{ secrets.SIGNING_STORE_PASSWORD }}" >> android/key.properties
-          echo "keyPassword=${{ secrets.SIGNING_KEY_PASSWORD }}" >> android/key.properties
-          echo "keyAlias=${{ secrets.SIGNING_KEY_ALIAS }}" >> android/key.properties
+          echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/app/key.properties
+          echo "storePassword=${{ secrets.SIGNING_STORE_PASSWORD }}" >> android/app/key.properties
+          echo "keyPassword=${{ secrets.SIGNING_KEY_PASSWORD }}" >> android/app/key.properties
+          echo "keyAlias=${{ secrets.SIGNING_KEY_ALIAS }}" >> android/app/key.properties
       - uses: actions/setup-java@v4
         with:
           distribution: "zulu"
@@ -35,30 +35,20 @@ jobs:
           cache: gradle
       - name: Flutter action
         uses: subosito/flutter-action@v2.13.0
-      - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2.13.0
         with:
-         channel: 'stable'
-         cache: true
+          channel: 'stable'
+          cache: true
       - run: flutter pub get
       - run: flutter build apk --flavor prod --no-tree-shake-icons
       - run: flutter build appbundle --flavor prod --no-tree-shake-icons
+      - name: Upload Android APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: build/app/outputs/apk/prod/release/app-prod-release.apk
       - name: Upload Android Release
         uses: actions/upload-artifact@v4
         with:
           name: android-release
           path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
-
-  deploy:
-    name: Deploy Android Build
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout artifacts
-        uses: actions/checkout@v4
-
-      - name: Get Android Build from artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: android-release
-      
