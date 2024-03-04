@@ -19,7 +19,7 @@ jobs:
         id: android_keystore
         uses: timheuer/base64-to-file@v1.2
         with:
-          fileName: upload-keystore.jks
+          fileName: keystore.jks
           encodedString: ${{ secrets.KEYSTORE }}
       - name: Create key.properties
         run: |
@@ -76,7 +76,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON  }}
-          packageName: dev.hemanths.paisa
+          packageName: dev.spuddles.paisa
           releaseFiles: app-prod-release.aab
           track: internal
           status: completed
