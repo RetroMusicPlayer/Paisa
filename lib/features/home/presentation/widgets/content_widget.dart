@@ -35,6 +35,7 @@ class ContentWidget extends StatelessWidget {
       ),
       6: const RecurringPage(),
     };
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return PageTransitionSwitcher(

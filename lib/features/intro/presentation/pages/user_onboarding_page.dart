@@ -20,8 +20,7 @@ import 'package:paisa/main.dart';
 class UserOnboardingPage extends StatefulWidget {
   const UserOnboardingPage({
     super.key,
-    this.forceCountrySelector =
-        false, // Forces immediate country selection, is this a shortcut for testing?
+    this.forceCountrySelector = true,
   });
   final bool forceCountrySelector;
   @override

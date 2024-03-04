@@ -23,7 +23,7 @@ import 'package:paisa/features/transaction/presentation/widgets/selectable_item_
 import 'package:paisa/main.dart';
 
 class AddRecurringPage extends StatefulWidget {
-  const AddRecurringPage({super.key});
+  const AddRecurringPage(BuildContext context, {super.key});
 
   @override
   State<AddRecurringPage> createState() => _AddRecurringPageState();

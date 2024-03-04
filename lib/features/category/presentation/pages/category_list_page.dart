@@ -21,6 +21,7 @@ class CategoryListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = getIt.get<CategoryBloc>();
+
     return PaisaAnnotatedRegionWidget(
       color: context.background,
       child: Scaffold(
@@ -35,6 +36,7 @@ class CategoryListPage extends StatelessWidget {
               );
             }
             final List<CategoryEntity> categories = value.values.toEntities();
+
             return ScreenTypeLayout.builder(
               mobile: (p0) => CategoryListMobileWidget(
                 categories: categories,

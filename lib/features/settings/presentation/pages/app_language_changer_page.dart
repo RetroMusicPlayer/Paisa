@@ -125,6 +125,8 @@ class Languages {
 
   static const languages = [
     LanguageEntity(code: 'en', value: 'English'),
+    LanguageEntity(code: 'ne', value: 'Nepali'),
+    LanguageEntity(code: 'cs', value: 'Czech'),
     LanguageEntity(code: 'es', value: 'Spanish'),
     LanguageEntity(code: 'pl', value: 'Polish'),
     LanguageEntity(code: 'be', value: 'Belarusian'),
@@ -133,8 +135,10 @@ class Languages {
     LanguageEntity(code: 'it', value: 'Italian'),
     LanguageEntity(code: 'kn', value: 'Kannada (IN)'),
     LanguageEntity(code: 'pt', value: 'Portuguese'),
+    LanguageEntity(code: 'pt_BR', value: 'Portuguese (BR)'),
     LanguageEntity(code: 'ru', value: 'Russian'),
     LanguageEntity(code: 'ta', value: 'Tamil (IN)'),
+    LanguageEntity(code: 'uk', value: 'Ukrainian'),
     LanguageEntity(code: 'vi', value: 'Vietnamese'),
     LanguageEntity(code: 'zh', value: 'Chinese'),
     LanguageEntity(code: 'zh_TW', value: 'Traditional Chinese'),

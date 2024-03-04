@@ -208,5 +208,7 @@
     "accountNotFound": "Konto leider nicht gefunden. :(",
     "bankNameError": "Bankname hier eingeben bitte",
     "holderNameError": "Kontobesitzername hier eingeben",
-    "accountColorError": "Lege den Namen der Kontofarbe fest"
+    "accountColorError": "Lege den Namen der Kontofarbe fest",
+    "emptySelectedAccountsInfo": "Wähle ein Konto von den oberen Optionen zum starten",
+    "emptyrecommendedAccountsInfo": "Keine Konten übrig zum hinzufügen"
 }

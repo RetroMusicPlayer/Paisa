@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // Package imports:
 import 'package:hive_flutter/adapters.dart';
@@ -11,6 +12,8 @@ import 'package:paisa/core/common.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
 import 'package:paisa/features/recurring/data/model/recurring.dart';
 import 'package:paisa/main.dart';
+
+import 'add_recurring_page.dart';
 
 class RecurringPage extends StatelessWidget {
   const RecurringPage({super.key});
@@ -31,7 +34,7 @@ class RecurringPage extends StatelessWidget {
                 icon: MdiIcons.cashSync,
                 actionTitle: context.loc.recurringAction,
                 onActionPressed: () {
-                  const RecurringPageData().push(context);
+                  GoRouter.of(context).go('add');
                 },
               );
             }
