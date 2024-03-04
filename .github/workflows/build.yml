@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download Android keystore
         id: android_keystore
-        uses: timheuer/base64-to-file@v1.2
+        uses: timheuer/base64-to-file@v1.2.4
         with:
           fileName: keystore.jks
           encodedString: ${{ secrets.KEYSTORE }}
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: "zulu"
-          java-version: "12.x"
+          java-version: "17.x"
           cache: gradle
       - uses: subosito/flutter-action@v2
         with:
