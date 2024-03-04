@@ -48,6 +48,9 @@ jobs:
           git config --global user.name "GitHub Actions Bot"
           git tag "release-$(date +'%Y%m%d%H%M%S')"
           git push --tags
+          
+      - name: Fetch latest tags
+        run: git fetch --tags
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
