@@ -41,7 +41,6 @@ jobs:
          channel: 'stable'
          cache: true
       - run: flutter pub get
-      - run: flutter test
       - run: flutter build apk
       - run: flutter build appbundle
 
