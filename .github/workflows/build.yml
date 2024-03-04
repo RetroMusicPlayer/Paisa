@@ -1,3 +1,4 @@
+
 name: Android Release
 
 on:
@@ -32,37 +33,23 @@ jobs:
           distribution: "zulu"
           java-version: "17.x"
           cache: gradle
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          cache: true
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build Android Release APK
-        run: flutter build apk --flavor prod --no-tree-shake-icons
-
-      - name: Create Git tag
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "GitHub Actions Bot"
-          git tag "release-$(date +'%Y%m%d%H%M%S')"
-          git push --tags
-          
-      - name: Fetch latest tags
-        run: git fetch --tags
-
-      - name: Create GitHub Release
-        uses: ncipollo/release-action@v1
+      - name: Flutter action
+        uses: subosito/flutter-action@v2.13.0
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2.13.0
         with:
-          artifacts: build/app/outputs/flutter-apk/app-prod-release.apk
-          token: ${{ secrets.GITHUB_TOKEN  }}
-          generateReleaseNotes: true
-          makeLatest: true
-          bodyFile: "body.md"
+         channel: 'stable'
+         cache: true
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk
+      - run: flutter build appbundle
 
-      - name: Create Android release appbundle
-        run: flutter build appbundle --flavor prod --no-tree-shake-icons
+        
+        
 
       - name: Upload Android Release
         uses: actions/upload-artifact@v4
@@ -82,12 +69,4 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: android-release
-      - name: Release Build to internal track
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON  }}
-          packageName: dev.spuddles.paisa
-          releaseFiles: app-prod-release.aab
-          track: internal
-          status: completed
-          inAppUpdatePriority: 5
+      
