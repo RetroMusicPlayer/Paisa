@@ -7,7 +7,7 @@ class AccountsEvent with _$AccountsEvent {
   const factory AccountsEvent.updateDefaultAndExculde({
     @Default(false) bool isAccountExcluded,
     @Default(false) bool isAccountDefault,
-  }) = _UpdateDefaultAndExculde;
+  }) = _UpdateDefaultAndExclude;
   const factory AccountsEvent.deleteAccount(int accountId) = DeleteAccountEvent;
 
   const factory AccountsEvent.fetchAccountAndExpensesFromID(int accountId) =

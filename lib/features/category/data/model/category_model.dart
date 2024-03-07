@@ -1,11 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:paisa/core/data/super_id.dart';
 
 part 'category_model.g.dart';
 part 'category_model.freezed.dart';
 
 @unfreezed
-class CategoryModel extends HiveObject with _$CategoryModel {
+class CategoryModel extends HiveObject with _$CategoryModel implements SuperId {
   @HiveType(typeId: 1, adapterName: 'CategoryModelAdapter')
   factory CategoryModel({
     @HiveField(0) String? name,

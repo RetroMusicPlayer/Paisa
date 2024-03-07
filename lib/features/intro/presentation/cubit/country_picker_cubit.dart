@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:paisa/core/constants/constants.dart';
 import 'package:paisa/core/use_case/use_case.dart';
-import 'package:paisa/features/country_picker/data/models/country_model.dart';
+import 'package:paisa/features/country_picker/domain/entities/country.dart';
 import 'package:paisa/features/country_picker/domain/use_case/get_contries_user_case.dart';
 import 'package:paisa/features/settings/domain/use_case/setting_use_case.dart';
 
@@ -17,7 +17,7 @@ class CountryPickerCubit extends Cubit<CountryPickerState> {
   ) : super(CountryInitial());
 
   final GetCountriesUseCase getCountryUseCase;
-  CountryModel? selectedCountry;
+  CountryEntity? selectedCountry;
   final SettingsUseCase settingsUseCase;
 
   void checkForData() {
@@ -25,7 +25,7 @@ class CountryPickerCubit extends Cubit<CountryPickerState> {
     if (json == null) {
       fetchCountry();
     } else {
-      selectedCountry = CountryModel.fromJson(json);
+      selectedCountry = CountryEntity.fromJson(json);
       settingsUseCase
           .put(userCountryKey, json)
           .then((value) => emit(const NavigateToLading(false)));
@@ -33,19 +33,26 @@ class CountryPickerCubit extends Cubit<CountryPickerState> {
   }
 
   void fetchCountry() {
-    List<CountryModel> countries = getCountryUseCase(NoParams());
-    emit(CountriesState(countries));
+    getCountryUseCase(NoParams()).then((value) {
+      value.fold((l) => null, (r) {
+        emit(CountriesState(r));
+      });
+    });
   }
 
   void filterCountry(String value) {
-    List<CountryModel> countries = getCountryUseCase(NoParams())
-        .where(
-          (element) =>
-              element.name.toLowerCase().contains(value.toLowerCase()) ||
-              element.code.toLowerCase().contains(value.toLowerCase()),
-        )
-        .toList();
-    emit(CountriesState(countries));
+    getCountryUseCase(NoParams()).then((countriesFold) {
+      countriesFold.fold((l) => null, (r) {
+        final List<CountryEntity> countries = r
+            .where(
+              (element) =>
+                  element.name.toLowerCase().contains(value.toLowerCase()) ||
+                  element.code.toLowerCase().contains(value.toLowerCase()),
+            )
+            .toList();
+        emit(CountriesState(countries));
+      });
+    });
   }
 
   void saveCountry() {

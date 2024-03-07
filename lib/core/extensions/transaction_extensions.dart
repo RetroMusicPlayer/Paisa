@@ -63,6 +63,13 @@ extension ExpenseModelHelper on TransactionModel {
       );
 }
 
+extension TransactionModelsHelper on List<TransactionModel> {
+  List<TransactionEntity> toEntities() {
+    return map((expenseModel) => expenseModel.toEntity())
+        .sorted((a, b) => b.time!.compareTo(a.time!));
+  }
+}
+
 extension ExpenseModelsHelper on Iterable<TransactionModel> {
   List<Map<String, dynamic>> toJson() {
     return map((e) => e.toJson()).toList();

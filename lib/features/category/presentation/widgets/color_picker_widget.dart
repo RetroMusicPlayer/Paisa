@@ -20,7 +20,7 @@ class ColorPickerWidget extends StatelessWidget {
       builder: (context, state) {
         int color = Colors.red.value;
         if (state is CategoryColorSelectedState) {
-          color = state.categoryColor;
+          color = state.color;
         }
         if (state is CategorySuccessState) {
           color = state.category.color ?? Colors.red.value;

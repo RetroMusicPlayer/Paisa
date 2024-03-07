@@ -1,18 +1,20 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/debit_transaction/domain/repository/debit_transaction_repository.dart';
 
 @singleton
 class AddDebitTransactionUseCase
-    implements UseCase<Future<void>, AddDebitTransactionParams> {
+    implements UseCase<void, AddDebitTransactionParams> {
   AddDebitTransactionUseCase({required this.debtRepository});
 
   final DebitTransactionRepository debtRepository;
 
   @override
-  Future<void> call(AddDebitTransactionParams params) {
-    return debtRepository.addTransaction(
+  Future<Either<Failure, void>> call(AddDebitTransactionParams params) {
+    return debtRepository.add(
       params.amount,
       params.currentDateTime,
       params.parentId,

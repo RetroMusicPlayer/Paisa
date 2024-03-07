@@ -6,14 +6,14 @@ import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/transaction/domain/repository/transaction_repository.dart';
 
 @singleton
-class AddTransactionUseCase
-    implements UseCase<Future<Either<Failure, bool>>, AddTransactionParams> {
+class AddTransactionUseCase implements UseCase<int, AddTransactionParams> {
   AddTransactionUseCase({required this.expenseRepository});
 
   final TransactionRepository expenseRepository;
+
   @override
-  Future<Either<Failure, bool>> call(AddTransactionParams params) {
-    return expenseRepository.addExpense(
+  Future<Either<Failure, int>> call(AddTransactionParams params) {
+    return expenseRepository.add(
       params.name,
       params.amount,
       params.time,

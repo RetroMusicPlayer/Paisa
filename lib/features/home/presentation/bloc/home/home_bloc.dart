@@ -5,11 +5,8 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 import 'package:paisa/core/common_enum.dart';
-import 'package:paisa/features/account/domain/entities/account_entity.dart';
 import 'package:paisa/features/account/domain/use_case/account_use_case.dart';
-import 'package:paisa/features/category/domain/entities/category.dart';
 import 'package:paisa/features/category/domain/use_case/category_use_case.dart';
-import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 import 'package:paisa/features/transaction/domain/use_case/transaction_use_case.dart';
 
 part 'home_event.dart';
@@ -64,14 +61,4 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(CurrentIndexState(selectedIndex));
     }
   }
-
-  CategoryEntity? fetchCategoryFromId(int? categoryId) =>
-      getCategoryUseCase(GetCategoryParams(categoryId));
-
-  AccountEntity? fetchAccountFromId(int? accountId) =>
-      getAccountUseCase(GetAccountParams(accountId));
-
-  List<TransactionEntity> fetchExpensesFromCategoryId(int categoryId) =>
-      getExpensesFromCategoryIdUseCase(
-          ParamsGetTransactionsByCategoryId(categoryId));
 }

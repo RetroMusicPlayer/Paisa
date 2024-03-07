@@ -1,7 +1,9 @@
+import 'package:dartz/dartz.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/features/category/domain/entities/category.dart';
 
 abstract class CategoryRepository {
-  Future<void> add({
+  Future<Either<Failure, int>> add({
     required String? name,
     required int? icon,
     required int? color,
@@ -10,12 +12,7 @@ abstract class CategoryRepository {
     required bool? isBudget,
     required bool? isDefault,
   });
-
-  Future<void> delete(int key);
-
-  CategoryEntity? fetchById(int? categoryId);
-
-  Future<void> update({
+  Future<Either<Failure, void>> update({
     required int? key,
     required String? name,
     required int? icon,
@@ -26,9 +23,13 @@ abstract class CategoryRepository {
     required bool isDefault,
   });
 
-  Future<void> clear();
+  Future<Either<Failure, void>> delete(int key);
 
-  List<CategoryEntity> defaultCategories();
+  Future<Either<Failure, CategoryEntity>> findById(int? id);
 
-  List<CategoryEntity> categories();
+  Future<Either<Failure, void>> clear();
+
+  Future<Either<Failure, List<CategoryEntity>>> defaultCategories();
+
+  Future<Either<Failure, List<CategoryEntity>>> all();
 }

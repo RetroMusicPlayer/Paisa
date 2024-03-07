@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:paisa/core/common.dart';
 import 'package:paisa/features/category/data/model/category_model.dart';
 import 'package:paisa/features/category/domain/entities/category.dart';
-import 'package:paisa/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 import 'package:paisa/main.dart';
 import 'package:paisa/features/home/presentation/controller/summary_controller.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
+import 'package:provider/provider.dart';
 
 class BudgetPage extends StatelessWidget {
   const BudgetPage({
@@ -41,8 +40,9 @@ class BudgetPage extends StatelessWidget {
             itemBuilder: (context, index) {
               final CategoryEntity category = categories[index];
               final List<TransactionEntity> expenses =
-                  BlocProvider.of<HomeBloc>(context)
-                      .fetchExpensesFromCategoryId(category.superId!)
+                  Provider.of<List<TransactionEntity>>(context)
+                      .where(
+                          (element) => element.categoryId == category.superId!)
                       .thisMonthExpensesList;
               return BudgetItem(category: category, expenses: expenses);
             },

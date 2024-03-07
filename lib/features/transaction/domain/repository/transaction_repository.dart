@@ -4,7 +4,7 @@ import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 
 abstract class TransactionRepository {
-  Future<Either<Failure, bool>> addExpense(
+  Future<Either<Failure, int>> add(
     String? name,
     double? amount,
     DateTime? time,
@@ -14,21 +14,7 @@ abstract class TransactionRepository {
     String? description,
   );
 
-  Future<void> clearExpense(int expenseId);
-
-  TransactionEntity? fetchExpenseFromId(int expenseId);
-
-  List<TransactionEntity> expenses(int? accountId);
-
-  List<TransactionEntity> fetchExpensesFromAccountId(int accountId);
-
-  List<TransactionEntity> fetchExpensesFromCategoryId(int accountId);
-
-  Future<void> deleteExpensesByAccountId(int accountId);
-
-  Future<void> deleteExpensesByCategoryId(int categoryId);
-
-  Future<void> updateExpense(
+  Future<Either<Failure, void>> update(
     int key,
     String? name,
     double? currency,
@@ -39,9 +25,24 @@ abstract class TransactionRepository {
     String? description,
   );
 
-  Future<void> clearAll();
+  Future<Either<Failure, void>> delete(int expenseId);
 
-  List<TransactionEntity> filterExpenses(
+  Future<Either<Failure, TransactionEntity>> fetchById(int expenseId);
+
+  Future<Either<Failure, List<TransactionEntity>>> fetchByAccountId(
+      int accountId);
+  Future<Either<Failure, List<TransactionEntity>>> all();
+
+  Future<Either<Failure, List<TransactionEntity>>> fetchByCategoryId(
+      int accountId);
+
+  Future<Either<Failure, void>> deleteByAccountId(int accountId);
+
+  Future<Either<Failure, void>> deleteByCategoryId(int categoryId);
+
+  Future<Either<Failure, void>> clear();
+
+  Future<Either<Failure, List<TransactionEntity>>> filterExpenses(
     String query,
     List<int> accounts,
     List<int> categories,

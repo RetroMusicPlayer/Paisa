@@ -6,8 +6,7 @@ import 'package:paisa/features/settings/domain/repository/import_export.dart';
 import 'package:paisa/features/settings/domain/repository/settings_repository.dart';
 
 @singleton
-class CSVFileExportUseCase
-    implements UseCase<Future<Either<Failure, String>>, NoParams> {
+class CSVFileExportUseCase implements UseCase<String, NoParams> {
   CSVFileExportUseCase(
     this.settingsRepository,
     @Named('csv') this.csvExport,

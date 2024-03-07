@@ -3,19 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/theme/custom_color.dart';
-import 'package:paisa/features/account/domain/entities/account_entity.dart';
 import 'package:paisa/features/account/presentation/widgets/summary_month_card_widget.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction.dart';
-import 'package:provider/provider.dart';
 
 class AccountSummaryWidget extends StatelessWidget {
   const AccountSummaryWidget({
     super.key,
-    required this.expenses,
+    required this.transactions,
     this.useAccountsList = false,
   });
 
-  final List<TransactionEntity> expenses;
+  final List<TransactionEntity> transactions;
   final bool useAccountsList;
 
   @override
@@ -46,11 +44,9 @@ class AccountSummaryWidget extends StatelessWidget {
               Expanded(
                 child: SummaryMonthCardWidget(
                   title: context.loc.income,
-                  total: expenses.thisMonthIncome.toFormateCurrency(
-                    context,
-                    selectedCountry: context.read<AccountEntity>().country,
-                  ),
-                  data: expenses.incomeDoubleList,
+                  total:
+                      transactions.thisMonthIncome.toFormateCurrency(context),
+                  data: transactions.incomeDoubleList,
                   graphLineColor:
                       Theme.of(context).extension<CustomColors>()!.green ??
                           context.secondary,
@@ -60,11 +56,9 @@ class AccountSummaryWidget extends StatelessWidget {
               Expanded(
                 child: SummaryMonthCardWidget(
                   title: context.loc.expense,
-                  total: expenses.thisMonthExpense.toFormateCurrency(
-                    context,
-                    selectedCountry: context.read<AccountEntity>().country,
-                  ),
-                  data: expenses.expenseDoubleList,
+                  total:
+                      transactions.thisMonthExpense.toFormateCurrency(context),
+                  data: transactions.expenseDoubleList,
                   graphLineColor:
                       Theme.of(context).extension<CustomColors>()!.red ??
                           context.secondary,

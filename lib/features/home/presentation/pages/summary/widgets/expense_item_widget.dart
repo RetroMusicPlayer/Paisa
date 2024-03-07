@@ -11,22 +11,22 @@ import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 class ExpenseItemWidget extends StatelessWidget {
   const ExpenseItemWidget({
     Key? key,
-    required this.expense,
+    required this.transaction,
     required this.account,
     required this.category,
   }) : super(key: key);
 
   final AccountEntity account;
   final CategoryEntity category;
-  final TransactionEntity expense;
+  final TransactionEntity transaction;
 
   String getSubtitle(BuildContext context) {
-    if (expense.type == TransactionType.transfer) {
-      return expense.time!.dateString;
+    if (transaction.type == TransactionType.transfer) {
+      return transaction.time!.dateString;
     } else {
       return context.loc.transactionSubTittleText(
         account.bankName ?? '',
-        expense.time!.dateString,
+        transaction.time!.dateString,
       );
     }
   }
@@ -39,14 +39,14 @@ class ExpenseItemWidget extends StatelessWidget {
         context.goNamed(
           RoutesName.accountEditTransaction.name,
           pathParameters: <String, String>{
-            'eid': expense.superId.toString(),
+            'eid': transaction.superId.toString(),
             'aid': account.superId.toString(),
           },
         );
       },
       child: ListTile(
         title: Text(
-          expense.name ?? '',
+          transaction.name ?? '',
           style: context.bodyMedium?.copyWith(
             fontWeight: FontWeight.w600,
           ),
@@ -70,12 +70,9 @@ class ExpenseItemWidget extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          expense.currency!.toFormateCurrency(
-            context,
-            selectedCountry: account.country,
-          ),
+          transaction.currency!.toFormateCurrency(context),
           style: context.bodyMedium?.copyWith(
-            color: expense.type?.color(context),
+            color: transaction.type?.color(context),
           ),
         ),
       ),

@@ -21,7 +21,7 @@ class NavigateToLading extends CountryPickerState {
 class CountriesState extends CountryPickerState {
   const CountriesState(this.countries);
 
-  final List<CountryModel> countries;
+  final List<CountryEntity> countries;
 
   @override
   List<Object> get props => [countries];

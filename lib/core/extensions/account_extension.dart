@@ -27,6 +27,9 @@ extension AccountModelsMapping on Iterable<AccountModel> {
 
   List<AccountEntity> toEntities() =>
       map((accountModel) => accountModel.toEntity()).toList();
+
+  double get initialAmount => fold<double>(
+      0, (previousValue, element) => previousValue + element.initialAmount);
 }
 
 extension AccountBoxMapping on Box<AccountModel> {
@@ -43,4 +46,9 @@ extension AccountBoxMapping on Box<AccountModel> {
 
 extension AccountEntityHelper on AccountEntity {
   double get initialAmount => amount ?? 0;
+}
+
+extension AccountEntityMapping on Iterable<AccountEntity> {
+  double get initialAmount => fold<double>(
+      0, (previousValue, element) => previousValue + element.initialAmount);
 }

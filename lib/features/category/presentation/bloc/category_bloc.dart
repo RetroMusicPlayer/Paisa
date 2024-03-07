@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:paisa/features/category/data/model/category_model.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/features/category/domain/entities/category.dart';
 import 'package:paisa/features/category/domain/use_case/category_use_case.dart';
 import 'package:paisa/features/transaction/domain/use_case/transaction_use_case.dart';
 
+part 'category_bloc.freezed.dart';
 part 'category_event.dart';
 part 'category_state.dart';
 
@@ -20,7 +22,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     required this.deleteCategoryUseCase,
     required this.deleteExpensesFromCategoryIdUseCase,
     required this.updateCategoryUseCase,
-  }) : super(AddCategoryInitial()) {
+  }) : super(const CategoryState.idle()) {
     on<CategoryEvent>((event, emit) {});
     on<FetchCategoryFromIdEvent>(_fetchCategoryFromId);
     on<AddOrUpdateCategoryEvent>(_addOrUpdateCategory);
@@ -53,20 +55,25 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     final int? categoryId = int.tryParse(event.categoryId ?? '');
     if (categoryId == null) return;
 
-    final CategoryEntity? category = getCategoryUseCase(
+    final categoryFold = await getCategoryUseCase(
       GetCategoryParams(categoryId),
     );
-    if (category != null) {
-      categoryTitle = category.name;
-      categoryDesc = category.description;
-      categoryBudget = category.budget;
-      selectedIcon = category.icon;
-      currentCategory = category;
-      isBudgetSet = category.isBudget;
-      selectedColor = category.color ?? Colors.red.shade100.value;
-      isDefault = category.isDefault;
-      emit(CategorySuccessState(category));
-    }
+    categoryFold.fold(
+      (Failure l) {
+        emit(CategoryState.errorState(mapFailureToMessage(l)));
+      },
+      (CategoryEntity category) {
+        categoryTitle = category.name;
+        categoryDesc = category.description;
+        categoryBudget = category.budget;
+        selectedIcon = category.icon;
+        currentCategory = category;
+        isBudgetSet = category.isBudget;
+        selectedColor = category.color ?? Colors.red.shade100.value;
+        isDefault = category.isDefault;
+        emit(CategoryState.success(category));
+      },
+    );
   }
 
   FutureOr<void> _addOrUpdateCategory(
@@ -80,17 +87,17 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
 
     final int? color = selectedColor;
     if (icon == null) {
-      return emit(const CategoryErrorState('Select category icon'));
+      return emit(const CategoryState.errorState('Select category icon'));
     }
     if (title == null) {
-      return emit(const CategoryErrorState('Add category title'));
+      return emit(const CategoryState.errorState('Add category title'));
     }
 
     if (color == null) {
-      return emit(const CategoryErrorState('Select category color'));
+      return emit(const CategoryState.errorState('Select category color'));
     }
     if (event.isAddOrUpdate) {
-      await addCategoryUseCase(AddCategoryParams(
+      final addCategoryFold = await addCategoryUseCase(AddCategoryParams(
         icon: icon,
         description: description,
         name: title,
@@ -99,6 +106,11 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
         color: color,
         isDefault: isDefault ?? false,
       ));
+      addCategoryFold.fold((l) {
+        print(l);
+      }, (r) {
+        emit(CategoryState.addOrUpdate(event.isAddOrUpdate));
+      });
     } else {
       if (currentCategory == null) return;
 
@@ -113,7 +125,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
         name: title,
       ));
     }
-    emit(CategoryAddedState(isCategoryAddedOrUpdate: event.isAddOrUpdate));
+    emit(CategoryState.addOrUpdate(event.isAddOrUpdate));
   }
 
   Future<void> _deleteCategory(
@@ -125,7 +137,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     await deleteExpensesFromCategoryIdUseCase(
       DeleteTransactionsByCategoryIdParams(categoryId),
     );
-    emit(CategoryDeletedState());
+    emit(const CategoryState.deleted());
   }
 
   FutureOr<void> _categoryIcon(
@@ -133,7 +145,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     Emitter<CategoryState> emit,
   ) {
     selectedIcon = event.categoryIcon;
-    emit(CategoryIconSelectedState(event.categoryIcon));
+    emit(CategoryState.selectedIcon(event.categoryIcon));
   }
 
   FutureOr<void> _updateCategoryBudget(
@@ -141,7 +153,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     Emitter<CategoryState> emit,
   ) {
     isBudgetSet = event.isBudget;
-    emit(UpdateCategoryBudgetState(event.isBudget));
+    emit(CategoryState.updateBudget(event.isBudget));
   }
 
   FutureOr<void> _updateCategoryColor(
@@ -149,6 +161,6 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     Emitter<CategoryState> emit,
   ) {
     selectedColor = event.categoryColor;
-    emit(CategoryColorSelectedState(event.categoryColor));
+    emit(CategoryState.selectedColor(event.categoryColor));
   }
 }

@@ -581,11 +581,12 @@ class _AccountCountrySelectorWidgetState
   Widget build(BuildContext context) {
     return BlocBuilder<AccountBloc, AccountState>(
       builder: (context, state) {
-        final List<Country> countries = [];
+        final List<CountryEntity> countries = [];
         if (state is CountriesState) {
           countries.addAll(state.countries);
         }
-        Country? country = BlocProvider.of<AccountBloc>(context).currencySymbol;
+        CountryEntity? country =
+            BlocProvider.of<AccountBloc>(context).currencySymbol;
         if (state is AccountSuccessState) {
           country =
               BlocProvider.of<AccountBloc>(context).currentAccount?.country;
@@ -599,7 +600,8 @@ class _AccountCountrySelectorWidgetState
           ),
           contentPadding: EdgeInsets.zero,
           onTap: () async {
-            final Country? result = await showModalBottomSheet<Country>(
+            final CountryEntity? result =
+                await showModalBottomSheet<CountryEntity>(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.zero,
               ),
@@ -625,7 +627,7 @@ class _AccountCountrySelectorWidgetState
                       controller: scrollController,
                       itemCount: countries.length,
                       itemBuilder: (context, index) {
-                        final Country country = countries[index];
+                        final CountryEntity country = countries[index];
                         return ListTile(
                           onTap: () {
                             Navigator.pop(context, country);
@@ -633,7 +635,7 @@ class _AccountCountrySelectorWidgetState
                           title: Text(country.name),
                           subtitle: Text(country.code),
                           leading: Text(
-                            country.symbol,
+                            country.symbol ?? '\$',
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         );

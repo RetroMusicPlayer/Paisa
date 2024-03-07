@@ -1,15 +1,17 @@
+import 'package:dartz/dartz.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/features/debit_transaction/domain/entity/debit_transaction_entity.dart';
 
 abstract class DebitTransactionRepository {
-  Future<void> deleteTransactionsById(int parentId);
+  Future<Either<Failure, void>> deleteTransactionsById(int parentId);
 
-  Future<void> deleteTransactionById(int transactionId);
+  Future<Either<Failure, void>> deleteById(int id);
 
-  Future<void> addTransaction(
+  Future<Either<Failure, int>> add(
     double amount,
     DateTime currentDateTime,
     int parentId,
   );
 
-  List<DebitTransactionEntity> fetchTransactionsFromId(int id);
+  Future<Either<Failure, List<DebitTransactionEntity>>> fetchByParentId(int id);
 }

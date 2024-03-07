@@ -4,12 +4,10 @@ import 'package:go_router/go_router.dart';
 
 import 'package:hive_flutter/adapters.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:paisa/config/routes.dart';
 import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/enum/card_type.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
-import 'package:paisa/features/account/data/data_sources/account_manager.dart';
 import 'package:paisa/features/account/data/data_sources/default_account.dart';
 import 'package:paisa/features/account/data/model/account_model.dart';
 import 'package:paisa/features/intro/presentation/widgets/intro_image_picker_widget.dart';
@@ -28,8 +26,7 @@ class IntroAccountAddWidget extends StatefulWidget {
 
 class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
     with AutomaticKeepAliveClientMixin {
-  final AccountManager dataSource =
-      getIt.get<AccountManager>(instanceName: 'local-account');
+  //TODO: final AccountManager dataSource = getIt.get<AccountManager>();
 
   final List<AccountModel> defaultModels = defaultAccountsData();
 
@@ -115,11 +112,11 @@ class _IntroAccountAddWidgetState extends State<IntroAccountAddWidget>
                       .sorted((a, b) => a.name!.compareTo(b.name!))
                       .map((model) => FilterChip(
                             onSelected: (value) {
-                              dataSource.add(model.copyWith(
+                              /*TODO:  dataSource.add(model.copyWith(
                                   name: settings.get(
                                 userNameKey,
                                 defaultValue: model.name,
-                              )));
+                              ))); */
                               setState(() {
                                 defaultModels.remove(model);
                               });

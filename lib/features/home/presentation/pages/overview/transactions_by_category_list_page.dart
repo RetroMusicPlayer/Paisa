@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:paisa/core/common.dart';
+import 'package:paisa/core/extensions/provider_extension.dart';
 import 'package:paisa/features/account/domain/entities/account_entity.dart';
 import 'package:paisa/features/category/domain/entities/category.dart';
-import 'package:paisa/features/home/presentation/bloc/home/home_bloc.dart';
-import 'package:paisa/features/home/presentation/cubit/overview/overview_cubit.dart';
 import 'package:paisa/features/home/presentation/pages/summary/widgets/expense_item_widget.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 import 'package:paisa/features/home/presentation/controller/summary_controller.dart';
@@ -25,9 +23,7 @@ class TransactionByCategoryListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final int cid = int.parse(categoryId);
-    final List<TransactionEntity> expenses =
-        BlocProvider.of<OverviewCubit>(context, listen: false)
-            .transactionsForCategoryId(cid);
+    final List<TransactionEntity> expenses = context.findCategories(cid);
 
     return PaisaAnnotatedRegionWidget(
       color: Colors.blueAccent,
@@ -37,15 +33,15 @@ class TransactionByCategoryListPage extends StatelessWidget {
           shrinkWrap: true,
           itemCount: expenses.length,
           itemBuilder: (BuildContext context, int index) {
-            final AccountEntity? account = BlocProvider.of<HomeBloc>(context)
-                .fetchAccountFromId(expenses[index].accountId);
-            final CategoryEntity? category = BlocProvider.of<HomeBloc>(context)
-                .fetchCategoryFromId(expenses[index].categoryId);
+            final AccountEntity? account =
+                context.findAccount(expenses[index].accountId ?? -1);
+            final CategoryEntity? category =
+                context.findCategory(expenses[index].categoryId ?? -1);
             if (account == null || category == null) {
               return const SizedBox.shrink();
             }
             return ExpenseItemWidget(
-              expense: expenses[index],
+              transaction: expenses[index],
               account: account,
               category: category,
             );

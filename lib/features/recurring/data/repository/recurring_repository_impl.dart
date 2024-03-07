@@ -50,7 +50,8 @@ class RecurringRepositoryImpl implements RecurringRepository {
         for (var i = 0; i < numberOfTimes; i++) {
           final TransactionModel addExpenseModel = recurringModel
               .toExpenseModel(recurringModel.recurringDate.add(nextTime * i));
-          await expenseDataManager.add(addExpenseModel);
+          //TODO: fix
+          // await expenseDataManager.add(addExpenseModel);
         }
         final RecurringModel saveExpense = recurringModel.copyWith(
           recurringDate:

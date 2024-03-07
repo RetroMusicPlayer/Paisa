@@ -6,22 +6,22 @@ part of 'country.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CountryImpl _$$CountryImplFromJson(Map<String, dynamic> json) =>
-    _$CountryImpl(
+_$CountryEntityImpl _$$CountryEntityImplFromJson(Map<String, dynamic> json) =>
+    _$CountryEntityImpl(
       code: json['code'] as String,
       decimalDigits: json['decimalDigits'] as int?,
-      decimalSeparator: json['decimalSeparator'] as String,
+      decimalSeparator: json['decimalSeparator'] as String?,
       name: json['name'] as String,
-      namePlural: json['namePlural'] as String,
+      namePlural: json['namePlural'] as String?,
       number: json['number'] as int,
       pattern: json['pattern'] as String,
-      spaceBetweenAmountAndSymbol: json['spaceBetweenAmountAndSymbol'] as bool,
-      symbol: json['symbol'] as String,
-      symbolOnLeft: json['symbolOnLeft'] as bool,
+      spaceBetweenAmountAndSymbol: json['spaceBetweenAmountAndSymbol'] as bool?,
+      symbol: json['symbol'] as String?,
+      symbolOnLeft: json['symbolOnLeft'] as bool?,
       thousandsSeparator: json['thousandsSeparator'] as String,
     );
 
-Map<String, dynamic> _$$CountryImplToJson(_$CountryImpl instance) =>
+Map<String, dynamic> _$$CountryEntityImplToJson(_$CountryEntityImpl instance) =>
     <String, dynamic>{
       'code': instance.code,
       'decimalDigits': instance.decimalDigits,

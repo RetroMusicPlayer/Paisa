@@ -1,4 +1,6 @@
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 import 'package:paisa/features/transaction/domain/repository/transaction_repository.dart';
@@ -12,8 +14,10 @@ class GetTransactionsByCategoryIdUseCase
   final TransactionRepository expenseRepository;
 
   @override
-  List<TransactionEntity> call(ParamsGetTransactionsByCategoryId params) =>
-      expenseRepository.fetchExpensesFromCategoryId(params.categoryId);
+  Future<Either<Failure, List<TransactionEntity>>> call(
+      ParamsGetTransactionsByCategoryId params) {
+    return expenseRepository.fetchByCategoryId(params.categoryId);
+  }
 }
 
 class ParamsGetTransactionsByCategoryId {

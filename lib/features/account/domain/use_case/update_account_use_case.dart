@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:paisa/core/common_enum.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/account/domain/repository/account_repository.dart';
 import 'package:paisa/features/country_picker/domain/entities/country.dart';
@@ -14,7 +16,7 @@ class UpdateAccountUseCase implements UseCase<void, UpdateAccountParams> {
   final AccountRepository accountRepository;
 
   @override
-  Future<void> call(UpdateAccountParams params) {
+  Future<Either<Failure, void>> call(UpdateAccountParams params) {
     return accountRepository.update(
       bankName: params.bankName,
       holderName: params.holderName,
@@ -38,7 +40,7 @@ class UpdateAccountParams with _$UpdateAccountParams {
     required String holderName,
     double? amount,
     int? color,
-    Country? currencySymbol,
+    CountryEntity? currencySymbol,
     bool? isAccountExcluded,
     bool? isAccountDefault,
   }) = _UpdateAccountParams;

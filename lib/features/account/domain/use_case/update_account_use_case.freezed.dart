@@ -22,7 +22,7 @@ mixin _$UpdateAccountParams {
   String get holderName => throw _privateConstructorUsedError;
   double? get amount => throw _privateConstructorUsedError;
   int? get color => throw _privateConstructorUsedError;
-  Country? get currencySymbol => throw _privateConstructorUsedError;
+  CountryEntity? get currencySymbol => throw _privateConstructorUsedError;
   bool? get isAccountExcluded => throw _privateConstructorUsedError;
   bool? get isAccountDefault => throw _privateConstructorUsedError;
 
@@ -44,11 +44,11 @@ abstract class $UpdateAccountParamsCopyWith<$Res> {
       String holderName,
       double? amount,
       int? color,
-      Country? currencySymbol,
+      CountryEntity? currencySymbol,
       bool? isAccountExcluded,
       bool? isAccountDefault});
 
-  $CountryCopyWith<$Res>? get currencySymbol;
+  $CountryEntityCopyWith<$Res>? get currencySymbol;
 }
 
 /// @nodoc
@@ -102,7 +102,7 @@ class _$UpdateAccountParamsCopyWithImpl<$Res, $Val extends UpdateAccountParams>
       currencySymbol: freezed == currencySymbol
           ? _value.currencySymbol
           : currencySymbol // ignore: cast_nullable_to_non_nullable
-              as Country?,
+              as CountryEntity?,
       isAccountExcluded: freezed == isAccountExcluded
           ? _value.isAccountExcluded
           : isAccountExcluded // ignore: cast_nullable_to_non_nullable
@@ -116,12 +116,12 @@ class _$UpdateAccountParamsCopyWithImpl<$Res, $Val extends UpdateAccountParams>
 
   @override
   @pragma('vm:prefer-inline')
-  $CountryCopyWith<$Res>? get currencySymbol {
+  $CountryEntityCopyWith<$Res>? get currencySymbol {
     if (_value.currencySymbol == null) {
       return null;
     }
 
-    return $CountryCopyWith<$Res>(_value.currencySymbol!, (value) {
+    return $CountryEntityCopyWith<$Res>(_value.currencySymbol!, (value) {
       return _then(_value.copyWith(currencySymbol: value) as $Val);
     });
   }
@@ -142,12 +142,12 @@ abstract class _$$UpdateAccountParamsImplCopyWith<$Res>
       String holderName,
       double? amount,
       int? color,
-      Country? currencySymbol,
+      CountryEntity? currencySymbol,
       bool? isAccountExcluded,
       bool? isAccountDefault});
 
   @override
-  $CountryCopyWith<$Res>? get currencySymbol;
+  $CountryEntityCopyWith<$Res>? get currencySymbol;
 }
 
 /// @nodoc
@@ -199,7 +199,7 @@ class __$$UpdateAccountParamsImplCopyWithImpl<$Res>
       currencySymbol: freezed == currencySymbol
           ? _value.currencySymbol
           : currencySymbol // ignore: cast_nullable_to_non_nullable
-              as Country?,
+              as CountryEntity?,
       isAccountExcluded: freezed == isAccountExcluded
           ? _value.isAccountExcluded
           : isAccountExcluded // ignore: cast_nullable_to_non_nullable
@@ -238,7 +238,7 @@ class _$UpdateAccountParamsImpl implements _UpdateAccountParams {
   @override
   final int? color;
   @override
-  final Country? currencySymbol;
+  final CountryEntity? currencySymbol;
   @override
   final bool? isAccountExcluded;
   @override
@@ -299,7 +299,7 @@ abstract class _UpdateAccountParams implements UpdateAccountParams {
       required final String holderName,
       final double? amount,
       final int? color,
-      final Country? currencySymbol,
+      final CountryEntity? currencySymbol,
       final bool? isAccountExcluded,
       final bool? isAccountDefault}) = _$UpdateAccountParamsImpl;
 
@@ -316,7 +316,7 @@ abstract class _UpdateAccountParams implements UpdateAccountParams {
   @override
   int? get color;
   @override
-  Country? get currencySymbol;
+  CountryEntity? get currencySymbol;
   @override
   bool? get isAccountExcluded;
   @override

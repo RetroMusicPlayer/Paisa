@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:paisa/core/common.dart';
 import 'package:paisa/core/enum/recurring_type.dart';
 import 'package:paisa/core/enum/transaction_type.dart';
 import 'package:paisa/core/use_case/use_case.dart';
@@ -78,9 +79,11 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       return;
     }
 
-    final TransactionEntity? transaction =
+    final transactionFold =
         await getTransactionUseCase(GetTransactionParams(expenseId));
-    if (transaction != null) {
+    transactionFold.fold((l) {
+      emit(const TransactionState.transactionError('Expense not found!'));
+    }, (transaction) {
       transactionAmount = transaction.currency;
       expenseName = transaction.name;
       selectedCategoryId = transaction.categoryId;
@@ -98,9 +101,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       Future.delayed(Duration.zero).then((_) {
         add(TransactionEvent.changeTransactionType(transactionType));
       });
-    } else {
-      emit(const TransactionState.transactionError('Expense not found!'));
-    }
+    });
   }
 
   Future<void> _addExpense(
@@ -206,20 +207,28 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     emit(const TransactionState.transactionDeleted());
   }
 
-  void _changeExpense(
+  FutureOr<void> _changeExpense(
     _ChangeTransactionTypeEvent event,
     Emitter<TransactionState> emit,
-  ) {
-    final List<AccountEntity> accounts = accountsUseCase(NoParams());
-    if (accounts.isEmpty &&
-        accounts.length <= 1 &&
-        event.transactionType == TransactionType.transfer) {
-      emit(const TransactionState.transactionError(
-          'Need two or more accounts '));
-    } else {
-      transactionType = event.transactionType;
-      emit(TransactionState.changeTransactionType(event.transactionType));
-    }
+  ) async {
+    final accountsFold = await accountsUseCase(NoParams());
+    accountsFold.fold(
+      (l) {
+        transactionType = event.transactionType;
+        emit(TransactionState.changeTransactionType(event.transactionType));
+      },
+      (List<AccountEntity> accounts) {
+        if (accounts.isEmpty &&
+            accounts.length <= 1 &&
+            event.transactionType == TransactionType.transfer) {
+          emit(const TransactionState.transactionError(
+              'Need two or more accounts '));
+        } else {
+          transactionType = event.transactionType;
+          emit(TransactionState.changeTransactionType(event.transactionType));
+        }
+      },
+    );
   }
 
   FutureOr<void> _changeCategory(
@@ -228,7 +237,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   ) {
     selectedCategoryId = event.category.superId;
     selectedCategory = event.category;
-    emit(TransactionState.changecCategory(event.category));
+    emit(TransactionState.changeCategory(event.category));
   }
 
   FutureOr<void> _changeAccount(
@@ -266,52 +275,9 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   FutureOr<void> _fetchDefaultCategories(
     _FetchDefaultCategoryEvent event,
     Emitter<TransactionState> emit,
-  ) {
+  ) async {
     final List<CategoryEntity> categories =
-        getDefaultCategoriesUseCase(NoParams());
+        (await getDefaultCategoriesUseCase(NoParams())).asRight();
     emit(TransactionState.defaultCategory(categories));
   }
-}
-
-double? evaluateExpression(String expression) {
-  // Remove spaces from the expression
-  expression = expression.replaceAll(' ', '');
-
-  // Split the expression into a list of operands and operators
-  List<String> tokens = expression.split(RegExp(r'(\+|\-|\*|\/)'));
-
-  // Split the expression into a list of operators
-  List<String> operators = expression.split(RegExp(r'[0-9]+'));
-
-  // Remove empty strings from the list
-  tokens.removeWhere((element) => element.isEmpty);
-  operators.removeWhere((element) => element.isEmpty);
-
-  // Initial result is the first operand
-  double? result = double.tryParse(tokens[0]);
-
-  // Iterate through the tokens and operators to perform the calculations
-  for (int i = 1; i < tokens.length; i++) {
-    String operator = operators[i - 1];
-    double? operand = double.tryParse(tokens[i]);
-
-    switch (operator) {
-      case '+':
-        result = (result ?? 0) + (operand ?? 0);
-        break;
-      case '-':
-        result = (result ?? 0) - (operand ?? 0);
-        break;
-      case '*':
-        result = (result ?? 0) * (operand ?? 0);
-        break;
-      case '/':
-        result = (result ?? 0) / (operand ?? 0);
-        break;
-      default:
-        throw Exception("Invalid operator");
-    }
-  }
-
-  return result;
 }

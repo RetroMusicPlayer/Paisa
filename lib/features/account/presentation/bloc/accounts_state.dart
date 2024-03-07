@@ -19,7 +19,7 @@ class AccountState with _$AccountState {
   const factory AccountState.colorSelected(int color) =
       AccountColorSelectedState;
 
-  const factory AccountState.countries(List<Country> countries) =
+  const factory AccountState.countries(List<CountryEntity> countries) =
       CountriesState;
 
   const factory AccountState.deleteAccountState() = AccountDeletedState;

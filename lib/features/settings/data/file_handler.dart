@@ -5,66 +5,27 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:paisa/config/routes.dart';
 import 'package:paisa/core/common.dart';
-import 'package:paisa/core/error/exceptions.dart';
-import 'package:paisa/features/account/data/data_sources/account_manager.dart';
+import 'package:paisa/core/data/data_manager.dart';
 import 'package:paisa/features/account/data/model/account_model.dart';
-import 'package:paisa/features/category/data/data_sources/local/category_data_source.dart';
 import 'package:paisa/features/category/data/model/category_model.dart';
-import 'package:paisa/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:paisa/features/transaction/data/data_sources/local/transaction_data_manager.dart';
 import 'package:paisa/features/transaction/data/model/transaction_model.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'model/data.dart';
 
 @Singleton()
 class FileHandler {
   FileHandler(
     this.deviceInfo,
-    @Named('local-account') this.accountDataManager,
+    this.accountDataManager,
     this.categoryDataManager,
     this.expenseDataManager,
   );
 
-  final AccountManager accountDataManager;
-  final LocalCategoryManager categoryDataManager;
+  final DataManager<AccountModel> accountDataManager;
+  final DataManager<CategoryModel> categoryDataManager;
   final DeviceInfoPlugin deviceInfo;
-  final LocalTransactionManager expenseDataManager;
-
-  Future<bool> importDataFromFile() async {
-    try {
-      final FilePickerResult? result = await _pickFile();
-      if (result == null || result.files.isEmpty) {
-        throw FileNotFoundException();
-      }
-
-      final jsonString = await _readJSONFromFile(result.files.first.path!);
-      final Data data = Data.fromRawJson(jsonString);
-
-      await expenseDataManager.clear();
-      await categoryDataManager.clear();
-      await accountDataManager.clear();
-
-      for (var element in data.accounts) {
-        await accountDataManager.update(element);
-      }
-
-      for (var element in data.categories) {
-        await categoryDataManager.update(element);
-      }
-
-      for (var element in data.expenses) {
-        await expenseDataManager.update(element);
-      }
-
-      return settings.put(expenseFixKey, true).then((value) => true);
-    } catch (err) {
-      debugPrint(err.toString());
-      throw ErrorFileException();
-    }
-  }
+  final DataManager<TransactionModel> expenseDataManager;
 
   Future<FilePickerResult?> _pickFile() async {
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -97,9 +58,9 @@ class FileHandler {
   }
 
   Future<List<int>> _fetchAllDataAndEncode() async {
-    final Iterable<TransactionModel> expenses = expenseDataManager.export();
-    final Iterable<AccountModel> accounts = accountDataManager.export();
-    final Iterable<CategoryModel> categories = categoryDataManager.export();
+    final Iterable<TransactionModel> expenses = await expenseDataManager.all();
+    final Iterable<AccountModel> accounts = await accountDataManager.all();
+    final Iterable<CategoryModel> categories = await categoryDataManager.all();
 
     final Map<String, dynamic> data = {
       'expenses': expenses.toJson(),

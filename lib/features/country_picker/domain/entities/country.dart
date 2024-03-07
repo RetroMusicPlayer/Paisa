@@ -5,21 +5,21 @@ part 'country.freezed.dart';
 part 'country.g.dart';
 
 @freezed
-class Country with _$Country {
-  factory Country({
+class CountryEntity with _$CountryEntity {
+  factory CountryEntity({
     required String code,
     required int? decimalDigits,
-    required String decimalSeparator,
+    String? decimalSeparator,
     required String name,
-    required String namePlural,
+    String? namePlural,
     required int number,
     required String pattern,
-    required bool spaceBetweenAmountAndSymbol,
-    required String symbol,
-    required bool symbolOnLeft,
+    bool? spaceBetweenAmountAndSymbol,
+    String? symbol,
+    bool? symbolOnLeft,
     required String thousandsSeparator,
-  }) = _Country;
+  }) = _CountryEntity;
 
-  factory Country.fromJson(Map<String, dynamic> json) =>
-      _$CountryFromJson(json);
+  factory CountryEntity.fromJson(Map<String, dynamic> json) =>
+      _$CountryEntityFromJson(json);
 }

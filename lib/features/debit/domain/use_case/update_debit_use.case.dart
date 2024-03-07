@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:paisa/core/common_enum.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/debit/domain/repository/debit_repository.dart';
 
@@ -9,8 +11,9 @@ class UpdateDebitUseCase implements UseCase<void, UpdateDebitParams> {
   UpdateDebitUseCase({required this.debtRepository});
 
   final DebitRepository debtRepository;
+
   @override
-  Future<void> call(UpdateDebitParams params) {
+  Future<Either<Failure, void>> call(UpdateDebitParams params) {
     return debtRepository.update(
       description: params.description,
       name: params.name,

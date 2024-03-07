@@ -113,7 +113,7 @@ extension RoutesNameHelper on RoutesName {
       case RoutesName.addDebtCredit:
         return 'add-debit-credit';
       case RoutesName.editDebitCredit:
-        return 'edit-debit-credit';
+        return 'edit-debit-credit/:did';
       case RoutesName.transactionsByCategory:
         return 'transactions/:cid';
       case RoutesName.settings:

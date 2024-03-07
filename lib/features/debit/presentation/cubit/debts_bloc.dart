@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:paisa/core/enum/debt_type.dart';
-import 'package:paisa/features/debit/data/models/debit_model.dart';
 import 'package:paisa/features/debit/domain/entities/debit_entity.dart';
 import 'package:paisa/features/debit/domain/use_case/debit_use_case.dart';
-
-import '../../../debit_transaction/domain/use_case/debit_transaction_use_case.dart';
+import 'package:paisa/features/debit_transaction/domain/use_case/debit_transaction_use_case.dart';
 
 part 'debts_event.dart';
 part 'debts_state.dart';
@@ -148,25 +146,24 @@ class DebitBloc extends Bloc<DebtsEvent, DebtsState> {
       return;
     }
 
-    final DebitEntity? debt = getDebtUseCase(GetDebitParams(debitId));
-    if (debt != null) {
-      currentAmount = debt.amount;
-      currentName = debt.name;
-      currentDescription = debt.description;
-      startDateTime = debt.dateTime;
-      endDateTime = debt.expiryDateTime;
-      currentDebtType = debt.debtType ?? DebitType.credit;
-      currentDebt = debt;
-      emit(DebtsSuccessState(debt));
-
+    final debtFold = await getDebtUseCase(GetDebitParams(debitId));
+    debtFold.fold((l) {
+      emit(const DebtErrorState('Debt not found'));
+    }, (DebitEntity debitEntity) {
+      currentAmount = debitEntity.amount;
+      currentName = debitEntity.name;
+      currentDescription = debitEntity.description;
+      startDateTime = debitEntity.dateTime;
+      endDateTime = debitEntity.expiryDateTime;
+      currentDebtType = debitEntity.debtType ?? DebitType.credit;
+      currentDebt = debitEntity;
+      emit(DebtsSuccessState(debitEntity));
       Future.delayed(Duration.zero).then((value) {
         add(ChangeDebtTypeEvent(currentDebtType));
         add(SelectedStartDateEvent(startDateTime!));
         add(SelectedEndDateEvent(endDateTime!));
       });
-    } else {
-      emit(const DebtErrorState('Debt not found'));
-    }
+    });
   }
 
   void _changeType(

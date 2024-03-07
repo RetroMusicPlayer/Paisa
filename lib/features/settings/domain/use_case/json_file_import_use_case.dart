@@ -6,8 +6,7 @@ import 'package:paisa/features/settings/domain/repository/import_export.dart';
 import 'package:paisa/features/settings/domain/repository/settings_repository.dart';
 
 @singleton
-class JSONFileImportUseCase
-    implements UseCase<Future<Either<Failure, bool>>, NoParams> {
+class JSONFileImportUseCase implements UseCase<bool, NoParams> {
   JSONFileImportUseCase(
     this.settingsRepository,
     @Named('json_import') this.jsonImport,

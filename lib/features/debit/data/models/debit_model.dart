@@ -1,12 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:paisa/core/data/super_id.dart';
 import 'package:paisa/core/enum/debt_type.dart';
 
 part 'debit_model.g.dart';
 part 'debit_model.freezed.dart';
 
 @unfreezed
-class DebitModel extends HiveObject with _$DebitModel {
+class DebitModel extends HiveObject with _$DebitModel implements SuperId {
   @HiveType(typeId: 4, adapterName: 'DebitModelAdapter')
   factory DebitModel({
     @HiveField(1) String? description,

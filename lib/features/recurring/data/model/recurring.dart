@@ -1,12 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:paisa/core/common_enum.dart';
+import 'package:paisa/core/data/super_id.dart';
 
 part 'recurring.g.dart';
 part 'recurring.freezed.dart';
 
 @unfreezed
-class RecurringModel extends HiveObject with _$RecurringModel {
+class RecurringModel extends HiveObject
+    with _$RecurringModel
+    implements SuperId {
   @HiveType(typeId: 5, adapterName: 'RecurringModelAdapter')
   factory RecurringModel({
     @HiveField(0) required String name,

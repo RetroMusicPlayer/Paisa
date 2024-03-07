@@ -13,7 +13,7 @@ class AddTransactionToDebtEvent extends DebtsEvent {
 
   final double amount;
   final DateTime dateTime;
-  final DebitModel debt;
+  final DebitEntity debt;
 
   @override
   List<Object?> get props => [debt, amount];

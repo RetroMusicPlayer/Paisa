@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/theme/custom_color.dart';
-import 'package:paisa/features/account/domain/entities/account_entity.dart';
-import 'package:provider/provider.dart';
 
 class ExpenseTotalForMonthWidget extends StatelessWidget {
   const ExpenseTotalForMonthWidget({
@@ -51,10 +49,7 @@ class ExpenseTotalForMonthWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '+${income.toFormateCurrency(
-                      context,
-                      selectedCountry: context.read<AccountEntity>().country,
-                    )}',
+                    '+${income.toFormateCurrency(context)}',
                     style: context.titleLarge?.copyWith(
                       color: context.onPrimaryContainer,
                     ),
@@ -83,10 +78,7 @@ class ExpenseTotalForMonthWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '-${expense.toFormateCurrency(
-                      context,
-                      selectedCountry: context.read<AccountEntity>().country,
-                    )}',
+                    '-${expense.toFormateCurrency(context)}',
                     style: context.titleLarge?.copyWith(
                       color: context.onPrimaryContainer,
                     ),

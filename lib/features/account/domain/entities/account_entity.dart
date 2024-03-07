@@ -25,7 +25,7 @@ class AccountEntity extends Equatable {
   final int? superId;
   final bool? isAccountExcluded;
   final bool? isAccountDefault;
-  final Country? country;
+  final CountryEntity? country;
 
   @override
   List<Object?> get props => [

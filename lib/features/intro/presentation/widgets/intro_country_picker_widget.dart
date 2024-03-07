@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:paisa/config/routes.dart';
 import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
-import 'package:paisa/features/country_picker/data/models/country_model.dart';
 
 import 'package:paisa/core/widgets/paisa_widget.dart';
+import 'package:paisa/features/country_picker/domain/entities/country.dart';
 import 'package:paisa/features/intro/presentation/cubit/country_picker_cubit.dart';
 import 'package:paisa/features/intro/presentation/widgets/intro_image_picker_widget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -41,9 +41,9 @@ class _IntroCountryPickerWidgetState extends State<IntroCountryPickerWidget> {
   @override
   Widget build(BuildContext context) {
     final Map<dynamic, dynamic>? json = settings.get(userCountryKey);
-    CountryModel? countryModel;
+    CountryEntity? countryModel;
     if (json != null) {
-      countryModel = CountryModel.fromJson(
+      countryModel = CountryEntity.fromJson(
           json.map<String, dynamic>((key, value) => MapEntry(key, value)));
     }
     return BlocProvider(
@@ -119,16 +119,16 @@ class CountriesWidget extends StatefulWidget {
     this.selectedModel,
   });
 
-  final List<CountryModel> countries;
+  final List<CountryEntity> countries;
   final int crossAxisCount;
-  final CountryModel? selectedModel;
+  final CountryEntity? selectedModel;
 
   @override
   State<CountriesWidget> createState() => _CountriesWidgetState();
 }
 
 class _CountriesWidgetState extends State<CountriesWidget> {
-  late CountryModel? selectedModel = widget.selectedModel;
+  late CountryEntity? selectedModel = widget.selectedModel;
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +141,7 @@ class _CountriesWidgetState extends State<CountriesWidget> {
       shrinkWrap: true,
       itemCount: widget.countries.length,
       itemBuilder: (context, index) {
-        final CountryModel model = widget.countries[index];
+        final CountryEntity model = widget.countries[index];
         return CountryWidget(
           countryModel: model,
           selected: selectedModel == model,
@@ -166,8 +166,8 @@ class CountryWidget extends StatelessWidget {
     required this.onSelected,
   });
 
-  final CountryModel countryModel;
-  final Function(CountryModel countryModel) onSelected;
+  final CountryEntity countryModel;
+  final Function(CountryEntity countryModel) onSelected;
   final bool selected;
 
   @override
@@ -195,7 +195,7 @@ class CountryWidget extends StatelessWidget {
                 left: 16,
               ),
               child: Text(
-                countryModel.symbol,
+                countryModel.symbol ?? '\$',
                 style: context.titleLarge,
               ),
             ),

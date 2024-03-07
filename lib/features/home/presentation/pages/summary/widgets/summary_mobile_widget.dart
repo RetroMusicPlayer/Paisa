@@ -10,58 +10,49 @@ import 'package:paisa/features/home/presentation/pages/summary/widgets/expense_h
 import 'package:paisa/features/home/presentation/pages/summary/widgets/expense_total_widget.dart';
 import 'package:paisa/features/home/presentation/pages/summary/widgets/welcome_name_widget.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction.dart';
+import 'package:provider/provider.dart';
 
 class SummaryMobileWidget extends StatelessWidget {
   const SummaryMobileWidget({
     super.key,
-    required this.expenses,
+    required this.transactions,
   });
 
-  final List<TransactionEntity> expenses;
+  final List<TransactionEntity> transactions;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView(
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
-      itemCount: 6,
       padding: const EdgeInsets.only(bottom: 124),
-      itemBuilder: (context, index) {
-        if (index == 0) {
-          return const WelcomeNameWidget();
-        } else if (index == 1) {
-          return BlocBuilder<SummaryCubit, SummaryState>(
-            builder: (context, state) {
-              if (state is TransactionsSuccessState) {
-                return AccountSelector(accounts: state.accounts);
-              } else {
-                return const SizedBox.shrink();
-              }
-            },
-          );
-        } else if (index == 2) {
-          return ExpenseTotalWidget(expenses: expenses);
-        } else if (index == 3) {
-          return AccountSummaryWidget(expenses: expenses);
-        } else if (index == 4) {
-          return ListTile(
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 0,
+      children: [
+        const WelcomeNameWidget(),
+        ExpenseTotalWidget(
+          expenseTotal: ExpenseTotal(
+            totalExpenseBalance: transactions.fullTotal,
+            totalExpenses: transactions.totalExpense,
+            totalIncome: transactions.totalIncome,
+            totalAccountBalance:
+                Provider.of<List<AccountEntity>>(context).initialAmount,
+          ),
+        ),
+        AccountSummaryWidget(transactions: transactions),
+        ListTile(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 0,
+          ),
+          title: Text(
+            context.loc.transactions,
+            style: context.titleMedium?.copyWith(
+              color: context.onBackground,
+              fontWeight: FontWeight.w600,
             ),
-            title: Text(
-              context.loc.transactions,
-              style: context.titleMedium?.copyWith(
-                color: context.onBackground,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          );
-        } else if (index == 5) {
-          return ExpenseHistoryWidget(expenses: expenses);
-        }
-        return const SizedBox.shrink();
-      },
+          ),
+        ),
+        ExpenseHistoryWidget(transactions: transactions)
+      ],
     );
   }
 }

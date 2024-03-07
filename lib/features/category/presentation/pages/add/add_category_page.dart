@@ -64,7 +64,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
             context.pop();
           } else if (state is CategoryErrorState) {
             context.showMaterialSnackBar(
-              state.errorString,
+              state.error,
               backgroundColor: context.errorContainer,
               color: context.onErrorContainer,
             );

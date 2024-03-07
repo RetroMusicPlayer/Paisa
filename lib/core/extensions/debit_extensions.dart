@@ -34,4 +34,8 @@ extension DebitModelsHelper on Iterable<DebitModel> {
   List<Map<String, dynamic>> toJson() {
     return map((e) => e.toJson()).toList();
   }
+
+  List<DebitEntity> toEntities() {
+    return map((e) => e.toEntity()).toList();
+  }
 }

@@ -54,11 +54,11 @@ class DebtsPage extends StatelessWidget {
               builder: (context, value, child) {
                 final debts = value.values
                     .where((element) => element.debtType == DebitType.debit)
-                    .toList();
+                    .toEntities();
 
                 final credits = value.values
                     .where((element) => element.debtType == DebitType.credit)
-                    .toList();
+                    .toEntities();
 
                 return TabBarView(
                   children: [

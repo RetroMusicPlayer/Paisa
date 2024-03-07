@@ -1,7 +1,7 @@
 import 'package:paisa/features/country_picker/data/models/country_model.dart';
 import 'package:paisa/features/country_picker/domain/entities/country.dart';
 
-extension CountryHelper on Country {
+extension CountryHelper on CountryEntity {
   CountryModel toEntity() {
     return CountryModel(
       code: code,
@@ -20,8 +20,8 @@ extension CountryHelper on Country {
 }
 
 extension CountryModeHelper on CountryModel {
-  Country toEntity() {
-    return Country(
+  CountryEntity toEntity() {
+    return CountryEntity(
       code: code,
       name: name,
       symbol: symbol,
@@ -38,7 +38,7 @@ extension CountryModeHelper on CountryModel {
 }
 
 extension CountriesHelper on List<CountryModel> {
-  List<Country> toEntities() {
+  List<CountryEntity> toEntities() {
     return map((e) => e.toEntity()).toList();
   }
 }

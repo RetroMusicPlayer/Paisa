@@ -66,6 +66,7 @@ class _TransactionPageState extends State<TransactionPage> {
       color: Colors.transparent,
       child: BlocConsumer<TransactionBloc, TransactionState>(
         listener: (context, state) {
+          print(state);
           if (state is TransactionDeletedState) {
             context.showMaterialSnackBar(
               context.loc.deletedTransaction,

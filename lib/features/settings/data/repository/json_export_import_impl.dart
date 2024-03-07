@@ -5,40 +5,35 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:paisa/features/account/data/data_sources/account_manager.dart';
-import 'package:paisa/features/category/data/data_sources/local/category_data_source.dart';
-import 'package:paisa/features/debit/data/data_sources/debit_data_manager.dart';
-import 'package:paisa/features/debit/data/data_sources/transaction_data_manager.dart';
+import 'package:paisa/core/data/data_manager.dart';
+import 'package:paisa/features/debit_transaction/data/data_source/transaction_data_manager.dart';
 import 'package:paisa/features/debit/data/models/debit_model.dart';
 import 'package:paisa/features/debit_transaction/data/model/debit_transactions_model.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:paisa/config/routes.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/error/exceptions.dart';
 import 'package:paisa/features/account/data/model/account_model.dart';
 import 'package:paisa/features/category/data/model/category_model.dart';
 import 'package:paisa/features/settings/data/model/data.dart';
 import 'package:paisa/features/settings/domain/repository/import_export.dart';
-import 'package:paisa/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:paisa/features/transaction/data/data_sources/local/transaction_data_manager.dart';
 import 'package:paisa/features/transaction/data/model/transaction_model.dart';
 
 @Named('json_export')
 @LazySingleton(as: Export)
 class JSONExportImpl implements Export {
   JSONExportImpl(
-    @Named('local-account') this.accountDataManager,
+    this.accountDataManager,
     this.categoryDataManager,
     this.expenseDataManager,
     this.debitDataManager,
     this.transactionDataManager,
   );
 
-  final AccountManager accountDataManager;
-  final LocalCategoryManager categoryDataManager;
-  final DebitDataManager debitDataManager;
-  final LocalTransactionManager expenseDataManager;
+  final DataManager<AccountModel> accountDataManager;
+  final DataManager<CategoryModel> categoryDataManager;
+  final DataManager<DebitModel> debitDataManager;
+  final DataManager<TransactionModel> expenseDataManager;
   final TransactionDataManager transactionDataManager;
 
   @override
@@ -55,10 +50,10 @@ class JSONExportImpl implements Export {
   }
 
   Future<List<int>> _fetchAllDataAndEncode() async {
-    final Iterable<TransactionModel> expenses = expenseDataManager.export();
-    final Iterable<AccountModel> accounts = accountDataManager.export();
-    final Iterable<CategoryModel> categories = categoryDataManager.export();
-    final Iterable<DebitModel> debits = debitDataManager.export();
+    final Iterable<TransactionModel> expenses = await expenseDataManager.all();
+    final Iterable<AccountModel> accounts = await accountDataManager.all();
+    final Iterable<CategoryModel> categories = await categoryDataManager.all();
+    final Iterable<DebitModel> debits = await debitDataManager.all();
     final Iterable<DebitTransactionsModel> transactions =
         transactionDataManager.export();
 
@@ -79,18 +74,18 @@ class JSONExportImpl implements Export {
 class JSONImportImpl implements Import {
   JSONImportImpl(
     this.deviceInfo,
-    @Named('local-account') this.accountDataManager,
+    this.accountDataManager,
     this.categoryDataManager,
     this.expenseDataManager,
     this.transactionDataManager,
     this.debitDataManager,
   );
 
-  final AccountManager accountDataManager;
-  final LocalCategoryManager categoryDataManager;
-  final DebitDataManager debitDataManager;
+  final DataManager<AccountModel> accountDataManager;
+  final DataManager<CategoryModel> categoryDataManager;
+  final DataManager<DebitModel> debitDataManager;
   final DeviceInfoPlugin deviceInfo;
-  final LocalTransactionManager expenseDataManager;
+  final DataManager<TransactionModel> expenseDataManager;
   final TransactionDataManager transactionDataManager;
 
   @override
@@ -98,7 +93,7 @@ class JSONImportImpl implements Import {
     try {
       final FilePickerResult? result = await _pickFile();
       if (result == null || result.files.isEmpty) {
-        throw FileNotFoundException();
+        throw const FileNotFoundException();
       }
 
       final jsonString = await _readJSONFromFile(result.files.first.path!);
@@ -130,10 +125,10 @@ class JSONImportImpl implements Import {
         await transactionDataManager.update(element);
       }
 
-      return settings.put(expenseFixKey, true).then((value) => true);
+      return true;
     } catch (err) {
       debugPrint(err.toString());
-      throw ErrorFileException();
+      throw const ErrorFileException();
     }
   }
 

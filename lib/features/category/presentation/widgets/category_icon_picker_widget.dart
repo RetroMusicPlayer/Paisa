@@ -21,7 +21,7 @@ class CategoryIconPickerWidget extends StatelessWidget {
       builder: (context, state) {
         int codePoint = MdiIcons.home.codePoint;
         if (state is CategoryIconSelectedState) {
-          codePoint = state.categoryIcon;
+          codePoint = state.icon;
         }
         if (state is CategorySuccessState) {
           codePoint = state.category.icon ?? 0;

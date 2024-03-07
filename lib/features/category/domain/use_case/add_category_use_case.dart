@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/category/domain/repository/category_repository.dart';
 
@@ -10,7 +12,7 @@ class AddCategoryUseCase implements UseCase<void, AddCategoryParams> {
   final CategoryRepository categoryRepository;
 
   @override
-  Future<void> call(AddCategoryParams params) {
+  Future<Either<Failure, void>> call(AddCategoryParams params) {
     return categoryRepository.add(
       name: params.name,
       desc: params.description,

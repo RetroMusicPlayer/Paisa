@@ -27,6 +27,7 @@ class AccountPageViewWidget extends StatefulWidget {
 class _AccountPageViewWidgetState extends State<AccountPageViewWidget>
     with AutomaticKeepAliveClientMixin {
   final PageController _controller = PageController();
+
   @override
   void initState() {
     super.initState();
@@ -69,22 +70,13 @@ class _AccountPageViewWidgetState extends State<AccountPageViewWidget>
                   builder: (context, state) {
                     if (state is AccountAndExpensesState) {
                       final AccountEntity account = widget.accounts[index];
-                      final String expense =
-                          state.expenses.totalExpense.toFormateCurrency(
-                        context,
-                        selectedCountry: account.country,
-                      );
+                      final String expense = state.expenses.totalExpense
+                          .toFormateCurrency(context);
                       final String income =
-                          state.expenses.totalIncome.toFormateCurrency(
-                        context,
-                        selectedCountry: account.country,
-                      );
+                          state.expenses.totalIncome.toFormateCurrency(context);
                       final String totalBalance =
                           (state.expenses.fullTotal + account.initialAmount)
-                              .toFormateCurrency(
-                        context,
-                        selectedCountry: account.country,
-                      );
+                              .toFormateCurrency(context);
                       return AccountCard(
                         key: ValueKey(account.hashCode),
                         expense: expense,

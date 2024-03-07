@@ -1,14 +1,13 @@
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:csv/csv.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:injectable/injectable.dart';
-import 'package:paisa/features/account/data/data_sources/account_manager.dart';
+import 'package:paisa/core/data/data_manager.dart';
 import 'package:paisa/features/account/data/model/account_model.dart';
-import 'package:paisa/features/category/data/data_sources/local/category_data_source.dart';
 import 'package:paisa/features/category/data/model/category_model.dart';
 import 'package:paisa/features/settings/domain/repository/import_export.dart';
-import 'package:paisa/features/transaction/data/data_sources/local/transaction_data_manager.dart';
 import 'package:paisa/features/transaction/data/model/transaction_model.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -17,15 +16,15 @@ import 'package:path_provider/path_provider.dart';
 class CSVExport extends Export {
   CSVExport(
     this.deviceInfo,
-    @Named('local-account') this.accountDataManager,
+    this.accountDataManager,
     this.categoryDataManager,
     this.expenseDataManager,
   );
 
-  final AccountManager accountDataManager;
-  final LocalCategoryManager categoryDataManager;
+  final DataManager<AccountModel> accountDataManager;
+  final DataManager<CategoryModel> categoryDataManager;
   final DeviceInfoPlugin deviceInfo;
-  final LocalTransactionManager expenseDataManager;
+  final DataManager<TransactionModel> expenseDataManager;
 
   @override
   Future<String> export() async {
@@ -41,15 +40,15 @@ class CSVExport extends Export {
   }
 
   Future<String> _fetchAllDataAndEncode() async {
-    final List<TransactionModel> expenses =
-        expenseDataManager.export().toList();
-    final List<List<String>> data = csvDataList(expenses);
+    final List<TransactionModel> expenses = await expenseDataManager.all();
+    final List<List<String>> data = await csvDataList(expenses);
     final String csvData = const ListToCsvConverter().convert(data);
     return csvData;
   }
 
-  List<List<String>> csvDataList(List<TransactionModel> expenses) {
-    return [
+  Future<List<List<String>>> csvDataList(
+      List<TransactionModel> expenses) async {
+    List<List<String>> row = [
       [
         'No.',
         'Transaction Name',
@@ -63,21 +62,16 @@ class CSVExport extends Export {
         'Bank Name',
         'Account Type',
       ],
-      ...List.generate(
-        expenses.length,
-        (index) {
-          final expense = expenses[index];
-          final account = accountDataManager.findById(expense.accountId);
-          final category = categoryDataManager.findById(expense.categoryId);
-          return expenseRow(
-            index,
-            expense: expense,
-            account: account,
-            category: category!,
-          );
-        },
-      ),
     ];
+    expenses.forEachIndexed((index, expense) async {
+      final AccountModel? account =
+          await accountDataManager.findById(expense.accountId);
+      final CategoryModel? category =
+          await categoryDataManager.findById(expense.categoryId);
+      row.add(expenseRow(index,
+          expense: expense, account: account, category: category));
+    });
+    return row;
   }
 
   List<String> expenseRow(

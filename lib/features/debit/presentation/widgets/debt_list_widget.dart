@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paisa/features/debit/data/models/debit_model.dart';
+import 'package:paisa/features/debit/domain/entities/debit_entity.dart';
 import 'package:paisa/features/debit/presentation/widgets/debt_item_widget.dart';
 
 class DebtsListWidget extends StatelessWidget {
@@ -8,7 +8,7 @@ class DebtsListWidget extends StatelessWidget {
     required this.debts,
   });
 
-  final List<DebitModel> debts;
+  final List<DebitEntity> debts;
 
   @override
   Widget build(BuildContext context) {

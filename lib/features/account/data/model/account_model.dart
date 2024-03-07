@@ -1,13 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:paisa/core/common_enum.dart';
+import 'package:paisa/core/data/super_id.dart';
 import 'package:paisa/features/country_picker/data/models/country_model.dart';
 
 part 'account_model.freezed.dart';
 part 'account_model.g.dart';
 
 @unfreezed
-class AccountModel extends HiveObject with _$AccountModel {
+class AccountModel extends HiveObject with _$AccountModel implements SuperId {
   @HiveType(typeId: 2, adapterName: 'AccountModelAdapter')
   factory AccountModel({
     @HiveField(0) String? name,

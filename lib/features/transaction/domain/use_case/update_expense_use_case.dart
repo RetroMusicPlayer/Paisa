@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:paisa/core/enum/transaction_type.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/transaction/domain/repository/transaction_repository.dart';
 
@@ -11,8 +13,8 @@ class UpdateTransactionUseCase
   final TransactionRepository expenseRepository;
 
   @override
-  Future<void> call(UpdateTransactionParams params) {
-    return expenseRepository.updateExpense(
+  Future<Either<Failure, void>> call(UpdateTransactionParams params) {
+    return expenseRepository.update(
       params.superId,
       params.name,
       params.currency,

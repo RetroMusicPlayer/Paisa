@@ -29,9 +29,9 @@ class SettingsRepositoryImpl implements SettingsRepository {
       final bool result = await import.import();
       return right(result);
     } on FileNotFoundException {
-      return left(FileNotFoundFailure());
+      return left(const Failure.fileNotFound());
     } on ErrorFileException {
-      return left(ErrorFileExportFailure());
+      return left(const Failure.unAbleToExportFile());
     }
   }
 
@@ -44,12 +44,12 @@ class SettingsRepositoryImpl implements SettingsRepository {
     try {
       final String path = await export.export();
       if (path.isEmpty) {
-        return left(FileNotFoundFailure());
+        return left(const Failure.fileNotFound());
       } else {
         return right(path);
       }
     } catch (err) {
-      return left(ErrorFileExportFailure());
+      return left(const Failure.unAbleToExportFile());
     }
   }
 }

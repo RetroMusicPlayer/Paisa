@@ -1,4 +1,6 @@
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/transaction/domain/repository/transaction_repository.dart';
 
@@ -10,8 +12,9 @@ class DeleteTransactionUseCase
   final TransactionRepository expenseRepository;
 
   @override
-  Future<void> call(DeleteTransactionParams params) async =>
-      expenseRepository.clearExpense(params.transactionId);
+  Future<Either<Failure, void>> call(DeleteTransactionParams params) {
+    return expenseRepository.delete(params.transactionId);
+  }
 }
 
 class DeleteTransactionParams {

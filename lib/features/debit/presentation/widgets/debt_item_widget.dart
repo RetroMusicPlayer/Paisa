@@ -6,7 +6,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/enum/debt_type.dart';
-import 'package:paisa/features/debit/data/models/debit_model.dart';
+import 'package:paisa/features/debit/domain/entities/debit_entity.dart';
 import 'package:paisa/features/debit_transaction/data/model/debit_transactions_model.dart';
 import 'package:paisa/features/debit_transaction/domain/entity/debit_transaction_entity.dart';
 import 'package:paisa/features/debit/presentation/cubit/debts_bloc.dart';
@@ -19,7 +19,7 @@ class DebtItemWidget extends StatelessWidget {
     required this.debt,
   });
 
-  final DebitModel debt;
+  final DebitEntity debt;
 
   void addPayment(BuildContext context) {
     final controller = TextEditingController();
@@ -145,7 +145,7 @@ class DebtItemWidget extends StatelessWidget {
           child: PaisaFilledCard(
             child: InkWell(
               onTap: () => context.pushNamed(
-                RoutesName.addDebtCredit.name,
+                RoutesName.editDebitCredit.name,
                 pathParameters: {'did': debt.superId.toString()},
               ),
               child: Column(

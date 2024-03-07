@@ -9,7 +9,6 @@ import 'package:paisa/config/routes.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/theme/app_theme.dart';
 import 'package:paisa/features/account/presentation/bloc/accounts_bloc.dart';
-import 'package:paisa/features/country_picker/data/models/country_model.dart';
 import 'package:paisa/features/country_picker/domain/entities/country.dart';
 import 'package:paisa/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:paisa/features/home/presentation/controller/summary_controller.dart';
@@ -39,10 +38,10 @@ class _PaisaAppState extends State<PaisaApp> {
           create: (context) => getIt.get<SettingCubit>(),
         ),
         BlocProvider(
-          create: (context) => getIt.get<AccountBloc>(),
+          create: (context) => getIt.get<HomeBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt.get<HomeBloc>(),
+          create: (context) => getIt.get<AccountBloc>(),
         ),
         BlocProvider(
           create: (context) => getIt.get<OverviewCubit>(),
@@ -94,15 +93,15 @@ class _PaisaAppState extends State<PaisaApp> {
             ThemeData.light().textTheme,
           );
 
-          return ProxyProvider0<Country>(
+          return ProxyProvider0<CountryEntity>(
             lazy: true,
             update: (BuildContext context, _) {
               final Map<String, dynamic>? jsonString =
                   (value.get(userCountryKey) as Map<dynamic, dynamic>?)
                       ?.map((key, value) => MapEntry(key.toString(), value));
 
-              final Country model =
-                  CountryModel.fromJson(jsonString ?? {}).toEntity();
+              final CountryEntity model =
+                  CountryEntity.fromJson(jsonString ?? {});
               return model;
             },
             child: DynamicColorBuilder(

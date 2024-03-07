@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
@@ -30,11 +29,10 @@ class ProfileRepositoryImpl implements ProfileRepository {
         await settings.put(userImageKey, path);
         return right(true);
       } else {
-        return left(FileNotFoundFailure());
+        return left(const Failure.fileNotFound());
       }
     } catch (err) {
-      debugPrint(err.toString());
-      return left(ErrorImagePickFailure());
+      return left(const Failure.errorPickingImage());
     }
   }
 

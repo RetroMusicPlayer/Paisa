@@ -1,12 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:paisa/core/common_enum.dart';
+import 'package:paisa/core/data/super_id.dart';
 
 part 'transaction_model.g.dart';
 part 'transaction_model.freezed.dart';
 
 @unfreezed
-class TransactionModel extends HiveObject with _$TransactionModel {
+class TransactionModel extends HiveObject
+    with _$TransactionModel
+    implements SuperId {
   @HiveType(typeId: 0, adapterName: 'TransactionModelAdapter')
   factory TransactionModel({
     @HiveField(5) int? accountId,

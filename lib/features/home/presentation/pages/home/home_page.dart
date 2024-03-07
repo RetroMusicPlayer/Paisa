@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/common_enum.dart';
+import 'package:paisa/features/account/data/model/account_model.dart';
+import 'package:paisa/features/account/domain/entities/account_entity.dart';
+import 'package:paisa/features/category/data/model/category_model.dart';
+import 'package:paisa/features/category/domain/entities/category.dart';
 import 'package:paisa/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:paisa/features/home/presentation/widgets/home_desktop_widget.dart';
 import 'package:paisa/features/home/presentation/widgets/home_mobile_widget.dart';
 import 'package:paisa/features/home/presentation/widgets/home_tablet_widget.dart';
 import 'package:paisa/features/home/presentation/widgets/variable_size_fab.dart';
+import 'package:paisa/features/transaction/data/model/transaction_model.dart';
+import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 import 'package:paisa/main.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 final destinations = [
@@ -85,8 +93,7 @@ class LandingPage extends StatelessWidget {
     final actionButton =
         HomeFloatingActionButtonWidget(summaryController: getIt.get());
     return PaisaAnnotatedRegionWidget(
-      child: BlocProvider(
-        create: (context) => homeBloc,
+      child: TransactionsProviderWidget(
         child: WillPopScope(
           onWillPop: () async {
             if (homeBloc.selectedIndex == 0) {
@@ -125,4 +132,62 @@ class Destination {
   final Icon icon;
   final PageType pageType;
   final Icon selectedIcon;
+}
+
+class TransactionsProviderWidget extends StatelessWidget {
+  const TransactionsProviderWidget({super.key, required this.child});
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<Box<AccountModel>>(
+      valueListenable: getIt.get<Box<AccountModel>>().listenable(),
+      builder: (_, accountBox, __) {
+        return ValueListenableBuilder<Box<CategoryModel>>(
+          valueListenable: getIt.get<Box<CategoryModel>>().listenable(),
+          builder: (_, categoryBox, __) {
+            return ValueListenableBuilder<Box<TransactionModel>>(
+              valueListenable: getIt.get<Box<TransactionModel>>().listenable(),
+              builder: (_, value, __) {
+                final Map<int, TransactionEntity> transactionMap = {
+                  for (var e in value.values) e.superId ?? -1: e.toEntity()
+                };
+                final Map<int, AccountEntity> accountMap = {
+                  for (var e in accountBox.values) e.superId ?? -1: e.toEntity()
+                };
+                final Map<int, CategoryEntity> categoryMap = {
+                  for (var e in categoryBox.values)
+                    e.superId ?? -1: e.toEntity()
+                };
+                final List<TransactionEntity> transactions = value.values
+                    .map((e) => TransactionEntity(
+                          account: accountMap[e.accountId],
+                          category: categoryMap[e.categoryId],
+                          categoryId: e.categoryId,
+                          accountId: e.accountId,
+                          currency: e.currency,
+                          description: e.description,
+                          name: e.name,
+                          superId: e.superId,
+                          time: e.time,
+                          type: e.type,
+                        ))
+                    .toList();
+                return MultiProvider(
+                  providers: [
+                    Provider.value(value: accountMap),
+                    Provider.value(value: accountBox.values.toEntities()),
+                    Provider.value(value: categoryMap),
+                    Provider.value(value: transactions),
+                    Provider.value(value: transactionMap),
+                  ],
+                  child: child,
+                );
+              },
+            );
+          },
+        );
+      },
+    );
+  }
 }

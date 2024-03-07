@@ -28,21 +28,21 @@
 
 #### Mobile
 
-| <img src="paisa-images/flutter_01.png" width="200"/> | <img src="paisa-images/flutter_02.png" width="200"/> | <img src="paisa-images/flutter_04.png" width="200"/> |<img src="paisa-images/flutter_03.png" width="200"/> |
-| :--: | :--: | :--: | :--: |
-|Home|Accounts|Categories|Budget overview|
+| <img src="paisa-images/flutter_01.png" width="200"/> | <img src="paisa-images/flutter_02.png" width="200"/> | <img src="paisa-images/flutter_04.png" width="200"/> | <img src="paisa-images/flutter_03.png" width="200"/> |
+| :--------------------------------------------------: | :--------------------------------------------------: | :--------------------------------------------------: | :--------------------------------------------------: |
+|                         Home                         |                       Accounts                       |                      Categories                      |                   Budget overview                    |
 
 #### Foldable
 
-| <img src="paisa-images/Screenshot_1667485291.png" width="200"/> | <img src="paisa-images/Screenshot_1667485297.png" width="200"/> | <img src="paisa-images/Screenshot_1667485299.png" width="200"/> |<img src="paisa-images/Screenshot_1667485301.png" width="200"/> |
-| :--: | :--: | :--: | :--: |
-|Home|Accounts|Categories|Budget overview|
+| <img src="paisa-images/Screenshot_1667485291.png" width="200"/> | <img src="paisa-images/Screenshot_1667485297.png" width="200"/> | <img src="paisa-images/Screenshot_1667485299.png" width="200"/> | <img src="paisa-images/Screenshot_1667485301.png" width="200"/> |
+| :-------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+|                              Home                               |                            Accounts                             |                           Categories                            |                         Budget overview                         |
 
 #### Tablet & Desktop
 
- | <img src="paisa-images/Screenshot_1667485280.png" width="200"/> | <img src="paisa-images/Screenshot_1667485342.png" width="200"/> | <img src="paisa-images/Screenshot_1667485319.png" width="200"/> |<img src="paisa-images/Screenshot_1667485320.png" width="200"/> |
-| :--: | :--: | :--: | :--: |
-|Home|Accounts|Categories|Budget overview|
+| <img src="paisa-images/Screenshot_1667485280.png" width="200"/> | <img src="paisa-images/Screenshot_1667485342.png" width="200"/> | <img src="paisa-images/Screenshot_1667485319.png" width="200"/> | <img src="paisa-images/Screenshot_1667485320.png" width="200"/> |
+| :-------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+|                              Home                               |                            Accounts                             |                           Categories                            |                         Budget overview                         |
 
 ### Expense Tracking
 
@@ -104,6 +104,6 @@ Sure, I can help you modify the instructions. Here's the updated version:
 
     Copyright (c) 2022, Hemanth S
     All rights reserved.
-    
+
     This source code is licensed under the GPLv3-style license found in the
     LICENSE file in the root directory of this source tree.

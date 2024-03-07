@@ -27,12 +27,12 @@ mixin _$CountryModel {
   int? get decimalDigits => throw _privateConstructorUsedError;
   @HiveField(2)
   @JsonKey(name: 'decimal_separator')
-  String get decimalSeparator => throw _privateConstructorUsedError;
+  String? get decimalSeparator => throw _privateConstructorUsedError;
   @HiveField(3)
   String get name => throw _privateConstructorUsedError;
   @HiveField(4)
   @JsonKey(name: 'name_plural')
-  String get namePlural => throw _privateConstructorUsedError;
+  String? get namePlural => throw _privateConstructorUsedError;
   @HiveField(5)
   int get number => throw _privateConstructorUsedError;
   @HiveField(6)
@@ -40,12 +40,12 @@ mixin _$CountryModel {
   @HiveField(7)
   @JsonKey(name: 'space_between_amount_and_symbol')
   @HiveField(8)
-  bool get spaceBetweenAmountAndSymbol => throw _privateConstructorUsedError;
+  bool? get spaceBetweenAmountAndSymbol => throw _privateConstructorUsedError;
   @HiveField(9)
-  String get symbol => throw _privateConstructorUsedError;
+  String? get symbol => throw _privateConstructorUsedError;
   @HiveField(10)
   @JsonKey(name: 'symbol_on_left')
-  bool get symbolOnLeft => throw _privateConstructorUsedError;
+  bool? get symbolOnLeft => throw _privateConstructorUsedError;
   @HiveField(11)
   @JsonKey(name: 'thousands_separator')
   String get thousandsSeparator => throw _privateConstructorUsedError;
@@ -65,17 +65,19 @@ abstract class $CountryModelCopyWith<$Res> {
   $Res call(
       {@HiveField(0) String code,
       @HiveField(1) @JsonKey(name: 'decimal_digits') int? decimalDigits,
-      @HiveField(2) @JsonKey(name: 'decimal_separator') String decimalSeparator,
+      @HiveField(2)
+      @JsonKey(name: 'decimal_separator')
+      String? decimalSeparator,
       @HiveField(3) String name,
-      @HiveField(4) @JsonKey(name: 'name_plural') String namePlural,
+      @HiveField(4) @JsonKey(name: 'name_plural') String? namePlural,
       @HiveField(5) int number,
       @HiveField(6) String pattern,
       @HiveField(7)
       @JsonKey(name: 'space_between_amount_and_symbol')
       @HiveField(8)
-      bool spaceBetweenAmountAndSymbol,
-      @HiveField(9) String symbol,
-      @HiveField(10) @JsonKey(name: 'symbol_on_left') bool symbolOnLeft,
+      bool? spaceBetweenAmountAndSymbol,
+      @HiveField(9) String? symbol,
+      @HiveField(10) @JsonKey(name: 'symbol_on_left') bool? symbolOnLeft,
       @HiveField(11)
       @JsonKey(name: 'thousands_separator')
       String thousandsSeparator});
@@ -96,14 +98,14 @@ class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
   $Res call({
     Object? code = null,
     Object? decimalDigits = freezed,
-    Object? decimalSeparator = null,
+    Object? decimalSeparator = freezed,
     Object? name = null,
-    Object? namePlural = null,
+    Object? namePlural = freezed,
     Object? number = null,
     Object? pattern = null,
-    Object? spaceBetweenAmountAndSymbol = null,
-    Object? symbol = null,
-    Object? symbolOnLeft = null,
+    Object? spaceBetweenAmountAndSymbol = freezed,
+    Object? symbol = freezed,
+    Object? symbolOnLeft = freezed,
     Object? thousandsSeparator = null,
   }) {
     return _then(_value.copyWith(
@@ -115,18 +117,18 @@ class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
           ? _value.decimalDigits
           : decimalDigits // ignore: cast_nullable_to_non_nullable
               as int?,
-      decimalSeparator: null == decimalSeparator
+      decimalSeparator: freezed == decimalSeparator
           ? _value.decimalSeparator
           : decimalSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      namePlural: null == namePlural
+      namePlural: freezed == namePlural
           ? _value.namePlural
           : namePlural // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -135,18 +137,18 @@ class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
           ? _value.pattern
           : pattern // ignore: cast_nullable_to_non_nullable
               as String,
-      spaceBetweenAmountAndSymbol: null == spaceBetweenAmountAndSymbol
+      spaceBetweenAmountAndSymbol: freezed == spaceBetweenAmountAndSymbol
           ? _value.spaceBetweenAmountAndSymbol
           : spaceBetweenAmountAndSymbol // ignore: cast_nullable_to_non_nullable
-              as bool,
-      symbol: null == symbol
+              as bool?,
+      symbol: freezed == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbolOnLeft: null == symbolOnLeft
+              as String?,
+      symbolOnLeft: freezed == symbolOnLeft
           ? _value.symbolOnLeft
           : symbolOnLeft // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       thousandsSeparator: null == thousandsSeparator
           ? _value.thousandsSeparator
           : thousandsSeparator // ignore: cast_nullable_to_non_nullable
@@ -166,17 +168,19 @@ abstract class _$$CountryModelImplCopyWith<$Res>
   $Res call(
       {@HiveField(0) String code,
       @HiveField(1) @JsonKey(name: 'decimal_digits') int? decimalDigits,
-      @HiveField(2) @JsonKey(name: 'decimal_separator') String decimalSeparator,
+      @HiveField(2)
+      @JsonKey(name: 'decimal_separator')
+      String? decimalSeparator,
       @HiveField(3) String name,
-      @HiveField(4) @JsonKey(name: 'name_plural') String namePlural,
+      @HiveField(4) @JsonKey(name: 'name_plural') String? namePlural,
       @HiveField(5) int number,
       @HiveField(6) String pattern,
       @HiveField(7)
       @JsonKey(name: 'space_between_amount_and_symbol')
       @HiveField(8)
-      bool spaceBetweenAmountAndSymbol,
-      @HiveField(9) String symbol,
-      @HiveField(10) @JsonKey(name: 'symbol_on_left') bool symbolOnLeft,
+      bool? spaceBetweenAmountAndSymbol,
+      @HiveField(9) String? symbol,
+      @HiveField(10) @JsonKey(name: 'symbol_on_left') bool? symbolOnLeft,
       @HiveField(11)
       @JsonKey(name: 'thousands_separator')
       String thousandsSeparator});
@@ -195,14 +199,14 @@ class __$$CountryModelImplCopyWithImpl<$Res>
   $Res call({
     Object? code = null,
     Object? decimalDigits = freezed,
-    Object? decimalSeparator = null,
+    Object? decimalSeparator = freezed,
     Object? name = null,
-    Object? namePlural = null,
+    Object? namePlural = freezed,
     Object? number = null,
     Object? pattern = null,
-    Object? spaceBetweenAmountAndSymbol = null,
-    Object? symbol = null,
-    Object? symbolOnLeft = null,
+    Object? spaceBetweenAmountAndSymbol = freezed,
+    Object? symbol = freezed,
+    Object? symbolOnLeft = freezed,
     Object? thousandsSeparator = null,
   }) {
     return _then(_$CountryModelImpl(
@@ -214,18 +218,18 @@ class __$$CountryModelImplCopyWithImpl<$Res>
           ? _value.decimalDigits
           : decimalDigits // ignore: cast_nullable_to_non_nullable
               as int?,
-      decimalSeparator: null == decimalSeparator
+      decimalSeparator: freezed == decimalSeparator
           ? _value.decimalSeparator
           : decimalSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      namePlural: null == namePlural
+      namePlural: freezed == namePlural
           ? _value.namePlural
           : namePlural // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -234,18 +238,18 @@ class __$$CountryModelImplCopyWithImpl<$Res>
           ? _value.pattern
           : pattern // ignore: cast_nullable_to_non_nullable
               as String,
-      spaceBetweenAmountAndSymbol: null == spaceBetweenAmountAndSymbol
+      spaceBetweenAmountAndSymbol: freezed == spaceBetweenAmountAndSymbol
           ? _value.spaceBetweenAmountAndSymbol
           : spaceBetweenAmountAndSymbol // ignore: cast_nullable_to_non_nullable
-              as bool,
-      symbol: null == symbol
+              as bool?,
+      symbol: freezed == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbolOnLeft: null == symbolOnLeft
+              as String?,
+      symbolOnLeft: freezed == symbolOnLeft
           ? _value.symbolOnLeft
           : symbolOnLeft // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       thousandsSeparator: null == thousandsSeparator
           ? _value.thousandsSeparator
           : thousandsSeparator // ignore: cast_nullable_to_non_nullable
@@ -263,21 +267,17 @@ class _$CountryModelImpl extends _CountryModel {
       @HiveField(1)
       @JsonKey(name: 'decimal_digits')
       required this.decimalDigits,
-      @HiveField(2)
-      @JsonKey(name: 'decimal_separator')
-      required this.decimalSeparator,
+      @HiveField(2) @JsonKey(name: 'decimal_separator') this.decimalSeparator,
       @HiveField(3) required this.name,
-      @HiveField(4) @JsonKey(name: 'name_plural') required this.namePlural,
+      @HiveField(4) @JsonKey(name: 'name_plural') this.namePlural,
       @HiveField(5) required this.number,
       @HiveField(6) required this.pattern,
       @HiveField(7)
       @JsonKey(name: 'space_between_amount_and_symbol')
       @HiveField(8)
-      required this.spaceBetweenAmountAndSymbol,
-      @HiveField(9) required this.symbol,
-      @HiveField(10)
-      @JsonKey(name: 'symbol_on_left')
-      required this.symbolOnLeft,
+      this.spaceBetweenAmountAndSymbol,
+      @HiveField(9) this.symbol,
+      @HiveField(10) @JsonKey(name: 'symbol_on_left') this.symbolOnLeft,
       @HiveField(11)
       @JsonKey(name: 'thousands_separator')
       required this.thousandsSeparator})
@@ -296,14 +296,14 @@ class _$CountryModelImpl extends _CountryModel {
   @override
   @HiveField(2)
   @JsonKey(name: 'decimal_separator')
-  final String decimalSeparator;
+  final String? decimalSeparator;
   @override
   @HiveField(3)
   final String name;
   @override
   @HiveField(4)
   @JsonKey(name: 'name_plural')
-  final String namePlural;
+  final String? namePlural;
   @override
   @HiveField(5)
   final int number;
@@ -314,14 +314,14 @@ class _$CountryModelImpl extends _CountryModel {
   @HiveField(7)
   @JsonKey(name: 'space_between_amount_and_symbol')
   @HiveField(8)
-  final bool spaceBetweenAmountAndSymbol;
+  final bool? spaceBetweenAmountAndSymbol;
   @override
   @HiveField(9)
-  final String symbol;
+  final String? symbol;
   @override
   @HiveField(10)
   @JsonKey(name: 'symbol_on_left')
-  final bool symbolOnLeft;
+  final bool? symbolOnLeft;
   @override
   @HiveField(11)
   @JsonKey(name: 'thousands_separator')
@@ -396,21 +396,17 @@ abstract class _CountryModel extends CountryModel {
       required final int? decimalDigits,
       @HiveField(2)
       @JsonKey(name: 'decimal_separator')
-      required final String decimalSeparator,
+      final String? decimalSeparator,
       @HiveField(3) required final String name,
-      @HiveField(4)
-      @JsonKey(name: 'name_plural')
-      required final String namePlural,
+      @HiveField(4) @JsonKey(name: 'name_plural') final String? namePlural,
       @HiveField(5) required final int number,
       @HiveField(6) required final String pattern,
       @HiveField(7)
       @JsonKey(name: 'space_between_amount_and_symbol')
       @HiveField(8)
-      required final bool spaceBetweenAmountAndSymbol,
-      @HiveField(9) required final String symbol,
-      @HiveField(10)
-      @JsonKey(name: 'symbol_on_left')
-      required final bool symbolOnLeft,
+      final bool? spaceBetweenAmountAndSymbol,
+      @HiveField(9) final String? symbol,
+      @HiveField(10) @JsonKey(name: 'symbol_on_left') final bool? symbolOnLeft,
       @HiveField(11)
       @JsonKey(name: 'thousands_separator')
       required final String thousandsSeparator}) = _$CountryModelImpl;
@@ -429,14 +425,14 @@ abstract class _CountryModel extends CountryModel {
   @override
   @HiveField(2)
   @JsonKey(name: 'decimal_separator')
-  String get decimalSeparator;
+  String? get decimalSeparator;
   @override
   @HiveField(3)
   String get name;
   @override
   @HiveField(4)
   @JsonKey(name: 'name_plural')
-  String get namePlural;
+  String? get namePlural;
   @override
   @HiveField(5)
   int get number;
@@ -447,14 +443,14 @@ abstract class _CountryModel extends CountryModel {
   @HiveField(7)
   @JsonKey(name: 'space_between_amount_and_symbol')
   @HiveField(8)
-  bool get spaceBetweenAmountAndSymbol;
+  bool? get spaceBetweenAmountAndSymbol;
   @override
   @HiveField(9)
-  String get symbol;
+  String? get symbol;
   @override
   @HiveField(10)
   @JsonKey(name: 'symbol_on_left')
-  bool get symbolOnLeft;
+  bool? get symbolOnLeft;
   @override
   @HiveField(11)
   @JsonKey(name: 'thousands_separator')

@@ -4,16 +4,12 @@ import 'package:injectable/injectable.dart';
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
-import 'package:paisa/features/category/domain/entities/category.dart';
 import 'package:paisa/features/category/domain/use_case/category_use_case.dart';
 import 'package:paisa/features/settings/domain/use_case/setting_use_case.dart';
-import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 import 'package:paisa/features/transaction/domain/use_case/transaction_use_case.dart';
 import 'package:share_plus/share_plus.dart';
 
 part 'settings_state.dart';
-
-const expenseFixKey = "expense_fix_key";
 
 @injectable
 class SettingCubit extends Cubit<SettingsState> {
@@ -34,36 +30,6 @@ class SettingCubit extends Cubit<SettingsState> {
   final SettingsUseCase settingsUseCase;
   final GetTransactionsUseCase transactionsUseCase;
   final UpdateTransactionUseCase updateExpensesUseCase;
-
-  void fixExpenses() async {
-    if (settingsUseCase.get(expenseFixKey, defaultValue: true)) {
-      emit(FixExpenseLoading());
-      final List<CategoryEntity> categories =
-          getDefaultCategoriesUseCase(NoParams());
-      if (categories.isEmpty) {
-        return emit(FixExpenseError());
-      }
-      final List<TransactionEntity> transactions =
-          transactionsUseCase(const ParamsDefaultAccountId(null))
-              .where((element) => element.categoryId == -1)
-              .toList();
-
-      for (final TransactionEntity element in transactions) {
-        await updateExpensesUseCase(UpdateTransactionParams(
-          element.superId!,
-          accountId: element.accountId,
-          categoryId: categories.first.superId!,
-          currency: element.currency,
-          description: element.description,
-          name: element.name,
-          time: element.time,
-          type: element.type,
-        ));
-      }
-      await settingsUseCase.put(expenseFixKey, false);
-      emit(FixExpenseDone());
-    }
-  }
 
   void shareFile() {
     jsonFileExportUseCase(NoParams()).then((fileExport) => fileExport.fold(

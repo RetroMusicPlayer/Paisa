@@ -12,7 +12,6 @@ import 'package:paisa/core/extensions/category_extension.dart';
 import 'package:paisa/core/extensions/text_style_extension.dart';
 import 'package:paisa/core/extensions/color_extension.dart';
 import 'package:paisa/features/category/data/data_sources/default_category.dart';
-import 'package:paisa/features/category/data/data_sources/local/category_data_source.dart';
 import 'package:paisa/features/category/data/model/category_model.dart';
 import 'package:paisa/features/intro/presentation/widgets/intro_image_picker_widget.dart';
 import 'package:paisa/main.dart';
@@ -28,7 +27,7 @@ class IntroCategoryAddWidget extends StatefulWidget {
 
 class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
     with AutomaticKeepAliveClientMixin {
-  final LocalCategoryManager dataSource = getIt.get();
+  //TODO:final LocalCategoryManager dataSource = getIt.get();
   final List<CategoryModel> defaultModels = defaultCategoriesData;
   final settings = getIt.get<Box<dynamic>>(instanceName: BoxType.settings.name);
 
@@ -120,7 +119,7 @@ class _IntroCategoryAddWidgetState extends State<IntroCategoryAddWidget>
                       .map((model) => FilterChip(
                             label: Text(model.name ?? ''),
                             onSelected: (value) {
-                              dataSource.add(model);
+                              // dataSource.add(model);
                               setState(() {
                                 defaultModels.remove(model);
                               });

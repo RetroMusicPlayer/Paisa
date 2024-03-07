@@ -14,52 +14,54 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Country _$CountryFromJson(Map<String, dynamic> json) {
-  return _Country.fromJson(json);
+CountryEntity _$CountryEntityFromJson(Map<String, dynamic> json) {
+  return _CountryEntity.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Country {
+mixin _$CountryEntity {
   String get code => throw _privateConstructorUsedError;
   int? get decimalDigits => throw _privateConstructorUsedError;
-  String get decimalSeparator => throw _privateConstructorUsedError;
+  String? get decimalSeparator => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get namePlural => throw _privateConstructorUsedError;
+  String? get namePlural => throw _privateConstructorUsedError;
   int get number => throw _privateConstructorUsedError;
   String get pattern => throw _privateConstructorUsedError;
-  bool get spaceBetweenAmountAndSymbol => throw _privateConstructorUsedError;
-  String get symbol => throw _privateConstructorUsedError;
-  bool get symbolOnLeft => throw _privateConstructorUsedError;
+  bool? get spaceBetweenAmountAndSymbol => throw _privateConstructorUsedError;
+  String? get symbol => throw _privateConstructorUsedError;
+  bool? get symbolOnLeft => throw _privateConstructorUsedError;
   String get thousandsSeparator => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CountryCopyWith<Country> get copyWith => throw _privateConstructorUsedError;
+  $CountryEntityCopyWith<CountryEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CountryCopyWith<$Res> {
-  factory $CountryCopyWith(Country value, $Res Function(Country) then) =
-      _$CountryCopyWithImpl<$Res, Country>;
+abstract class $CountryEntityCopyWith<$Res> {
+  factory $CountryEntityCopyWith(
+          CountryEntity value, $Res Function(CountryEntity) then) =
+      _$CountryEntityCopyWithImpl<$Res, CountryEntity>;
   @useResult
   $Res call(
       {String code,
       int? decimalDigits,
-      String decimalSeparator,
+      String? decimalSeparator,
       String name,
-      String namePlural,
+      String? namePlural,
       int number,
       String pattern,
-      bool spaceBetweenAmountAndSymbol,
-      String symbol,
-      bool symbolOnLeft,
+      bool? spaceBetweenAmountAndSymbol,
+      String? symbol,
+      bool? symbolOnLeft,
       String thousandsSeparator});
 }
 
 /// @nodoc
-class _$CountryCopyWithImpl<$Res, $Val extends Country>
-    implements $CountryCopyWith<$Res> {
-  _$CountryCopyWithImpl(this._value, this._then);
+class _$CountryEntityCopyWithImpl<$Res, $Val extends CountryEntity>
+    implements $CountryEntityCopyWith<$Res> {
+  _$CountryEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -71,14 +73,14 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country>
   $Res call({
     Object? code = null,
     Object? decimalDigits = freezed,
-    Object? decimalSeparator = null,
+    Object? decimalSeparator = freezed,
     Object? name = null,
-    Object? namePlural = null,
+    Object? namePlural = freezed,
     Object? number = null,
     Object? pattern = null,
-    Object? spaceBetweenAmountAndSymbol = null,
-    Object? symbol = null,
-    Object? symbolOnLeft = null,
+    Object? spaceBetweenAmountAndSymbol = freezed,
+    Object? symbol = freezed,
+    Object? symbolOnLeft = freezed,
     Object? thousandsSeparator = null,
   }) {
     return _then(_value.copyWith(
@@ -90,18 +92,18 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country>
           ? _value.decimalDigits
           : decimalDigits // ignore: cast_nullable_to_non_nullable
               as int?,
-      decimalSeparator: null == decimalSeparator
+      decimalSeparator: freezed == decimalSeparator
           ? _value.decimalSeparator
           : decimalSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      namePlural: null == namePlural
+      namePlural: freezed == namePlural
           ? _value.namePlural
           : namePlural // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -110,18 +112,18 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country>
           ? _value.pattern
           : pattern // ignore: cast_nullable_to_non_nullable
               as String,
-      spaceBetweenAmountAndSymbol: null == spaceBetweenAmountAndSymbol
+      spaceBetweenAmountAndSymbol: freezed == spaceBetweenAmountAndSymbol
           ? _value.spaceBetweenAmountAndSymbol
           : spaceBetweenAmountAndSymbol // ignore: cast_nullable_to_non_nullable
-              as bool,
-      symbol: null == symbol
+              as bool?,
+      symbol: freezed == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbolOnLeft: null == symbolOnLeft
+              as String?,
+      symbolOnLeft: freezed == symbolOnLeft
           ? _value.symbolOnLeft
           : symbolOnLeft // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       thousandsSeparator: null == thousandsSeparator
           ? _value.thousandsSeparator
           : thousandsSeparator // ignore: cast_nullable_to_non_nullable
@@ -131,32 +133,33 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country>
 }
 
 /// @nodoc
-abstract class _$$CountryImplCopyWith<$Res> implements $CountryCopyWith<$Res> {
-  factory _$$CountryImplCopyWith(
-          _$CountryImpl value, $Res Function(_$CountryImpl) then) =
-      __$$CountryImplCopyWithImpl<$Res>;
+abstract class _$$CountryEntityImplCopyWith<$Res>
+    implements $CountryEntityCopyWith<$Res> {
+  factory _$$CountryEntityImplCopyWith(
+          _$CountryEntityImpl value, $Res Function(_$CountryEntityImpl) then) =
+      __$$CountryEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String code,
       int? decimalDigits,
-      String decimalSeparator,
+      String? decimalSeparator,
       String name,
-      String namePlural,
+      String? namePlural,
       int number,
       String pattern,
-      bool spaceBetweenAmountAndSymbol,
-      String symbol,
-      bool symbolOnLeft,
+      bool? spaceBetweenAmountAndSymbol,
+      String? symbol,
+      bool? symbolOnLeft,
       String thousandsSeparator});
 }
 
 /// @nodoc
-class __$$CountryImplCopyWithImpl<$Res>
-    extends _$CountryCopyWithImpl<$Res, _$CountryImpl>
-    implements _$$CountryImplCopyWith<$Res> {
-  __$$CountryImplCopyWithImpl(
-      _$CountryImpl _value, $Res Function(_$CountryImpl) _then)
+class __$$CountryEntityImplCopyWithImpl<$Res>
+    extends _$CountryEntityCopyWithImpl<$Res, _$CountryEntityImpl>
+    implements _$$CountryEntityImplCopyWith<$Res> {
+  __$$CountryEntityImplCopyWithImpl(
+      _$CountryEntityImpl _value, $Res Function(_$CountryEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -164,17 +167,17 @@ class __$$CountryImplCopyWithImpl<$Res>
   $Res call({
     Object? code = null,
     Object? decimalDigits = freezed,
-    Object? decimalSeparator = null,
+    Object? decimalSeparator = freezed,
     Object? name = null,
-    Object? namePlural = null,
+    Object? namePlural = freezed,
     Object? number = null,
     Object? pattern = null,
-    Object? spaceBetweenAmountAndSymbol = null,
-    Object? symbol = null,
-    Object? symbolOnLeft = null,
+    Object? spaceBetweenAmountAndSymbol = freezed,
+    Object? symbol = freezed,
+    Object? symbolOnLeft = freezed,
     Object? thousandsSeparator = null,
   }) {
-    return _then(_$CountryImpl(
+    return _then(_$CountryEntityImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -183,18 +186,18 @@ class __$$CountryImplCopyWithImpl<$Res>
           ? _value.decimalDigits
           : decimalDigits // ignore: cast_nullable_to_non_nullable
               as int?,
-      decimalSeparator: null == decimalSeparator
+      decimalSeparator: freezed == decimalSeparator
           ? _value.decimalSeparator
           : decimalSeparator // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      namePlural: null == namePlural
+      namePlural: freezed == namePlural
           ? _value.namePlural
           : namePlural // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -203,18 +206,18 @@ class __$$CountryImplCopyWithImpl<$Res>
           ? _value.pattern
           : pattern // ignore: cast_nullable_to_non_nullable
               as String,
-      spaceBetweenAmountAndSymbol: null == spaceBetweenAmountAndSymbol
+      spaceBetweenAmountAndSymbol: freezed == spaceBetweenAmountAndSymbol
           ? _value.spaceBetweenAmountAndSymbol
           : spaceBetweenAmountAndSymbol // ignore: cast_nullable_to_non_nullable
-              as bool,
-      symbol: null == symbol
+              as bool?,
+      symbol: freezed == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbolOnLeft: null == symbolOnLeft
+              as String?,
+      symbolOnLeft: freezed == symbolOnLeft
           ? _value.symbolOnLeft
           : symbolOnLeft // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       thousandsSeparator: null == thousandsSeparator
           ? _value.thousandsSeparator
           : thousandsSeparator // ignore: cast_nullable_to_non_nullable
@@ -225,56 +228,56 @@ class __$$CountryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CountryImpl implements _Country {
-  _$CountryImpl(
+class _$CountryEntityImpl implements _CountryEntity {
+  _$CountryEntityImpl(
       {required this.code,
       required this.decimalDigits,
-      required this.decimalSeparator,
+      this.decimalSeparator,
       required this.name,
-      required this.namePlural,
+      this.namePlural,
       required this.number,
       required this.pattern,
-      required this.spaceBetweenAmountAndSymbol,
-      required this.symbol,
-      required this.symbolOnLeft,
+      this.spaceBetweenAmountAndSymbol,
+      this.symbol,
+      this.symbolOnLeft,
       required this.thousandsSeparator});
 
-  factory _$CountryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CountryImplFromJson(json);
+  factory _$CountryEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CountryEntityImplFromJson(json);
 
   @override
   final String code;
   @override
   final int? decimalDigits;
   @override
-  final String decimalSeparator;
+  final String? decimalSeparator;
   @override
   final String name;
   @override
-  final String namePlural;
+  final String? namePlural;
   @override
   final int number;
   @override
   final String pattern;
   @override
-  final bool spaceBetweenAmountAndSymbol;
+  final bool? spaceBetweenAmountAndSymbol;
   @override
-  final String symbol;
+  final String? symbol;
   @override
-  final bool symbolOnLeft;
+  final bool? symbolOnLeft;
   @override
   final String thousandsSeparator;
 
   @override
   String toString() {
-    return 'Country(code: $code, decimalDigits: $decimalDigits, decimalSeparator: $decimalSeparator, name: $name, namePlural: $namePlural, number: $number, pattern: $pattern, spaceBetweenAmountAndSymbol: $spaceBetweenAmountAndSymbol, symbol: $symbol, symbolOnLeft: $symbolOnLeft, thousandsSeparator: $thousandsSeparator)';
+    return 'CountryEntity(code: $code, decimalDigits: $decimalDigits, decimalSeparator: $decimalSeparator, name: $name, namePlural: $namePlural, number: $number, pattern: $pattern, spaceBetweenAmountAndSymbol: $spaceBetweenAmountAndSymbol, symbol: $symbol, symbolOnLeft: $symbolOnLeft, thousandsSeparator: $thousandsSeparator)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CountryImpl &&
+            other is _$CountryEntityImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.decimalDigits, decimalDigits) ||
                 other.decimalDigits == decimalDigits) &&
@@ -315,57 +318,58 @@ class _$CountryImpl implements _Country {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
-      __$$CountryImplCopyWithImpl<_$CountryImpl>(this, _$identity);
+  _$$CountryEntityImplCopyWith<_$CountryEntityImpl> get copyWith =>
+      __$$CountryEntityImplCopyWithImpl<_$CountryEntityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CountryImplToJson(
+    return _$$CountryEntityImplToJson(
       this,
     );
   }
 }
 
-abstract class _Country implements Country {
-  factory _Country(
+abstract class _CountryEntity implements CountryEntity {
+  factory _CountryEntity(
       {required final String code,
       required final int? decimalDigits,
-      required final String decimalSeparator,
+      final String? decimalSeparator,
       required final String name,
-      required final String namePlural,
+      final String? namePlural,
       required final int number,
       required final String pattern,
-      required final bool spaceBetweenAmountAndSymbol,
-      required final String symbol,
-      required final bool symbolOnLeft,
-      required final String thousandsSeparator}) = _$CountryImpl;
+      final bool? spaceBetweenAmountAndSymbol,
+      final String? symbol,
+      final bool? symbolOnLeft,
+      required final String thousandsSeparator}) = _$CountryEntityImpl;
 
-  factory _Country.fromJson(Map<String, dynamic> json) = _$CountryImpl.fromJson;
+  factory _CountryEntity.fromJson(Map<String, dynamic> json) =
+      _$CountryEntityImpl.fromJson;
 
   @override
   String get code;
   @override
   int? get decimalDigits;
   @override
-  String get decimalSeparator;
+  String? get decimalSeparator;
   @override
   String get name;
   @override
-  String get namePlural;
+  String? get namePlural;
   @override
   int get number;
   @override
   String get pattern;
   @override
-  bool get spaceBetweenAmountAndSymbol;
+  bool? get spaceBetweenAmountAndSymbol;
   @override
-  String get symbol;
+  String? get symbol;
   @override
-  bool get symbolOnLeft;
+  bool? get symbolOnLeft;
   @override
   String get thousandsSeparator;
   @override
   @JsonKey(ignore: true)
-  _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
+  _$$CountryEntityImplCopyWith<_$CountryEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

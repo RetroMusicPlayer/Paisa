@@ -1,9 +1,7 @@
-import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:paisa/core/common.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/category/domain/entities/category.dart';
 import 'package:paisa/features/category/domain/use_case/category_use_case.dart';
@@ -15,21 +13,23 @@ class OverviewCubit extends Cubit<BudgetState> {
   OverviewCubit(
     this._getCategoryUseCase,
     this._getCategoriesUseCase,
-    this._byCategoryIdUseCase,
+    this._getTransactionsByCategoryIdUseCase,
   ) : super(BudgetInitial());
 
   final GetDefaultCategoriesUseCase _getCategoriesUseCase;
   final GetCategoryUseCase _getCategoryUseCase;
-  final GetTransactionsByCategoryIdUseCase _byCategoryIdUseCase;
+  final GetTransactionsByCategoryIdUseCase _getTransactionsByCategoryIdUseCase;
   String? selectedTime;
 
   final List<CategoryEntity> _defaultCategories = [];
 
   void emitExpenses(List<TransactionEntity> transactions) {
-    final Map<CategoryEntity, List<TransactionEntity>> categoryGroupedExpenses =
-        groupBy(transactions, (TransactionEntity expense) {
-      return _getCategoryUseCase(GetCategoryParams(expense.categoryId)) ??
-          _defaultCategories.first;
+    /* final Map<CategoryEntity, List<TransactionEntity>> categoryGroupedExpenses =
+        groupBy(transactions, (TransactionEntity expense)   {
+      final categoryFold =
+         await  _getCategoryUseCase(GetCategoryParams(expense.categoryId));
+
+          categoryFold.
     });
     final List<MapEntry<CategoryEntity, List<TransactionEntity>>> mapExpenses =
         categoryGroupedExpenses.entries.toList().sorted(
@@ -37,17 +37,23 @@ class OverviewCubit extends Cubit<BudgetState> {
     emit(FilteredCategoryListState(
       mapExpenses,
       transactions.total,
-    ));
+    )); */
   }
 
   void fetchDefaultCategory() {
-    _defaultCategories.addAll(_getCategoriesUseCase(NoParams()));
+    _getCategoriesUseCase(NoParams()).then((categoryFold) {
+      categoryFold.fold((l) => null, (r) {
+        _defaultCategories.addAll(r);
+      });
+    });
   }
 
-  List<TransactionEntity> transactionsForCategoryId(int categoryId) {
-    final List<TransactionEntity> selectedTimeExpenses =
-        _byCategoryIdUseCase(ParamsGetTransactionsByCategoryId(categoryId));
-    return selectedTimeExpenses;
+  void transactionsForCategoryId(int categoryId) {
+    _getTransactionsByCategoryIdUseCase(
+            ParamsGetTransactionsByCategoryId(categoryId))
+        .then((value) {
+      value.fold((l) => null, (r) {});
+    });
   }
 }
 

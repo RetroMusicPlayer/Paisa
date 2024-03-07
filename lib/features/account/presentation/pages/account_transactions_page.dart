@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:paisa/config/routes_name.dart';
 import 'package:paisa/core/common.dart';
+import 'package:paisa/core/extensions/provider_extension.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
 import 'package:paisa/features/account/presentation/bloc/accounts_bloc.dart';
 import 'package:paisa/features/category/domain/entities/category.dart';
-import 'package:paisa/features/home/presentation/bloc/home/home_bloc.dart';
-import 'package:paisa/features/home/presentation/pages/summary/widgets/expense_item_widget.dart';
-import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 import 'package:paisa/features/home/presentation/controller/summary_controller.dart';
+import 'package:paisa/features/transaction/domain/entities/transaction.dart';
 
 class AccountTransactionsPage extends StatelessWidget {
   const AccountTransactionsPage({
@@ -119,16 +119,16 @@ class AccountTransactionsPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final TransactionEntity expense = state.expenses[index];
                       final CategoryEntity? category =
-                          BlocProvider.of<HomeBloc>(context)
-                              .fetchCategoryFromId(expense.categoryId!);
+                          context.findCategory(expense.categoryId!);
                       if (category == null) {
                         return const SizedBox.shrink();
                       } else {
-                        return ExpenseItemWidget(
-                          expense: expense,
+                        return const SizedBox.shrink();
+                        /*  return ExpenseItemWidget(
+                          transaction: expense,
                           account: state.account,
                           category: category,
-                        );
+                        ); */
                       }
                     },
                   ),

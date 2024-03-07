@@ -1,11 +1,12 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+
 import 'package:paisa/core/common.dart';
 import 'package:paisa/core/common_enum.dart';
 import 'package:paisa/core/widgets/paisa_widget.dart';
+import 'package:paisa/features/home/presentation/controller/summary_controller.dart';
 import 'package:paisa/features/home/presentation/pages/summary/widgets/expense_month_card.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction.dart';
-import 'package:paisa/features/home/presentation/controller/summary_controller.dart';
 
 class AccountHistoryWidget extends StatelessWidget {
   const AccountHistoryWidget({
@@ -37,11 +38,13 @@ class AccountHistoryWidget extends StatelessWidget {
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: maps.entries.length,
-            itemBuilder: (_, mapIndex) => ExpenseMonthCardWidget(
-              title: maps.keys.elementAt(mapIndex),
-              total: maps.values.elementAt(mapIndex).filterTotal,
-              expenses: maps.values.elementAt(mapIndex),
-            ),
+            itemBuilder: (_, mapIndex) {
+              return ExpenseMonthCardWidget(
+                title: maps.keys.elementAt(mapIndex),
+                total: maps.values.elementAt(mapIndex).filterTotal,
+                transactions: maps.values.elementAt(mapIndex),
+              );
+            },
           );
         },
       );

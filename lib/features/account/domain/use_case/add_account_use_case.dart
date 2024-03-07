@@ -1,18 +1,20 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:paisa/core/common_enum.dart';
+import 'package:paisa/core/error/failures.dart';
 import 'package:paisa/core/use_case/use_case.dart';
 import 'package:paisa/features/account/domain/repository/account_repository.dart';
 import 'package:paisa/features/country_picker/domain/entities/country.dart';
 
 @singleton
-class AddAccountUseCase implements UseCase<Future<int>, AddAccountParams> {
+class AddAccountUseCase implements UseCase<int, ParamsAddAccount> {
   AddAccountUseCase({required this.accountRepository});
 
   final AccountRepository accountRepository;
 
   @override
-  Future<int> call(AddAccountParams params) {
+  Future<Either<Failure, int>> call(ParamsAddAccount params) {
     return accountRepository.add(
       bankName: params.bankName,
       holderName: params.holderName,
@@ -26,8 +28,8 @@ class AddAccountUseCase implements UseCase<Future<int>, AddAccountParams> {
   }
 }
 
-class AddAccountParams extends Equatable {
-  const AddAccountParams({
+class ParamsAddAccount extends Equatable {
+  const ParamsAddAccount({
     required this.bankName,
     required this.holderName,
     required this.cardType,
@@ -43,7 +45,7 @@ class AddAccountParams extends Equatable {
   final String bankName;
   final CardType cardType;
   final int? color;
-  final Country? currencySymbol;
+  final CountryEntity? currencySymbol;
   final String holderName;
   final bool? isAccountExcluded;
   final bool? isAccountDefault;

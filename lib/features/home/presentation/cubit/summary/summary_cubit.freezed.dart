@@ -19,7 +19,7 @@ mixin _$SummaryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(AccountEntity accountEntity,
+    required TResult Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)
         update,
   }) =>
@@ -27,7 +27,7 @@ mixin _$SummaryState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(AccountEntity accountEntity,
+    TResult? Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
   }) =>
@@ -35,7 +35,7 @@ mixin _$SummaryState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(AccountEntity accountEntity,
+    TResult Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
     required TResult orElse(),
@@ -119,7 +119,7 @@ class _$SummaryInitialImpl implements _SummaryInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(AccountEntity accountEntity,
+    required TResult Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)
         update,
   }) {
@@ -130,7 +130,7 @@ class _$SummaryInitialImpl implements _SummaryInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(AccountEntity accountEntity,
+    TResult? Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
   }) {
@@ -141,7 +141,7 @@ class _$SummaryInitialImpl implements _SummaryInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(AccountEntity accountEntity,
+    TResult Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
     required TResult orElse(),
@@ -196,7 +196,7 @@ abstract class _$$TransactionsSuccessStateImplCopyWith<$Res> {
       __$$TransactionsSuccessStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {AccountEntity accountEntity,
+      {AccountEntity? accountEntity,
       List<TransactionEntity> transactions,
       List<AccountEntity> accounts});
 }
@@ -213,15 +213,15 @@ class __$$TransactionsSuccessStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accountEntity = null,
+    Object? accountEntity = freezed,
     Object? transactions = null,
     Object? accounts = null,
   }) {
     return _then(_$TransactionsSuccessStateImpl(
-      accountEntity: null == accountEntity
+      accountEntity: freezed == accountEntity
           ? _value.accountEntity
           : accountEntity // ignore: cast_nullable_to_non_nullable
-              as AccountEntity,
+              as AccountEntity?,
       transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -238,14 +238,14 @@ class __$$TransactionsSuccessStateImplCopyWithImpl<$Res>
 
 class _$TransactionsSuccessStateImpl implements TransactionsSuccessState {
   const _$TransactionsSuccessStateImpl(
-      {required this.accountEntity,
+      {this.accountEntity,
       required final List<TransactionEntity> transactions,
       required final List<AccountEntity> accounts})
       : _transactions = transactions,
         _accounts = accounts;
 
   @override
-  final AccountEntity accountEntity;
+  final AccountEntity? accountEntity;
   final List<TransactionEntity> _transactions;
   @override
   List<TransactionEntity> get transactions {
@@ -297,7 +297,7 @@ class _$TransactionsSuccessStateImpl implements TransactionsSuccessState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(AccountEntity accountEntity,
+    required TResult Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)
         update,
   }) {
@@ -308,7 +308,7 @@ class _$TransactionsSuccessStateImpl implements TransactionsSuccessState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(AccountEntity accountEntity,
+    TResult? Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
   }) {
@@ -319,7 +319,7 @@ class _$TransactionsSuccessStateImpl implements TransactionsSuccessState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(AccountEntity accountEntity,
+    TResult Function(AccountEntity? accountEntity,
             List<TransactionEntity> transactions, List<AccountEntity> accounts)?
         update,
     required TResult orElse(),
@@ -364,12 +364,12 @@ class _$TransactionsSuccessStateImpl implements TransactionsSuccessState {
 
 abstract class TransactionsSuccessState implements SummaryState {
   const factory TransactionsSuccessState(
-          {required final AccountEntity accountEntity,
+          {final AccountEntity? accountEntity,
           required final List<TransactionEntity> transactions,
           required final List<AccountEntity> accounts}) =
       _$TransactionsSuccessStateImpl;
 
-  AccountEntity get accountEntity;
+  AccountEntity? get accountEntity;
   List<TransactionEntity> get transactions;
   List<AccountEntity> get accounts;
   @JsonKey(ignore: true)
