@@ -17,7 +17,7 @@ class VersionWidget extends StatefulWidget {
 }
 
 class _VersionWidgetState extends State<VersionWidget> {
-  PackageInfo? packageInfo;
+  ValueNotifier<PackageInfo?> packageInfoListenable = ValueNotifier(null);
 
   @override
   void initState() {
@@ -26,23 +26,26 @@ class _VersionWidgetState extends State<VersionWidget> {
   }
 
   Future<void> fetchDeviceInfo() async {
-    packageInfo = await PackageInfo.fromPlatform();
-    setState(() {});
+    packageInfoListenable.value = await PackageInfo.fromPlatform();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (packageInfo == null) {
-      return SettingsOption(
+    return ValueListenableBuilder(
+      valueListenable: packageInfoListenable,
+      builder: (_, PackageInfo? packageInfo, Widget? child) {
+        return (packageInfo == null)
+            ? child!
+            : SettingsOption(
+                icon: MdiIcons.numeric,
+                title: context.loc.version,
+                subtitle: context.loc.versionNumber(packageInfo.version),
+              );
+      },
+      child: SettingsOption(
         icon: MdiIcons.numeric,
         title: context.loc.version,
-      );
-    }
-    final version = packageInfo?.version ?? '';
-    return SettingsOption(
-      icon: MdiIcons.numeric,
-      title: context.loc.version,
-      subtitle: context.loc.versionNumber(version),
+      ),
     );
   }
 }
