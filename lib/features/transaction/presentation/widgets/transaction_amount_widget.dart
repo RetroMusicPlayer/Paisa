@@ -57,7 +57,7 @@ class TransactionAmountWidget extends StatelessWidget {
         keyboardType:
             const TextInputType.numberWithOptions(decimal: true, signed: true),
         inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter.allow(RegExp(r'[0-9.]')),
+          FilteringTextInputFormatter.allow(RegExp(r"[0-9 '.,-]")),
           TextInputFormatter.withFunction((oldValue, newValue) {
             try {
               final text = newValue.text;
