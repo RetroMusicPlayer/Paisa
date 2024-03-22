@@ -37,7 +37,7 @@ class HomeTabletWidget extends StatelessWidget {
           ),
           leadingWidth: 180,
           title: const HomeSearchBar(),
-          actions: [
+          actions: const [
             PaisaUserWidget(),
           ],
         ),
