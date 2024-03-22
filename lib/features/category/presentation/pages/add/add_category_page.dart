@@ -361,11 +361,7 @@ class CategoryNameWidget extends StatelessWidget {
       keyboardType: TextInputType.name,
       onChanged: (value) => context.read<CategoryBloc>().categoryTitle = value,
       validator: (value) {
-        if (value!.isNotEmpty) {
-          return null;
-        } else {
-          return context.loc.validName;
-        }
+        return value!.isNotEmpty ? null : context.loc.validName;
       },
     );
   }

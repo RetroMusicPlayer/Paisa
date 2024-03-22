@@ -430,11 +430,7 @@ class RecurringNameWidget extends StatelessWidget {
           FilteringTextInputFormatter.singleLineFormatter,
         ],
         validator: (value) {
-          if (value!.isNotEmpty) {
-            return null;
-          } else {
-            return context.loc.validName;
-          }
+          return value!.isNotEmpty ? null : context.loc.validName;
         },
         onChanged: (value) =>
             context.read<RecurringCubit>().recurringName = value,
@@ -478,11 +474,7 @@ class RecurringAmountWidget extends StatelessWidget {
           context.read<RecurringCubit>().amount = amount;
         },
         validator: (value) {
-          if (value!.isNotEmpty) {
-            return null;
-          } else {
-            return context.loc.validAmount;
-          }
+          return value!.isNotEmpty ? null : context.loc.validAmount;
         },
       ),
     );

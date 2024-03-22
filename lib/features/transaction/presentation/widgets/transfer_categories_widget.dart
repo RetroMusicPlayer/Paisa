@@ -25,35 +25,24 @@ class TransferCategoriesWidget extends StatelessWidget {
       builder: (context, value, child) {
         final List<CategoryEntity> categories =
             value.values.filterDefault.toEntities();
-        if (categories.isEmpty) {
-          return ListTile(
-            onTap: () async {
-              const CategoryPageData().push(context);
-            },
-            title: Text(context.loc.addCategoryEmptyTitle),
-            subtitle: Text(context.loc.addCategoryEmptySubTitle),
-            trailing: const Icon(Icons.keyboard_arrow_right),
-          );
-        } else {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  context.loc.selectCategory,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
-              SelectDefaultCategoryWidget(
-                categories: categories,
-              ),
-            ],
-          );
-        }
+        return categories.isEmpty
+            ? ListTile(
+                onTap: () async {
+                  const CategoryPageData().push(context);
+                },
+                title: Text(context.loc.addCategoryEmptyTitle),
+                subtitle: Text(context.loc.addCategoryEmptySubTitle),
+                trailing: const Icon(Icons.keyboard_arrow_right))
+            : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(context.loc.selectCategory,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleSmall
+                            ?.copyWith(fontWeight: FontWeight.bold))),
+                SelectDefaultCategoryWidget(categories: categories)
+              ]);
       },
     );
   }
