@@ -8,7 +8,7 @@ class TransactionState with _$TransactionState {
   const factory TransactionState.changeTransactionType(
       TransactionType transactionType) = ChangeTransactionTypeState;
 
-  const factory TransactionState.changecCategory(CategoryEntity category) =
+  const factory TransactionState.changeCategory(CategoryEntity category) =
       ChangeCategoryState;
 
   const factory TransactionState.initial() = ExpenseInitial;

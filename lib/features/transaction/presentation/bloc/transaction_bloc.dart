@@ -236,7 +236,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   ) {
     selectedCategoryId = event.category.superId;
     selectedCategory = event.category;
-    emit(TransactionState.changecCategory(event.category));
+    emit(TransactionState.changeCategory(event.category));
   }
 
   FutureOr<void> _changeAccount(
