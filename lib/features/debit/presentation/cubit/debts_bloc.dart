@@ -157,7 +157,7 @@ class DebitBloc extends Bloc<DebtsEvent, DebtsState> {
       return;
     }
 
-    final DebitEntity? debt = getDebtUseCase(GetDebitParams(debitId));
+    final DebitEntity? debt = await getDebtUseCase(GetDebitParams(debitId));
     if (debt != null) {
       currentAmount = debt.amount;
       currentName = debt.name;
@@ -173,8 +173,6 @@ class DebitBloc extends Bloc<DebtsEvent, DebtsState> {
         add(SelectedStartDateEvent(startDateTime!));
         add(SelectedEndDateEvent(endDateTime!));
       });
-    } else {
-      emit(const DebtErrorState('Debt not found'));
     }
   }
 

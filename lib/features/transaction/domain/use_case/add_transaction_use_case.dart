@@ -13,7 +13,7 @@ part 'add_transaction_use_case.freezed.dart';
 
 @lazySingleton
 class AddTransactionUseCase
-    implements UseCase<Future<Either<Failure, bool>>, AddTransactionParams> {
+    implements UseCase<Either<Failure, bool>, AddTransactionParams> {
   AddTransactionUseCase({required this.expenseRepository});
 
   final TransactionRepository expenseRepository;

@@ -35,7 +35,7 @@ class AccountRepositoryImpl extends AccountRepository {
   }
 
   @override
-  List<AccountEntity> all() {
+  Future<List<AccountEntity>> all() async {
     return dataSource.accounts().toEntities();
   }
 
@@ -50,7 +50,7 @@ class AccountRepositoryImpl extends AccountRepository {
   }
 
   @override
-  AccountEntity? fetchById(int? accountId) {
+  Future<AccountEntity?> fetchById(int? accountId) async {
     return dataSource.findById(accountId)?.toEntity();
   }
 

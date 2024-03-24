@@ -42,7 +42,7 @@ class DebtRepositoryImpl extends DebitRepository {
   }
 
   @override
-  DebitEntity? fetchDebtOrCreditFromId(int debtId) =>
+  Future<DebitEntity?> fetchDebtOrCreditFromId(int debtId) async =>
       dataSource.fetchDebtOrCreditFromId(debtId)?.toEntity();
 
   @override

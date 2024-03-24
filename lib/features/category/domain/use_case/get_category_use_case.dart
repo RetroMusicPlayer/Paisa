@@ -17,7 +17,7 @@ class GetCategoryUseCase
   final CategoryRepository categoryRepository;
 
   @override
-  CategoryEntity? call(GetCategoryParams params) {
+  Future<CategoryEntity?> call(GetCategoryParams params) async {
     return categoryRepository.fetchById(params.categoryId);
   }
 }

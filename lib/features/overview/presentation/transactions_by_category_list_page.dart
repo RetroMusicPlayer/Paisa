@@ -23,52 +23,88 @@ class TransactionByCategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<TransactionEntity> expenses =
+    final Future<List<TransactionEntity>> expensesFuture =
         context.read<HomeCubit>().fetchExpensesFromCategoryId(categoryId);
 
     return PaisaAnnotatedRegionWidget(
       color: Colors.transparent,
-      child: Scaffold(
-        extendBody: true,
-        appBar: context.materialYouAppBar(context.loc.transactionsByCategory),
-        bottomNavigationBar: SafeArea(
-          child: PaisaFilledCard(
-            child: ListTile(
-              title: Text(
-                context.loc.total,
-                style: context.titleSmall
-                    ?.copyWith(color: context.onSurfaceVariant),
-              ),
-              subtitle: Text(
-                expenses.fullTotal.toFormateCurrency(context),
-                style: context.titleMedium?.copyWith(
-                  color: context.onSurfaceVariant,
-                  fontWeight: FontWeight.bold,
+      child: FutureBuilder<List<TransactionEntity>>(
+        future: expensesFuture,
+        builder: (context, expensesSnapshot) {
+          if (expensesSnapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (expensesSnapshot.hasError) {
+            return Text('Error: ${expensesSnapshot.error}');
+          } else {
+            final List<TransactionEntity> expenses = expensesSnapshot.data!;
+            return Scaffold(
+              extendBody: true,
+              appBar:
+                  context.materialYouAppBar(context.loc.transactionsByCategory),
+              bottomNavigationBar: SafeArea(
+                child: PaisaFilledCard(
+                  child: ListTile(
+                    title: Text(
+                      context.loc.total,
+                      style: context.titleSmall
+                          ?.copyWith(color: context.onSurfaceVariant),
+                    ),
+                    subtitle: Text(
+                      expenses.fullTotal.toFormateCurrency(context),
+                      style: context.titleMedium?.copyWith(
+                        color: context.onSurfaceVariant,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
-        body: ListView.builder(
-          shrinkWrap: true,
-          itemCount: expenses.length,
-          itemBuilder: (BuildContext context, int index) {
-            final AccountEntity? account = context
-                .read<HomeCubit>()
-                .fetchAccountFromId(expenses[index].accountId);
-            final CategoryEntity? category = context
-                .read<HomeCubit>()
-                .fetchCategoryFromId(expenses[index].categoryId);
-            if (account == null || category == null) {
-              return const SizedBox.shrink();
-            }
-            return ExpenseItemWidget(
-              expense: expenses[index],
-              account: account,
-              category: category,
+              body: ListView.builder(
+                shrinkWrap: true,
+                itemCount: expenses.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final Future<AccountEntity?> accountFuture = context
+                      .read<HomeCubit>()
+                      .fetchAccountFromId(expenses[index].accountId);
+                  final Future<CategoryEntity?> categoryFuture = context
+                      .read<HomeCubit>()
+                      .fetchCategoryFromId(expenses[index].categoryId);
+                  return FutureBuilder<AccountEntity?>(
+                    future: accountFuture,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<AccountEntity?> accountSnapshot) {
+                      if (accountSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      } else if (accountSnapshot.hasError) {
+                        return Text('Error: ${accountSnapshot.error}');
+                      } else {
+                        return FutureBuilder<CategoryEntity?>(
+                          future: categoryFuture,
+                          builder: (BuildContext context,
+                              AsyncSnapshot<CategoryEntity?> categorySnapshot) {
+                            if (categorySnapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const CircularProgressIndicator();
+                            } else if (categorySnapshot.hasError) {
+                              return Text('Error: ${categorySnapshot.error}');
+                            } else {
+                              return ExpenseItemWidget(
+                                expense: expenses[index],
+                                account: accountSnapshot.data!,
+                                category: categorySnapshot.data!,
+                              );
+                            }
+                          },
+                        );
+                      }
+                    },
+                  );
+                },
+              ),
             );
-          },
-        ),
+          }
+        },
       ),
     );
   }

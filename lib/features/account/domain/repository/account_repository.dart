@@ -24,9 +24,9 @@ abstract class AccountRepository {
 
   Future<void> delete(int key);
 
-  AccountEntity? fetchById(int? accountId);
+  Future<AccountEntity?> fetchById(int? accountId);
 
-  List<AccountEntity> all();
+  Future<List<AccountEntity>> all();
 
   Future<void> clearAll();
 }

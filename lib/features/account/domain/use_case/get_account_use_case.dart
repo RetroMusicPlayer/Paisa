@@ -16,7 +16,7 @@ class GetAccountUseCase implements UseCase<AccountEntity?, GetAccountParams> {
   final AccountRepository accountRepository;
 
   @override
-  AccountEntity? call(GetAccountParams params) {
+  Future<AccountEntity?> call(GetAccountParams params) async {
     return accountRepository.fetchById(params.accountId);
   }
 }

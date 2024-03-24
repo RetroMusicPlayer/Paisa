@@ -17,15 +17,23 @@ abstract class TransactionRepository {
     String? description,
   });
 
+  Future<Either<Failure, List<TransactionEntity>>>
+      getTransactionsByAccountIdAndMonth(
+    int accountId,
+    DateTime month,
+  );
+
+  Future<List<TransactionEntity>> fetchExpensesFromCategoryId(int categoryId);
+
+  Future<List<TransactionEntity>> getRecentTransactions(int limit);
+
   Future<void> clearExpense(int expenseId);
 
-  TransactionEntity? fetchExpenseFromId(int expenseId);
+  Future<TransactionEntity?> fetchExpenseFromId(int expenseId);
 
-  List<TransactionEntity> transactions({int? accountId});
+  Future<List<TransactionEntity>> transactions({int? accountId});
 
-  List<TransactionEntity> fetchExpensesFromAccountId(int accountId);
-
-  List<TransactionEntity> fetchExpensesFromCategoryId(int accountId);
+  Future<List<TransactionEntity>> fetchExpensesFromAccountId(int accountId);
 
   Future<void> deleteExpensesByAccountId(int accountId);
 
@@ -44,7 +52,7 @@ abstract class TransactionRepository {
 
   Future<void> clearAll();
 
-  List<TransactionEntity> filterExpenses(
+  Future<List<TransactionEntity>> filterExpenses(
     String query,
     List<int> accounts,
     List<int> categories,

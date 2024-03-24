@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -34,34 +35,38 @@ class SettingCubit extends Cubit<SettingsState> {
   final GetTransactionsUseCase transactionsUseCase;
   final UpdateTransactionUseCase updateExpensesUseCase;
 
-  void shareFile() {
-    jsonFileExportUseCase(NoParams()).then((fileExport) {
-      fileExport.fold(
-        (failure) => emit(ImportFileError(mapFailureToMessage(failure))),
-        (path) => Share.shareXFiles(
-          [XFile(path)],
-          subject: 'Share',
-        ),
-      );
-    });
+// this change was messy, might be wrong. See failure as Failure
+  Future<void> shareFile() async {
+    final Future<Either<Failure, String>> fileExport =
+        await jsonFileExportUseCase(NoParams());
+    fileExport.then(
+      (failure) =>
+          emit(ImportFileError(mapFailureToMessage(failure as Failure))),
+      onError: (path) => Share.shareXFiles(
+        [XFile(path)],
+        subject: 'Share',
+      ),
+    );
   }
 
-  void shareCSVFile() {
-    csvFileExportUseCase().then((fileExport) => fileExport.fold(
-          (failure) => emit(ImportFileError(mapFailureToMessage(failure))),
-          (path) => Share.shareXFiles(
-            [XFile(path)],
-            subject: 'Share',
-          ),
-        ));
+  Future<void> shareCSVFile() async {
+    final fileExport = await csvFileExportUseCase();
+    fileExport.fold(
+      (failure) => emit(ImportFileError(mapFailureToMessage(failure))),
+      (path) => Share.shareXFiles(
+        [XFile(path)],
+        subject: 'Share',
+      ),
+    );
   }
 
-  void importDataFromJson() {
+  Future<void> importDataFromJson() async {
     emit(ImportFileLoading());
-    jsonFileImportUseCase().then((fileImport) => fileImport.fold(
-          (failure) => emit(ImportFileError(mapFailureToMessage(failure))),
-          (r) => emit(ImportFileSuccessState()),
-        ));
+    final fileImport = await jsonFileImportUseCase();
+    fileImport.fold(
+      (failure) => emit(ImportFileError(mapFailureToMessage(failure))),
+      (r) => emit(ImportFileSuccessState()),
+    );
   }
 
   int? get defaultAccountId => settingsUseCase.get(defaultAccountIdKey);

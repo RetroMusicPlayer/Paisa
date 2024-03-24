@@ -40,11 +40,23 @@ class BudgetPage extends StatelessWidget {
             itemCount: categories.length,
             itemBuilder: (context, index) {
               final CategoryEntity category = categories[index];
-              final List<TransactionEntity> expenses = context
+              final Future<List<TransactionEntity>> expensesFuture = context
                   .read<HomeCubit>()
-                  .fetchExpensesFromCategoryId(category.superId!)
-                  .thisMonthExpensesList;
-              return BudgetItem(category: category, expenses: expenses);
+                  .fetchExpensesFromCategoryId(category.superId!);
+
+              return FutureBuilder<List<TransactionEntity>>(
+                future: expensesFuture,
+                builder: (context, expensesSnapshot) {
+                  if (expensesSnapshot.connectionState ==
+                      ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else {
+                    final List<TransactionEntity> expenses =
+                        expensesSnapshot.data!;
+                    return BudgetItem(category: category, expenses: expenses);
+                  }
+                },
+              );
             },
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(),

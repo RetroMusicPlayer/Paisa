@@ -20,6 +20,7 @@ import 'package:paisa/features/category/domain/entities/category.dart';
 import 'package:paisa/features/category/domain/use_case/category_use_case.dart';
 import 'package:paisa/features/settings/domain/use_case/settings_use_case.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction_entity.dart';
+import 'package:paisa/features/transaction/domain/repository/transaction_repository.dart';
 import 'package:paisa/features/transaction/domain/use_case/transaction_use_case.dart';
 
 part 'transaction_bloc.freezed.dart';
@@ -28,8 +29,11 @@ part 'transaction_state.dart';
 
 @injectable
 class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
+  final TransactionRepository repository;
+
   TransactionBloc(
-    this.settingsUseCase, {
+    this.settingsUseCase,
+    this.repository, {
     required this.getTransactionUseCase,
     required this.accountUseCase,
     required this.addTransactionUseCase,
@@ -70,6 +74,21 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   TransactionType transactionType = TransactionType.expense;
   final UpdateTransactionUseCase updateTransactionUseCase;
 
+  Stream<TransactionState> mapEventToState(TransactionEvent event) async* {
+    if (event is FetchTransactions) {
+      yield const TransactionLoading();
+      try {
+        final transactions =
+            await repository.getRecentTransactions(event.limit);
+        yield TransactionLoaded(transactions);
+      } catch (_) {
+        void TransactionError(String error) {
+          // Handle the error here
+        }
+      }
+    }
+  }
+
   Future<void> _fetchExpenseFromId(
     _FindTransactionFromIdEvent event,
     Emitter<TransactionState> emit,
@@ -80,8 +99,10 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       return;
     }
 
+    // I think this works, I had to add cast.
     final TransactionEntity? transaction =
-        await getTransactionUseCase(GetTransactionParams(expenseId));
+        (await getTransactionUseCase(GetTransactionParams(expenseId)))
+            as TransactionEntity?;
     if (transaction != null) {
       transactionAmount = transaction.currency;
       expenseName = transaction.name;
@@ -95,8 +116,6 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       emit(TransactionState.transaction(transaction));
       Future.delayed(Duration.zero).then((value) =>
           add(TransactionEvent.changeTransactionType(transactionType)));
-    } else {
-      emit(const TransactionState.transactionError('Expense not found!'));
     }
   }
 
@@ -214,13 +233,14 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     emit(const TransactionState.transactionDeleted());
   }
 
-  void _changeExpense(
+  Future<void> _changeExpense(
     _ChangeTransactionTypeEvent event,
     Emitter<TransactionState> emit,
-  ) {
-    final List<AccountEntity> accounts = accountsUseCase(NoParams());
-    if (accounts.isEmpty &&
-        accounts.length <= 1 &&
+  ) async {
+    final Future<List<AccountEntity>> accounts = accountsUseCase(NoParams());
+    final List<AccountEntity> accountList = await accounts;
+    if (accountList.isEmpty &&
+        (await accounts).length <= 1 &&
         event.transactionType == TransactionType.transfer) {
       emit(const TransactionState.transactionError(
           'Need two or more accounts '));

@@ -32,12 +32,11 @@ class _BiometricPageState extends State<BiometricPage> {
 
     if (canCheckBiometrics) {
       final bool result = await localAuth.authenticateWithBiometrics();
+
+      if (!mounted) return;
+
       if (result) {
-        if (context.mounted) {
-          const LandingPageData().go(context);
-        }
-      } else {
-        //SystemNavigator.pop();
+        const LandingPageData().go(context);
       }
     }
   }

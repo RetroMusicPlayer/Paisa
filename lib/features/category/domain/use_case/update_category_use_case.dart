@@ -9,8 +9,7 @@ import 'package:paisa/features/category/domain/repository/category_repository.da
 part 'update_category_use_case.freezed.dart';
 
 @lazySingleton
-class UpdateCategoryUseCase
-    implements UseCase<Future<void>, UpdateCategoryParams> {
+class UpdateCategoryUseCase implements UseCase<void, UpdateCategoryParams> {
   UpdateCategoryUseCase({required this.categoryRepository});
 
   final CategoryRepository categoryRepository;

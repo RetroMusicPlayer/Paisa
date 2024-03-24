@@ -29,6 +29,7 @@ mixin _$TransactionEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +44,7 @@ mixin _$TransactionEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +59,7 @@ mixin _$TransactionEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -73,6 +76,7 @@ mixin _$TransactionEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +90,7 @@ mixin _$TransactionEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +104,7 @@ mixin _$TransactionEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -201,6 +207,7 @@ class _$AddOrUpdateExpenseEventImpl implements _AddOrUpdateExpenseEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return addOrUpdate(isAdding);
   }
@@ -218,6 +225,7 @@ class _$AddOrUpdateExpenseEventImpl implements _AddOrUpdateExpenseEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return addOrUpdate?.call(isAdding);
   }
@@ -235,6 +243,7 @@ class _$AddOrUpdateExpenseEventImpl implements _AddOrUpdateExpenseEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (addOrUpdate != null) {
@@ -257,6 +266,7 @@ class _$AddOrUpdateExpenseEventImpl implements _AddOrUpdateExpenseEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return addOrUpdate(this);
   }
@@ -273,6 +283,7 @@ class _$AddOrUpdateExpenseEventImpl implements _AddOrUpdateExpenseEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return addOrUpdate?.call(this);
   }
@@ -289,6 +300,7 @@ class _$AddOrUpdateExpenseEventImpl implements _AddOrUpdateExpenseEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (addOrUpdate != null) {
@@ -385,6 +397,7 @@ class _$ClearExpenseEventImpl implements _ClearExpenseEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return delete(expenseId);
   }
@@ -402,6 +415,7 @@ class _$ClearExpenseEventImpl implements _ClearExpenseEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return delete?.call(expenseId);
   }
@@ -419,6 +433,7 @@ class _$ClearExpenseEventImpl implements _ClearExpenseEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -441,6 +456,7 @@ class _$ClearExpenseEventImpl implements _ClearExpenseEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return delete(this);
   }
@@ -457,6 +473,7 @@ class _$ClearExpenseEventImpl implements _ClearExpenseEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return delete?.call(this);
   }
@@ -473,6 +490,7 @@ class _$ClearExpenseEventImpl implements _ClearExpenseEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -572,6 +590,7 @@ class _$ChangeTransactionTypeEventImpl implements _ChangeTransactionTypeEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return changeTransactionType(transactionType);
   }
@@ -589,6 +608,7 @@ class _$ChangeTransactionTypeEventImpl implements _ChangeTransactionTypeEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return changeTransactionType?.call(transactionType);
   }
@@ -606,6 +626,7 @@ class _$ChangeTransactionTypeEventImpl implements _ChangeTransactionTypeEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (changeTransactionType != null) {
@@ -628,6 +649,7 @@ class _$ChangeTransactionTypeEventImpl implements _ChangeTransactionTypeEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return changeTransactionType(this);
   }
@@ -644,6 +666,7 @@ class _$ChangeTransactionTypeEventImpl implements _ChangeTransactionTypeEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return changeTransactionType?.call(this);
   }
@@ -660,6 +683,7 @@ class _$ChangeTransactionTypeEventImpl implements _ChangeTransactionTypeEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (changeTransactionType != null) {
@@ -776,6 +800,7 @@ class _$TransferAccountEventImpl implements _TransferAccountEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return transferAccount(account, isFromAccount);
   }
@@ -793,6 +818,7 @@ class _$TransferAccountEventImpl implements _TransferAccountEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return transferAccount?.call(account, isFromAccount);
   }
@@ -810,6 +836,7 @@ class _$TransferAccountEventImpl implements _TransferAccountEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (transferAccount != null) {
@@ -832,6 +859,7 @@ class _$TransferAccountEventImpl implements _TransferAccountEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return transferAccount(this);
   }
@@ -848,6 +876,7 @@ class _$TransferAccountEventImpl implements _TransferAccountEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return transferAccount?.call(this);
   }
@@ -864,6 +893,7 @@ class _$TransferAccountEventImpl implements _TransferAccountEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (transferAccount != null) {
@@ -933,6 +963,7 @@ class _$AddRecurringEventImpl implements _AddRecurringEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return addRecurring();
   }
@@ -950,6 +981,7 @@ class _$AddRecurringEventImpl implements _AddRecurringEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return addRecurring?.call();
   }
@@ -967,6 +999,7 @@ class _$AddRecurringEventImpl implements _AddRecurringEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (addRecurring != null) {
@@ -989,6 +1022,7 @@ class _$AddRecurringEventImpl implements _AddRecurringEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return addRecurring(this);
   }
@@ -1005,6 +1039,7 @@ class _$AddRecurringEventImpl implements _AddRecurringEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return addRecurring?.call(this);
   }
@@ -1021,6 +1056,7 @@ class _$AddRecurringEventImpl implements _AddRecurringEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (addRecurring != null) {
@@ -1120,6 +1156,7 @@ class _$ChangeAccountEventImpl implements _ChangeAccountEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return changeAccount(account);
   }
@@ -1137,6 +1174,7 @@ class _$ChangeAccountEventImpl implements _ChangeAccountEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return changeAccount?.call(account);
   }
@@ -1154,6 +1192,7 @@ class _$ChangeAccountEventImpl implements _ChangeAccountEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (changeAccount != null) {
@@ -1176,6 +1215,7 @@ class _$ChangeAccountEventImpl implements _ChangeAccountEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return changeAccount(this);
   }
@@ -1192,6 +1232,7 @@ class _$ChangeAccountEventImpl implements _ChangeAccountEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return changeAccount?.call(this);
   }
@@ -1208,6 +1249,7 @@ class _$ChangeAccountEventImpl implements _ChangeAccountEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (changeAccount != null) {
@@ -1314,6 +1356,7 @@ class _$ChangeCategoryEventImpl implements _ChangeCategoryEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return changeCategory(category);
   }
@@ -1331,6 +1374,7 @@ class _$ChangeCategoryEventImpl implements _ChangeCategoryEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return changeCategory?.call(category);
   }
@@ -1348,6 +1392,7 @@ class _$ChangeCategoryEventImpl implements _ChangeCategoryEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (changeCategory != null) {
@@ -1370,6 +1415,7 @@ class _$ChangeCategoryEventImpl implements _ChangeCategoryEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return changeCategory(this);
   }
@@ -1386,6 +1432,7 @@ class _$ChangeCategoryEventImpl implements _ChangeCategoryEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return changeCategory?.call(this);
   }
@@ -1402,6 +1449,7 @@ class _$ChangeCategoryEventImpl implements _ChangeCategoryEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (changeCategory != null) {
@@ -1501,6 +1549,7 @@ class _$FindTransactionFromIdEventImpl implements _FindTransactionFromIdEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return findTransaction(expenseId);
   }
@@ -1518,6 +1567,7 @@ class _$FindTransactionFromIdEventImpl implements _FindTransactionFromIdEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return findTransaction?.call(expenseId);
   }
@@ -1535,6 +1585,7 @@ class _$FindTransactionFromIdEventImpl implements _FindTransactionFromIdEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (findTransaction != null) {
@@ -1557,6 +1608,7 @@ class _$FindTransactionFromIdEventImpl implements _FindTransactionFromIdEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return findTransaction(this);
   }
@@ -1573,6 +1625,7 @@ class _$FindTransactionFromIdEventImpl implements _FindTransactionFromIdEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return findTransaction?.call(this);
   }
@@ -1589,6 +1642,7 @@ class _$FindTransactionFromIdEventImpl implements _FindTransactionFromIdEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (findTransaction != null) {
@@ -1685,6 +1739,7 @@ class _$UpdateDateTimeEventImpl implements _UpdateDateTimeEvent {
     required TResult Function(CategoryEntity category) changeCategory,
     required TResult Function(int? expenseId) findTransaction,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
   }) {
     return updateDateTime(dateTime);
   }
@@ -1702,6 +1757,7 @@ class _$UpdateDateTimeEventImpl implements _UpdateDateTimeEvent {
     TResult? Function(CategoryEntity category)? changeCategory,
     TResult? Function(int? expenseId)? findTransaction,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
   }) {
     return updateDateTime?.call(dateTime);
   }
@@ -1719,6 +1775,7 @@ class _$UpdateDateTimeEventImpl implements _UpdateDateTimeEvent {
     TResult Function(CategoryEntity category)? changeCategory,
     TResult Function(int? expenseId)? findTransaction,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (updateDateTime != null) {
@@ -1741,6 +1798,7 @@ class _$UpdateDateTimeEventImpl implements _UpdateDateTimeEvent {
     required TResult Function(_FindTransactionFromIdEvent value)
         findTransaction,
     required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
   }) {
     return updateDateTime(this);
   }
@@ -1757,6 +1815,7 @@ class _$UpdateDateTimeEventImpl implements _UpdateDateTimeEvent {
     TResult? Function(_ChangeCategoryEvent value)? changeCategory,
     TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
   }) {
     return updateDateTime?.call(this);
   }
@@ -1773,6 +1832,7 @@ class _$UpdateDateTimeEventImpl implements _UpdateDateTimeEvent {
     TResult Function(_ChangeCategoryEvent value)? changeCategory,
     TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
     TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (updateDateTime != null) {
@@ -1793,6 +1853,194 @@ abstract class _UpdateDateTimeEvent implements TransactionEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchTransactionsImplCopyWith<$Res> {
+  factory _$$FetchTransactionsImplCopyWith(_$FetchTransactionsImpl value,
+          $Res Function(_$FetchTransactionsImpl) then) =
+      __$$FetchTransactionsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int limit});
+}
+
+/// @nodoc
+class __$$FetchTransactionsImplCopyWithImpl<$Res>
+    extends _$TransactionEventCopyWithImpl<$Res, _$FetchTransactionsImpl>
+    implements _$$FetchTransactionsImplCopyWith<$Res> {
+  __$$FetchTransactionsImplCopyWithImpl(_$FetchTransactionsImpl _value,
+      $Res Function(_$FetchTransactionsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? limit = null,
+  }) {
+    return _then(_$FetchTransactionsImpl(
+      null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchTransactionsImpl implements FetchTransactions {
+  const _$FetchTransactionsImpl(this.limit);
+
+  @override
+  final int limit;
+
+  @override
+  String toString() {
+    return 'TransactionEvent.fetchTransactions(limit: $limit)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchTransactionsImpl &&
+            (identical(other.limit, limit) || other.limit == limit));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, limit);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchTransactionsImplCopyWith<_$FetchTransactionsImpl> get copyWith =>
+      __$$FetchTransactionsImplCopyWithImpl<_$FetchTransactionsImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isAdding) addOrUpdate,
+    required TResult Function(int expenseId) delete,
+    required TResult Function(TransactionType transactionType)
+        changeTransactionType,
+    required TResult Function(AccountEntity account, bool isFromAccount)
+        transferAccount,
+    required TResult Function() addRecurring,
+    required TResult Function(AccountEntity account) changeAccount,
+    required TResult Function(CategoryEntity category) changeCategory,
+    required TResult Function(int? expenseId) findTransaction,
+    required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function(int limit) fetchTransactions,
+  }) {
+    return fetchTransactions(limit);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isAdding)? addOrUpdate,
+    TResult? Function(int expenseId)? delete,
+    TResult? Function(TransactionType transactionType)? changeTransactionType,
+    TResult? Function(AccountEntity account, bool isFromAccount)?
+        transferAccount,
+    TResult? Function()? addRecurring,
+    TResult? Function(AccountEntity account)? changeAccount,
+    TResult? Function(CategoryEntity category)? changeCategory,
+    TResult? Function(int? expenseId)? findTransaction,
+    TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function(int limit)? fetchTransactions,
+  }) {
+    return fetchTransactions?.call(limit);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isAdding)? addOrUpdate,
+    TResult Function(int expenseId)? delete,
+    TResult Function(TransactionType transactionType)? changeTransactionType,
+    TResult Function(AccountEntity account, bool isFromAccount)?
+        transferAccount,
+    TResult Function()? addRecurring,
+    TResult Function(AccountEntity account)? changeAccount,
+    TResult Function(CategoryEntity category)? changeCategory,
+    TResult Function(int? expenseId)? findTransaction,
+    TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function(int limit)? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (fetchTransactions != null) {
+      return fetchTransactions(limit);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddOrUpdateExpenseEvent value) addOrUpdate,
+    required TResult Function(_ClearExpenseEvent value) delete,
+    required TResult Function(_ChangeTransactionTypeEvent value)
+        changeTransactionType,
+    required TResult Function(_TransferAccountEvent value) transferAccount,
+    required TResult Function(_AddRecurringEvent value) addRecurring,
+    required TResult Function(_ChangeAccountEvent value) changeAccount,
+    required TResult Function(_ChangeCategoryEvent value) changeCategory,
+    required TResult Function(_FindTransactionFromIdEvent value)
+        findTransaction,
+    required TResult Function(_UpdateDateTimeEvent value) updateDateTime,
+    required TResult Function(FetchTransactions value) fetchTransactions,
+  }) {
+    return fetchTransactions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddOrUpdateExpenseEvent value)? addOrUpdate,
+    TResult? Function(_ClearExpenseEvent value)? delete,
+    TResult? Function(_ChangeTransactionTypeEvent value)? changeTransactionType,
+    TResult? Function(_TransferAccountEvent value)? transferAccount,
+    TResult? Function(_AddRecurringEvent value)? addRecurring,
+    TResult? Function(_ChangeAccountEvent value)? changeAccount,
+    TResult? Function(_ChangeCategoryEvent value)? changeCategory,
+    TResult? Function(_FindTransactionFromIdEvent value)? findTransaction,
+    TResult? Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult? Function(FetchTransactions value)? fetchTransactions,
+  }) {
+    return fetchTransactions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddOrUpdateExpenseEvent value)? addOrUpdate,
+    TResult Function(_ClearExpenseEvent value)? delete,
+    TResult Function(_ChangeTransactionTypeEvent value)? changeTransactionType,
+    TResult Function(_TransferAccountEvent value)? transferAccount,
+    TResult Function(_AddRecurringEvent value)? addRecurring,
+    TResult Function(_ChangeAccountEvent value)? changeAccount,
+    TResult Function(_ChangeCategoryEvent value)? changeCategory,
+    TResult Function(_FindTransactionFromIdEvent value)? findTransaction,
+    TResult Function(_UpdateDateTimeEvent value)? updateDateTime,
+    TResult Function(FetchTransactions value)? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (fetchTransactions != null) {
+      return fetchTransactions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchTransactions implements TransactionEvent {
+  const factory FetchTransactions(final int limit) = _$FetchTransactionsImpl;
+
+  int get limit;
+  @JsonKey(ignore: true)
+  _$$FetchTransactionsImplCopyWith<_$FetchTransactionsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TransactionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1809,6 +2057,9 @@ mixin _$TransactionState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1825,6 +2076,8 @@ mixin _$TransactionState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1841,6 +2094,8 @@ mixin _$TransactionState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1857,6 +2112,8 @@ mixin _$TransactionState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1871,6 +2128,8 @@ mixin _$TransactionState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1885,6 +2144,8 @@ mixin _$TransactionState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1996,6 +2257,9 @@ class _$ChangeAccountStateImpl implements ChangeAccountState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return changeAccount(account);
   }
@@ -2015,6 +2279,8 @@ class _$ChangeAccountStateImpl implements ChangeAccountState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return changeAccount?.call(account);
   }
@@ -2034,6 +2300,8 @@ class _$ChangeAccountStateImpl implements ChangeAccountState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (changeAccount != null) {
@@ -2056,6 +2324,8 @@ class _$ChangeAccountStateImpl implements ChangeAccountState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return changeAccount(this);
   }
@@ -2073,6 +2343,8 @@ class _$ChangeAccountStateImpl implements ChangeAccountState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return changeAccount?.call(this);
   }
@@ -2090,6 +2362,8 @@ class _$ChangeAccountStateImpl implements ChangeAccountState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (changeAccount != null) {
@@ -2191,6 +2465,9 @@ class _$ChangeTransactionTypeStateImpl implements ChangeTransactionTypeState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return changeTransactionType(transactionType);
   }
@@ -2210,6 +2487,8 @@ class _$ChangeTransactionTypeStateImpl implements ChangeTransactionTypeState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return changeTransactionType?.call(transactionType);
   }
@@ -2229,6 +2508,8 @@ class _$ChangeTransactionTypeStateImpl implements ChangeTransactionTypeState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (changeTransactionType != null) {
@@ -2251,6 +2532,8 @@ class _$ChangeTransactionTypeStateImpl implements ChangeTransactionTypeState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return changeTransactionType(this);
   }
@@ -2268,6 +2551,8 @@ class _$ChangeTransactionTypeStateImpl implements ChangeTransactionTypeState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return changeTransactionType?.call(this);
   }
@@ -2285,6 +2570,8 @@ class _$ChangeTransactionTypeStateImpl implements ChangeTransactionTypeState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (changeTransactionType != null) {
@@ -2393,6 +2680,9 @@ class _$ChangeCategoryStateImpl implements ChangeCategoryState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return changecCategory(category);
   }
@@ -2412,6 +2702,8 @@ class _$ChangeCategoryStateImpl implements ChangeCategoryState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return changecCategory?.call(category);
   }
@@ -2431,6 +2723,8 @@ class _$ChangeCategoryStateImpl implements ChangeCategoryState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (changecCategory != null) {
@@ -2453,6 +2747,8 @@ class _$ChangeCategoryStateImpl implements ChangeCategoryState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return changecCategory(this);
   }
@@ -2470,6 +2766,8 @@ class _$ChangeCategoryStateImpl implements ChangeCategoryState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return changecCategory?.call(this);
   }
@@ -2487,6 +2785,8 @@ class _$ChangeCategoryStateImpl implements ChangeCategoryState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (changecCategory != null) {
@@ -2557,6 +2857,9 @@ class _$ExpenseInitialImpl implements ExpenseInitial {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return initial();
   }
@@ -2576,6 +2879,8 @@ class _$ExpenseInitialImpl implements ExpenseInitial {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return initial?.call();
   }
@@ -2595,6 +2900,8 @@ class _$ExpenseInitialImpl implements ExpenseInitial {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2617,6 +2924,8 @@ class _$ExpenseInitialImpl implements ExpenseInitial {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return initial(this);
   }
@@ -2634,6 +2943,8 @@ class _$ExpenseInitialImpl implements ExpenseInitial {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return initial?.call(this);
   }
@@ -2651,6 +2962,8 @@ class _$ExpenseInitialImpl implements ExpenseInitial {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2754,6 +3067,9 @@ class _$TransactionFoundStateImpl implements TransactionFoundState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return transaction(this.transaction);
   }
@@ -2773,6 +3089,8 @@ class _$TransactionFoundStateImpl implements TransactionFoundState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return transaction?.call(this.transaction);
   }
@@ -2792,6 +3110,8 @@ class _$TransactionFoundStateImpl implements TransactionFoundState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transaction != null) {
@@ -2814,6 +3134,8 @@ class _$TransactionFoundStateImpl implements TransactionFoundState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return transaction(this);
   }
@@ -2831,6 +3153,8 @@ class _$TransactionFoundStateImpl implements TransactionFoundState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return transaction?.call(this);
   }
@@ -2848,6 +3172,8 @@ class _$TransactionFoundStateImpl implements TransactionFoundState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transaction != null) {
@@ -2947,6 +3273,9 @@ class _$TransactionAddedImpl implements TransactionAdded {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return transactionAdded(isAddOrUpdate);
   }
@@ -2966,6 +3295,8 @@ class _$TransactionAddedImpl implements TransactionAdded {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return transactionAdded?.call(isAddOrUpdate);
   }
@@ -2985,6 +3316,8 @@ class _$TransactionAddedImpl implements TransactionAdded {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transactionAdded != null) {
@@ -3007,6 +3340,8 @@ class _$TransactionAddedImpl implements TransactionAdded {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return transactionAdded(this);
   }
@@ -3024,6 +3359,8 @@ class _$TransactionAddedImpl implements TransactionAdded {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return transactionAdded?.call(this);
   }
@@ -3041,6 +3378,8 @@ class _$TransactionAddedImpl implements TransactionAdded {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transactionAdded != null) {
@@ -3114,6 +3453,9 @@ class _$TransactionDeletedStateImpl implements TransactionDeletedState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return transactionDeleted();
   }
@@ -3133,6 +3475,8 @@ class _$TransactionDeletedStateImpl implements TransactionDeletedState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return transactionDeleted?.call();
   }
@@ -3152,6 +3496,8 @@ class _$TransactionDeletedStateImpl implements TransactionDeletedState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transactionDeleted != null) {
@@ -3174,6 +3520,8 @@ class _$TransactionDeletedStateImpl implements TransactionDeletedState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return transactionDeleted(this);
   }
@@ -3191,6 +3539,8 @@ class _$TransactionDeletedStateImpl implements TransactionDeletedState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return transactionDeleted?.call(this);
   }
@@ -3208,6 +3558,8 @@ class _$TransactionDeletedStateImpl implements TransactionDeletedState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transactionDeleted != null) {
@@ -3301,6 +3653,9 @@ class _$TransactionErrorStateImpl implements TransactionErrorState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return transactionError(errorString);
   }
@@ -3320,6 +3675,8 @@ class _$TransactionErrorStateImpl implements TransactionErrorState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return transactionError?.call(errorString);
   }
@@ -3339,6 +3696,8 @@ class _$TransactionErrorStateImpl implements TransactionErrorState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transactionError != null) {
@@ -3361,6 +3720,8 @@ class _$TransactionErrorStateImpl implements TransactionErrorState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return transactionError(this);
   }
@@ -3378,6 +3739,8 @@ class _$TransactionErrorStateImpl implements TransactionErrorState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return transactionError?.call(this);
   }
@@ -3395,6 +3758,8 @@ class _$TransactionErrorStateImpl implements TransactionErrorState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transactionError != null) {
@@ -3545,6 +3910,9 @@ class _$TransferAccountStateImpl implements TransferAccountState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return transferAccount(fromAccount, toAccount, isFromAccount);
   }
@@ -3564,6 +3932,8 @@ class _$TransferAccountStateImpl implements TransferAccountState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return transferAccount?.call(fromAccount, toAccount, isFromAccount);
   }
@@ -3583,6 +3953,8 @@ class _$TransferAccountStateImpl implements TransferAccountState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transferAccount != null) {
@@ -3605,6 +3977,8 @@ class _$TransferAccountStateImpl implements TransferAccountState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return transferAccount(this);
   }
@@ -3622,6 +3996,8 @@ class _$TransferAccountStateImpl implements TransferAccountState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return transferAccount?.call(this);
   }
@@ -3639,6 +4015,8 @@ class _$TransferAccountStateImpl implements TransferAccountState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (transferAccount != null) {
@@ -3741,6 +4119,9 @@ class _$UpdateDateTimeStateImpl implements UpdateDateTimeState {
             AccountEntity? toAccount, bool isFromAccount)
         transferAccount,
     required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
   }) {
     return updateDateTime(dateTime);
   }
@@ -3760,6 +4141,8 @@ class _$UpdateDateTimeStateImpl implements UpdateDateTimeState {
             bool isFromAccount)?
         transferAccount,
     TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
   }) {
     return updateDateTime?.call(dateTime);
   }
@@ -3779,6 +4162,8 @@ class _$UpdateDateTimeStateImpl implements UpdateDateTimeState {
             bool isFromAccount)?
         transferAccount,
     TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (updateDateTime != null) {
@@ -3801,6 +4186,8 @@ class _$UpdateDateTimeStateImpl implements UpdateDateTimeState {
     required TResult Function(TransactionErrorState value) transactionError,
     required TResult Function(TransferAccountState value) transferAccount,
     required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
   }) {
     return updateDateTime(this);
   }
@@ -3818,6 +4205,8 @@ class _$UpdateDateTimeStateImpl implements UpdateDateTimeState {
     TResult? Function(TransactionErrorState value)? transactionError,
     TResult? Function(TransferAccountState value)? transferAccount,
     TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
   }) {
     return updateDateTime?.call(this);
   }
@@ -3835,6 +4224,8 @@ class _$UpdateDateTimeStateImpl implements UpdateDateTimeState {
     TResult Function(TransactionErrorState value)? transactionError,
     TResult Function(TransferAccountState value)? transferAccount,
     TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
     required TResult orElse(),
   }) {
     if (updateDateTime != null) {
@@ -3851,5 +4242,388 @@ abstract class UpdateDateTimeState implements TransactionState {
   DateTime get dateTime;
   @JsonKey(ignore: true)
   _$$UpdateDateTimeStateImplCopyWith<_$UpdateDateTimeStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TransactionLoadingImplCopyWith<$Res> {
+  factory _$$TransactionLoadingImplCopyWith(_$TransactionLoadingImpl value,
+          $Res Function(_$TransactionLoadingImpl) then) =
+      __$$TransactionLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TransactionLoadingImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$TransactionLoadingImpl>
+    implements _$$TransactionLoadingImplCopyWith<$Res> {
+  __$$TransactionLoadingImplCopyWithImpl(_$TransactionLoadingImpl _value,
+      $Res Function(_$TransactionLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$TransactionLoadingImpl implements TransactionLoading {
+  const _$TransactionLoadingImpl();
+
+  @override
+  String toString() {
+    return 'TransactionState.transactionLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$TransactionLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AccountEntity account) changeAccount,
+    required TResult Function(TransactionType transactionType)
+        changeTransactionType,
+    required TResult Function(CategoryEntity category) changecCategory,
+    required TResult Function() initial,
+    required TResult Function(TransactionEntity transaction) transaction,
+    required TResult Function(bool isAddOrUpdate) transactionAdded,
+    required TResult Function() transactionDeleted,
+    required TResult Function(String errorString) transactionError,
+    required TResult Function(AccountEntity? fromAccount,
+            AccountEntity? toAccount, bool isFromAccount)
+        transferAccount,
+    required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
+  }) {
+    return transactionLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AccountEntity account)? changeAccount,
+    TResult? Function(TransactionType transactionType)? changeTransactionType,
+    TResult? Function(CategoryEntity category)? changecCategory,
+    TResult? Function()? initial,
+    TResult? Function(TransactionEntity transaction)? transaction,
+    TResult? Function(bool isAddOrUpdate)? transactionAdded,
+    TResult? Function()? transactionDeleted,
+    TResult? Function(String errorString)? transactionError,
+    TResult? Function(AccountEntity? fromAccount, AccountEntity? toAccount,
+            bool isFromAccount)?
+        transferAccount,
+    TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
+  }) {
+    return transactionLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AccountEntity account)? changeAccount,
+    TResult Function(TransactionType transactionType)? changeTransactionType,
+    TResult Function(CategoryEntity category)? changecCategory,
+    TResult Function()? initial,
+    TResult Function(TransactionEntity transaction)? transaction,
+    TResult Function(bool isAddOrUpdate)? transactionAdded,
+    TResult Function()? transactionDeleted,
+    TResult Function(String errorString)? transactionError,
+    TResult Function(AccountEntity? fromAccount, AccountEntity? toAccount,
+            bool isFromAccount)?
+        transferAccount,
+    TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
+    required TResult orElse(),
+  }) {
+    if (transactionLoading != null) {
+      return transactionLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeAccountState value) changeAccount,
+    required TResult Function(ChangeTransactionTypeState value)
+        changeTransactionType,
+    required TResult Function(ChangeCategoryState value) changecCategory,
+    required TResult Function(ExpenseInitial value) initial,
+    required TResult Function(TransactionFoundState value) transaction,
+    required TResult Function(TransactionAdded value) transactionAdded,
+    required TResult Function(TransactionDeletedState value) transactionDeleted,
+    required TResult Function(TransactionErrorState value) transactionError,
+    required TResult Function(TransferAccountState value) transferAccount,
+    required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
+  }) {
+    return transactionLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeAccountState value)? changeAccount,
+    TResult? Function(ChangeTransactionTypeState value)? changeTransactionType,
+    TResult? Function(ChangeCategoryState value)? changecCategory,
+    TResult? Function(ExpenseInitial value)? initial,
+    TResult? Function(TransactionFoundState value)? transaction,
+    TResult? Function(TransactionAdded value)? transactionAdded,
+    TResult? Function(TransactionDeletedState value)? transactionDeleted,
+    TResult? Function(TransactionErrorState value)? transactionError,
+    TResult? Function(TransferAccountState value)? transferAccount,
+    TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
+  }) {
+    return transactionLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeAccountState value)? changeAccount,
+    TResult Function(ChangeTransactionTypeState value)? changeTransactionType,
+    TResult Function(ChangeCategoryState value)? changecCategory,
+    TResult Function(ExpenseInitial value)? initial,
+    TResult Function(TransactionFoundState value)? transaction,
+    TResult Function(TransactionAdded value)? transactionAdded,
+    TResult Function(TransactionDeletedState value)? transactionDeleted,
+    TResult Function(TransactionErrorState value)? transactionError,
+    TResult Function(TransferAccountState value)? transferAccount,
+    TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
+    required TResult orElse(),
+  }) {
+    if (transactionLoading != null) {
+      return transactionLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TransactionLoading implements TransactionState {
+  const factory TransactionLoading() = _$TransactionLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$TransactionLoadedImplCopyWith<$Res> {
+  factory _$$TransactionLoadedImplCopyWith(_$TransactionLoadedImpl value,
+          $Res Function(_$TransactionLoadedImpl) then) =
+      __$$TransactionLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<TransactionEntity> transactions});
+}
+
+/// @nodoc
+class __$$TransactionLoadedImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$TransactionLoadedImpl>
+    implements _$$TransactionLoadedImplCopyWith<$Res> {
+  __$$TransactionLoadedImplCopyWithImpl(_$TransactionLoadedImpl _value,
+      $Res Function(_$TransactionLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactions = null,
+  }) {
+    return _then(_$TransactionLoadedImpl(
+      null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<TransactionEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TransactionLoadedImpl implements TransactionLoaded {
+  const _$TransactionLoadedImpl(final List<TransactionEntity> transactions)
+      : _transactions = transactions;
+
+  final List<TransactionEntity> _transactions;
+  @override
+  List<TransactionEntity> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transactions);
+  }
+
+  @override
+  String toString() {
+    return 'TransactionState.transactionLoaded(transactions: $transactions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TransactionLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_transactions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TransactionLoadedImplCopyWith<_$TransactionLoadedImpl> get copyWith =>
+      __$$TransactionLoadedImplCopyWithImpl<_$TransactionLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AccountEntity account) changeAccount,
+    required TResult Function(TransactionType transactionType)
+        changeTransactionType,
+    required TResult Function(CategoryEntity category) changecCategory,
+    required TResult Function() initial,
+    required TResult Function(TransactionEntity transaction) transaction,
+    required TResult Function(bool isAddOrUpdate) transactionAdded,
+    required TResult Function() transactionDeleted,
+    required TResult Function(String errorString) transactionError,
+    required TResult Function(AccountEntity? fromAccount,
+            AccountEntity? toAccount, bool isFromAccount)
+        transferAccount,
+    required TResult Function(DateTime dateTime) updateDateTime,
+    required TResult Function() transactionLoading,
+    required TResult Function(List<TransactionEntity> transactions)
+        transactionLoaded,
+  }) {
+    return transactionLoaded(transactions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AccountEntity account)? changeAccount,
+    TResult? Function(TransactionType transactionType)? changeTransactionType,
+    TResult? Function(CategoryEntity category)? changecCategory,
+    TResult? Function()? initial,
+    TResult? Function(TransactionEntity transaction)? transaction,
+    TResult? Function(bool isAddOrUpdate)? transactionAdded,
+    TResult? Function()? transactionDeleted,
+    TResult? Function(String errorString)? transactionError,
+    TResult? Function(AccountEntity? fromAccount, AccountEntity? toAccount,
+            bool isFromAccount)?
+        transferAccount,
+    TResult? Function(DateTime dateTime)? updateDateTime,
+    TResult? Function()? transactionLoading,
+    TResult? Function(List<TransactionEntity> transactions)? transactionLoaded,
+  }) {
+    return transactionLoaded?.call(transactions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AccountEntity account)? changeAccount,
+    TResult Function(TransactionType transactionType)? changeTransactionType,
+    TResult Function(CategoryEntity category)? changecCategory,
+    TResult Function()? initial,
+    TResult Function(TransactionEntity transaction)? transaction,
+    TResult Function(bool isAddOrUpdate)? transactionAdded,
+    TResult Function()? transactionDeleted,
+    TResult Function(String errorString)? transactionError,
+    TResult Function(AccountEntity? fromAccount, AccountEntity? toAccount,
+            bool isFromAccount)?
+        transferAccount,
+    TResult Function(DateTime dateTime)? updateDateTime,
+    TResult Function()? transactionLoading,
+    TResult Function(List<TransactionEntity> transactions)? transactionLoaded,
+    required TResult orElse(),
+  }) {
+    if (transactionLoaded != null) {
+      return transactionLoaded(transactions);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeAccountState value) changeAccount,
+    required TResult Function(ChangeTransactionTypeState value)
+        changeTransactionType,
+    required TResult Function(ChangeCategoryState value) changecCategory,
+    required TResult Function(ExpenseInitial value) initial,
+    required TResult Function(TransactionFoundState value) transaction,
+    required TResult Function(TransactionAdded value) transactionAdded,
+    required TResult Function(TransactionDeletedState value) transactionDeleted,
+    required TResult Function(TransactionErrorState value) transactionError,
+    required TResult Function(TransferAccountState value) transferAccount,
+    required TResult Function(UpdateDateTimeState value) updateDateTime,
+    required TResult Function(TransactionLoading value) transactionLoading,
+    required TResult Function(TransactionLoaded value) transactionLoaded,
+  }) {
+    return transactionLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeAccountState value)? changeAccount,
+    TResult? Function(ChangeTransactionTypeState value)? changeTransactionType,
+    TResult? Function(ChangeCategoryState value)? changecCategory,
+    TResult? Function(ExpenseInitial value)? initial,
+    TResult? Function(TransactionFoundState value)? transaction,
+    TResult? Function(TransactionAdded value)? transactionAdded,
+    TResult? Function(TransactionDeletedState value)? transactionDeleted,
+    TResult? Function(TransactionErrorState value)? transactionError,
+    TResult? Function(TransferAccountState value)? transferAccount,
+    TResult? Function(UpdateDateTimeState value)? updateDateTime,
+    TResult? Function(TransactionLoading value)? transactionLoading,
+    TResult? Function(TransactionLoaded value)? transactionLoaded,
+  }) {
+    return transactionLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeAccountState value)? changeAccount,
+    TResult Function(ChangeTransactionTypeState value)? changeTransactionType,
+    TResult Function(ChangeCategoryState value)? changecCategory,
+    TResult Function(ExpenseInitial value)? initial,
+    TResult Function(TransactionFoundState value)? transaction,
+    TResult Function(TransactionAdded value)? transactionAdded,
+    TResult Function(TransactionDeletedState value)? transactionDeleted,
+    TResult Function(TransactionErrorState value)? transactionError,
+    TResult Function(TransferAccountState value)? transferAccount,
+    TResult Function(UpdateDateTimeState value)? updateDateTime,
+    TResult Function(TransactionLoading value)? transactionLoading,
+    TResult Function(TransactionLoaded value)? transactionLoaded,
+    required TResult orElse(),
+  }) {
+    if (transactionLoaded != null) {
+      return transactionLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TransactionLoaded implements TransactionState {
+  const factory TransactionLoaded(final List<TransactionEntity> transactions) =
+      _$TransactionLoadedImpl;
+
+  List<TransactionEntity> get transactions;
+  @JsonKey(ignore: true)
+  _$$TransactionLoadedImplCopyWith<_$TransactionLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

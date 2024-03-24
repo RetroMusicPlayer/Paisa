@@ -89,7 +89,7 @@ class _CategoryPageState extends State<CategoryPage> {
 
             categoryController.text = state.category.name ?? '';
             categoryController.selection = TextSelection.collapsed(
-              offset: state.category.name?.length ?? 0,
+              offset: state.category.name.length ?? 0,
             );
 
             descController.text = state.category.description ?? '';
@@ -361,11 +361,7 @@ class CategoryNameWidget extends StatelessWidget {
       keyboardType: TextInputType.name,
       onChanged: (value) => context.read<CategoryBloc>().categoryTitle = value,
       validator: (value) {
-        if (value!.isNotEmpty) {
-          return null;
-        } else {
-          return context.loc.validName;
-        }
+        return value!.isNotEmpty ? null : context.loc.validName;
       },
     );
   }

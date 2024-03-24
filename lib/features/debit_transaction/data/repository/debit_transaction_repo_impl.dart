@@ -38,7 +38,8 @@ class DebitTransactionRepoImpl implements DebitTransactionRepository {
   }
 
   @override
-  List<DebitTransactionEntity> fetchTransactionsFromId(int id) {
-    return dataStore.getTransactionsFromId(id).toEntities();
+  Future<List<DebitTransactionEntity>> fetchTransactionsFromId(int id) {
+    return Future<List<DebitTransactionEntity>>.value(
+        dataStore.getTransactionsFromId(id).toEntities());
   }
 }

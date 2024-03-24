@@ -10,7 +10,7 @@ part 'add_debit_transaction_use_case.freezed.dart';
 
 @lazySingleton
 class AddDebitTransactionUseCase
-    implements UseCase<Future<void>, AddDebitTransactionParams> {
+    implements UseCase<void, AddDebitTransactionParams> {
   AddDebitTransactionUseCase({required this.debtRepository});
 
   final DebitTransactionRepository debtRepository;

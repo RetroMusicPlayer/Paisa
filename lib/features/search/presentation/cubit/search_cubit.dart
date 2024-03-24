@@ -16,21 +16,23 @@ class SearchCubit extends Cubit<SearchState> {
   final SearchUseCase searchUseCase;
   List<int> selectedAccountId = [], selectedCategoryId = [];
 
-  void searchWithQuery(String query) {
+  Future<void> searchWithQuery(String query) async {
     if (query.isEmpty) {
       return emit(SearchQueryEmptyState());
     }
-    final List<TransactionEntity> expenses = searchUseCase(
+    final Future<List<TransactionEntity>> expenses = searchUseCase(
       SearchParams(
         query: query,
         accounts: selectedAccountId,
         categories: selectedCategoryId,
       ),
     );
-    if (expenses.isEmpty) {
+    final List<TransactionEntity> expenseList = await expenses;
+    if (expenseList.isEmpty) {
       return emit(SearchEmptyState());
     } else {
-      emit(SearchResultState(expenses));
+      final List<TransactionEntity> expenseList = await expenses;
+      emit(SearchResultState(expenseList));
     }
   }
 }

@@ -1,5 +1,4 @@
 // Package imports:
-import 'package:collection/collection.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
@@ -14,9 +13,9 @@ class GetCountriesUseCase implements UseCase<List<CountryEntity>, NoParams> {
   final CountryRepository repository;
 
   @override
-  List<CountryEntity> call(NoParams params) {
-    return repository
-        .fetchCountries()
-        .sorted((a, b) => a.name.compareTo(b.name));
+  Future<List<CountryEntity>> call(NoParams params) async {
+    final countries = await repository.fetchCountries();
+    countries.sort((a, b) => a.name.compareTo(b.name));
+    return countries;
   }
 }

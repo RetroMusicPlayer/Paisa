@@ -59,9 +59,10 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     final int? categoryId = event.categoryId;
     if (categoryId == null) return;
 
-    final CategoryEntity? category = getCategoryUseCase(
+    final CategoryEntity? category = await getCategoryUseCase(
       GetCategoryParams(categoryId),
     );
+
     if (category != null) {
       categoryTitle = category.name;
       categoryDesc = category.description;

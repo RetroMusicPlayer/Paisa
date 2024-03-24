@@ -15,10 +15,10 @@ dependencies:
   csv: ^6.0.0
   dartz: ^0.10.1
   date_picker_timeline: ^1.2.3
-  device_info_plus: ^9.1.2
+  device_info_plus: ^10.0.1
   dynamic_color: ^1.6.5
   equatable: ^2.0.5
-  file_picker: ^6.1.1
+  file_picker: ^8.0.0+1
   fl_chart: ^0.66.2
   flex_color_scheme: ^7.3.1
   flutter:
@@ -45,13 +45,13 @@ dependencies:
   material_color_utilities: ^0.8.0
   material_design_icons_flutter: ^7.0.7296
   math_expressions: ^2.4.0
-  package_info_plus: ^5.0.1
+  package_info_plus: ^6.0.0
   path_provider: ^2.0.11
   permission_handler: ^11.0.0
   provider: ^6.0.5
   quick_actions: ^1.0.7
   responsive_builder: ^0.7.0
-  share_plus: ^7.0.2
+  share_plus: ^8.0.2
   url_launcher: ^6.1.7
   url_strategy: ^0.2.0
 

@@ -66,13 +66,12 @@ class LandingPage extends StatelessWidget {
       summaryController: getIt<SummaryController>(),
     );
     return PaisaAnnotatedRegionWidget(
-      child: WillPopScope(
-        onWillPop: () async {
-          if (context.read<HomeCubit>().state.index == 0) {
-            return true;
+      child: PopScope(
+        onPopInvoked: (didPop) {
+          if (context.read<HomeCubit>().state.index != 0) {
+            context.read<HomeCubit>().setCurrentIndex(0);
+            didPop = false;
           }
-          context.read<HomeCubit>().setCurrentIndex(0);
-          return false;
         },
         child: ScreenTypeLayout.builder(
           mobile: (p0) => HomeMobileWidget(

@@ -29,12 +29,11 @@ class _AppLanguageChangerPageState extends State<AppLanguageChangerPage> {
 
   late String? selectedLanguage = widget.currentLanguage;
 
-  Future<void> _save(BuildContext context) async {
+  Future<void> _save() async {
     await settings.put(appLanguageKey, selectedLanguage);
-    if (!mounted) {
-      return;
+    if (mounted) {
+      GoRouter.of(context).pop();
     }
-    context.pop();
   }
 
   @override
@@ -99,7 +98,7 @@ class _AppLanguageChangerPageState extends State<AppLanguageChangerPage> {
                       vertical: 12,
                     ),
                   ),
-                  onPressed: () => _save(context),
+                  onPressed: () => _save(),
                   child: Text(context.loc.done),
                 ),
               ),

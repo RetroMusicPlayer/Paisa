@@ -27,4 +27,7 @@ class TransactionEvent with _$TransactionEvent {
 
   const factory TransactionEvent.updateDateTime(DateTime dateTime) =
       _UpdateDateTimeEvent;
+
+  const factory TransactionEvent.fetchTransactions(int limit) =
+      FetchTransactions;
 }

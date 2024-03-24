@@ -22,7 +22,7 @@ abstract class DebitRepository {
     required int key,
   });
 
-  DebitEntity? fetchDebtOrCreditFromId(int debtId);
+  Future<DebitEntity?> fetchDebtOrCreditFromId(int debtId);
 
   Future<void> deleteDebtOrCreditFromId(int debtId);
 }

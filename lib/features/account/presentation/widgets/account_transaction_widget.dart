@@ -13,13 +13,23 @@ import 'package:paisa/features/account/presentation/widgets/account_history_widg
 import 'package:paisa/features/home/presentation/controller/summary_controller.dart';
 import 'package:paisa/features/home/presentation/pages/summary/widgets/transactions_header_widget.dart';
 
-class AccountTransactionWidget extends StatelessWidget {
+class AccountTransactionWidget extends StatefulWidget {
   const AccountTransactionWidget({
     super.key,
     this.isScroll = false,
   });
 
   final bool isScroll;
+
+  @override
+  _AccountTransactionWidgetState createState() =>
+      _AccountTransactionWidgetState();
+}
+
+class _AccountTransactionWidgetState extends State<AccountTransactionWidget> {
+  int currentPage = 0;
+  final int itemsPerPage =
+      50; // Change this to the number of items you want per page
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +43,37 @@ class AccountTransactionWidget extends StatelessWidget {
               description: context.loc.emptyExpensesMessageTitle,
             );
           }
-          return ListView(
-            physics: isScroll ? null : const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
+          final int displayCount = (currentPage + 1) * itemsPerPage;
+          final bool hasMore = displayCount < state.transactions.length;
+          return Column(
             children: [
               TransactionsHeaderWidget(
                 summaryController: Provider.of<SummaryController>(context),
               ),
-              AccountHistoryWidget(
-                expenses: state.transactions,
-                summaryController: Provider.of<SummaryController>(context),
-              )
+              Expanded(
+                child: ListView(
+                  physics: widget.isScroll
+                      ? null
+                      : const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children: [
+                    AccountHistoryWidget(
+                      expenses: state.transactions.take(displayCount).toList(),
+                      summaryController:
+                          Provider.of<SummaryController>(context),
+                    ),
+                    if (hasMore)
+                      ElevatedButton(
+                        child: const Text('Load More'),
+                        onPressed: () {
+                          setState(() {
+                            currentPage++;
+                          });
+                        },
+                      ),
+                  ],
+                ),
+              ),
             ],
           );
         } else {

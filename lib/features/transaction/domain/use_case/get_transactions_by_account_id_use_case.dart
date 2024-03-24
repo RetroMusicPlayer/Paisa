@@ -15,8 +15,10 @@ class GetTransactionsByAccountIdUseCase
   final TransactionRepository expenseRepository;
 
   @override
-  List<TransactionEntity> call(GetTransactionsByAccountIdParams params) =>
-      expenseRepository.fetchExpensesFromAccountId(params.accountId);
+  Future<List<TransactionEntity>> call(
+          GetTransactionsByAccountIdParams params) =>
+      Future<List<TransactionEntity>>.value(
+          expenseRepository.fetchExpensesFromAccountId(params.accountId));
 }
 
 class GetTransactionsByAccountIdParams {
