@@ -26,7 +26,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configInjector(getIt);
   getIt<RecurringRepository>().checkForRecurring();
-  await _addDummyData(); // dummy data toggle
+ // await _addDummyData(); // dummy data toggle
 
   runApp(const PaisaApp());
   if (TargetPlatform.android == defaultTargetPlatform ||
