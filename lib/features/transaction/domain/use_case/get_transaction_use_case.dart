@@ -12,9 +12,9 @@ class GetTransactionUseCase
   GetTransactionUseCase({required this.transactionRepository});
 
   final TransactionRepository transactionRepository;
-
+// why does double Future exist here?
   @override
-  Future<TransactionEntity?> call(GetTransactionParams params) async =>
+  Future<Future<TransactionEntity?>> call(GetTransactionParams params) async =>
       transactionRepository.fetchExpenseFromId(params.transactionId);
 }
 

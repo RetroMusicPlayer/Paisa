@@ -18,8 +18,10 @@ class JSONFileExportUseCase
 
   final Export jsonExport;
   final SettingsRepository settingsRepository;
-
+// double future again?
   @override
-  Future<Either<Failure, String>> call(NoParams params) =>
-      settingsRepository.exportDataToFile(export: jsonExport);
+  Future<Future<Either<Failure, String>>> call(NoParams params) async {
+    final export = jsonExport;
+    return settingsRepository.exportDataToFile(export: export);
+  }
 }

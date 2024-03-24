@@ -9,15 +9,14 @@ import 'package:paisa/features/account/domain/repository/account_repository.dart
 part 'delete_account_use_case.freezed.dart';
 
 @lazySingleton
-class DeleteAccountUseCase
-    implements UseCase<Future<void>, DeleteAccountParams> {
+class DeleteAccountUseCase implements UseCase<void, DeleteAccountParams> {
   DeleteAccountUseCase({required this.accountRepository});
 
   final AccountRepository accountRepository;
 
   @override
-  Future<void> call(DeleteAccountParams params) {
-    return accountRepository.delete(params.accountId);
+  Future<void> call(DeleteAccountParams params) async {
+    return await accountRepository.delete(params.accountId);
   }
 }
 

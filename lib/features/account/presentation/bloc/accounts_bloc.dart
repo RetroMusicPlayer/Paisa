@@ -13,6 +13,7 @@ import 'package:paisa/core/enum/card_type.dart';
 import 'package:paisa/core/error/account_error.dart';
 import 'package:paisa/features/account/domain/entities/account_entity.dart';
 import 'package:paisa/features/account/domain/use_case/account_use_case.dart';
+import 'package:paisa/features/account/domain/use_case/get_transactions_by_account_id_and_month_use_case.dart';
 import 'package:paisa/features/category/domain/use_case/get_category_use_case.dart';
 import 'package:paisa/features/intro/domain/entities/country_entity.dart';
 import 'package:paisa/features/transaction/domain/entities/transaction_entity.dart';
@@ -32,6 +33,7 @@ class AccountBloc extends Bloc<AccountsEvent, AccountState> {
     required this.getCategoryUseCase,
     required this.deleteExpensesFromAccountIdUseCase,
     required this.updateAccountUseCase,
+    required this.getTransactionsByAccountIdAndMonthUseCase,
   }) : super(const AccountState.idle()) {
     on<AccountsEvent>((event, emit) {});
     on<AddOrUpdateAccountEvent>(_addAccount);
@@ -40,6 +42,8 @@ class AccountBloc extends Bloc<AccountsEvent, AccountState> {
     on<FetchAccountFromIdEvent>(_fetchAccountFromId);
     on<AccountColorSelectedEvent>(_updateAccountColor);
     on<FetchAccountAndExpenseFromIdEvent>(_fetchAccountAndExpensesFromId);
+    on<FetchTransactionsByMonthEvent>(
+        _fetchTransactionsByMonth); // Add this line
   }
 
   String? accountHolderName;
@@ -57,27 +61,27 @@ class AccountBloc extends Bloc<AccountsEvent, AccountState> {
   bool isAccountExcluded = false;
   CardType selectedType = CardType.cash;
   final UpdateAccountUseCase updateAccountUseCase;
+  // Add a new use case to fetch transactions by month
+  final GetTransactionsByAccountIdAndMonthUseCase
+      getTransactionsByAccountIdAndMonthUseCase;
 
   Future<void> _fetchAccountFromId(
     FetchAccountFromIdEvent event,
     Emitter<AccountState> emit,
   ) async {
     final int accountId = event.accountId;
-    final AccountEntity? accountEntity =
-        getAccountUseCase(GetAccountParams(accountId));
-    if (accountEntity != null) {
-      accountName = accountEntity.bankName;
-      accountHolderName = accountEntity.name;
-      selectedType = accountEntity.cardType;
-      initialAmount = accountEntity.amount;
-      currentAccount = accountEntity;
-      selectedColor = accountEntity.color;
-      emit(AccountState.accountState(accountEntity));
+    final AccountEntity? actualAccountEntity =
+        await getAccountUseCase(GetAccountParams(accountId));
+
+    if (actualAccountEntity != null) {
+      accountName = actualAccountEntity.bankName;
+      accountHolderName = actualAccountEntity.name;
+      selectedType = actualAccountEntity.cardType;
+      initialAmount = actualAccountEntity.amount;
+      selectedColor = actualAccountEntity.color;
+      currentAccount = actualAccountEntity;
+      emit(AccountState.accountState(actualAccountEntity));
       emit(AccountState.updateCardType(selectedType));
-    } else {
-      emit(const AccountState.errorAccountState(
-        AccountErrors.accountNotFound(),
-      ));
     }
   }
 
@@ -161,14 +165,29 @@ class AccountBloc extends Bloc<AccountsEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     final int accountId = event.accountId;
-    final AccountEntity? account = getAccountUseCase(
+    final Future<AccountEntity?> account = getAccountUseCase(
       GetAccountParams(accountId),
     );
-    final List<TransactionEntity> expenses = getTransactionsByAccountIdUseCase(
+    final Future<List<TransactionEntity>> expenses =
+        getTransactionsByAccountIdUseCase(
       GetTransactionsByAccountIdParams(accountId),
     );
-    if (account != null) {
-      emit(AccountState.selectedAccount(account, expenses));
-    }
+    final AccountEntity? accountData = await account;
+    final List<TransactionEntity> expensesData = await expenses;
+    emit(AccountState.selectedAccount(accountData!, expensesData));
+  }
+
+  Future<void> _fetchTransactionsByMonth(
+    FetchTransactionsByMonthEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    final transactions = await getTransactionsByAccountIdAndMonthUseCase(
+      GetTransactionsByAccountIdAndMonthParams(
+        accountId: event.accountId,
+        month: event.month,
+      ),
+    );
+    emit(AccountState.transactionsByMonth(
+        event.accountId, event.month, transactions));
   }
 }

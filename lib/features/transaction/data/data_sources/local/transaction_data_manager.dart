@@ -37,6 +37,8 @@ abstract class TransactionDataSource {
   Future<void> clear();
 
   List<TransactionModel> filterExpenses(SearchQuery query);
+
+  Future<List<TransactionModel>> getRecentTransactions(int limit);
 }
 
 @Injectable(as: TransactionDataSource)
@@ -119,5 +121,20 @@ class LocalTransactionManagerImpl implements TransactionDataSource {
   @override
   Future<void> update(TransactionModel expenseModel) {
     return transactionBox.put(expenseModel.superId!, expenseModel);
+  }
+
+  @override
+  Future<List<TransactionModel>> getRecentTransactions(int limit) async {
+    // Fetch all transactions and sort them by time in descending order
+    final List<TransactionModel> transactions = transactionBox.values
+        .sortedBy<DateTime>((element) => element.time)
+        .toList()
+        .reversed
+        .toList();
+
+    // Take the most recent transactions up to the limit
+    final recentTransactions = transactions.take(limit).toList();
+
+    return recentTransactions;
   }
 }

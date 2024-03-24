@@ -44,7 +44,7 @@ class CategoryRepositoryImpl extends CategoryRepository {
   Future<void> clear() => dataSources.clear();
 
   @override
-  List<CategoryEntity> defaultCategories() {
+  Future<List<CategoryEntity>> defaultCategories() async {
     return dataSources.defaultCategories().toEntities();
   }
 
@@ -52,8 +52,9 @@ class CategoryRepositoryImpl extends CategoryRepository {
   Future<void> delete(int key) => dataSources.delete(key);
 
   @override
-  CategoryEntity? fetchById(int categoryId) =>
-      dataSources.findById(categoryId)?.toEntity();
+  Future<CategoryEntity?> fetchById(int categoryId) async {
+    return dataSources.findById(categoryId)?.toEntity();
+  }
 
   @override
   Future<void> update({

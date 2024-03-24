@@ -18,13 +18,13 @@ class CountryRepositoryImpl implements CountryRepository {
   final Box<dynamic> settings;
 
   @override
-  List<CountryEntity> fetchCountries() {
+  Future<List<CountryEntity>> fetchCountries() async {
     return List<CountryEntity>.from(
         localCountriesData.map((x) => CountryModel.fromJson(x).toEntity()));
   }
 
   @override
-  CountryEntity? fetchSelectedCountry() {
+  Future<CountryEntity?> fetchSelectedCountry() async {
     try {
       final Map<dynamic, dynamic>? json = settings.get(userCountryKey);
       if (json == null) {

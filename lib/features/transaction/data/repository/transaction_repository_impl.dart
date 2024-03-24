@@ -45,11 +45,7 @@ class ExpenseRepositoryImpl extends TransactionRepository {
           description: description,
         ),
       );
-      if (result != -1) {
-        return right(true);
-      } else {
-        return right(false);
-      }
+      return result != -1 ? right(true) : right(false);
     } catch (err) {
       debugPrint(err.toString());
       return left(FailedToAddTransactionFailure());
@@ -75,30 +71,32 @@ class ExpenseRepositoryImpl extends TransactionRepository {
   }
 
   @override
-  List<TransactionEntity> transactions({int? accountId}) =>
+  Future<List<TransactionEntity>> transactions({int? accountId}) async =>
       dataSource.expenses().toEntities();
 
   @override
-  TransactionEntity? fetchExpenseFromId(int expenseId) {
+  Future<TransactionEntity?> fetchExpenseFromId(int expenseId) async {
     return dataSource.findById(expenseId)?.toEntity();
   }
 
   @override
-  List<TransactionEntity> fetchExpensesFromAccountId(int accountId) {
+  Future<List<TransactionEntity>> fetchExpensesFromAccountId(
+      int accountId) async {
     return dataSource.findByAccountId(accountId).toEntities();
   }
 
-  @override
-  List<TransactionEntity> fetchExpensesFromCategoryId(int accountId) {
+// having override throws error???
+  Future<List<TransactionEntity>> fetchExpensesFromCategoryId(
+      int accountId) async {
     return dataSource.findByCategoryId(accountId).toEntities();
   }
 
   @override
-  List<TransactionEntity> filterExpenses(
+  Future<List<TransactionEntity>> filterExpenses(
     String query,
     List<int> accounts,
     List<int> categories,
-  ) {
+  ) async {
     return dataSource
         .filterExpenses(SearchQuery(
           query: query,
@@ -132,4 +130,65 @@ class ExpenseRepositoryImpl extends TransactionRepository {
       ),
     );
   }
+
+  @override
+  Future<List<TransactionEntity>> getRecentTransactions(int limit) async {
+    try {
+      // Fetch all transactions from the data source
+      final transactions = await dataSource.getRecentTransactions(limit);
+
+      // Sort the transactions by date in descending order
+      transactions.sort((a, b) => b.time.compareTo(a.time));
+
+      // Take the most recent transactions up to the limit
+      final recentTransactions = transactions.take(limit).toList();
+
+      return recentTransactions
+          .map((transaction) => transaction.toEntity())
+          .toList();
+    } catch (e) {
+      // Handle any exceptions that occur during the fetch operation
+      throw Exception('Failed to fetch recent transactions: $e');
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TransactionEntity>>>
+      getTransactionsByAccountIdAndMonth(int accountId, DateTime month) async {
+    try {
+      // Fetch all transactions for the given account ID
+      final List<TransactionModel> transactions =
+          dataSource.findByAccountId(accountId);
+
+      // Filter the transactions to only include those from the given month
+      final List<TransactionModel> filteredTransactions =
+          transactions.where((transaction) {
+        final transactionDate = transaction.time;
+        return transactionDate.year == month.year &&
+            transactionDate.month == month.month;
+      }).toList();
+
+      // Convert the transaction models to entities
+      final List<TransactionEntity> transactionEntities = filteredTransactions
+          .map((transaction) => transaction.toEntity())
+          .toList();
+
+      // Return the transaction entities
+      return right(transactionEntities);
+    } catch (err) {
+      // If an error occurs, return the failure
+      debugPrint(err.toString());
+      return left(FailedToFetchTransactionsFailure());
+    }
+  }
+}
+
+class FailedToFetchTransactionsFailure extends Failure {
+  final String message;
+
+  FailedToFetchTransactionsFailure(
+      {this.message = 'Failed to fetch transactions.'});
+
+  @override
+  List<Object> get props => [message];
 }

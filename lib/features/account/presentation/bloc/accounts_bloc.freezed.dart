@@ -25,6 +25,8 @@ mixin _$AccountsEvent {
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$AccountsEvent {
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +50,7 @@ mixin _$AccountsEvent {
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +65,8 @@ mixin _$AccountsEvent {
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +79,8 @@ mixin _$AccountsEvent {
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +93,8 @@ mixin _$AccountsEvent {
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,6 +193,8 @@ class _$AddOrUpdateAccountEventImpl implements AddOrUpdateAccountEvent {
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) {
     return addOrUpdate(this.addOrUpdate);
   }
@@ -197,6 +209,7 @@ class _$AddOrUpdateAccountEventImpl implements AddOrUpdateAccountEvent {
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) {
     return addOrUpdate?.call(this.addOrUpdate);
   }
@@ -211,6 +224,7 @@ class _$AddOrUpdateAccountEventImpl implements AddOrUpdateAccountEvent {
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (addOrUpdate != null) {
@@ -231,6 +245,8 @@ class _$AddOrUpdateAccountEventImpl implements AddOrUpdateAccountEvent {
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) {
     return addOrUpdate(this);
   }
@@ -246,6 +262,8 @@ class _$AddOrUpdateAccountEventImpl implements AddOrUpdateAccountEvent {
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) {
     return addOrUpdate?.call(this);
   }
@@ -261,6 +279,8 @@ class _$AddOrUpdateAccountEventImpl implements AddOrUpdateAccountEvent {
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (addOrUpdate != null) {
@@ -353,6 +373,8 @@ class _$DeleteAccountEventImpl implements DeleteAccountEvent {
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) {
     return deleteAccount(accountId);
   }
@@ -367,6 +389,7 @@ class _$DeleteAccountEventImpl implements DeleteAccountEvent {
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) {
     return deleteAccount?.call(accountId);
   }
@@ -381,6 +404,7 @@ class _$DeleteAccountEventImpl implements DeleteAccountEvent {
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -401,6 +425,8 @@ class _$DeleteAccountEventImpl implements DeleteAccountEvent {
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) {
     return deleteAccount(this);
   }
@@ -416,6 +442,8 @@ class _$DeleteAccountEventImpl implements DeleteAccountEvent {
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) {
     return deleteAccount?.call(this);
   }
@@ -431,6 +459,8 @@ class _$DeleteAccountEventImpl implements DeleteAccountEvent {
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -528,6 +558,8 @@ class _$FetchAccountAndExpenseFromIdEventImpl
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) {
     return fetchAccountAndExpensesFromID(accountId);
   }
@@ -542,6 +574,7 @@ class _$FetchAccountAndExpenseFromIdEventImpl
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) {
     return fetchAccountAndExpensesFromID?.call(accountId);
   }
@@ -556,6 +589,7 @@ class _$FetchAccountAndExpenseFromIdEventImpl
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (fetchAccountAndExpensesFromID != null) {
@@ -576,6 +610,8 @@ class _$FetchAccountAndExpenseFromIdEventImpl
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) {
     return fetchAccountAndExpensesFromID(this);
   }
@@ -591,6 +627,8 @@ class _$FetchAccountAndExpenseFromIdEventImpl
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) {
     return fetchAccountAndExpensesFromID?.call(this);
   }
@@ -606,6 +644,8 @@ class _$FetchAccountAndExpenseFromIdEventImpl
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (fetchAccountAndExpensesFromID != null) {
@@ -701,6 +741,8 @@ class _$FetchAccountFromIdEventImpl implements FetchAccountFromIdEvent {
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) {
     return fetchAccountFromID(accountId);
   }
@@ -715,6 +757,7 @@ class _$FetchAccountFromIdEventImpl implements FetchAccountFromIdEvent {
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) {
     return fetchAccountFromID?.call(accountId);
   }
@@ -729,6 +772,7 @@ class _$FetchAccountFromIdEventImpl implements FetchAccountFromIdEvent {
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (fetchAccountFromID != null) {
@@ -749,6 +793,8 @@ class _$FetchAccountFromIdEventImpl implements FetchAccountFromIdEvent {
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) {
     return fetchAccountFromID(this);
   }
@@ -764,6 +810,8 @@ class _$FetchAccountFromIdEventImpl implements FetchAccountFromIdEvent {
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) {
     return fetchAccountFromID?.call(this);
   }
@@ -779,6 +827,8 @@ class _$FetchAccountFromIdEventImpl implements FetchAccountFromIdEvent {
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (fetchAccountFromID != null) {
@@ -872,6 +922,8 @@ class _$AccountColorSelectedEventImpl implements AccountColorSelectedEvent {
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) {
     return selectedAccountColor(color);
   }
@@ -886,6 +938,7 @@ class _$AccountColorSelectedEventImpl implements AccountColorSelectedEvent {
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) {
     return selectedAccountColor?.call(color);
   }
@@ -900,6 +953,7 @@ class _$AccountColorSelectedEventImpl implements AccountColorSelectedEvent {
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (selectedAccountColor != null) {
@@ -920,6 +974,8 @@ class _$AccountColorSelectedEventImpl implements AccountColorSelectedEvent {
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) {
     return selectedAccountColor(this);
   }
@@ -935,6 +991,8 @@ class _$AccountColorSelectedEventImpl implements AccountColorSelectedEvent {
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) {
     return selectedAccountColor?.call(this);
   }
@@ -950,6 +1008,8 @@ class _$AccountColorSelectedEventImpl implements AccountColorSelectedEvent {
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (selectedAccountColor != null) {
@@ -1042,6 +1102,8 @@ class _$UpdateCardTypeEventImpl implements UpdateCardTypeEvent {
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) {
     return updateCardType(cardType);
   }
@@ -1056,6 +1118,7 @@ class _$UpdateCardTypeEventImpl implements UpdateCardTypeEvent {
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) {
     return updateCardType?.call(cardType);
   }
@@ -1070,6 +1133,7 @@ class _$UpdateCardTypeEventImpl implements UpdateCardTypeEvent {
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (updateCardType != null) {
@@ -1090,6 +1154,8 @@ class _$UpdateCardTypeEventImpl implements UpdateCardTypeEvent {
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) {
     return updateCardType(this);
   }
@@ -1105,6 +1171,8 @@ class _$UpdateCardTypeEventImpl implements UpdateCardTypeEvent {
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) {
     return updateCardType?.call(this);
   }
@@ -1120,6 +1188,8 @@ class _$UpdateCardTypeEventImpl implements UpdateCardTypeEvent {
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (updateCardType != null) {
@@ -1185,6 +1255,8 @@ class _$FetchCountriesEventImpl implements FetchCountriesEvent {
     required TResult Function(int color) selectedAccountColor,
     required TResult Function(CardType cardType) updateCardType,
     required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
   }) {
     return fetchCountries();
   }
@@ -1199,6 +1271,7 @@ class _$FetchCountriesEventImpl implements FetchCountriesEvent {
     TResult? Function(int color)? selectedAccountColor,
     TResult? Function(CardType cardType)? updateCardType,
     TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
   }) {
     return fetchCountries?.call();
   }
@@ -1213,6 +1286,7 @@ class _$FetchCountriesEventImpl implements FetchCountriesEvent {
     TResult Function(int color)? selectedAccountColor,
     TResult Function(CardType cardType)? updateCardType,
     TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (fetchCountries != null) {
@@ -1233,6 +1307,8 @@ class _$FetchCountriesEventImpl implements FetchCountriesEvent {
         selectedAccountColor,
     required TResult Function(UpdateCardTypeEvent value) updateCardType,
     required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
   }) {
     return fetchCountries(this);
   }
@@ -1248,6 +1324,8 @@ class _$FetchCountriesEventImpl implements FetchCountriesEvent {
     TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult? Function(UpdateCardTypeEvent value)? updateCardType,
     TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
   }) {
     return fetchCountries?.call(this);
   }
@@ -1263,6 +1341,8 @@ class _$FetchCountriesEventImpl implements FetchCountriesEvent {
     TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
     TResult Function(UpdateCardTypeEvent value)? updateCardType,
     TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
     required TResult orElse(),
   }) {
     if (fetchCountries != null) {
@@ -1274,6 +1354,202 @@ class _$FetchCountriesEventImpl implements FetchCountriesEvent {
 
 abstract class FetchCountriesEvent implements AccountsEvent {
   const factory FetchCountriesEvent() = _$FetchCountriesEventImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchTransactionsByMonthEventImplCopyWith<$Res> {
+  factory _$$FetchTransactionsByMonthEventImplCopyWith(
+          _$FetchTransactionsByMonthEventImpl value,
+          $Res Function(_$FetchTransactionsByMonthEventImpl) then) =
+      __$$FetchTransactionsByMonthEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int accountId, DateTime month});
+}
+
+/// @nodoc
+class __$$FetchTransactionsByMonthEventImplCopyWithImpl<$Res>
+    extends _$AccountsEventCopyWithImpl<$Res,
+        _$FetchTransactionsByMonthEventImpl>
+    implements _$$FetchTransactionsByMonthEventImplCopyWith<$Res> {
+  __$$FetchTransactionsByMonthEventImplCopyWithImpl(
+      _$FetchTransactionsByMonthEventImpl _value,
+      $Res Function(_$FetchTransactionsByMonthEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountId = null,
+    Object? month = null,
+  }) {
+    return _then(_$FetchTransactionsByMonthEventImpl(
+      null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchTransactionsByMonthEventImpl
+    implements FetchTransactionsByMonthEvent {
+  const _$FetchTransactionsByMonthEventImpl(this.accountId, this.month);
+
+  @override
+  final int accountId;
+  @override
+  final DateTime month;
+
+  @override
+  String toString() {
+    return 'AccountsEvent.fetchTransactionsByMonth(accountId: $accountId, month: $month)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchTransactionsByMonthEventImpl &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.month, month) || other.month == month));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, accountId, month);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchTransactionsByMonthEventImplCopyWith<
+          _$FetchTransactionsByMonthEventImpl>
+      get copyWith => __$$FetchTransactionsByMonthEventImplCopyWithImpl<
+          _$FetchTransactionsByMonthEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool addOrUpdate) addOrUpdate,
+    required TResult Function(int accountId) deleteAccount,
+    required TResult Function(int accountId) fetchAccountAndExpensesFromID,
+    required TResult Function(int accountId) fetchAccountFromID,
+    required TResult Function(int color) selectedAccountColor,
+    required TResult Function(CardType cardType) updateCardType,
+    required TResult Function() fetchCountries,
+    required TResult Function(int accountId, DateTime month)
+        fetchTransactionsByMonth,
+  }) {
+    return fetchTransactionsByMonth(accountId, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool addOrUpdate)? addOrUpdate,
+    TResult? Function(int accountId)? deleteAccount,
+    TResult? Function(int accountId)? fetchAccountAndExpensesFromID,
+    TResult? Function(int accountId)? fetchAccountFromID,
+    TResult? Function(int color)? selectedAccountColor,
+    TResult? Function(CardType cardType)? updateCardType,
+    TResult? Function()? fetchCountries,
+    TResult? Function(int accountId, DateTime month)? fetchTransactionsByMonth,
+  }) {
+    return fetchTransactionsByMonth?.call(accountId, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool addOrUpdate)? addOrUpdate,
+    TResult Function(int accountId)? deleteAccount,
+    TResult Function(int accountId)? fetchAccountAndExpensesFromID,
+    TResult Function(int accountId)? fetchAccountFromID,
+    TResult Function(int color)? selectedAccountColor,
+    TResult Function(CardType cardType)? updateCardType,
+    TResult Function()? fetchCountries,
+    TResult Function(int accountId, DateTime month)? fetchTransactionsByMonth,
+    required TResult orElse(),
+  }) {
+    if (fetchTransactionsByMonth != null) {
+      return fetchTransactionsByMonth(accountId, month);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddOrUpdateAccountEvent value) addOrUpdate,
+    required TResult Function(DeleteAccountEvent value) deleteAccount,
+    required TResult Function(FetchAccountAndExpenseFromIdEvent value)
+        fetchAccountAndExpensesFromID,
+    required TResult Function(FetchAccountFromIdEvent value) fetchAccountFromID,
+    required TResult Function(AccountColorSelectedEvent value)
+        selectedAccountColor,
+    required TResult Function(UpdateCardTypeEvent value) updateCardType,
+    required TResult Function(FetchCountriesEvent value) fetchCountries,
+    required TResult Function(FetchTransactionsByMonthEvent value)
+        fetchTransactionsByMonth,
+  }) {
+    return fetchTransactionsByMonth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddOrUpdateAccountEvent value)? addOrUpdate,
+    TResult? Function(DeleteAccountEvent value)? deleteAccount,
+    TResult? Function(FetchAccountAndExpenseFromIdEvent value)?
+        fetchAccountAndExpensesFromID,
+    TResult? Function(FetchAccountFromIdEvent value)? fetchAccountFromID,
+    TResult? Function(AccountColorSelectedEvent value)? selectedAccountColor,
+    TResult? Function(UpdateCardTypeEvent value)? updateCardType,
+    TResult? Function(FetchCountriesEvent value)? fetchCountries,
+    TResult? Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
+  }) {
+    return fetchTransactionsByMonth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddOrUpdateAccountEvent value)? addOrUpdate,
+    TResult Function(DeleteAccountEvent value)? deleteAccount,
+    TResult Function(FetchAccountAndExpenseFromIdEvent value)?
+        fetchAccountAndExpensesFromID,
+    TResult Function(FetchAccountFromIdEvent value)? fetchAccountFromID,
+    TResult Function(AccountColorSelectedEvent value)? selectedAccountColor,
+    TResult Function(UpdateCardTypeEvent value)? updateCardType,
+    TResult Function(FetchCountriesEvent value)? fetchCountries,
+    TResult Function(FetchTransactionsByMonthEvent value)?
+        fetchTransactionsByMonth,
+    required TResult orElse(),
+  }) {
+    if (fetchTransactionsByMonth != null) {
+      return fetchTransactionsByMonth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchTransactionsByMonthEvent implements AccountsEvent {
+  const factory FetchTransactionsByMonthEvent(
+          final int accountId, final DateTime month) =
+      _$FetchTransactionsByMonthEventImpl;
+
+  int get accountId;
+  DateTime get month;
+  @JsonKey(ignore: true)
+  _$$FetchTransactionsByMonthEventImplCopyWith<
+          _$FetchTransactionsByMonthEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1293,6 +1569,9 @@ mixin _$AccountState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1310,6 +1589,9 @@ mixin _$AccountState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1327,6 +1609,9 @@ mixin _$AccountState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1344,6 +1629,8 @@ mixin _$AccountState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1359,6 +1646,7 @@ mixin _$AccountState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1374,6 +1662,7 @@ mixin _$AccountState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1485,6 +1774,9 @@ class _$AccountSuccessStateImpl implements AccountSuccessState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return accountState(account);
   }
@@ -1505,6 +1797,9 @@ class _$AccountSuccessStateImpl implements AccountSuccessState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return accountState?.call(account);
   }
@@ -1525,6 +1820,9 @@ class _$AccountSuccessStateImpl implements AccountSuccessState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (accountState != null) {
@@ -1548,6 +1846,8 @@ class _$AccountSuccessStateImpl implements AccountSuccessState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return accountState(this);
   }
@@ -1566,6 +1866,7 @@ class _$AccountSuccessStateImpl implements AccountSuccessState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return accountState?.call(this);
   }
@@ -1584,6 +1885,7 @@ class _$AccountSuccessStateImpl implements AccountSuccessState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (accountState != null) {
@@ -1688,6 +1990,9 @@ class _$AccountListStateImpl implements AccountListState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return accountsState(account);
   }
@@ -1708,6 +2013,9 @@ class _$AccountListStateImpl implements AccountListState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return accountsState?.call(account);
   }
@@ -1728,6 +2036,9 @@ class _$AccountListStateImpl implements AccountListState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (accountsState != null) {
@@ -1751,6 +2062,8 @@ class _$AccountListStateImpl implements AccountListState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return accountsState(this);
   }
@@ -1769,6 +2082,7 @@ class _$AccountListStateImpl implements AccountListState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return accountsState?.call(this);
   }
@@ -1787,6 +2101,7 @@ class _$AccountListStateImpl implements AccountListState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (accountsState != null) {
@@ -1885,6 +2200,9 @@ class _$AccountAddedStateImpl implements AccountAddedState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return addAccountState(isAddOrUpdate);
   }
@@ -1905,6 +2223,9 @@ class _$AccountAddedStateImpl implements AccountAddedState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return addAccountState?.call(isAddOrUpdate);
   }
@@ -1925,6 +2246,9 @@ class _$AccountAddedStateImpl implements AccountAddedState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (addAccountState != null) {
@@ -1948,6 +2272,8 @@ class _$AccountAddedStateImpl implements AccountAddedState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return addAccountState(this);
   }
@@ -1966,6 +2292,7 @@ class _$AccountAddedStateImpl implements AccountAddedState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return addAccountState?.call(this);
   }
@@ -1984,6 +2311,7 @@ class _$AccountAddedStateImpl implements AccountAddedState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (addAccountState != null) {
@@ -2083,6 +2411,9 @@ class _$AccountColorSelectedStateImpl implements AccountColorSelectedState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return colorSelected(color);
   }
@@ -2103,6 +2434,9 @@ class _$AccountColorSelectedStateImpl implements AccountColorSelectedState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return colorSelected?.call(color);
   }
@@ -2123,6 +2457,9 @@ class _$AccountColorSelectedStateImpl implements AccountColorSelectedState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (colorSelected != null) {
@@ -2146,6 +2483,8 @@ class _$AccountColorSelectedStateImpl implements AccountColorSelectedState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return colorSelected(this);
   }
@@ -2164,6 +2503,7 @@ class _$AccountColorSelectedStateImpl implements AccountColorSelectedState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return colorSelected?.call(this);
   }
@@ -2182,6 +2522,7 @@ class _$AccountColorSelectedStateImpl implements AccountColorSelectedState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (colorSelected != null) {
@@ -2287,6 +2628,9 @@ class _$CountriesStateImpl implements CountriesState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return countries(this.countries);
   }
@@ -2307,6 +2651,9 @@ class _$CountriesStateImpl implements CountriesState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return countries?.call(this.countries);
   }
@@ -2327,6 +2674,9 @@ class _$CountriesStateImpl implements CountriesState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (countries != null) {
@@ -2350,6 +2700,8 @@ class _$CountriesStateImpl implements CountriesState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return countries(this);
   }
@@ -2368,6 +2720,7 @@ class _$CountriesStateImpl implements CountriesState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return countries?.call(this);
   }
@@ -2386,6 +2739,7 @@ class _$CountriesStateImpl implements CountriesState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (countries != null) {
@@ -2457,6 +2811,9 @@ class _$AccountDeletedStateImpl implements AccountDeletedState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return deleteAccountState();
   }
@@ -2477,6 +2834,9 @@ class _$AccountDeletedStateImpl implements AccountDeletedState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return deleteAccountState?.call();
   }
@@ -2497,6 +2857,9 @@ class _$AccountDeletedStateImpl implements AccountDeletedState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (deleteAccountState != null) {
@@ -2520,6 +2883,8 @@ class _$AccountDeletedStateImpl implements AccountDeletedState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return deleteAccountState(this);
   }
@@ -2538,6 +2903,7 @@ class _$AccountDeletedStateImpl implements AccountDeletedState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return deleteAccountState?.call(this);
   }
@@ -2556,6 +2922,7 @@ class _$AccountDeletedStateImpl implements AccountDeletedState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (deleteAccountState != null) {
@@ -2658,6 +3025,9 @@ class _$AccountErrorStateImpl implements AccountErrorState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return errorAccountState(accountErrors);
   }
@@ -2678,6 +3048,9 @@ class _$AccountErrorStateImpl implements AccountErrorState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return errorAccountState?.call(accountErrors);
   }
@@ -2698,6 +3071,9 @@ class _$AccountErrorStateImpl implements AccountErrorState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (errorAccountState != null) {
@@ -2721,6 +3097,8 @@ class _$AccountErrorStateImpl implements AccountErrorState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return errorAccountState(this);
   }
@@ -2739,6 +3117,7 @@ class _$AccountErrorStateImpl implements AccountErrorState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return errorAccountState?.call(this);
   }
@@ -2757,6 +3136,7 @@ class _$AccountErrorStateImpl implements AccountErrorState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (errorAccountState != null) {
@@ -2827,6 +3207,9 @@ class _$AccountsInitialImpl implements AccountsInitial {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return idle();
   }
@@ -2847,6 +3230,9 @@ class _$AccountsInitialImpl implements AccountsInitial {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return idle?.call();
   }
@@ -2867,6 +3253,9 @@ class _$AccountsInitialImpl implements AccountsInitial {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -2890,6 +3279,8 @@ class _$AccountsInitialImpl implements AccountsInitial {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return idle(this);
   }
@@ -2908,6 +3299,7 @@ class _$AccountsInitialImpl implements AccountsInitial {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return idle?.call(this);
   }
@@ -2926,6 +3318,7 @@ class _$AccountsInitialImpl implements AccountsInitial {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -3021,6 +3414,9 @@ class _$UpdateAccountExcludeStateImpl implements UpdateAccountExcludeState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return updateAccountExcluded(isAccountExcluded);
   }
@@ -3041,6 +3437,9 @@ class _$UpdateAccountExcludeStateImpl implements UpdateAccountExcludeState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return updateAccountExcluded?.call(isAccountExcluded);
   }
@@ -3061,6 +3460,9 @@ class _$UpdateAccountExcludeStateImpl implements UpdateAccountExcludeState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (updateAccountExcluded != null) {
@@ -3084,6 +3486,8 @@ class _$UpdateAccountExcludeStateImpl implements UpdateAccountExcludeState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return updateAccountExcluded(this);
   }
@@ -3102,6 +3506,7 @@ class _$UpdateAccountExcludeStateImpl implements UpdateAccountExcludeState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return updateAccountExcluded?.call(this);
   }
@@ -3120,6 +3525,7 @@ class _$UpdateAccountExcludeStateImpl implements UpdateAccountExcludeState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (updateAccountExcluded != null) {
@@ -3218,6 +3624,9 @@ class _$UpdateCardTypeStateImpl implements UpdateCardTypeState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return updateCardType(cardType);
   }
@@ -3238,6 +3647,9 @@ class _$UpdateCardTypeStateImpl implements UpdateCardTypeState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return updateCardType?.call(cardType);
   }
@@ -3258,6 +3670,9 @@ class _$UpdateCardTypeStateImpl implements UpdateCardTypeState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (updateCardType != null) {
@@ -3281,6 +3696,8 @@ class _$UpdateCardTypeStateImpl implements UpdateCardTypeState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return updateCardType(this);
   }
@@ -3299,6 +3716,7 @@ class _$UpdateCardTypeStateImpl implements UpdateCardTypeState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return updateCardType?.call(this);
   }
@@ -3317,6 +3735,7 @@ class _$UpdateCardTypeStateImpl implements UpdateCardTypeState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (updateCardType != null) {
@@ -3444,6 +3863,9 @@ class _$AccountSelectedStateImpl implements AccountSelectedState {
     required TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)
         selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
   }) {
     return selectedAccount(accountEntity, transactions);
   }
@@ -3464,6 +3886,9 @@ class _$AccountSelectedStateImpl implements AccountSelectedState {
     TResult? Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
   }) {
     return selectedAccount?.call(accountEntity, transactions);
   }
@@ -3484,6 +3909,9 @@ class _$AccountSelectedStateImpl implements AccountSelectedState {
     TResult Function(
             AccountEntity accountEntity, List<TransactionEntity> transactions)?
         selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
     required TResult orElse(),
   }) {
     if (selectedAccount != null) {
@@ -3507,6 +3935,8 @@ class _$AccountSelectedStateImpl implements AccountSelectedState {
         updateAccountExcluded,
     required TResult Function(UpdateCardTypeState value) updateCardType,
     required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
   }) {
     return selectedAccount(this);
   }
@@ -3525,6 +3955,7 @@ class _$AccountSelectedStateImpl implements AccountSelectedState {
     TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult? Function(UpdateCardTypeState value)? updateCardType,
     TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
   }) {
     return selectedAccount?.call(this);
   }
@@ -3543,6 +3974,7 @@ class _$AccountSelectedStateImpl implements AccountSelectedState {
     TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
     TResult Function(UpdateCardTypeState value)? updateCardType,
     TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
     required TResult orElse(),
   }) {
     if (selectedAccount != null) {
@@ -3560,5 +3992,246 @@ abstract class AccountSelectedState implements AccountState {
   List<TransactionEntity> get transactions;
   @JsonKey(ignore: true)
   _$$AccountSelectedStateImplCopyWith<_$AccountSelectedStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TransactionsByMonthStateImplCopyWith<$Res> {
+  factory _$$TransactionsByMonthStateImplCopyWith(
+          _$TransactionsByMonthStateImpl value,
+          $Res Function(_$TransactionsByMonthStateImpl) then) =
+      __$$TransactionsByMonthStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {int accountId, DateTime month, List<TransactionEntity> transactions});
+}
+
+/// @nodoc
+class __$$TransactionsByMonthStateImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$TransactionsByMonthStateImpl>
+    implements _$$TransactionsByMonthStateImplCopyWith<$Res> {
+  __$$TransactionsByMonthStateImplCopyWithImpl(
+      _$TransactionsByMonthStateImpl _value,
+      $Res Function(_$TransactionsByMonthStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountId = null,
+    Object? month = null,
+    Object? transactions = null,
+  }) {
+    return _then(_$TransactionsByMonthStateImpl(
+      null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<TransactionEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TransactionsByMonthStateImpl implements TransactionsByMonthState {
+  const _$TransactionsByMonthStateImpl(
+      this.accountId, this.month, final List<TransactionEntity> transactions)
+      : _transactions = transactions;
+
+  @override
+  final int accountId;
+  @override
+  final DateTime month;
+  final List<TransactionEntity> _transactions;
+  @override
+  List<TransactionEntity> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transactions);
+  }
+
+  @override
+  String toString() {
+    return 'AccountState.transactionsByMonth(accountId: $accountId, month: $month, transactions: $transactions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TransactionsByMonthStateImpl &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.month, month) || other.month == month) &&
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, accountId, month,
+      const DeepCollectionEquality().hash(_transactions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TransactionsByMonthStateImplCopyWith<_$TransactionsByMonthStateImpl>
+      get copyWith => __$$TransactionsByMonthStateImplCopyWithImpl<
+          _$TransactionsByMonthStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AccountEntity account) accountState,
+    required TResult Function(List<AccountEntity> account) accountsState,
+    required TResult Function(bool isAddOrUpdate) addAccountState,
+    required TResult Function(int color) colorSelected,
+    required TResult Function(List<CountryEntity> countries) countries,
+    required TResult Function() deleteAccountState,
+    required TResult Function(AccountErrors accountErrors) errorAccountState,
+    required TResult Function() idle,
+    required TResult Function(bool isAccountExcluded) updateAccountExcluded,
+    required TResult Function(CardType cardType) updateCardType,
+    required TResult Function(
+            AccountEntity accountEntity, List<TransactionEntity> transactions)
+        selectedAccount,
+    required TResult Function(
+            int accountId, DateTime month, List<TransactionEntity> transactions)
+        transactionsByMonth,
+  }) {
+    return transactionsByMonth(accountId, month, transactions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AccountEntity account)? accountState,
+    TResult? Function(List<AccountEntity> account)? accountsState,
+    TResult? Function(bool isAddOrUpdate)? addAccountState,
+    TResult? Function(int color)? colorSelected,
+    TResult? Function(List<CountryEntity> countries)? countries,
+    TResult? Function()? deleteAccountState,
+    TResult? Function(AccountErrors accountErrors)? errorAccountState,
+    TResult? Function()? idle,
+    TResult? Function(bool isAccountExcluded)? updateAccountExcluded,
+    TResult? Function(CardType cardType)? updateCardType,
+    TResult? Function(
+            AccountEntity accountEntity, List<TransactionEntity> transactions)?
+        selectedAccount,
+    TResult? Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
+  }) {
+    return transactionsByMonth?.call(accountId, month, transactions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AccountEntity account)? accountState,
+    TResult Function(List<AccountEntity> account)? accountsState,
+    TResult Function(bool isAddOrUpdate)? addAccountState,
+    TResult Function(int color)? colorSelected,
+    TResult Function(List<CountryEntity> countries)? countries,
+    TResult Function()? deleteAccountState,
+    TResult Function(AccountErrors accountErrors)? errorAccountState,
+    TResult Function()? idle,
+    TResult Function(bool isAccountExcluded)? updateAccountExcluded,
+    TResult Function(CardType cardType)? updateCardType,
+    TResult Function(
+            AccountEntity accountEntity, List<TransactionEntity> transactions)?
+        selectedAccount,
+    TResult Function(int accountId, DateTime month,
+            List<TransactionEntity> transactions)?
+        transactionsByMonth,
+    required TResult orElse(),
+  }) {
+    if (transactionsByMonth != null) {
+      return transactionsByMonth(accountId, month, transactions);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountSuccessState value) accountState,
+    required TResult Function(AccountListState value) accountsState,
+    required TResult Function(AccountAddedState value) addAccountState,
+    required TResult Function(AccountColorSelectedState value) colorSelected,
+    required TResult Function(CountriesState value) countries,
+    required TResult Function(AccountDeletedState value) deleteAccountState,
+    required TResult Function(AccountErrorState value) errorAccountState,
+    required TResult Function(AccountsInitial value) idle,
+    required TResult Function(UpdateAccountExcludeState value)
+        updateAccountExcluded,
+    required TResult Function(UpdateCardTypeState value) updateCardType,
+    required TResult Function(AccountSelectedState value) selectedAccount,
+    required TResult Function(TransactionsByMonthState value)
+        transactionsByMonth,
+  }) {
+    return transactionsByMonth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountSuccessState value)? accountState,
+    TResult? Function(AccountListState value)? accountsState,
+    TResult? Function(AccountAddedState value)? addAccountState,
+    TResult? Function(AccountColorSelectedState value)? colorSelected,
+    TResult? Function(CountriesState value)? countries,
+    TResult? Function(AccountDeletedState value)? deleteAccountState,
+    TResult? Function(AccountErrorState value)? errorAccountState,
+    TResult? Function(AccountsInitial value)? idle,
+    TResult? Function(UpdateAccountExcludeState value)? updateAccountExcluded,
+    TResult? Function(UpdateCardTypeState value)? updateCardType,
+    TResult? Function(AccountSelectedState value)? selectedAccount,
+    TResult? Function(TransactionsByMonthState value)? transactionsByMonth,
+  }) {
+    return transactionsByMonth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountSuccessState value)? accountState,
+    TResult Function(AccountListState value)? accountsState,
+    TResult Function(AccountAddedState value)? addAccountState,
+    TResult Function(AccountColorSelectedState value)? colorSelected,
+    TResult Function(CountriesState value)? countries,
+    TResult Function(AccountDeletedState value)? deleteAccountState,
+    TResult Function(AccountErrorState value)? errorAccountState,
+    TResult Function(AccountsInitial value)? idle,
+    TResult Function(UpdateAccountExcludeState value)? updateAccountExcluded,
+    TResult Function(UpdateCardTypeState value)? updateCardType,
+    TResult Function(AccountSelectedState value)? selectedAccount,
+    TResult Function(TransactionsByMonthState value)? transactionsByMonth,
+    required TResult orElse(),
+  }) {
+    if (transactionsByMonth != null) {
+      return transactionsByMonth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TransactionsByMonthState implements AccountState {
+  const factory TransactionsByMonthState(final int accountId,
+          final DateTime month, final List<TransactionEntity> transactions) =
+      _$TransactionsByMonthStateImpl;
+
+  int get accountId;
+  DateTime get month;
+  List<TransactionEntity> get transactions;
+  @JsonKey(ignore: true)
+  _$$TransactionsByMonthStateImplCopyWith<_$TransactionsByMonthStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

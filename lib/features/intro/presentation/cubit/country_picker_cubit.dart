@@ -24,18 +24,22 @@ class CountryPickerCubit extends Cubit<CountryPickerState> {
   final GetSelectedCountryUseCase getSelectedCountryUseCase;
   final SaveSelectedCountryUseCase saveSelectedCountryUseCase;
 
-  void fetchCountry() {
-    final List<CountryEntity> countries = getCountryUseCase(NoParams());
-    final CountryEntity? selectedCountry =
-        getSelectedCountryUseCase(NoParams());
+  Future<void> fetchCountry() async {
+    final List<CountryEntity> fetchedCountries =
+        await getCountryUseCase(NoParams());
+    final CountryEntity? fetchedSelectedCountry =
+        await getSelectedCountryUseCase(NoParams());
+
     emit(CountryPickerState.countries(
-      countries: countries,
-      selectedCountry: selectedCountry,
+      countries: fetchedCountries,
+      selectedCountry: fetchedSelectedCountry,
     ));
   }
 
-  void filterCountry(String value) {
-    final List<CountryEntity> filterCountries = getCountryUseCase(NoParams())
+  Future<void> filterCountry(String value) async {
+    final List<CountryEntity> filterCountries =
+        await getCountryUseCase(NoParams());
+    final List<CountryEntity> filteredCountries = filterCountries
         .where(
           (element) =>
               element.name.toLowerCase().contains(value.toLowerCase()) ||
@@ -43,7 +47,7 @@ class CountryPickerCubit extends Cubit<CountryPickerState> {
         )
         .toList();
     emit(CountryPickerState.countries(
-      countries: filterCountries,
+      countries: filteredCountries,
       selectedCountry: state.selectedCountry,
     ));
   }

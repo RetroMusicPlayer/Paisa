@@ -56,13 +56,13 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  CategoryEntity? fetchCategoryFromId(int categoryId) =>
+  Future<CategoryEntity?> fetchCategoryFromId(int categoryId) =>
       getCategoryUseCase(GetCategoryParams(categoryId));
 
-  AccountEntity? fetchAccountFromId(int? accountId) =>
+  Future<AccountEntity?> fetchAccountFromId(int? accountId) =>
       getAccountUseCase(GetAccountParams(accountId));
 
-  List<TransactionEntity> fetchExpensesFromCategoryId(int categoryId) =>
+  Future<List<TransactionEntity>> fetchExpensesFromCategoryId(int categoryId) =>
       getExpensesFromCategoryIdUseCase(
           ParamsGetTransactionsByCategoryId(categoryId));
 }

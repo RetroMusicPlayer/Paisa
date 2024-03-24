@@ -14,7 +14,7 @@ abstract class CategoryRepository {
 
   Future<void> delete(int key);
 
-  CategoryEntity? fetchById(int categoryId);
+  Future<CategoryEntity?> fetchById(int categoryId);
 
   Future<void> update({
     required int? key,
@@ -29,5 +29,5 @@ abstract class CategoryRepository {
 
   Future<void> clear();
 
-  List<CategoryEntity> defaultCategories();
+  Future<List<CategoryEntity>> defaultCategories();
 }

@@ -15,8 +15,10 @@ class GetTransactionsByCategoryIdUseCase
   final TransactionRepository expenseRepository;
 
   @override
-  List<TransactionEntity> call(ParamsGetTransactionsByCategoryId params) =>
-      expenseRepository.fetchExpensesFromCategoryId(params.categoryId);
+  Future<List<TransactionEntity>> call(
+          ParamsGetTransactionsByCategoryId params) async =>
+      Future<List<TransactionEntity>>.value(
+          expenseRepository.fetchExpensesFromCategoryId(params.categoryId));
 }
 
 class ParamsGetTransactionsByCategoryId {

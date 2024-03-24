@@ -32,21 +32,31 @@ class ExpenseListWidget extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: expenses.length,
       itemBuilder: (_, index) {
-        print('Hemanth $index');
+        print('Hemanth $index'); // TOGGLE
         final TransactionEntity expense = expenses[index];
-        final AccountEntity? account =
+        final Future<AccountEntity?> account =
             context.read<HomeCubit>().fetchAccountFromId(expense.accountId);
-        final CategoryEntity? category =
+        final Future<CategoryEntity?> category =
             context.read<HomeCubit>().fetchCategoryFromId(expense.categoryId);
-        if (account == null || category == null) {
-          return const SizedBox.shrink();
-        } else {
-          return ExpenseItemWidget(
-            expense: expense,
-            account: account,
-            category: category,
-          );
-        }
+
+        return FutureBuilder<AccountEntity?>(
+          future: account,
+          builder: (context, accountSnapshot) {
+            return accountSnapshot.connectionState == ConnectionState.waiting
+                ? const CircularProgressIndicator()
+                : FutureBuilder<CategoryEntity?>(
+                    future: category,
+                    builder: (context, categorySnapshot) {
+                      return categorySnapshot.connectionState ==
+                              ConnectionState.waiting
+                          ? const CircularProgressIndicator()
+                          : ExpenseItemWidget(
+                              expense: expense,
+                              account: accountSnapshot.data!,
+                              category: categorySnapshot.data!);
+                    });
+          },
+        );
       },
     );
   }

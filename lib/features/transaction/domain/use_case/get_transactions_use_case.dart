@@ -17,7 +17,7 @@ class GetTransactionsUseCase
   final TransactionRepository expenseRepository;
 
   @override
-  List<TransactionEntity> call(ParamsDefaultAccountId params) {
+  Future<List<TransactionEntity>> call(ParamsDefaultAccountId params) async {
     return expenseRepository.transactions(accountId: params.accountId);
   }
 }

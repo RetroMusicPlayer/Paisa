@@ -35,4 +35,11 @@ class AccountState with _$AccountState {
     AccountEntity accountEntity,
     List<TransactionEntity> transactions,
   ) = AccountSelectedState;
+
+  // Add a new state for holding transactions by month
+  const factory AccountState.transactionsByMonth(
+    int accountId,
+    DateTime month,
+    List<TransactionEntity> transactions,
+  ) = TransactionsByMonthState;
 }

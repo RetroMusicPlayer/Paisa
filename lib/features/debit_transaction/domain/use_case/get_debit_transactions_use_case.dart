@@ -18,7 +18,7 @@ class GetDebitTransactionsUseCase
   final DebitTransactionRepository debtRepository;
 
   @override
-  List<DebitTransactionEntity> call(GetDebitTransactionsParams param) {
+  Future<List<DebitTransactionEntity>> call(GetDebitTransactionsParams param) {
     return debtRepository.fetchTransactionsFromId(param.debitId);
   }
 }

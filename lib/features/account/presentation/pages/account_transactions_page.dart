@@ -56,24 +56,18 @@ class AccountTransactionsPage extends StatelessWidget {
                   ),
                   child: BlocBuilder<AccountBloc, AccountState>(
                     builder: (context, state) {
-                      if (state is AccountSelectedState) {
-                        return RichText(
-                          text: TextSpan(
-                            text: context.loc.deleteAccount,
-                            style: context.bodyMedium,
-                            children: [
-                              TextSpan(
-                                text: state.accountEntity.name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        return const SizedBox.shrink();
-                      }
+                      return state is AccountSelectedState
+                          ? RichText(
+                              text: TextSpan(
+                                  text: context.loc.deleteAccount,
+                                  style: context.bodyMedium,
+                                  children: [
+                                  TextSpan(
+                                      text: state.accountEntity.name,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                ]))
+                          : const SizedBox.shrink();
                     },
                   ),
                   confirmationButton: TextButton(
@@ -103,42 +97,47 @@ class AccountTransactionsPage extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            if (state is AccountSelectedState) {
-              if (state.transactions.isEmpty) {
-                return EmptyWidget(
-                  icon: Icons.credit_card,
-                  title: context.loc.noTransaction,
-                  description: context.loc.emptyAccountMessageSubTitle,
-                );
-              } else {
-                return Scrollbar(
-                  controller: scrollController,
-                  child: ListView.builder(
-                    controller: scrollController,
-                    shrinkWrap: true,
-                    itemCount: state.transactions.length,
-                    itemBuilder: (context, index) {
-                      final TransactionEntity expense =
-                          state.transactions[index];
-                      final CategoryEntity? category = context
-                          .read<HomeCubit>()
-                          .fetchCategoryFromId(expense.categoryId);
-                      if (category == null) {
-                        return const SizedBox.shrink();
-                      } else {
-                        return ExpenseItemWidget(
-                          expense: expense,
-                          account: state.accountEntity,
-                          category: category,
-                        );
-                      }
-                    },
-                  ),
-                );
-              }
-            } else {
-              return const SizedBox.shrink();
-            }
+            return state is AccountSelectedState
+                ? state.transactions.isEmpty
+                    ? EmptyWidget(
+                        icon: Icons.credit_card,
+                        title: context.loc.noTransaction,
+                        description: context.loc.emptyAccountMessageSubTitle)
+                    : Scrollbar(
+                        controller: scrollController,
+                        child: ListView.builder(
+                            controller: scrollController,
+                            shrinkWrap: true,
+                            itemCount: state.transactions.length,
+                            itemBuilder: (context, index) {
+                              final TransactionEntity expense =
+                                  state.transactions[index];
+                              final Future<CategoryEntity?> categoryFuture =
+                                  context
+                                      .read<HomeCubit>()
+                                      .fetchCategoryFromId(expense.categoryId);
+                              return FutureBuilder<CategoryEntity?>(
+                                future: categoryFuture,
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const CircularProgressIndicator();
+                                  } else if (snapshot.hasError) {
+                                    return Text('Error: ${snapshot.error}');
+                                  } else {
+                                    final CategoryEntity? category =
+                                        snapshot.data;
+                                    return category == null
+                                        ? const SizedBox.shrink()
+                                        : ExpenseItemWidget(
+                                            expense: expense,
+                                            account: state.accountEntity,
+                                            category: category);
+                                  }
+                                },
+                              );
+                            }))
+                : const SizedBox.shrink();
           },
         ),
         bottomNavigationBar: SafeArea(

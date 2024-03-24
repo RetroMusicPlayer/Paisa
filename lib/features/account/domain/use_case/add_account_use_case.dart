@@ -10,7 +10,7 @@ import 'package:paisa/features/account/domain/repository/account_repository.dart
 part 'add_account_use_case.freezed.dart';
 
 @lazySingleton
-class AddAccountUseCase implements UseCase<Future<int>, AddAccountParams> {
+class AddAccountUseCase implements UseCase<int, AddAccountParams> {
   AddAccountUseCase({required this.accountRepository});
 
   final AccountRepository accountRepository;

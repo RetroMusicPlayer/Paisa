@@ -32,4 +32,8 @@ class TransactionState with _$TransactionState {
 
   const factory TransactionState.updateDateTime(DateTime dateTime) =
       UpdateDateTimeState;
+
+  const factory TransactionState.transactionLoading() = TransactionLoading;
+  const factory TransactionState.transactionLoaded(
+      List<TransactionEntity> transactions) = TransactionLoaded;
 }

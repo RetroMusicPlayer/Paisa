@@ -12,7 +12,7 @@ class GetSelectedCountryUseCase implements UseCase<CountryEntity?, NoParams> {
 
   GetSelectedCountryUseCase({required this.repository});
   @override
-  CountryEntity? call(NoParams params) {
+  Future<CountryEntity?> call(NoParams params) async {
     return repository.fetchSelectedCountry();
   }
 }

@@ -14,7 +14,8 @@ class GetDefaultCategoriesUseCase
   final CategoryRepository categoryRepository;
 
   @override
-  List<CategoryEntity> call(NoParams? params) {
-    return categoryRepository.defaultCategories();
+  Future<List<CategoryEntity>> call(NoParams? params) async {
+    return Future<List<CategoryEntity>>.value(
+        categoryRepository.defaultCategories());
   }
 }

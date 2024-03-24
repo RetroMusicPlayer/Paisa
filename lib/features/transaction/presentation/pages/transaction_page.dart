@@ -147,19 +147,14 @@ class _TransactionPageState extends State<TransactionPage> {
                   buildWhen: (previous, current) =>
                       current is ChangeTransactionTypeState,
                   builder: (context, state) {
-                    if (state is ChangeTransactionTypeState) {
-                      if (state.transactionType == TransactionType.transfer) {
-                        return TransferWidget(controller: amountController);
-                      } else {
-                        return ExpenseIncomeWidget(
-                          amountController: amountController,
-                          descriptionController: descriptionController,
-                          nameController: nameController,
-                        );
-                      }
-                    } else {
-                      return const SizedBox.shrink();
-                    }
+                    return state is ChangeTransactionTypeState
+                        ? state.transactionType == TransactionType.transfer
+                            ? TransferWidget(controller: amountController)
+                            : ExpenseIncomeWidget(
+                                amountController: amountController,
+                                descriptionController: descriptionController,
+                                nameController: nameController)
+                        : const SizedBox.shrink();
                   },
                 ),
                 bottomNavigationBar: SafeArea(

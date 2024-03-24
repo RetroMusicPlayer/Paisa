@@ -26,6 +26,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configInjector(getIt);
   getIt<RecurringRepository>().checkForRecurring();
+  await _addDummyData(); // dummy data toggle
+
   runApp(const PaisaApp());
   if (TargetPlatform.android == defaultTargetPlatform ||
       TargetPlatform.iOS == defaultTargetPlatform) {
@@ -33,6 +35,7 @@ Future<void> main() async {
   }
 }
 
+// ignore: always_declare_return_types
 _addDummyData() async {
   final accountDataSource = getIt<AccountDataSource>();
   final categoryDataSource = getIt<CategoryDataSource>();
@@ -64,7 +67,7 @@ _addDummyData() async {
   final startDate = DateTime(2010);
   final endDate = DateTime.now();
 
-  for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < 1500; i++) {
     int accountId = Random().nextInt(10);
     int categoryId = Random().nextInt(10);
     final difference = endDate.difference(startDate).inDays;

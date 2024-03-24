@@ -10,8 +10,7 @@ import 'package:paisa/features/intro/domain/repository/country_repository.dart';
 part 'save_selected_country_use_case.freezed.dart';
 
 @lazySingleton
-class SaveSelectedCountryUseCase
-    implements UseCase<Future<void>, ParamsSaveCountry> {
+class SaveSelectedCountryUseCase implements UseCase<void, ParamsSaveCountry> {
   final CountryRepository repository;
 
   SaveSelectedCountryUseCase({required this.repository});
