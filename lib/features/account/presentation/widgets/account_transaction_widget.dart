@@ -22,11 +22,11 @@ class AccountTransactionWidget extends StatefulWidget {
   final bool isScroll;
 
   @override
-  AccountTransactionWidgetState createState() =>
-      AccountTransactionWidgetState();
+  _AccountTransactionWidgetState createState() =>
+      _AccountTransactionWidgetState();
 }
 
-class AccountTransactionWidgetState extends State<AccountTransactionWidget> {
+class _AccountTransactionWidgetState extends State<AccountTransactionWidget> {
   int currentPage = 0;
   final int itemsPerPage =
       50; // Change this to the number of items you want per page
